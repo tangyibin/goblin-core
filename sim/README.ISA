@@ -20,5 +20,74 @@ I. Instruction Set Formats
 ------------------------------------------------------
 II. Register Indexing
 ------------------------------------------------------
+
+[INDEX]	[Mnemonic]	[Description]
+0x00	R0		User register index 0
+0x01	R1		User register index 1
+0x02	R2		User register index 2
+0x03	R3		User register index 3
+0x04	R4		User register index 4
+0x05	R5		User register index 5
+0x06	R6		User register index 6
+0x07	R7		User register index 7
+0x08	R8		User register index 8
+0x09	R9		User register index 9
+0x0A	R10		User register index 10
+0x0B	R11		User register index 11
+0x0C	R12		User register index 12
+0x0D	R13		User register index 13
+0x0E	R14		User register index 14
+0x0F	R15		User register index 15
+0x10	R16		User register index 16
+0x11	R17		User register index 17
+0x12	R18		User register index 18
+0x13	R19		User register index 19
+0x14	R20		User register index 20
+0x15	R21		User register index 21
+0x16	R22		User register index 22
+0x17	R23		User register index 23
+0x18	R24		User register index 24
+0x19	R25		User register index 25
+0x1A	R26		User register index 26
+0x1B	R27		User register index 27
+0x1C	R28		User register index 28
+0x1D	R29		User register index 29
+0x1E	R30		User register index 30
+0x1F	R31		User register index 31
+0x20	SP		Stack Pointer
+0x21	FP		Frame Pointer
+0x22	PIC		Processor Independent Code Pointer
+0x23	UP		Uplevel Frame Pointer
+0x24	RP		Return Pointer
+0x25	CC0		Condition Code 0
+0x26	CC1		Condition Code 1
+0x27	CC2		Condition Code 2
+0x28	CC3		Condition Code 3
+0x29	TQ		Task Queue Pointer
+0x2A	VL		Vector Length
+0x2B	VS		Vector Stride
+0x2C	GMODE		Golin Mode
+0x2D	PMASK		Perf Counter Mask
+0x2E	PREAD		Perf Counter Read
+0x2F	TID		Task ID
+0x30	(--)
+0x31	(--)
+0x32	(--)
+0x33	(--)
+0x34	(--)
+0x35	ZERO		Read-Only: ZERO
+0x36	IMM32		Read-Only: 4-byte immediate
+0x37	IMM64		Read-Only: 8-byte immediate
+0x38	GCONST		Read-Only: Goblin Const
+0x39	EQ		Read-Only: Equal-To
+0x3A	GT		Read-Only: Greater-Than
+0x3B	GTE		Read-Only: Greater-Than+EQ
+0x3C	LT		Read-Only: Less Than
+0x3D	LTE		Read-Only: Less Than+EQ
+0x3E	NE		Read-Only: Not Equal
+0x3F	PVAL		Read-Only: Perf Counter Value
+
+
+------------------------------------------------------
 EOF
 

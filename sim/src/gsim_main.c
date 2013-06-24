@@ -13,22 +13,6 @@
 #include "goblin_sim.h"
 
 
-/* -------------------------------------------------- GSIM_PRINT_USAGE */
-/* 
- * GSIM_PRINT_USAGE 
- * 
- */
-static void gsim_print_usage( char **argv )
-{
-	printf( "================================================================" );
-	printf( "%s%s", argv[0], " " );
-	printf( "================================================================" );
-	printf( "================================================================" );
-
-
-	return ;
-}
-
 /* -------------------------------------------------- GSIM_PRINT_HELP */
 /* 
  * GSIM_PRINT_HELP 
@@ -99,7 +83,7 @@ int main( int argc, char **argv )
 			case '?':
 			default:
 				printf( "%s%s%s\n", "Unknown Option: see ", argv[0], " -h" );
-				gsim_print_usage( argv );
+				gsim_print_help( argv );
 				return -1;
 				break;
 		}
