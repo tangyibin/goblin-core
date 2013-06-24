@@ -2,7 +2,7 @@
 
 CC=gcc
 CXX=g++
-CFLAGS=-Wall -I./include
-CXXFLAGS=-Wall
+CFLAGS=-Wall -I./include/
+CXXFLAGS=-Wall -I./include/
 
 #-- EOF 
