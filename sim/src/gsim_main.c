@@ -34,11 +34,20 @@ static void gsim_print_usage( char **argv )
  * GSIM_PRINT_HELP 
  * 
  */
-static void gsim_print_help()
+static void gsim_print_help( char **argv )
 {
 	printf( "================================================================" );
 	printf( " GSIM VERSION %d.%d\n", GSIM_MAJOR_VERSION, GSIM_MINOR_VERSION );
 	printf( "================================================================" );
+	printf( " usage : %s -ChILtT\n", argv[0] );
+	printf( " Options:\n" );
+	printf( " -C /path/to/config.cfg         : simualtion config file\n" );
+	printf( " -h                             : print this help menu\n" );
+	printf( " -I /path/to/inst.instr         : simulation instruction file\n" );
+	printf( " -L /path/to/sim.log            : simulation log file\n" );
+	printf( " -t                             : enable tracing\n" );
+	printf( " -T /path/to/tracefile          : simulation trace file\n" );
+	printf( " -V /path/to/object.o           : dissasemble and validate object\n" );
 	printf( "================================================================" );
 
 
@@ -60,7 +69,7 @@ int main( int argc, char **argv )
 	/*
 	 * Parse the command line args
 	 */
-	while(( ret = getopt( argc, argv, "Ch:I:L:tT:" )) != -1 )
+	while(( ret = getopt( argc, argv, "C:hI:L:tT:V:" )) != -1 )
 	{
 		switch ( ret )
 		{
@@ -69,7 +78,7 @@ int main( int argc, char **argv )
 				break;
 			case 'h': 
 				/* print help */
-				gsim_print_help();
+				gsim_print_help( argv );
 				return 0;
 				break;
 			case 'I': 
@@ -83,6 +92,9 @@ int main( int argc, char **argv )
 				break;
 			case 'T': 
 				/* set the trace file : default = gsim.trace */
+				break;
+			case 'V': 
+				/* validate the target object file, but do not execute */
 				break;
 			case '?':
 			default:
