@@ -14,6 +14,63 @@
 #include "goblin_sim.h"
 
 
+/* -------------------------------------------------- GSIM_REG_DUMP */
+/* 
+ * GSIM_REG_DUMP 
+ * 
+ */
+static void gsim_reg_dump( struct gsim_t *sim )
+{
+	/* vars */
+	uint32_t i	= 0;
+	char RW[3]	= "RW";
+	char RO[3]	= "RO";
+	char INVALID[8]	= "INVALID";
+	char *format	= NULL;
+	/* ---- */
+
+	/* 
+	 * sanity check 
+	 * 
+	 */
+	if( sim == NULL ){ 
+		return ;
+	}	
+
+	/* 
+	 * print the reg info 
+	 * 
+ 	 */
+	printf( "====================================================================\n" );
+	printf( "[INDEX]    [NAME]    [RW/RO]\n" );
+	for( i=0; i<0x3F; i++ ){ 
+
+		/* 
+		 * select the format
+		 *
+		 */
+		switch( sim->registers.format[i] ){ 
+			case GSIM_REG_RW:
+				format = &(RW[0]);
+				break;
+			case GSIM_REG_RO:
+				format = &(RO[0]);
+				break;
+			case GSIM_REG_INVALID:
+				format = &(INVALID[0]);
+				break;
+			default:
+				format = &(INVALID[0]);
+				break;
+		}	
+
+		printf( "0x%02x%10s%10s\n", i, sim->registers.name[i], format );
+	}
+	printf( "====================================================================\n" );
+
+	return ;
+}
+
 /* -------------------------------------------------- GSIM_REG_INIT */
 /* 
  * GSIM_REG_INIT
@@ -182,6 +239,10 @@ extern int gsim_reg_init( struct gsim_t *sim )
 	/* -- PVAL */
 	reg->format[0x3F]	= GSIM_REG_RO;
 	sprintf( reg->name[0x3F], "%s", "pval" );
+
+#ifdef GSIM_DEBUG
+	gsim_reg_dump( sim );
+#endif
 
 	return 0;
 }

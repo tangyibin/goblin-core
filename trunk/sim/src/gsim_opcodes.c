@@ -14,6 +14,96 @@
 #include "goblin_sim.h"
 
 
+#ifdef GSIM_DEBUG
+/* -------------------------------------------------- GSIM_OPCODES_DUMP */
+/* 
+ * GSIM_OPCODES_DUMP 
+ * 
+ */
+static void gsim_opcodes_dump( struct gsim_t *sim )
+{
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t tmp	= 0;
+	char NOARGS[2]	= " ";
+	char RA[3]	= "RA";
+	char RARB[6]	= "RA RB";
+	char RART[6]	= "RA RT";
+	char RARBRT[9]	= "RA RB RT";
+	char V_Y[2]	= "Y";
+	char V_N[2]	= "N";
+	char *format	= NULL;
+	char *vect	= NULL;
+	/* ---- */
+
+	/* 
+	 * sanity check 
+	 *
+	 */
+	if( sim == NULL ){ 
+		return ;
+	}
+
+	/* 
+	 * print all the opcode data
+	 * 
+	 */
+	printf( "====================================================================\n" );
+	printf( "[OPCODE]\t[NAME]\t\t[ARGS]\t\t[VECTOR]\n" );
+	for( i=0; i<0xFF; i++ ){ 
+		
+		/* 
+		 * select the arg format
+		 *
+		 */
+		if( (sim->opcodes.format[i] & GSIM_OPCODE_VECTOR) > 0 ){ 
+			tmp = (sim->opcodes.format[i] & ~GSIM_OPCODE_VECTOR);
+		}
+
+		switch( tmp ) {
+			case 0x0000000000000000:
+				format = &(NOARGS[0]);
+				break;
+			case GSIM_OPCODE_RA:
+				format = &(RA[0]);
+				break;
+			case GSIM_OPCODE_RARB:
+				format = &(RARB[0]);
+				break;
+			case GSIM_OPCODE_RART:
+				format = &(RART[0]);
+				break;
+			case GSIM_OPCODE_RARBRT:
+				format = &(RARBRT[0]);
+				break;
+			default: 
+				format = &(NOARGS[0]);
+				break;
+		}
+
+		/* 
+		 * select vector or not 
+		 *
+		 */
+		if( (sim->opcodes.format[i] & GSIM_OPCODE_VECTOR) > 0 ){
+			vect = &(V_Y[0]);
+		}else{ 
+			vect = &(V_N[0]);
+		}
+
+		/* 
+		 * print the details
+		 *
+		 */
+		printf( "0x%02x\t%15s\t%15s\t%15s\n", i, sim->opcodes.name[i], format, vect ); 
+	}
+
+	printf( "====================================================================\n" );
+		
+	return ;
+}
+#endif	/* GSIM_DEBUG */
+
 /* -------------------------------------------------- GSIM_OPCODES_INIT */
 /* 
  * GSIM_OPCODES_INIT
@@ -1213,6 +1303,10 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	opcodes->valid[0xFF]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xFF]	= GSIM_OPCODE_RA|GSIM_OPCODE_VECTOR;
 	sprintf( opcodes->name[0xFF], "%s", "ldshv" );
+
+#ifdef GSIM_DEBUG
+	gsim_opcodes_dump( sim );
+#endif
 
 	return 0;
 }
