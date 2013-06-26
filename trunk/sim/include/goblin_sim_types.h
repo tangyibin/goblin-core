@@ -26,11 +26,12 @@ extern "C" {
 /* --------------------------------------------- DATA STRUCTURES */
 struct gsim_t{
 	/* -- simulation setup */
-	uint64_t	options;
+	uint64_t	options;	/*! GOBLIN-SIM GLOBAL OPTIONS */
 
 	/* -- simulation data */
-	uint64_t	clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */
-	gsim_opcodes_t	opcodes;	/*! GOBLIN-SIM OPCODES */
+	uint64_t		clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */
+	struct gsim_opcodes_t	opcodes;	/*! GOBLIN-SIM OPCODES TABLE */
+	struct gsim_reg_t	registers;	/*! GOBLIN-SIM REGISTER TABLE */
 };
 
 

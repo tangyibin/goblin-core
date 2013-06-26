@@ -14,8 +14,8 @@
 
 
 /* -------------------------------------------------- FUNCTION PROTOTYPES */
-static int	gsim_opcodes_init( struct gsim_t *sim );
-static int	gsim_reg_init( struct gsim_t *sim );
+extern int	gsim_opcodes_init( struct gsim_t *sim );
+extern int	gsim_reg_init( struct gsim_t *sim );
 
 
 /* -------------------------------------------------- GSIM_FREE_SIM */
@@ -63,7 +63,7 @@ static int gsim_init_sim( struct gsim_t *sim )
 	 * 
 	 */
 	if( gsim_opcodes_init( sim ) != 0 ){ 
-		GSIM_PRINT_ERROR( "GSIM_ERROR: Failed to initialize the opcode table\n" );
+		GSIM_PRINT_ERROR( "GSIM_ERROR: Failed to initialize the opcode table" );
 		return -1;
 	}
 
@@ -72,7 +72,7 @@ static int gsim_init_sim( struct gsim_t *sim )
 	 * 
 	 */
 	if( gsim_reg_init( sim ) != 0 ){ 
-		GSIM_PRINT_ERROR( "GSIM_ERROR: Failed to initialize the register table\n" );
+		GSIM_PRINT_ERROR( "GSIM_ERROR: Failed to initialize the register table" );
 		return -1;
 	}
 
@@ -132,12 +132,12 @@ int main( int argc, char **argv )
 	 */
 	sim = malloc( sizeof( struct gsim_t ) );
 	if( sim == NULL ){ 
-		GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memoy for sim\n" );
+		GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memoy for sim" );
 		return -1;
 	}
 
 	if( gsim_init_sim( sim ) != 0 ){ 
-		GSIM_PRINT_ERROR( "GSIM_ERROR: Failed to initialize simualtion data\n" );
+		GSIM_PRINT_ERROR( "GSIM_ERROR: Failed to initialize simualtion data" );
 		goto gsim_cleanup;
 		return -1;
 	}
