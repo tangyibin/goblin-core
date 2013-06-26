@@ -27,6 +27,10 @@ extern "C" {
 struct gsim_t{
 	/* -- simulation setup */
 	uint64_t	options;	/*! GOBLIN-SIM GLOBAL OPTIONS */
+	char *		config_file;	/*! GOBLIN-SIM CONFIGURATION FILE NAME */
+	char *		log_file;	/*! GOBLIN-SIM LOG FILE */
+	char *		inst_file;	/*! GOBLIN-SIM INSTRUCTION FILE */
+	char *		trace_file;	/*! GOBLIN-SIM TRACE FILE */
 
 	/* -- simulation data */
 	uint64_t		clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */
