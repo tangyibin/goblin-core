@@ -127,6 +127,18 @@ int main( int argc, char **argv )
 	struct gsim_t	*sim	= NULL;
 	/* ---- */
 
+
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_MSG( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+	GSIM_PRINT_MSG( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+	GSIM_PRINT_MSG( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+	GSIM_PRINT_MSG( "!!WARNING!!  RUNNING IN DEBUG MODE!" );
+	GSIM_PRINT_MSG( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+	GSIM_PRINT_MSG( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+	GSIM_PRINT_MSG( "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" );
+#endif
+
+
 	/* 
 	 * allocate the simulation data
 	 */
