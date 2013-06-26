@@ -10,4 +10,7 @@ LINK=-L./ -lgsim
 AR=ar
 AROPTS=rcs
 
+LEX=flex
+YACC=yacc
+
 #-- EOF 
