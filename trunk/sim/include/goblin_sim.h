@@ -22,6 +22,8 @@ extern "C" {
 
 /* --------------------------------------------- FUNCTION PROTOTYPES */
 
+extern void	gsim_free( void *ptr );
+extern int	gsim_malloc( void **ptr, size_t sz );
 
 #ifdef __cplusplus
 } /* extern C */

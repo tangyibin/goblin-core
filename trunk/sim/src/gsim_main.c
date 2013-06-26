@@ -34,8 +34,10 @@ static void gsim_free_sim( struct gsim_t *sim )
  	 * free all the intermediate objects
 	 *
 	 */
-	
-
+	gsim_free( sim->config_file );
+	gsim_free( sim->log_file );
+	gsim_free( sim->inst_file );
+	gsim_free( sim->trace_file );
 
 	if( sim != NULL ) { 
 		free( sim );
@@ -57,6 +59,15 @@ static int gsim_init_sim( struct gsim_t *sim )
 	 * 
 	 */
 	sim->options	= GSIM_OPT_DEFAULT;
+
+	/* 
+	 * zero the pointers 
+	 * 
+	 */
+	sim->config_file	= NULL;
+	sim->log_file		= NULL;
+	sim->inst_file		= NULL;
+	sim->trace_file		= NULL;
 
 	/* 
 	 * setup the opcodes table
