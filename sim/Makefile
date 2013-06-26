@@ -1,8 +1,19 @@
 #!/bin/sh
 
-LINK=-lgsim
+include Makefile.inc
+
+SRC=`pwd`/src
+
+LIBOBJS=$(SRC)/gsim_opcodes.o $(SRC)/gsim_reg.o
+
 
 all: libgsim.a goblin-sim
 libgsim.a:
-goblin-sim:
-clean:
+	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_opcodes.o $(SRC)/gsim_opcodes.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_reg.o $(SRC)/gsim_reg.c
+	$(AR) $(AROPTS) $@ $(LIBOBJS)
+goblin-sim: libgsim.a
+	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_main.o $(SRC)/gsim_main.c
+	$(CC) $(CFLAGS) -o $@ $(SRC)/gsim_main.o $(LINK)
+clean: 
+	rm -Rf ./src/*.o ./libgsim.a ./goblin-sim
