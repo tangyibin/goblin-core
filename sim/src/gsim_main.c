@@ -92,9 +92,9 @@ static int gsim_init_sim( struct gsim_t *sim )
  */
 static void gsim_print_help( char **argv )
 {
-	printf( "================================================================" );
+	printf( "================================================================\n" );
 	printf( " GSIM VERSION %d.%d\n", GSIM_MAJOR_VERSION, GSIM_MINOR_VERSION );
-	printf( "================================================================" );
+	printf( "================================================================\n" );
 	printf( " usage : %s -cCfhILtTvV\n", argv[0] );
 	printf( " Options:\n" );
 	printf( " -c                             : enable C++ cycle accurate sim\n" );
@@ -107,10 +107,10 @@ static void gsim_print_help( char **argv )
 	printf( " -T /path/to/tracefile          : simulation trace file\n" );
 	printf( " -v                             : enable verilog simulation\n" );
 	printf( " -V /path/to/object.o           : dissasemble and validate object\n" );
-	printf( "================================================================" );
+	printf( "================================================================\n" );
 	printf( " Note:\n" );
 	printf( " Functional simulation is the default [-f]\n" );
-	printf( "================================================================" );
+	printf( "================================================================\n" );
 
 	return ;
 }
