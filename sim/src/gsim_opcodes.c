@@ -60,8 +60,10 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
 			tmp = (sim->opcodes.format[i] & ~GSIM_OPCODE_VECTOR);
 		}
 
+		tmp = (sim->opcodes.format[i] & (0x40-1) );
+
 		switch( tmp ) {
-			case 0x0000000000000000:
+			case GSIM_OPCODE_NOREG:
 				format = &(NOARGS[0]);
 				break;
 			case GSIM_OPCODE_RA:

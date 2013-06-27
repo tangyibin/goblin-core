@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "goblin_sim.h"
 
 
@@ -177,6 +178,12 @@ int main( int argc, char **argv )
 				break;
 			case 'C': 
 				/* config file */
+				sim->config_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+
+				if( sim->config_file == NULL ) {
+					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for config_file" );
+				}
+				snprintf( sim->config_file, strlen( optarg )+1, "%s", optarg );
 				break;
 			case 'f': 
 				/* enable functional simulation
@@ -190,15 +197,33 @@ int main( int argc, char **argv )
 				break;
 			case 'I': 
 				/* instruction file */
+				sim->inst_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+
+				if( sim->inst_file == NULL ) {
+					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for inst_file" );
+				}
+				snprintf( sim->inst_file, strlen( optarg )+1, "%s", optarg );
 				break;
 			case 'L':
 				/* log file */
+				sim->log_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+
+				if( sim->log_file == NULL ) {
+					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for log_file" );
+				}
+				snprintf( sim->log_file, strlen( optarg )+1, "%s", optarg );
 				break;
 			case 't': 
 				/* enable tracing */
 				break;
 			case 'T': 
 				/* set the trace file : default = gsim.trace */
+				sim->trace_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+
+				if( sim->trace_file == NULL ) {
+					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for trace_file" );
+				}
+				snprintf( sim->trace_file, strlen( optarg )+1, "%s", optarg );
 				break;
 			case 'v': 
 				/* enable verilog simulation */

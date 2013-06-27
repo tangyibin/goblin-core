@@ -34,26 +34,9 @@ extern void gsim_free( void *ptr )
  * GSIM_MALLOC
  * 
  */
-extern int gsim_malloc( void **ptr, size_t sz )
+extern void *gsim_malloc( size_t sz )
 {
-	void *tmp	= NULL;
-
-	/* 
-	 * check to see if the pointer is NULL
-	 *
-	 */
-	if( ptr == NULL ){ 
-		return -1;
-	}
-
-	/* 
-	 * check to see if the pointer is already
-	 * allocated
-	 *
-	 */
-	if( *ptr != NULL ){ 
-		return -1;
-	}	
+	static void *tmp	= NULL;
 
 	/* 
 	 * allocate the memory 
@@ -66,7 +49,7 @@ extern int gsim_malloc( void **ptr, size_t sz )
 	 * 
 	 */
 	if( tmp == NULL ) { 
-		return -1;
+		return NULL;
 	}
 	
 	/* 
@@ -75,15 +58,7 @@ extern int gsim_malloc( void **ptr, size_t sz )
 	 */
 	memset( tmp, 0, sz );
 
-	/* 
-	 * set the pointer to the correct value 
-	 * 
-	 */
-	*ptr = tmp;
-
-	tmp = NULL;	
-	
-	return 0;	
+	return tmp;	
 }
 
 
