@@ -26,6 +26,10 @@ extern int	gsim_reg_init( struct gsim_t *sim );
  */
 static void gsim_free_sim( struct gsim_t *sim )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
+
 	if( sim == NULL ){ 
 		/* nothing to do, return */
 		return ;
@@ -45,6 +49,10 @@ static void gsim_free_sim( struct gsim_t *sim )
 		sim = NULL;
 	}
 
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
+
 	return ;
 }
 
@@ -55,6 +63,9 @@ static void gsim_free_sim( struct gsim_t *sim )
  */
 static int gsim_init_sim( struct gsim_t *sim )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* 
 	 * set the default sim attributes
 	 * 
@@ -94,6 +105,10 @@ static int gsim_init_sim( struct gsim_t *sim )
 	 * 
 	 */
 
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
+
 	return 0;
 }
 
@@ -104,6 +119,9 @@ static int gsim_init_sim( struct gsim_t *sim )
  */
 static void gsim_print_help( char **argv )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	printf( "================================================================\n" );
 	printf( " GSIM VERSION %d.%d\n", GSIM_MAJOR_VERSION, GSIM_MINOR_VERSION );
 	printf( "================================================================\n" );
@@ -124,6 +142,9 @@ static void gsim_print_help( char **argv )
 	printf( " Functional simulation is the default [-f]\n" );
 	printf( "================================================================\n" );
 
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return ;
 }
 
@@ -175,6 +196,20 @@ int main( int argc, char **argv )
 		{
 			case 'c': 
 				/* enable c++ cycle accurate simulation */
+				if( (sim->options & GSIM_OPT_CYCLE_FUNC) > 0 ){
+					sim->options &= ~GSIM_OPT_CYCLE_FUNC;
+				}
+
+				if( (sim->options & GSIM_OPT_CYCLE_HDL) > 0 ){
+					sim->options &= ~GSIM_OPT_CYCLE_HDL;
+				}
+
+				sim->options |= GSIM_OPT_CYCLE_ACCUR;
+			
+				#ifdef GSIM_DEBUG
+				GSIM_PRINT_MSG( "Setting option GSIM_OPT_CYCLE_ACCUR" );
+				#endif
+
 				break;
 			case 'C': 
 				/* config file */
@@ -189,6 +224,21 @@ int main( int argc, char **argv )
 				/* enable functional simulation
 				 * not cycle accurate 
 				 */
+
+				if( (sim->options & GSIM_OPT_CYCLE_ACCUR) > 0 ){
+					sim->options &= ~GSIM_OPT_CYCLE_ACCUR;
+				}
+
+				if( (sim->options & GSIM_OPT_CYCLE_HDL) > 0 ){
+					sim->options &= ~GSIM_OPT_CYCLE_HDL;
+				}
+
+				sim->options |= GSIM_OPT_CYCLE_FUNC;
+			
+				#ifdef GSIM_DEBUG
+				GSIM_PRINT_MSG( "Setting option GSIM_OPT_CYCLE_FUNC" );
+				#endif
+
 				break;
 			case 'h': 
 				/* print help */
@@ -215,6 +265,12 @@ int main( int argc, char **argv )
 				break;
 			case 't': 
 				/* enable tracing */
+				sim->options |= GSIM_OPT_TRACING;
+
+				#ifdef GSIM_DEBUG
+				GSIM_PRINT_MSG( "Setting option GSIM_OPT_TRACING" );
+				#endif
+
 				break;
 			case 'T': 
 				/* set the trace file : default = gsim.trace */
@@ -227,9 +283,30 @@ int main( int argc, char **argv )
 				break;
 			case 'v': 
 				/* enable verilog simulation */
+
+				if( (sim->options & GSIM_OPT_CYCLE_FUNC) > 0 ){
+					sim->options &= ~GSIM_OPT_CYCLE_FUNC;
+				}
+
+				if( (sim->options & GSIM_OPT_CYCLE_ACCUR) > 0 ){
+					sim->options &= ~GSIM_OPT_CYCLE_ACCUR;
+				}
+
+				sim->options |= GSIM_OPT_CYCLE_HDL;
+			
+				#ifdef GSIM_DEBUG
+				GSIM_PRINT_MSG( "Setting option GSIM_OPT_CYCLE_HDL" );
+				#endif
+
 				break;
 			case 'V': 
 				/* validate the target object file, but do not execute */
+				sim->options |= GSIM_OPT_VALIDATE;
+
+				#ifdef GSIM_DEBUG
+				GSIM_PRINT_MSG( "Setting option GSIM_OPT_VALIDATE" );
+				#endif
+
 				break;
 			case '?':
 			default:
@@ -244,6 +321,12 @@ int main( int argc, char **argv )
 	 * sanity check the options 
 	 * 
  	 */
+
+	/*
+	 * if validation is enabled, crack and validate
+	 * all the instructions
+	 *
+	 */
 
 	/* 
 	 * run the simulation
