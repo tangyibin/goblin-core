@@ -19,8 +19,12 @@
  * GSIM_REG_DUMP 
  * 
  */
+#ifdef GSIM_DEBUG
 static void gsim_reg_dump( struct gsim_t *sim )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* vars */
 	uint32_t i	= 0;
 	char RW[3]	= "RW";
@@ -68,8 +72,12 @@ static void gsim_reg_dump( struct gsim_t *sim )
 	}
 	printf( "====================================================================\n" );
 
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return ;
 }
+#endif /* GSIM_DEBUG */
 
 /* -------------------------------------------------- GSIM_REG_INIT */
 /* 
@@ -78,6 +86,9 @@ static void gsim_reg_dump( struct gsim_t *sim )
  */
 extern int gsim_reg_init( struct gsim_t *sim )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* vars */
 	uint32_t i			= 0;
 	struct gsim_reg_t *reg		= NULL;
@@ -242,6 +253,7 @@ extern int gsim_reg_init( struct gsim_t *sim )
 
 #ifdef GSIM_DEBUG
 	gsim_reg_dump( sim );
+	GSIM_PRINT_FUNC_EXIT();
 #endif
 
 	return 0;

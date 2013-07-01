@@ -22,6 +22,9 @@
  */
 static void gsim_opcodes_dump( struct gsim_t *sim )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* vars */
 	uint32_t i	= 0;
 	uint32_t tmp	= 0;
@@ -102,6 +105,10 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
 
 	printf( "====================================================================\n" );
 		
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
+
 	return ;
 }
 #endif	/* GSIM_DEBUG */
@@ -113,6 +120,9 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
  */
 extern int gsim_opcodes_init( struct gsim_t *sim )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* vars */
 	struct gsim_opcodes_t *opcodes	= NULL;
 	/* ---- */
@@ -1308,6 +1318,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 
 #ifdef GSIM_DEBUG
 	gsim_opcodes_dump( sim );
+	GSIM_PRINT_FUNC_EXIT();
 #endif
 
 	return 0;

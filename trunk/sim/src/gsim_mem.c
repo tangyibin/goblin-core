@@ -21,11 +21,17 @@
  */
 extern void gsim_free( void *ptr )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	if( ptr != NULL ) { 
 		free( ptr );
 		ptr = NULL;
 	}
 
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return ;
 }
 
@@ -36,6 +42,9 @@ extern void gsim_free( void *ptr )
  */
 extern void *gsim_malloc( size_t sz )
 {
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	static void *tmp	= NULL;
 
 	/* 
@@ -58,6 +67,9 @@ extern void *gsim_malloc( size_t sz )
 	 */
 	memset( tmp, 0, sz );
 
+#ifdef GSIM_DEBUG
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return tmp;	
 }
 
