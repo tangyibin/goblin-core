@@ -271,6 +271,8 @@ DESCRIPTION
 .  bfd_arch_z8k,       {* Zilog Z8000 *}
 .#define bfd_mach_z8001		1
 .#define bfd_mach_z8002		2
+.  bfd_arch_gc64,      {* Goblin-Core 64 *}
+#define bfd_mach_gc64		0x40
 .  bfd_arch_h8500,     {* Renesas H8/500 (formerly Hitachi H8/500) *}
 .  bfd_arch_sh,        {* Renesas / SuperH SH (formerly Hitachi SH) *}
 .#define bfd_mach_sh            1
@@ -587,6 +589,7 @@ extern const bfd_arch_info_type bfd_xc16x_arch;
 extern const bfd_arch_info_type bfd_xgate_arch;
 extern const bfd_arch_info_type bfd_z80_arch;
 extern const bfd_arch_info_type bfd_z8k_arch;
+extern const bfd_arch_info_type bfd_gc64_arch;
 
 static const bfd_arch_info_type * const bfd_archures_list[] =
   {
@@ -670,6 +673,7 @@ static const bfd_arch_info_type * const bfd_archures_list[] =
     &bfd_xgate_arch,
     &bfd_z80_arch,
     &bfd_z8k_arch,
+    &bfd_gc64_arch,
 #endif
   0
 };

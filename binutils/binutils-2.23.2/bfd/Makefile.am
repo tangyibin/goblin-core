@@ -149,7 +149,8 @@ ALL_MACHINES = \
 	cpu-xstormy16.lo \
 	cpu-xtensa.lo \
 	cpu-z80.lo \
-	cpu-z8k.lo
+	cpu-z8k.lo \
+	cpu-gc64.lo
 
 ALL_MACHINES_CFILES = \
 	cpu-aarch64.c \
@@ -230,7 +231,8 @@ ALL_MACHINES_CFILES = \
 	cpu-xstormy16.c \
 	cpu-xtensa.c \
 	cpu-z80.c \
-	cpu-z8k.c
+	cpu-z8k.c \
+	cpu-gc64.c
 
 # The .o files needed by all of the 32 bit vectors that are configured into
 # target_vector in targets.c if configured with --enable-targets=all.

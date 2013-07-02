@@ -1147,6 +1147,7 @@ static const bfd_target * const _bfd_target_vector[] =
 	&bfd_elf64_l1om_vec,
 	&bfd_elf64_k1om_freebsd_vec,
 	&bfd_elf64_k1om_vec,
+	&bfd_elf64_gc64_vec,
 	&bfd_mmo_vec,
 #endif
 	&bfd_powerpc_pe_vec,
