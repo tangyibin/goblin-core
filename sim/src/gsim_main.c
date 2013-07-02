@@ -19,6 +19,32 @@ extern int	gsim_opcodes_init( struct gsim_t *sim );
 extern int	gsim_reg_init( struct gsim_t *sim );
 
 
+/* -------------------------------------------------- GSIM_SANITY_CHECK */
+/* 
+ * GSIM_SANITY_CHECK
+ * 
+ */
+static int gsim_sanity_check( struct gsim_t *sim )
+{
+	/* 
+	 * check the sim structure 
+	 *
+	 */
+	if( sim == NULL ){ 
+		return -1;
+	}
+
+	/* 
+	 * check for a valid object 
+	 *
+	 */
+	if( sim->obj_file == NULL ){ 
+		return -1;
+	}
+
+	return 0;
+}
+
 /* -------------------------------------------------- GSIM_FREE_SIM */
 /* 
  * GSIM_FREE_SIM
@@ -43,6 +69,8 @@ static void gsim_free_sim( struct gsim_t *sim )
 	gsim_free( sim->log_file );
 	gsim_free( sim->inst_file );
 	gsim_free( sim->trace_file );
+	gsim_free( sim->obj_file );
+	gsim_free( sim->obj_opts );
 
 	if( sim != NULL ) { 
 		free( sim );
@@ -80,6 +108,8 @@ static int gsim_init_sim( struct gsim_t *sim )
 	sim->log_file		= NULL;
 	sim->inst_file		= NULL;
 	sim->trace_file		= NULL;
+	sim->obj_file		= NULL;
+	sim->obj_opts		= NULL;
 
 	/* 
 	 * setup the opcodes table
@@ -158,6 +188,8 @@ int main( int argc, char **argv )
 	/* vars */
 	int ret			= 0;
 	struct gsim_t	*sim	= NULL;
+	char *tmp		= NULL;
+	char *tok		= NULL;
 	/* ---- */
 
 
@@ -190,7 +222,7 @@ int main( int argc, char **argv )
 	/*
 	 * Parse the command line args
 	 */
-	while(( ret = getopt( argc, argv, "cC:fhI:L:tT:vV:" )) != -1 )
+	while(( ret = getopt( argc, argv, "cC:fhI:L:O:tT:vV:" )) != -1 )
 	{
 		switch ( ret )
 		{
@@ -217,6 +249,7 @@ int main( int argc, char **argv )
 
 				if( sim->config_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for config_file" );
+					goto gsim_cleanup;
 				}
 				snprintf( sim->config_file, strlen( optarg )+1, "%s", optarg );
 				break;
@@ -251,6 +284,7 @@ int main( int argc, char **argv )
 
 				if( sim->inst_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for inst_file" );
+					goto gsim_cleanup;
 				}
 				snprintf( sim->inst_file, strlen( optarg )+1, "%s", optarg );
 				break;
@@ -260,8 +294,63 @@ int main( int argc, char **argv )
 
 				if( sim->log_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for log_file" );
+					goto gsim_cleanup;
 				}
 				snprintf( sim->log_file, strlen( optarg )+1, "%s", optarg );
+				break;
+			case 'O':
+				/* object file + options */
+				tmp = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+				
+				if( tmp == NULL ){ 
+					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for tmp [object file]" );
+					goto gsim_cleanup;
+				}
+
+				/* 
+				 * the object and see if there is an object file 
+				 * followed by spaces; eg ARGV exists 
+				 */
+
+				snprintf( tmp, strlen( optarg ), "%s", optarg );
+
+				tok = strtok( tmp, " " );
+				if( tok != NULL ) { 
+					/*
+					 * found an ARGV 
+					 *
+					 */
+					sim->obj_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( tok )) );
+					if( sim->obj_file == NULL ){ 
+						GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for obj_file" );
+						gsim_free( tmp );
+						goto gsim_cleanup;	
+					}
+					snprintf( sim->obj_file, strlen( tok ), "%s", tok );
+
+					tok = strtok( NULL, " " );
+
+					sim->obj_opts = gsim_malloc( (size_t)(sizeof( char ) * strlen( tok )) );
+					if( sim->obj_file == NULL ){ 
+						GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for obj_opts" );
+						gsim_free( tmp );
+						goto gsim_cleanup;	
+					}
+					snprintf( sim->obj_opts, strlen( tok ), "%s", tok );
+					
+				}else{
+					sim->obj_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+					if( sim->obj_file == NULL ){ 
+						GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for obj_file" );
+						gsim_free( tmp );
+						goto gsim_cleanup;	
+					}
+
+					sim->obj_opts = NULL;
+				}
+
+				gsim_free( tmp );
+
 				break;
 			case 't': 
 				/* enable tracing */
@@ -278,6 +367,7 @@ int main( int argc, char **argv )
 
 				if( sim->trace_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for trace_file" );
+					goto gsim_cleanup;
 				}
 				snprintf( sim->trace_file, strlen( optarg )+1, "%s", optarg );
 				break;
@@ -321,12 +411,31 @@ int main( int argc, char **argv )
 	 * sanity check the options 
 	 * 
  	 */
+	if( gsim_sanity_check( sim ) != 0 ){ 
+		GSIM_PRINT_ERROR( "Sanity check of simulation arguments failed!" );
+		goto gsim_cleanup;
+	}
+
+	/* 
+	 * read the config file
+	 *
+	 */
+	if( gsim_config_read( sim ) != 0 ){
+		GSIM_PRINT_ERROR( "Could to find a valid configuration" );
+		goto gsim_cleanup;
+	}
+	
+	/* 
+	 * init the sim internals 
+	 * 
+	 */
 
 	/*
-	 * if validation is enabled, crack and validate
+	 * crack and validate
 	 * all the instructions
 	 *
 	 */
+		
 
 	/* 
 	 * run the simulation

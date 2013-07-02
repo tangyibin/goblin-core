@@ -31,6 +31,8 @@ struct gsim_t{
 	char *		log_file;	/*! GOBLIN-SIM LOG FILE */
 	char *		inst_file;	/*! GOBLIN-SIM INSTRUCTION FILE */
 	char *		trace_file;	/*! GOBLIN-SIM TRACE FILE */
+	char *		obj_file;	/*! GOBLIN-SIM OBJECT FILE */
+	char *		obj_opts;	/*! GOBLIN-SIM OBJECT ARGV */
 
 	/* -- simulation data */
 	uint64_t		clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */

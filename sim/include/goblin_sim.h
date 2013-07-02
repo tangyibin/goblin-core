@@ -25,6 +25,8 @@ extern "C" {
 extern void	gsim_free( void *ptr );
 extern void 	*gsim_malloc( size_t sz );
 
+extern int	gsim_config_read( struct gsim_t *sim );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
