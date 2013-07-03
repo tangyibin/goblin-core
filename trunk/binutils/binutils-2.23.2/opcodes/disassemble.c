@@ -96,7 +96,7 @@
 #define ARCH_xtensa
 #define ARCH_z80
 #define ARCH_z8k
-#define ARCH_gr64
+#define ARCH_gc64
 #define INCLUDE_SHMEDIA
 #endif
 
@@ -513,9 +513,9 @@ disassembler (abfd)
       disassemble = print_insn_tilepro;
       break;
 #endif
-#ifdef ARCH_gr64
-	case bfd_arch_gr64:
-	  disassemble = print_insn_gr64;
+#ifdef ARCH_gc64
+	case bfd_arch_gc64:
+	  disassemble = print_insn_gc64;
 	  break;
 #endif
     default:
