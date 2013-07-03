@@ -1,4 +1,4 @@
-/* cr16.h -- Header file for CR16 opcode and register tables.
+/* gc64.h -- Header file for GC64 opcode and register tables.
    Copyright 2007, 2008, 2010 Free Software Foundation, Inc.
    Contributed by M R Swami Reddy
 
