@@ -95,6 +95,8 @@ TARGET_LIBOPCODES_CFILES = \
 	cgen-opc.c \
 	cr16-dis.c \
 	cr16-opc.c \
+	gr64-dis.c \
+	gr64-opc.c \
 	cris-dis.c \
 	cris-opc.c \
 	crx-dis.c \
