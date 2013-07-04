@@ -1,0 +1,23 @@
+#summary One-sentence summary of this page.
+#labels Phase-Design,Featured,Phase-Requirements
+
+= Introduction =
+
+The following is a short list of the various major project components and their respective status.  
+This list is not all encompassing, rather, it provides a somewhat clear direction of what major project tasks are ongoing.  
+
+= In Progress =
+  * *ISA Definition* : Initial instruction set format definition is complete.  This includes local and global memory model.  There may be a few instruction additions in the near future.  The current instruction tables are in the simulator source directory
+  * *ABI Definition* : The ABI definition is an ongoing project.  The major issue at hand is understanding the relationship between node-local pages and globally addressable page structures.  
+  * *Arch Specs Doc* : Ongoing as I have time.
+  * *Initial Simulator Model* : The initial code compiles and links.  The base simulator is a static library object such that it can be embedded in other applications or simulation objects.  See the simulator source tree.
+  * *Binutils* : current binutils support is provided by GNU binutils 2.23.2.  Note: Binutils references Goblin-Core as "gc64".  This will be consistent across other tools as well.  I've added the necessary BFD, GAS, et.al files, but I have yet to complete the code necessary to have a working binutils toolkit.  This will be an ongoing effort as I finalize the ABI.    
+
+= In Planning = 
+  * *Compiler/Optimizer* : Given its deliberate ability to port to new targets, I've chosen LLVM as our candidate compiler+optimizer suite.  I hope to work with Preston Briggs from UWash on his efforts to build Tera MTA-C style parallelization optimizations into LLVM.  More info on this can be found here: https://sites.google.com/site/parallelizationforllvm/loop-transforms
+  * *Task Switching Model* : As a part of the overall simulation phase, one of the key modules that I plan to research is the exact task/thread context switch model.  I have some ideas on how this might maintain a very efficient [~1 cycle] context switch latency while not sacrificing instruction bandwidth.  I want this to be both flexible with respect to the executing algorithm as well as powerful for those doing heavy micro-optimizations.  Much of the simulated research will fall in this area.    
+
+= Not Yet Attempted = 
+  * *Debugger* : I've wavering on whether to port GDB or LLDB.  There are certainly more people familiar with GDB, but the code base is more difficult to work in than LLDB.  
+  * *Performance Optimization Tools* : I have yet to generate a plan for performance optimization tools
+  * *Kernel Modifications* : Goblin-Core is designed to operate as a core processor and boot an operating system.  However, I have yet to determine what kernel modifications may or may not be necessary.  I have done some reading on low-jitter Linux-derived OS models from the likes of Sandia and Argonne.  Both are interesting candidates.  The biggest concern is providing a fast, global memory allocation schema.  
