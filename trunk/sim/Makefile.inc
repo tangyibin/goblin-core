@@ -11,6 +11,7 @@ AR=ar
 AROPTS=rcs
 
 LEX=flex
+LEX_OPTS=-Pgsim
 YACC=yacc
 
 #-- EOF 
