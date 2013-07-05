@@ -38,6 +38,11 @@ struct gsim_t{
 	uint64_t		clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */
 	struct gsim_opcodes_t	opcodes;	/*! GOBLIN-SIM OPCODES TABLE */
 	struct gsim_reg_t	registers;	/*! GOBLIN-SIM REGISTER TABLE */
+
+	/* -- hardware layout */
+	uint32_t	task_groups;		/*! GOBLIN-SIM TASK GROUPS */
+	uint32_t 	task_procs;		/*! GOBLIN-SIM TASK PROCS */
+	uint32_t 	tasks;			/*! GOBLIN-SIM TASKS */
 };
 
 
