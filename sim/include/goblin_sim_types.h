@@ -26,18 +26,21 @@ extern "C" {
 /* --------------------------------------------- DATA STRUCTURES */
 struct gsim_t{
 	/* -- simulation setup */
-	uint64_t	options;	/*! GOBLIN-SIM GLOBAL OPTIONS */
-	char *		config_file;	/*! GOBLIN-SIM CONFIGURATION FILE NAME */
-	char *		log_file;	/*! GOBLIN-SIM LOG FILE */
-	char *		inst_file;	/*! GOBLIN-SIM INSTRUCTION FILE */
-	char *		trace_file;	/*! GOBLIN-SIM TRACE FILE */
-	char *		obj_file;	/*! GOBLIN-SIM OBJECT FILE */
-	char *		obj_opts;	/*! GOBLIN-SIM OBJECT ARGV */
+	uint64_t	options;		/*! GOBLIN-SIM GLOBAL OPTIONS */
+	char *		config_file;		/*! GOBLIN-SIM CONFIGURATION FILE NAME */
+	char *		log_file;		/*! GOBLIN-SIM LOG FILE */
+	char *		inst_file;		/*! GOBLIN-SIM INSTRUCTION FILE */
+	char *		trace_file;		/*! GOBLIN-SIM TRACE FILE */
+	char *		obj_file;		/*! GOBLIN-SIM OBJECT FILE */
+	char *		obj_opts;		/*! GOBLIN-SIM OBJECT ARGV */
 
 	/* -- simulation data */
 	uint64_t		clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */
 	struct gsim_opcodes_t	opcodes;	/*! GOBLIN-SIM OPCODES TABLE */
 	struct gsim_reg_t	registers;	/*! GOBLIN-SIM REGISTER TABLE */
+
+	/* -- software environment */
+	uint64_t	stack_size;		/*! GOBLIN-SIM STACK SIZE */
 
 	/* -- hardware layout */
 	uint32_t	task_groups;		/*! GOBLIN-SIM TASK GROUPS */
