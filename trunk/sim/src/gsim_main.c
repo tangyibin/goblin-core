@@ -42,6 +42,10 @@ static int gsim_sanity_check( struct gsim_t *sim )
 		return -1;
 	}
 
+	if( sim->stack_size <= 2 ){
+		return -1;
+	}
+
 	return 0;
 }
 
@@ -129,6 +133,12 @@ static int gsim_init_sim( struct gsim_t *sim )
 		return -1;
 	}
 
+	/* 
+	 * default stack size 
+	 *
+	 */
+	sim->stack_size = GSIM_DEFAULT_STACK_SIZE;
+
 
 	/* 
 	 * put the system in reset
@@ -163,6 +173,8 @@ static void gsim_print_help( char **argv )
 	printf( " -h                             : print this help menu\n" );
 	printf( " -I /path/to/inst.instr         : simulation instruction file\n" );
 	printf( " -L /path/to/sim.log            : simulation log file\n" );
+	printf( " -O /path/to/object.{o,exe} args: object file and args\n" );
+	printf( " -S stack_size_in_bytes         : set the stack size\n" );
 	printf( " -t                             : enable tracing\n" );
 	printf( " -T /path/to/tracefile          : simulation trace file\n" );
 	printf( " -v                             : enable verilog simulation\n" );
@@ -222,7 +234,7 @@ int main( int argc, char **argv )
 	/*
 	 * Parse the command line args
 	 */
-	while(( ret = getopt( argc, argv, "cC:fhI:L:O:tT:vV:" )) != -1 )
+	while(( ret = getopt( argc, argv, "cC:fhI:L:O:S:tT:vV:" )) != -1 )
 	{
 		switch ( ret )
 		{
@@ -351,6 +363,10 @@ int main( int argc, char **argv )
 
 				gsim_free( tmp );
 
+				break;
+			case 'S': 
+				/* set stack size */
+				sim->stack_size	= atoi(optarg);
 				break;
 			case 't': 
 				/* enable tracing */

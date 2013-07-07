@@ -46,7 +46,10 @@ extern "C" {
 
 #define GSIM_OPT_VALIDATE	0xF000000000000000	/*! RUNTIME OPTIONS: VALIDATE THE OBJECT */
 
+
+/* --------------------------------------------- SIMULATION DEFAULTS */
 #define GSIM_OPT_DEFAULT	(GSIM_OPT_EXCEPTIONS|GSIM_OPT_TASKING|GSIM_OPT_CYCLE_FUNC)
+#define	GSIM_DEFAULT_STACK_SIZE	4194304			/* DEFAULT OPTIONS: 4MB STACKS */
 
 /* --------------------------------------------- PRINT MACROS */
 #define	GSIM_PRINT_ERROR( s )		( fprintf( stderr, "GSIM_ERROR: %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
