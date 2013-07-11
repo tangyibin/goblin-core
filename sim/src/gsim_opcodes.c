@@ -358,8 +358,9 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	sprintf( opcodes->name[0x29], "%s", "INVALID" );
 
 	/* -- 0x2A */
-	opcodes->valid[0x2A]	= GSIM_OPCODE_INVALID;
-	sprintf( opcodes->name[0x2A], "%s", "INVALID" );
+	opcodes->valid[0x2A]	= GSIM_OPCODE_VALID;
+	opcodes->format[0x2A]	= GSIM_OPCODE_NOREG;
+	sprintf( opcodes->name[0x1F], "%s", "fence.ga" );
 
 	/* -- 0x2B */
 	opcodes->valid[0x2B]	= GSIM_OPCODE_INVALID;
