@@ -9,7 +9,7 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
 = In Progress =
   * *ISA Definition* : Initial instruction set format definition is complete.  This includes local and global memory model.  There may be a few instruction additions in the near future.  The current instruction tables are in the simulator source directory
   * *ABI Definition* : The ABI definition is an ongoing project.  The major issue at hand is understanding the relationship between node-local pages and globally addressable page structures.  
-  * *Arch Specs Doc* : Ongoing as I have time.
+  * *Arch Specs Doc* : Ongoing and coming up well: https://code.google.com/p/goblin-core/source/browse/trunk/doc/goblin-core_arch_specs.docx
   * *Initial Simulator Model* : The initial code compiles and links.  The base simulator is a static library object such that it can be embedded in other applications or simulation objects.  See the simulator source tree.
   * *Binutils* : current binutils support is provided by GNU binutils 2.23.2.  Note: Binutils references Goblin-Core as "gc64".  This will be consistent across other tools as well.  I've added the necessary BFD, GAS, et.al files, but I have yet to complete the code necessary to have a working binutils toolkit.  This will be an ongoing effort as I finalize the ABI.    
 
