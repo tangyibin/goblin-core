@@ -200,12 +200,12 @@ extern int gsim_reg_init( struct gsim_t *sim )
 	sprintf( reg->name[0x32], "%s", "INVALID" );
 
 	/* -- 0x33 */
-	reg->format[0x33]	= GSIM_REG_INVALID;
-	sprintf( reg->name[0x33], "%s", "INVALID" );
+	reg->format[0x33]	= GSIM_REG_RO;
+	sprintf( reg->name[0x33], "%s", "gkey" );
 
-	/* -- 0x34 */
-	reg->format[0x34]	= GSIM_REG_INVALID;
-	sprintf( reg->name[0x34], "%s", "INVALID" );
+	/* -- GEXC */
+	reg->format[0x34]	= GSIM_REG_RO;
+	sprintf( reg->name[0x34], "%s", "gexc" );
 
 	/* -- ZERO */
 	reg->format[0x35]	= GSIM_REG_RO;

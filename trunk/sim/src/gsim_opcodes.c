@@ -30,6 +30,7 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
 	uint32_t tmp	= 0;
 	char NOARGS[2]	= " ";
 	char RA[3]	= "RA";
+	char RT[3]	= "RT";
 	char RARB[6]	= "RA RB";
 	char RART[6]	= "RA RT";
 	char RARBRT[9]	= "RA RB RT";
@@ -68,6 +69,9 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
 		switch( tmp ) {
 			case GSIM_OPCODE_NOREG:
 				format = &(NOARGS[0]);
+				break;
+			case GSIM_OPCODE_RT:
+				format = &(RT[0]);
 				break;
 			case GSIM_OPCODE_RA:
 				format = &(RA[0]);
@@ -157,7 +161,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	
 	/* -- NOP */	
 	opcodes->valid[0x00]	= GSIM_OPCODE_VALID;
-	opcodes->format[0x00]	= GSIM_OPCODE_NOREG;
+	opcodes->format[0x00]	= GSIM_OPCODE_NOREG|GSIM_OPCODE_VECTOR;
 	sprintf( opcodes->name[0x00], "%s", "nop" );
 
 	/* -- MOV */
@@ -360,7 +364,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- 0x2A */
 	opcodes->valid[0x2A]	= GSIM_OPCODE_VALID;
 	opcodes->format[0x2A]	= GSIM_OPCODE_NOREG;
-	sprintf( opcodes->name[0x1F], "%s", "fence.ga" );
+	sprintf( opcodes->name[0x2A], "%s", "fence.ga" );
 
 	/* -- 0x2B */
 	opcodes->valid[0x2B]	= GSIM_OPCODE_INVALID;
@@ -1155,17 +1159,20 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	opcodes->format[0xDA]	= GSIM_OPCODE_RA;
 	sprintf( opcodes->name[0xDA], "%s", "system" );
 
-	/* -- 0xDB */
-	opcodes->valid[0xDB]	= GSIM_OPCODE_INVALID;
-	sprintf( opcodes->name[0xDB], "%s", "INVALID" );
+	/* -- SPAWN */
+	opcodes->valid[0xDB]	= GSIM_OPCODE_VALID;
+	opcodes->format[0xDB]	= GSIM_OPCODE_RT;
+	sprintf( opcodes->name[0xDB], "%s", "spawn" );
 
-	/* -- 0xDC */
-	opcodes->valid[0xDC]	= GSIM_OPCODE_INVALID;
-	sprintf( opcodes->name[0xDC], "%s", "INVALID" );
+	/* -- JOIN */
+	opcodes->valid[0xDC]	= GSIM_OPCODE_VALID;
+	opcodes->format[0xDC]	= GSIM_OPCODE_RA;
+	sprintf( opcodes->name[0xDC], "%s", "join" );
 
-	/* -- 0xDD */
-	opcodes->valid[0xDD]	= GSIM_OPCODE_INVALID;
-	sprintf( opcodes->name[0xDD], "%s", "INVALID" );
+	/* -- IWAIT */
+	opcodes->valid[0xDD]	= GSIM_OPCODE_VALID;
+	opcodes->format[0xDD]	= GSIM_OPCODE_RT;
+	sprintf( opcodes->name[0xDD], "%s", "iwait" );
 
 	/* -- 0xDE */
 	opcodes->valid[0xDE]	= GSIM_OPCODE_INVALID;
@@ -1253,7 +1260,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- GETC */
 	opcodes->valid[0xF1]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xF1]	= GSIM_OPCODE_RT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xEF1], "%s", "getc" );
+	sprintf( opcodes->name[0xF1], "%s", "getc" );
 
 	/* -- SETC */
 	opcodes->valid[0xF2]	= GSIM_OPCODE_VALID;
