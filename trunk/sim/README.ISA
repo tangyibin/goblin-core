@@ -74,7 +74,7 @@ II. Register Indexing
 0x31	(--)
 0x32	(--)
 0x33	(--)
-0x34	(--)
+0x34	GEXC		Read-Only: Exceptions
 0x35	ZERO		Read-Only: ZERO
 0x36	IMM32		Read-Only: 4-byte immediate
 0x37	IMM64		Read-Only: 8-byte immediate
