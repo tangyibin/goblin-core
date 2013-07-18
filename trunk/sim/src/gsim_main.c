@@ -219,7 +219,7 @@ int main( int argc, char **argv )
 	/* 
 	 * allocate the simulation data
 	 */
-	sim = malloc( sizeof( struct gsim_t ) );
+	sim = gsim_malloc( sizeof( struct gsim_t ) );
 	if( sim == NULL ){ 
 		GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memoy for sim" );
 		return -1;

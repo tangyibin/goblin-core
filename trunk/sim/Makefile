@@ -8,7 +8,7 @@ LIBOBJS=$(SRC)/gsim_opcodes.o $(SRC)/gsim_reg.o $(SRC)/gsim_mem.o $(SRC)/gsim_el
 	$(SRC)/gsim_config.o $(SRC)/gsim_disass.o
 
 
-all: libgsim.a goblin-sim
+all: libgsim.a goblin-sim gasm
 libgsim.a: 
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_opcodes.o $(SRC)/gsim_opcodes.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_reg.o $(SRC)/gsim_reg.c
@@ -24,5 +24,8 @@ gsim_config.yy.o: gsim_config.yy.c
 goblin-sim: libgsim.a gsim_config.yy.o
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_main.o $(SRC)/gsim_main.c
 	$(CC) $(CFLAGS) -o $@ $(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o $(LINK)
+gasm: libgsim.a
+	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_main.o $(SRC)/gasm_main.c
+	$(CC) $(CFLAGS) -o $@ $(SRC)/gasm_main.o $(LINK)
 clean: 
 	rm -Rf ./src/*.o ./src/gsim_config.yy.c ./libgsim.a ./goblin-sim
