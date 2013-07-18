@@ -40,7 +40,7 @@ extern int	gsim_disass(	uint64_t *inst,
 				uint32_t *l_ctr_imm8, 
 				uint32_t *l_ctr_imm4, 
 				int32_t  *l_imm4, 
-				uint64_t *l_imm8, 
+				int64_t  *l_imm8, 
 				uint32_t *u_r0,
 				uint32_t *u_r1, 
 				uint32_t *u_r2, 
@@ -53,7 +53,22 @@ extern int	gsim_disass(	uint64_t *inst,
 				uint32_t *u_ctr_imm8, 
 				uint32_t *u_ctr_imm4, 
 				int32_t  *u_imm4, 
-				uint64_t *u_imm8 );
+				int64_t  *u_imm8 );
+
+extern int	gsim_inst_validate( 	struct gsim_t *sim, 
+					uint32_t r0, 
+					uint32_t r1, 
+					uint32_t r2, 
+					uint32_t opc, 
+					uint32_t ctr, 
+					uint32_t ctr_vec, 
+					uint32_t ctr_v0, 
+					uint32_t ctr_v1, 
+					uint32_t ctr_brk, 
+					uint32_t ctr_imm4, 
+					uint32_t ctr_imm8, 
+					int32_t  imm4, 
+					int64_t  imm8 );
 
 #ifdef __cplusplus
 } /* extern C */

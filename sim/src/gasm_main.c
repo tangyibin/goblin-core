@@ -18,6 +18,7 @@ extern int	gsim_opcodes_init( struct gsim_t *sim );
 extern int	gsim_reg_init( struct gsim_t *sim );
 extern uint64_t gasm_row_walker( char *afile );
 extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows );
+extern int	gasm_verify( struct gsim_t *sim, uint64_t *inter, uint64_t nread );
 extern int	gasm_write_object( char *ofile, uint64_t *inter, uint64_t nread );
 
 
@@ -64,7 +65,11 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	/* 
 	 * Stage 3: Validate the Ops
 	 */
-	
+	if( gasm_verify( sim, inter, nread ) != 0 ){ 
+		GSIM_PRINT_ERROR( "GASM_ERROR : Verification of assembly failed" );
+		gsim_free( inter );
+		return -1;
+	}
 
 	/* 
 	 * Stage4: I/O; Write the Binary File Out
