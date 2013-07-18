@@ -16,6 +16,72 @@
 /* -------------------------------------------------- FUNCTION_PROTOTYPES */
 extern int	gsim_opcodes_init( struct gsim_t *sim );
 extern int	gsim_reg_init( struct gsim_t *sim );
+extern uint64_t gasm_row_walker( char *afile );
+extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows );
+extern int	gasm_write_object( char *ofile, uint64_t *inter, uint64_t nread );
+
+
+
+
+/* -------------------------------------------------- GASM_EXEC */
+/* 
+ * GASM_EXEC
+ * 
+ */
+static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
+{
+	/* vars */
+	uint64_t nrows	= 0x00ll;
+	uint64_t nread	= 0x00ll;
+	uint64_t *inter	= NULL;
+	/* ---- */
+
+	/* 
+	 * Stage1: Resolve the Number of Rows Required
+	 */
+	nrows	= gasm_row_walker( afile );
+	if( nrows == 0x00ll ){ 
+		GSIM_PRINT_ERROR( "GASM_ERROR : No Instructions Found" );
+		return -1;
+	}
+
+	inter	= gsim_malloc( sizeof( uint64_t ) * nrows );
+	if( inter == NULL ){ 
+		GSIM_PRINT_ERROR( "GASM_ERROR : Could not allocate intermediate format buf" );
+		return -1;
+	}
+
+	/* 
+	 * Stage2: Parse Into Row Format 
+	 */
+	nread = gasm_parser( afile, inter, nrows );
+	if( nread == 0x00ll ){ 
+		GSIM_PRINT_ERROR( "GASM_ERROR : No Instructions Read" );
+		gsim_free( inter );
+		return -1;
+	}
+
+	/* 
+	 * Stage 3: Validate the Ops
+	 */
+	
+
+	/* 
+	 * Stage4: I/O; Write the Binary File Out
+	 */
+	if( gasm_write_object( ofile, inter, nread ) != 0 ){
+		GSIM_PRINT_ERROR( "GASM_ERROR : Could not write object file" );
+		gsim_free( inter );
+		return -1;
+	}
+
+	/* 
+	 * Stage5: Cleanup
+	 */
+	gsim_free( inter );
+
+	return 0;
+}
 
 /* -------------------------------------------------- GASM_PRINT_HELP */
 /* 
@@ -136,6 +202,14 @@ int main( int argc, char **argv )
 	/* 
 	 * run the assembler
 	 */
+	if( gasm_exec( sim, afile, ofile ) != 0 ){
+
+		GSIM_PRINT_ERROR( "GASM_ERROR: Asssembly failed" );
+		gsim_free( afile );
+		gsim_free( ofile );
+		gsim_free( sim );
+		return -1;		
+	}
 
 	/* 
 	 * free the sim 
