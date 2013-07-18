@@ -14,8 +14,8 @@
 #include "goblin_sim.h"
 
 
-#define G_8BIT	0x00000000
-#define	G_6BIT	0x00000000
+#define G_8BIT	0x000000FF
+#define	G_6BIT	0x0000003F	
 #define G_32BIT	0xFFFFFFFF
 #define	G_BIT0	0x00000001
 #define G_BIT1	0x00000002
@@ -42,7 +42,7 @@ static int gsim_disass_upper(	uint64_t *inst,
 				uint32_t *ctr_imm8, 
 				uint32_t *ctr_imm4, 
 				int32_t  *imm4, 
-				uint64_t *imm8 )
+				int64_t  *imm8 )
 {
 	/* vars */
 	uint32_t itmp	= (uint32_t)(*inst >> 32);
@@ -105,7 +105,7 @@ static int gsim_disass_lower(	uint64_t *inst,
 				uint32_t *ctr_imm8, 
 				uint32_t *ctr_imm4, 
 				int32_t  *imm4, 
-				uint64_t *imm8 )
+				int64_t  *imm8 )
 {
 	/* vars */
 	uint32_t itmp	= (uint32_t)(*inst & G_32BIT);
@@ -168,7 +168,7 @@ extern int gsim_disass(	uint64_t *inst,
 			uint32_t *l_ctr_imm8, 
 			uint32_t *l_ctr_imm4, 
 			int32_t  *l_imm4, 
-			uint64_t *l_imm8, 
+			int64_t  *l_imm8, 
 			uint32_t *u_r0, 
 			uint32_t *u_r1, 
 			uint32_t *u_r2, 
@@ -181,7 +181,7 @@ extern int gsim_disass(	uint64_t *inst,
 			uint32_t *u_ctr_imm8, 
 			uint32_t *u_ctr_imm4, 
 			int32_t  *u_imm4, 
-			uint64_t *u_imm8 )
+			int64_t  *u_imm8 )
 {
 #ifdef GSIM_DEBUG
 	GSIM_PRINT_FUNC_ENTRY();
