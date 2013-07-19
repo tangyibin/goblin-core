@@ -10,6 +10,8 @@ LIBOBJS=$(SRC)/gsim_opcodes.o $(SRC)/gsim_reg.o $(SRC)/gsim_mem.o $(SRC)/gsim_el
 GASMOBJS=$(SRC)/gasm_main.o $(SRC)/gasm_row.o $(SRC)/gasm_parser.o $(SRC)/gasm_io.o\
 	$(SRC)/gasm_verify.o
 
+GSIMOBJS=$(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o
+
 all: libgsim.a goblin-sim gasm
 libgsim.a: 
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_opcodes.o $(SRC)/gsim_opcodes.c
@@ -26,7 +28,7 @@ gsim_config.yy.o: gsim_config.yy.c
 	$(CC) $(CFLAGS) -c -o ./src/$@ ./src/gsim_config.yy.c
 goblin-sim: libgsim.a gsim_config.yy.o
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_main.o $(SRC)/gsim_main.c
-	$(CC) $(CFLAGS) -o $@ $(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o $(LINK)
+	$(CC) $(CFLAGS) -o $@ $(GSIMOBJS) $(LINK)
 gasm: libgsim.a
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_io.o $(SRC)/gasm_io.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_verify.o $(SRC)/gasm_verify.c
