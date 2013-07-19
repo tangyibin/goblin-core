@@ -1179,9 +1179,10 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	opcodes->format[0xDE]	= GSIM_OPCODE_NOREG;
 	sprintf( opcodes->name[0xDE], "%s", "peg" );
 
-	/* -- 0xDF */
-	opcodes->valid[0xDF]	= GSIM_OPCODE_INVALID;
-	sprintf( opcodes->name[0xDF], "%s", "INVALID" );
+	/* -- FUTURE */
+	opcodes->valid[0xDF]	= GSIM_OPCODE_VALID;
+	opcodes->format[0xDF]	= GSIM_OPCODE_RART;
+	sprintf( opcodes->name[0xDF], "%s", "future" );
 
 	/* -- POPCNT */
 	opcodes->valid[0xE0]	= GSIM_OPCODE_VALID;
