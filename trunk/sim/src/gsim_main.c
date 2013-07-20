@@ -26,6 +26,9 @@ extern int	gsim_reg_init( struct gsim_t *sim );
  */
 static int gsim_sanity_check( struct gsim_t *sim )
 {
+#ifdef GSIM_TRACE
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* 
 	 * check the sim structure 
 	 *
@@ -42,10 +45,18 @@ static int gsim_sanity_check( struct gsim_t *sim )
 		return -1;
 	}
 
-	if( sim->stack_size <= 2 ){
+	/* 
+	 * do we allow a null stack? 
+	 */
+	#if 0
+	if( sim->stack_size <= 8 ){
 		return -1;
 	}
+	#endif
 
+#ifdef GSIM_TRACE
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return 0;
 }
 
@@ -56,7 +67,7 @@ static int gsim_sanity_check( struct gsim_t *sim )
  */
 static void gsim_free_sim( struct gsim_t *sim )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -81,7 +92,7 @@ static void gsim_free_sim( struct gsim_t *sim )
 		sim = NULL;
 	}
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 
@@ -95,7 +106,7 @@ static void gsim_free_sim( struct gsim_t *sim )
  */
 static int gsim_init_sim( struct gsim_t *sim )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 	/* 
@@ -145,7 +156,7 @@ static int gsim_init_sim( struct gsim_t *sim )
 	 * 
 	 */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 
@@ -159,7 +170,7 @@ static int gsim_init_sim( struct gsim_t *sim )
  */
 static void gsim_print_help( char **argv )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 	printf( "================================================================\n" );
@@ -169,6 +180,7 @@ static void gsim_print_help( char **argv )
 	printf( " Options:\n" );
 	printf( " -c                             : enable C++ cycle accurate sim\n" );
 	printf( " -C /path/to/config.cfg         : simualtion config file\n" );
+	printf( " -e                             : dump all instruction encodings\n" );
 	printf( " -f                             : enable functional sim\n" );
 	printf( " -h                             : print this help menu\n" );
 	printf( " -I /path/to/inst.instr         : simulation instruction file\n" );
@@ -184,7 +196,7 @@ static void gsim_print_help( char **argv )
 	printf( " Functional simulation is the default [-f]\n" );
 	printf( "================================================================\n" );
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return ;
@@ -234,7 +246,7 @@ int main( int argc, char **argv )
 	/*
 	 * Parse the command line args
 	 */
-	while(( ret = getopt( argc, argv, "cC:fhI:L:O:S:tT:vV:" )) != -1 )
+	while(( ret = getopt( argc, argv, "cC:efhI:L:O:S:tT:vV:" )) != -1 )
 	{
 		switch ( ret )
 		{
@@ -257,13 +269,25 @@ int main( int argc, char **argv )
 				break;
 			case 'C': 
 				/* config file */
-				sim->config_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+				sim->config_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )+1) );
 
 				if( sim->config_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for config_file" );
 					goto gsim_cleanup;
 				}
 				snprintf( sim->config_file, strlen( optarg )+1, "%s", optarg );
+				break;
+			case 'e': 
+				/* 
+				 * dump all legal instructions encodings 
+				 */
+				
+				sim->options |= GSIM_OPT_DUMPINST;
+
+				#ifdef GSIM_DEBUG
+				GSIM_PRINT_MSG( "Setting option GSIM_OPT_DUMPINST" );
+				#endif
+
 				break;
 			case 'f': 
 				/* enable functional simulation
@@ -292,7 +316,7 @@ int main( int argc, char **argv )
 				break;
 			case 'I': 
 				/* instruction file */
-				sim->inst_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+				sim->inst_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )+1) );
 
 				if( sim->inst_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for inst_file" );
@@ -302,7 +326,7 @@ int main( int argc, char **argv )
 				break;
 			case 'L':
 				/* log file */
-				sim->log_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+				sim->log_file = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )+1) );
 
 				if( sim->log_file == NULL ) {
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for log_file" );
@@ -312,7 +336,7 @@ int main( int argc, char **argv )
 				break;
 			case 'O':
 				/* object file + options */
-				tmp = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )) );
+				tmp = gsim_malloc( (size_t)(sizeof( char ) * strlen( optarg )+1) );
 				
 				if( tmp == NULL ){ 
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for tmp [object file]" );
@@ -324,10 +348,9 @@ int main( int argc, char **argv )
 				 * followed by spaces; eg ARGV exists 
 				 */
 
-				snprintf( tmp, strlen( optarg ), "%s", optarg );
-
+				snprintf( tmp, strlen( optarg )+1, "%s", optarg );
 				tok = strtok( tmp, " " );
-				if( tok != NULL ) { 
+				if( (tok != NULL) && (strcmp( tmp, tok)!=0) ) { 
 					/*
 					 * found an ARGV 
 					 *
@@ -385,7 +408,7 @@ int main( int argc, char **argv )
 					GSIM_PRINT_ERROR( "GSIM_ERROR: Cannot allocate memory for trace_file" );
 					goto gsim_cleanup;
 				}
-				snprintf( sim->trace_file, strlen( optarg )+1, "%s", optarg );
+				snprintf( sim->trace_file, strlen( optarg ), "%s", optarg );
 				break;
 			case 'v': 
 				/* enable verilog simulation */
@@ -421,6 +444,21 @@ int main( int argc, char **argv )
 				return -1;
 				break;
 		}
+	}
+
+	#ifdef GSIM_TRACE
+	GSIM_PRINT_MSG( "DONE PARSING CLI ARGS" );
+	#endif
+
+	/* 
+	 * check to see if we simply dump the instructions
+	 *
+	 */
+	if( (sim->options & GSIM_OPT_DUMPINST) > 0 ) { 
+		
+		gsim_dump_inst( sim );
+		
+		goto gsim_cleanup;
 	}
 
 	/* 
@@ -465,6 +503,8 @@ gsim_cleanup:
 	 * 
 	 */
 	gsim_free_sim( sim );
+
+	printf( "Goblin-Sim Successfully Completed\n" );
 
 	return 0;
 }

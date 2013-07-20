@@ -37,6 +37,9 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	uint64_t *inter	= NULL;
 	/* ---- */
 
+#ifdef GSIM_TRACE
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	/* 
 	 * Stage1: Resolve the Number of Rows Required
 	 */
@@ -85,6 +88,9 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	 */
 	gsim_free( inter );
 
+#ifdef GSIM_TRACE
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return 0;
 }
 
@@ -95,6 +101,9 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
  */
 static void gasm_print_help( char **argv )
 {
+#ifdef GSIM_TRACE
+	GSIM_PRINT_FUNC_ENTRY();
+#endif
 	printf( "=====================================================\n" );
 	printf( "                 --> GASM <--\n" );
 	printf( "=====================================================\n" );
@@ -105,6 +114,9 @@ static void gasm_print_help( char **argv )
 	printf( " -h                            : print this help\n" );
 	printf( "=====================================================\n" );
 
+#ifdef GSIM_TRACE
+	GSIM_PRINT_FUNC_EXIT();
+#endif
 	return ;
 }
 
@@ -123,7 +135,7 @@ int main( int argc, char **argv )
 	struct gsim_t *sim	= NULL;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -223,7 +235,7 @@ int main( int argc, char **argv )
 	gsim_free( ofile );
 	gsim_free( sim );
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;	

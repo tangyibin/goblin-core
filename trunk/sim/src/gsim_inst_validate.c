@@ -38,7 +38,7 @@ extern int gsim_inst_validate( 	struct gsim_t *sim,
 	uint32_t format	= 0;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -211,7 +211,7 @@ extern int gsim_inst_validate( 	struct gsim_t *sim,
 		return -1;
 	}
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;	

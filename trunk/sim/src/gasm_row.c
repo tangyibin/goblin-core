@@ -28,7 +28,7 @@ extern uint64_t gasm_row_walker( char *afile )
 	char *tmp	= NULL;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -90,7 +90,7 @@ extern uint64_t gasm_row_walker( char *afile )
 	 */
 	gsim_free( buf );
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return nrows;	

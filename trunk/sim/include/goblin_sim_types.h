@@ -46,6 +46,8 @@ struct gsim_t{
 	uint32_t	task_groups;		/*! GOBLIN-SIM TASK GROUPS */
 	uint32_t 	task_procs;		/*! GOBLIN-SIM TASK PROCS */
 	uint32_t 	tasks;			/*! GOBLIN-SIM TASKS */
+	uint32_t 	icache_ways;		/*! GOBLIN-SIM ICACHE WAYS */
+	uint32_t	icache_sets;		/*! GOBLIN-SIM ICACHE SETS */
 };
 
 

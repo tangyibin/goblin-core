@@ -18,14 +18,20 @@ extern "C" {
 #include "goblin_sim_types.h"
 #include "goblin_sim_macros.h"
 
-/* --------------------------------------------- DATA STRUCTURES */
-
 /* --------------------------------------------- FUNCTION PROTOTYPES */
 
 extern void	gsim_free( void *ptr );
 extern void 	*gsim_malloc( size_t sz );
 
 extern int	gsim_config_read( struct gsim_t *sim );
+
+extern void	gsim_dump_inst( struct gsim_t *sim );
+
+extern uint32_t gsim_rand_reg_ctrl();
+extern uint32_t gsim_rand_reg_ctrl_ro();
+extern uint32_t gsim_rand_reg_ctrl_rw();
+extern uint32_t gsim_rand_reg_r();
+extern uint32_t gsim_rand_reg_v();
 
 extern int	gsim_disass(	uint64_t *inst, 
 				uint32_t *l_r0, 

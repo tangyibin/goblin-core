@@ -5,7 +5,8 @@ include Makefile.inc
 SRC=`pwd`/src
 
 LIBOBJS=$(SRC)/gsim_opcodes.o $(SRC)/gsim_reg.o $(SRC)/gsim_mem.o $(SRC)/gsim_elf.o\
-	$(SRC)/gsim_config.o $(SRC)/gsim_disass.o $(SRC)/gsim_inst_validate.o
+	$(SRC)/gsim_config.o $(SRC)/gsim_disass.o $(SRC)/gsim_inst_validate.o\
+	$(SRC)/gsim_dump_inst.o $(SRC)/gsim_rand_reg.o
 
 GASMOBJS=$(SRC)/gasm_main.o $(SRC)/gasm_row.o $(SRC)/gasm_parser.o $(SRC)/gasm_io.o\
 	$(SRC)/gasm_verify.o
@@ -14,7 +15,9 @@ GSIMOBJS=$(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o
 
 all: libgsim.a goblin-sim gasm
 libgsim.a: 
+	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_dump_inst.o $(SRC)/gsim_dump_inst.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_opcodes.o $(SRC)/gsim_opcodes.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_rand_reg.o $(SRC)/gsim_rand_reg.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_reg.o $(SRC)/gsim_reg.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_mem.o $(SRC)/gsim_mem.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_elf.o $(SRC)/gsim_elf.c
