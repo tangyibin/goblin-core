@@ -13,14 +13,15 @@
 #include "goblin_sim.h"
 
 enum {
-	LOOKUP = 0, 
-	VECTOR = 1, 
-	GLOBAL_ADDR = 2, 
-	TASK_GROUPS = 3, 
-	TASK_PROCS = 4, 
-	TASKS = 5,
-	ICACHE_WAYS = 6, 
-	ICACHE_SETS = 7
+	LOOKUP 		= 0, 
+	VECTOR 		= 1, 
+	GLOBAL_ADDR	= 2, 
+	TASK_GROUPS	= 3, 
+	TASK_PROCS	= 4, 
+	TASKS		= 5,
+	ICACHE_WAYS	= 6, 
+	ICACHE_SETS	= 7, 
+	AMO_SLOTS	= 8
 };
 
 int state;
@@ -32,6 +33,7 @@ uint32_t *__task_procs;
 uint32_t *__tasks;
 uint32_t *__icache_ways;
 uint32_t *__icache_sets;
+uint32_t *__amo_slots;
 %}
 
 %option nounput
@@ -46,6 +48,7 @@ uint32_t *__icache_sets;
 ^TASKS			{ 	state = TASKS; }
 ^ICACHE_WAYS		{ 	state = ICACHE_WAYS; }
 ^ICACHE_SETS		{ 	state = ICACHE_SETS; }
+^AMO_SLOTS		{	state = AMO_SLOTS; }
 [a-zA-Z0-9\/.-_]+	{ if( state != LOOKUP ) gsim_config_func( state, yytext ); }
 . ;
 %%
@@ -53,7 +56,8 @@ uint32_t *__icache_sets;
 extern int gsim_config_func_parser( 	uint32_t *vector, uint32_t *global_addr, 
 					uint32_t *task_groups, uint32_t *task_procs, 
 					uint32_t *tasks, uint32_t *icache_ways, 
-					uint32_t *icache_sets, char *cfile )
+					uint32_t *icache_sets, uint32_t *amo_slots, 
+					char *cfile )
 {
 	__vector	= vector;
 	__global_addr	= global_addr;
@@ -62,6 +66,7 @@ extern int gsim_config_func_parser( 	uint32_t *vector, uint32_t *global_addr,
 	__tasks		= tasks;
 	__icache_ways	= icache_ways;
 	__icache_sets	= icache_sets;
+	__amo_slots	= amo_slots;
 
 	yyin = fopen( cfile, "r" );
 	
@@ -78,26 +83,28 @@ int gsim_config_func( int type, char *word )
 	switch( type )
 	{
 		case VECTOR : 
-			*__vector = (uint32_t)(atoi( word ));
+			*__vector 	= (uint32_t)(atoi( word ));
 			break;
 		case GLOBAL_ADDR:
-			*__global_addr = (uint32_t)(atoi( word ));
+			*__global_addr 	= (uint32_t)(atoi( word ));
 			break;
 		case TASK_GROUPS:
-			*__task_groups = (uint32_t)(atoi( word ));
+			*__task_groups 	= (uint32_t)(atoi( word ));
 			break;
 		case TASK_PROCS:
-			*__task_procs = (uint32_t)(atoi( word ));
+			*__task_procs 	= (uint32_t)(atoi( word ));
 			break;
 		case TASKS:
-			*__tasks = (uint32_t)(atoi( word ));
+			*__tasks 	= (uint32_t)(atoi( word ));
 			break;
 		case ICACHE_WAYS: 
-			*__icache_ways = (uint32_t)(atoi( word ));
+			*__icache_ways	= (uint32_t)(atoi( word ));
 			break;
 		case ICACHE_SETS: 
-			*__icache_sets = (uint32_t)(atoi( word ));
+			*__icache_sets	= (uint32_t)(atoi( word ));
 			break;
+		case AMO_SLOTS:
+			*__amo_slots	= (uint32_t)(atoi( word ));
 		default:
 			break;
 	}
