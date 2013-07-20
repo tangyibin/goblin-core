@@ -29,7 +29,7 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows )
 	int imm		= 0;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -74,7 +74,7 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows )
 	 */
 	fclose( ifile );	
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return insts;	

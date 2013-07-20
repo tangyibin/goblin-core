@@ -14,7 +14,7 @@
 #include "goblin_sim.h"
 
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 /* -------------------------------------------------- GSIM_OPCODES_DUMP */
 /* 
  * GSIM_OPCODES_DUMP 
@@ -22,7 +22,7 @@
  */
 static void gsim_opcodes_dump( struct gsim_t *sim )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 	/* vars */
@@ -109,13 +109,13 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
 
 	printf( "====================================================================\n" );
 		
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 
 	return ;
 }
-#endif	/* GSIM_DEBUG */
+#endif	/* GSIM_TRACE */
 
 /* -------------------------------------------------- GSIM_OPCODES_INIT */
 /* 
@@ -124,7 +124,7 @@ static void gsim_opcodes_dump( struct gsim_t *sim )
  */
 extern int gsim_opcodes_init( struct gsim_t *sim )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 	/* vars */
@@ -1326,7 +1326,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	opcodes->format[0xFF]	= GSIM_OPCODE_RA|GSIM_OPCODE_VECTOR;
 	sprintf( opcodes->name[0xFF], "%s", "ldshv" );
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	gsim_opcodes_dump( sim );
 	GSIM_PRINT_FUNC_EXIT();
 #endif

@@ -26,7 +26,7 @@ extern int gasm_write_object( char *ofile, uint64_t *inter, uint64_t nread )
 	FILE *outfile	= NULL;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -51,7 +51,7 @@ extern int gasm_write_object( char *ofile, uint64_t *inter, uint64_t nread )
 	 */
 	fclose( outfile );
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;	

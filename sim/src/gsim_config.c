@@ -17,7 +17,8 @@
 /* -------------------------------------------------- FUNCTION PROTOTYPES */
 extern int gsim_config_func_parser(	uint32_t *vector, uint32_t *global_addr, 
 					uint32_t *task_groups, uint32_t *task_procs, 
-					uint32_t *tasks, char *cfile );
+					uint32_t *tasks, uint32_t *icache_ways, 
+					uint32_t *icache_sets, char *cfile );
 
 /* -------------------------------------------------- GSIM_CONFIG_READ */
 /* 
@@ -26,7 +27,7 @@ extern int gsim_config_func_parser(	uint32_t *vector, uint32_t *global_addr,
  */
 extern int gsim_config_read( struct gsim_t *sim )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -36,6 +37,8 @@ extern int gsim_config_read( struct gsim_t *sim )
 	uint32_t task_groups	= 0;
 	uint32_t task_procs	= 0;
 	uint32_t tasks		= 0;
+	uint32_t icache_ways	= 0;
+	uint32_t icache_sets	= 0;
 	/* ---- */
 
 	/* sanity check */
@@ -48,7 +51,8 @@ extern int gsim_config_read( struct gsim_t *sim )
 	 * 
 	 */
 	if( gsim_config_func_parser(  	&vector, &global_addr, &task_groups, 
-					&task_procs, &tasks, sim->config_file ) != 0 ) {
+					&task_procs, &tasks, &icache_ways, 
+					&icache_sets, sim->config_file ) != 0 ) {
 		return -1;
 	}
 
@@ -75,8 +79,10 @@ extern int gsim_config_read( struct gsim_t *sim )
 	sim->task_groups 	= task_groups;
 	sim->task_procs		= task_procs;
 	sim->tasks		= tasks;
+	sim->icache_ways	= icache_ways;
+	sim->icache_sets	= icache_sets;
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;	

@@ -49,7 +49,7 @@ static int gsim_disass_upper(	uint64_t *inst,
 	uint64_t *ptr	= NULL;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -81,7 +81,7 @@ static int gsim_disass_upper(	uint64_t *inst,
 		*imm8 = *ptr;	
 	}
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;
@@ -112,7 +112,7 @@ static int gsim_disass_lower(	uint64_t *inst,
 	uint64_t *ptr	= NULL;
 	/* ---- */
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -144,7 +144,7 @@ static int gsim_disass_lower(	uint64_t *inst,
 		*imm8 = *ptr;	
 	}
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;
@@ -183,7 +183,7 @@ extern int gsim_disass(	uint64_t *inst,
 			int32_t  *u_imm4, 
 			int64_t  *u_imm8 )
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
@@ -218,7 +218,7 @@ extern int gsim_disass(	uint64_t *inst,
 				u_imm4, 
 				u_imm8 );
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
 	return 0;	

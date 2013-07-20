@@ -14,26 +14,24 @@
 #include "goblin_sim.h"
 
 
-#if 0
-/* -------------------------------------------------- GSIM_MALLOC */
+/* -------------------------------------------------- GSIM_ELF */
 /* 
- * GSIM_MALLOC
+ * GSIM_ELF
  * 
  */
-extern void *gsim_malloc( size_t sz )
+extern void gsim_elf()
 {
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
 
 
-#ifdef GSIM_DEBUG
+#ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
-	return tmp;	
+	return ;	
 }
-#endif
 
 
 /* EOF */

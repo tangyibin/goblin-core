@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#----------------- MACROS
+# -DGSIM_DEBUG : enable debug messages
+# -DGSIM_TRACE : enable function tracing 
+
 CC=gcc
 CXX=g++
 INC=-I./include/
