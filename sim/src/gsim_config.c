@@ -19,7 +19,8 @@ extern int gsim_config_func_parser(	uint32_t *vector, uint32_t *global_addr,
 					uint32_t *task_groups, uint32_t *task_procs, 
 					uint32_t *tasks, uint32_t *icache_ways, 
 					uint32_t *icache_sets, uint32_t *amo_slots, 
-					char *cfile );
+					uint32_t *partitions, uint32_t *nodes, 
+					uint32_t *sockets, char *cfile );
 
 /* -------------------------------------------------- GSIM_CONFIG_READ */
 /* 
@@ -41,6 +42,9 @@ extern int gsim_config_read( struct gsim_t *sim )
 	uint32_t icache_ways	= 0;
 	uint32_t icache_sets	= 0;
 	uint32_t amo_slots	= 0;
+	uint32_t partitions	= 0;
+	uint32_t nodes		= 0;
+	uint32_t sockets	= 0;
 	/* ---- */
 
 	/* sanity check */
@@ -54,7 +58,8 @@ extern int gsim_config_read( struct gsim_t *sim )
 	 */
 	if( gsim_config_func_parser(  	&vector, &global_addr, &task_groups, 
 					&task_procs, &tasks, &icache_ways, 
-					&icache_sets, &amo_slots, 
+					&icache_sets, &amo_slots, &partitions, 
+					&nodes, &sockets, 
 					sim->config_file ) != 0 ) {
 		return -1;
 	}
