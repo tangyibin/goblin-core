@@ -18,7 +18,6 @@
 extern int	gsim_opcodes_init( struct gsim_t *sim );
 extern int	gsim_reg_init( struct gsim_t *sim );
 
-
 /* -------------------------------------------------- GSIM_SANITY_CHECK */
 /* 
  * GSIM_SANITY_CHECK
@@ -54,6 +53,40 @@ static int gsim_sanity_check( struct gsim_t *sim )
 	}
 	#endif
 
+	/* 
+	 * check hardware details
+	 * 
+	 */
+	if( (sim->partitions > 0xFFFFFFFF) || (sim->partitions == 0) ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: partitions out of bounds" );
+		return -1;
+	}
+
+	if( (sim->nodes > 0xFFFFFFFF) || (sim->nodes == 0) ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: nodes out of bounds" );
+		return -1;
+	}
+
+	if( (sim->sockets > 0xFFFF) || (sim->sockets == 0) ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: sockets out of bounds" );
+		return -1;
+	}
+
+	if( (sim->task_groups > 0xFFFF) || (sim->task_groups == 0) ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: task_groups out of bounds" );
+		return -1;
+	}
+
+	if( (sim->task_procs > 0xFFFF) || (sim->task_procs == 0) ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: task_procs out of bounds" );
+		return -1;
+	}
+
+	if( (sim->tasks > 0xFFFF) || (sim->tasks == 0) ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: tasks out of bounds" );
+		return -1;
+	}
+
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
@@ -87,10 +120,38 @@ static void gsim_free_sim( struct gsim_t *sim )
 	gsim_free( sim->obj_file );
 	gsim_free( sim->obj_opts );
 
+	if( sim->hw != NULL ){
+		gsim_free( sim->hw->__ptr_partition );
+		gsim_free( sim->hw->__ptr_node );
+		gsim_free( sim->hw->__ptr_socket );
+		gsim_free( sim->hw->__ptr_task_group );
+		gsim_free( sim->hw->__ptr_task_proc );
+		gsim_free( sim->hw->__ptr_task );
+		gsim_free( sim->hw->__ptr_icache );
+		gsim_free( sim->hw );
+	}
+
+	/* 
+	 * close all the file handles
+	 * 
+	 */
+	if( sim->tfile != NULL ){ 
+		fflush( sim->tfile );
+		fclose( sim->tfile );	
+		sim->tfile = NULL;
+	}
+
+	if( sim->lfile != NULL ){ 
+		fflush( sim->lfile );
+		fclose( sim->lfile );
+		sim->lfile = NULL;
+	}
+
 	if( sim != NULL ) { 
 		free( sim );
 		sim = NULL;
 	}
+
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
@@ -152,10 +213,19 @@ static int gsim_init_sim( struct gsim_t *sim )
 
 
 	/* 
-	 * put the system in reset
-	 * 
+	 * default hardware layout 
+	 *
 	 */
-
+	sim->partitions		= 1;
+	sim->nodes		= 1;
+	sim->sockets		= 1;
+	sim->task_groups	= 1;
+	sim->task_procs		= 1;
+	sim->tasks		= 1;
+	sim->icache_ways	= 8;
+	sim->icache_sets	= 1024;
+	sim->amo_slots		= 1024;
+	
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
 #endif
@@ -462,40 +532,100 @@ int main( int argc, char **argv )
 	}
 
 	/* 
-	 * sanity check the options 
-	 * 
- 	 */
-	if( gsim_sanity_check( sim ) != 0 ){ 
-		GSIM_PRINT_ERROR( "Sanity check of simulation arguments failed!" );
-		goto gsim_cleanup;
-	}
-
-	/* 
 	 * read the config file
 	 *
 	 */
 	if( gsim_config_read( sim ) != 0 ){
 		GSIM_PRINT_ERROR( "Could to find a valid configuration" );
-		goto gsim_cleanup;
+		gsim_free( sim );
+		return -1;
 	}
 	
+	/* 
+	 * sanity check the options 
+	 * 
+ 	 */
+	if( gsim_sanity_check( sim ) != 0 ){ 
+		GSIM_PRINT_ERROR( "Sanity check of simulation arguments failed!" );
+		gsim_free_sim( sim );
+		return -1;
+	}
+
 	/* 
 	 * init the sim internals 
 	 * 
 	 */
+	if( gsim_init_internals( sim ) != 0 ){ 
+		GSIM_PRINT_ERROR( "Failed to initialize hardware internals" );
+		gsim_free_sim( sim );
+		return -1;
+	}
 
 	/*
 	 * crack and validate
 	 * all the instructions
 	 *
 	 */
-		
+	
+
+	/* 
+	 * open the log file
+	 * 
+	 */
+	if( gsim_io_open_logfile( sim) != 0 ){
+		GSIM_PRINT_ERROR( "Failed to open logfile" );	
+		gsim_free( sim );
+		return -1;
+	}
+
+	/* 
+	 * open trace file 
+	 * 
+	 */
+	if( (sim->options & GSIM_OPT_TRACING) > 0 ){ 
+		/* 
+	 	 * tracing is enabled, open
+		 * a tracefile
+		 *
+		 */
+		if( gsim_io_open_tracefile( sim ) != 0 ){
+			GSIM_PRINT_ERROR( "Failed to open tracefile" );	
+			gsim_free( sim );
+			return -1;
+		}
+	}
+	
 
 	/* 
 	 * run the simulation
 	 * 
 	 */
+	if( (sim->options & GSIM_OPT_CYCLE_FUNC) > 0 ){ 
 
+		/* 
+		 * execute functional sim
+		 *
+		 */
+
+	}else if( (sim->options & GSIM_OPT_CYCLE_ACCUR) > 0 ){
+		
+		/* 
+		 * execute cycle accurate sim 
+		 * 
+		 */
+
+	}else if( (sim->options & GSIM_OPT_CYCLE_HDL) > 0 ){
+		
+		/* 
+		 * execute hdl sim 
+		 * 
+		 */
+
+	}else{
+		GSIM_PRINT_ERROR( "Failed to execute any simulations; See goblin-sim -h" );	
+		gsim_free( sim );
+		return -1;
+	}
 
 gsim_cleanup:
 	/* 

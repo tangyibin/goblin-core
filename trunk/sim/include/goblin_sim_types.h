@@ -22,6 +22,7 @@ extern "C" {
 #include <sys/types.h>
 #include "goblin_sim_opcodes.h"
 #include "goblin_sim_macros.h"
+#include "goblin_sim_hw.h"
 
 /* --------------------------------------------- DATA STRUCTURES */
 struct gsim_t{
@@ -34,6 +35,11 @@ struct gsim_t{
 	char *		obj_file;		/*! GOBLIN-SIM OBJECT FILE */
 	char *		obj_opts;		/*! GOBLIN-SIM OBJECT ARGV */
 
+	/* -- file pointers */
+	FILE *tfile;				/*! GOBLIN-SIM TRACE FILE HANDLE */
+	FILE *lfile;				/*! GOBlIN-SIM LOG FILE HANDLE */
+
+
 	/* -- simulation data */
 	uint64_t		clock;		/*! GOBLIN-SIM GLOBAL CLOCK TICK */
 	struct gsim_opcodes_t	opcodes;	/*! GOBLIN-SIM OPCODES TABLE */
@@ -43,12 +49,18 @@ struct gsim_t{
 	uint64_t	stack_size;		/*! GOBLIN-SIM STACK SIZE */
 
 	/* -- hardware layout */
+	uint32_t	partitions;		/*! GOBLIN-SIM NUMBER OF PARTITIONS */
+	uint32_t	nodes;			/*! GOBLIN-SIM NODES PER PARTITION */
+	uint32_t	sockets;		/*! GOBLIN-SIM SOCKETS PER NODE */
 	uint32_t	task_groups;		/*! GOBLIN-SIM TASK GROUPS */
 	uint32_t 	task_procs;		/*! GOBLIN-SIM TASK PROCS */
 	uint32_t 	tasks;			/*! GOBLIN-SIM TASKS */
 	uint32_t 	icache_ways;		/*! GOBLIN-SIM ICACHE WAYS */
 	uint32_t	icache_sets;		/*! GOBLIN-SIM ICACHE SETS */
 	uint32_t	amo_slots;		/*! GOBLIN-SIM AMO SLOTS */
+
+	/* -- hardware units */
+	struct gsim_hw_t *hw;			/*! GOBLIN-SIM HARDWARE STRUCTURE */	
 };
 
 

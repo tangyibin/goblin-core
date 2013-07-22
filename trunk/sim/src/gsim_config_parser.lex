@@ -21,7 +21,10 @@ enum {
 	TASKS		= 5,
 	ICACHE_WAYS	= 6, 
 	ICACHE_SETS	= 7, 
-	AMO_SLOTS	= 8
+	AMO_SLOTS	= 8, 
+	PARTITIONS	= 9, 
+	NODES		= 10, 
+	SOCKETS		= 11
 };
 
 int state;
@@ -34,6 +37,9 @@ uint32_t *__tasks;
 uint32_t *__icache_ways;
 uint32_t *__icache_sets;
 uint32_t *__amo_slots;
+uint32_t *__partitions;
+uint32_t *__nodes;
+uint32_t *__sockets;
 %}
 
 %option nounput
@@ -49,6 +55,9 @@ uint32_t *__amo_slots;
 ^ICACHE_WAYS		{ 	state = ICACHE_WAYS; }
 ^ICACHE_SETS		{ 	state = ICACHE_SETS; }
 ^AMO_SLOTS		{	state = AMO_SLOTS; }
+^PARTITIONS		{	state = PARTITIONS; }
+^NODES			{ 	state = NODES;	}
+^SOCKETS		{ 	state = SOCKETS; }
 [a-zA-Z0-9\/.-_]+	{ if( state != LOOKUP ) gsim_config_func( state, yytext ); }
 . ;
 %%
@@ -57,6 +66,8 @@ extern int gsim_config_func_parser( 	uint32_t *vector, uint32_t *global_addr,
 					uint32_t *task_groups, uint32_t *task_procs, 
 					uint32_t *tasks, uint32_t *icache_ways, 
 					uint32_t *icache_sets, uint32_t *amo_slots, 
+					uint32_t *partitions, uint32_t *nodes, 
+					uint32_t *sockets,
 					char *cfile )
 {
 	__vector	= vector;
@@ -67,6 +78,9 @@ extern int gsim_config_func_parser( 	uint32_t *vector, uint32_t *global_addr,
 	__icache_ways	= icache_ways;
 	__icache_sets	= icache_sets;
 	__amo_slots	= amo_slots;
+	__partitions	= partitions;
+	__nodes		= nodes;
+	__sockets	= sockets;
 
 	yyin = fopen( cfile, "r" );
 	
@@ -105,6 +119,16 @@ int gsim_config_func( int type, char *word )
 			break;
 		case AMO_SLOTS:
 			*__amo_slots	= (uint32_t)(atoi( word ));
+			break;
+		case PARTITIONS:
+			*__partitions	= (uint32_t)(atoi( word ));
+			break;
+		case NODES: 
+			*__nodes	= (uint32_t)(atoi( word ));
+			break;
+		case SOCKETS:
+			*__sockets	= (uint32_t)(atoi( word ));
+			break;
 		default:
 			break;
 	}
