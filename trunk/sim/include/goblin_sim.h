@@ -26,6 +26,8 @@ extern void 	*gsim_malloc( size_t sz );
 extern int	gsim_io_open_logfile( struct gsim_t *sim );
 extern int	gsim_io_open_tracefile( struct gsim_t *sim );
 
+extern int	gsim_exec_functional( struct gsim_t *sim );
+
 extern int	gsim_config_read( struct gsim_t *sim );
 extern int	gsim_init_internals( struct gsim_t *sim );
 extern int	gsim_hw_reset( struct gsim_t *sim );
