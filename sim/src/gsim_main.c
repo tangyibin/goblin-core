@@ -606,6 +606,11 @@ int main( int argc, char **argv )
 		 * execute functional sim
 		 *
 		 */
+		if( gsim_exec_functional( sim ) != 0 ){ 
+		
+			GSIM_PRINT_ERROR( "Functional simulation failed!" );	
+			gsim_free_sim( sim );
+		}
 
 	}else if( (sim->options & GSIM_OPT_CYCLE_ACCUR) > 0 ){
 		
