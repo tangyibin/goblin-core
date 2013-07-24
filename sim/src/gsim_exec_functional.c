@@ -25,8 +25,11 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
-	
-	
+	/* 
+	 * verify the object file
+	 * 
+	 */
+
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
