@@ -19,6 +19,7 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
   * *Hardware Accelerated Barriers* : One of the key operations that we identify as being a candidate for hardware optimization is the barrier synchronization.  We're exploring several different options to perform optimized software barriers using special hardware techniques.  
   * *Address Space//Task Security* : One issue we would like to address is the ability to tag each task and group of tasks with specific "keys."  These keys would provide security domains such that the larger system has the ability to operate with multiple users/applications without fear of poisoning other memory spaces.  
   * *HDL Development* : I plan to utilize the Berkeley Chisel project as a design tool for the HDL development.  It provides a very friendly Scala interface to doing HDL development and debugging from a high level language construct.  I also hope to utilize their C++ model as an intermediate, cycle-accurate software model for Goblin-Core.  More info can be found here: http://chisel.eecs.berkeley.edu/
+  * *System Management Controller/Library* : We're looking at various methods by which we can decouple compute and management resources.  This would require abstracting the handlers for job startup, debugging, I/O, memory management and other general purpose OS duties.  
 
 = Not Yet Attempted = 
   * *Debugger* : I've wavering on whether to port GDB or LLDB.  There are certainly more people familiar with GDB, but the code base is more difficult to work in than LLDB.  
