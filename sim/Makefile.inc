@@ -9,7 +9,7 @@ CXX=g++
 INC=-I./include/
 CFLAGS=-O2 -Wall -g $(INC) -DGSIM_DEBUG
 CXXFLAGS=-O2 -Wall -g $(INC) -DGSIM_DEBUG
-LINK=-L./ -lgsim
+LINK=-L./ -lgsim -L./hmc_sim -lhmcsim
 
 AR=ar
 AROPTS=rcs
