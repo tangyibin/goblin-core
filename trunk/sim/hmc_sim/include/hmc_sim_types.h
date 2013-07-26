@@ -37,7 +37,7 @@ struct hmc_link_t{
 	uint32_t src_cub;		/*! HMC-SIM: HMC_LINK_T: SOURCE CUB */
 	uint32_t dest_cub;		/*! HMC-SIM: HMC_LINK_T: DESTINATION CUB */
 
-	hmc_link_def_t	link_type;	/*! HMC-SIM: HMC_LINK_T: LINK TYPE */
+	hmc_link_def_t	type;		/*! HMC-SIM: HMC_LINK_T: LINK TYPE */
 };
 
 struct hmc_dram_t{

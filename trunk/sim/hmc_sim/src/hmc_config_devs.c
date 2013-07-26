@@ -26,6 +26,8 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 		return -1;
 	}
 
+	
+
 	return 0;
 }
 

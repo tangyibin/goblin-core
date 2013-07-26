@@ -14,7 +14,6 @@
 #include "hmc_sim.h"
 
 
-
 /* ----------------------------------------------------- HMCSIM_FREE_MEMORY */
 /* 
  * HMCSIM_FREE_MEMORY
@@ -114,6 +113,20 @@ extern int	hmcsim_allocate_memory( struct hmcsim_t *hmc )
 	}
 
 	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_FREE */
+/* 
+ * HMCSIM_FREE
+ * 
+ */
+extern int	hmcsim_free( struct hmcsim_t *hmc )
+{
+	if( hmc->tfile != NULL ){ 
+		fflush( hmc->tfile );
+	}
+
+	return hmcsim_free_memory( hmc );
 }
 
 /* EOF */
