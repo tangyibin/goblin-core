@@ -14,7 +14,9 @@ GASMOBJS=$(SRC)/gasm_main.o $(SRC)/gasm_row.o $(SRC)/gasm_parser.o $(SRC)/gasm_i
 
 GSIMOBJS=$(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o
 
-all: libgsim.a goblin-sim gasm
+all: libgsim.a libhmcsim.a goblin-sim gasm
+libhmcsim.a:
+	make -C ./hmc_sim/
 libgsim.a: 
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_dump_inst.o $(SRC)/gsim_dump_inst.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_opcodes.o $(SRC)/gsim_opcodes.c
@@ -45,3 +47,4 @@ gasm: libgsim.a
 	$(CC) $(CFLAGS) -o $@ $(GASMOBJS) $(LINK)
 clean: 
 	rm -Rf ./src/*.o ./src/gsim_config.yy.c ./libgsim.a ./goblin-sim ./gasm
+	make -C ./hmc_sim/ clean

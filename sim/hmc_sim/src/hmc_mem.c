@@ -1,0 +1,119 @@
+/* 
+ * _HMC_MEM_C_
+ * 
+ * HYBRID MEMORY CUBE SIMULATION LIBRARY 
+ * 
+ * MEMORY ALLOCATION/FREE FUNCTIONS
+ * 
+ */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "hmc_sim.h"
+
+
+
+/* ----------------------------------------------------- HMCSIM_FREE_MEMORY */
+/* 
+ * HMCSIM_FREE_MEMORY
+ * 
+ */
+extern int	hmcsim_free_memory( struct hmcsim_t *hmc )
+{
+	if( hmc == NULL ){ 
+		return -1;
+	}
+
+	if( hmc->__ptr_devs != NULL ){ 
+		free( hmc->__ptr_devs );
+		hmc->__ptr_devs = NULL;
+	}
+
+	if( hmc->__ptr_quads != NULL ){ 
+		free( hmc->__ptr_quads );
+		hmc->__ptr_quads = NULL;
+	}
+
+	if( hmc->__ptr_vaults != NULL ){ 
+		free( hmc->__ptr_vaults );
+		hmc->__ptr_vaults = NULL;
+	}
+
+	if( hmc->__ptr_banks != NULL ){ 
+		free( hmc->__ptr_banks );
+		hmc->__ptr_banks = NULL;
+	}
+
+	if( hmc->__ptr_drams != NULL ){ 
+		free( hmc->__ptr_drams );
+		hmc->__ptr_drams = NULL;
+	}
+
+	if( hmc->__ptr_links != NULL ){ 
+		free( hmc->__ptr_links );
+		hmc->__ptr_links = NULL;
+	}
+
+	if( hmc->__ptr_stor != NULL ){ 
+		free( hmc->__ptr_stor );
+		hmc->__ptr_stor = NULL;
+	}
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_ALLOCATE_MEMORY */
+/* 
+ * HMCSIM_ALLOCATE_MEMORY
+ * 
+ */
+extern int	hmcsim_allocate_memory( struct hmcsim_t *hmc )
+{
+	if( hmc == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_devs	= malloc( sizeof( struct hmc_dev_t ) * hmc->num_devs );
+	if( hmc->__ptr_devs == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_quads = malloc( sizeof( struct hmc_quad_t ) * hmc->num_devs * hmc->num_links );
+	if( hmc->__ptr_quads == NULL ) { 
+		return -1;
+	}
+
+	hmc->__ptr_vaults = malloc( sizeof( struct hmc_vault_t ) * hmc->num_devs * hmc->num_vaults );
+	if( hmc->__ptr_vaults == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_banks = malloc( sizeof( struct hmc_bank_t ) 
+					* hmc->num_devs * hmc->num_vaults * hmc->num_banks );
+	if( hmc->__ptr_banks == NULL ){
+		return -1;
+	}
+
+	hmc->__ptr_drams = malloc( sizeof( struct hmc_dram_t ) 
+					* hmc->num_devs * hmc->num_vaults * hmc->num_banks 
+					* hmc->num_drams );
+	if( hmc->__ptr_drams == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_links = malloc( sizeof( struct hmc_link_t ) * hmc->num_devs * hmc->num_links );
+	if( hmc->__ptr_links == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_stor = malloc( sizeof( uint64_t ) * hmc->num_devs * hmc->capacity * HMC_1GB );
+	if( hmc->__ptr_stor == NULL ){ 
+		return -1;
+	}
+
+	return 0;
+}
+
+/* EOF */

@@ -1,0 +1,40 @@
+/* 
+ * _HMC_SIM_MACROS_H_
+ * 
+ * HYBRID MEMORY CUBE SIMULATION LIBRARY
+ * 
+ * MACROS HEADER FILE 
+ * 
+ */
+
+#ifndef _HMC_SIM_MACROS_H_
+#define _HMC_SIM_MACROS_H_
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/* -------------------------------------------- MACROS */
+#define		HMC_MAX_DEVS		8
+#define		HMC_MAX_LINKS		8
+#define		HMC_MIN_LINKS		4
+#define		HMC_MAX_CAPACITY	8
+#define		HMC_MIN_CAPACITY	2
+#define		HMC_MAX_VAULTS		4
+#define		HMC_MIN_VAULTS		4
+#define		HMC_MAX_BANKS		8
+#define		HMC_MIN_BANKS		16
+#define		HMC_MIN_DRAMS		20
+#define		HMC_MAX_DRAMS		20
+
+#define		HMC_1GB		1073741824
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
+
+#endif	/* _HMC_SIM_MACROS_H_ */
+
+/* EOF */

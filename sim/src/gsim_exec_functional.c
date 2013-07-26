@@ -14,7 +14,7 @@
 #include "goblin_sim.h"
 
 
-/* -------------------------------------------------- GSIM_EXEC_FUNCTIONAL
+/* -------------------------------------------------- GSIM_EXEC_FUNCTIONAL */
 /* 
  * GSIM_EXEC_FUNCTIONAL
  * 
