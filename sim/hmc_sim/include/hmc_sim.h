@@ -29,6 +29,7 @@ extern int	hcmsim_init(	struct hmcsim_t *hmc,
 				uint32_t num_banks, 
 				uint32_t num_drams, 
 				uint32_t capacity );
+
 extern int	hmcsim_free( struct hmcsim_t *hmc );
 
 extern int	hmcsim_link_config( struct hmcsim_t *hmc, 
