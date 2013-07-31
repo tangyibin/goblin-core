@@ -33,7 +33,7 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 	uint32_t cur_bank	= 0;
 	uint32_t cur_dram	= 0;
 	uint32_t cur_link	= 0;
-	uint32_t cur_stor	= 0;
+	//uint32_t cur_stor	= 0;
 	/* ---- */
 
 	/* 
