@@ -33,9 +33,6 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 			uint32_t num_drams, 
 			uint32_t capacity )
 {
-	/* vars */
-	/* ---- */
-
 	/*
 	 * ensure we have a good structure
 	 * 
