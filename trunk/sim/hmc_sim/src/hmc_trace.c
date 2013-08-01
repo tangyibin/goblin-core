@@ -14,6 +14,21 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_TRACE_LEVEL */
+/* 
+ * HMCSIM_TRACE_LEVEL
+ * 
+ */
+extern int	hmcsim_trace_level( struct hmcsim_t *hmc, uint32_t level )
+{
+	if( hmc == NULL ){ 
+		return -1;
+	}
+
+	hmc->tracelevel	= level;
+
+	return 0;
+}
 
 /* ----------------------------------------------------- HMCSIM_TRACE_HANDLE */
 /* 

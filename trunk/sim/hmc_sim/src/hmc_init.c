@@ -88,6 +88,7 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	 * 
  	 */
 	hmc->tfile	= NULL;
+	hmc->tracelevel	= 0x00;
 	
 	hmc->num_devs	= num_devs;
 	hmc->num_links	= num_links;
