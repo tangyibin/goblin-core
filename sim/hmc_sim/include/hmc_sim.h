@@ -40,6 +40,7 @@ extern int	hmcsim_link_config( struct hmcsim_t *hmc,
 					hmc_link_def_t type );
 
 extern int	hmcsim_trace_handle( struct hmcsim_t *hmc, FILE *tfile );
+extern int	hmcsim_trace_level( struct hmcsim_t *hmc, uint32_t level );
 
 #ifdef __cplusplus
 } /* extern C */
