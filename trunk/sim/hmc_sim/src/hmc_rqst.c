@@ -14,6 +14,57 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_RQST_GETSEQ */
+/* 
+ * HMCSIM_RQST_GETSEQ
+ * 
+ */
+static uint8_t hmcsim_rqst_getseq( struct hmcsim_t *hmc, hmc_rqst_t type )
+{
+	if( (type == PRET) || (type == IRTRY) ){ 
+		return hmc->seq;
+	}
+
+	hmc->seq++;
+
+	if( hmc->seq > 0x07 ){ 
+		hmc->seq = 0x00;
+	}
+
+	return 0x01;
+}
+
+/* ----------------------------------------------------- HMCSIM_RQST_GETRRP */
+/* 
+ * HMCSIM_RQST_GETRRP
+ * 
+ */
+static uint8_t hmcsim_rqst_getrrp( struct hmcsim_t *hmc )
+{
+	return 0x03;
+}
+
+/* ----------------------------------------------------- HMCSIM_RQST_GETFRP */
+/* 
+ * HMCSIM_RQST_GETFRP
+ * 
+ */
+static uint8_t hmcsim_rqst_getfrp( struct hmcsim_t *hmc )
+{
+	return 0x02;
+}
+
+/* ----------------------------------------------------- HMCSIM_RQST_GETRTC */
+/* 
+ * HMCSIM_RQST_GETRTC
+ * 
+ */
+static uint8_t hmcsim_rqst_getrtc( struct hmcsim_t *hmc )
+{
+	return 0x01;
+}
+
+
 /* ----------------------------------------------------- HMCSIM_CRC32 */
 /* 
  * HMCSIM_CRC32
@@ -36,7 +87,7 @@ static uint32_t hmcsim_crc32( uint64_t addr, uint64_t *payload, uint32_t len )
 extern int	hmcsim_build_memrequest( struct hmcsim_t *hmc, 
 					uint8_t  cub, 
 					uint64_t addr, 
-					uint8_t  tag, 
+					uint16_t  tag, 
 					hmc_rqst_t type,
 					uint8_t link, 
 					uint64_t *payload, 
@@ -45,6 +96,10 @@ extern int	hmcsim_build_memrequest( struct hmcsim_t *hmc,
 {
 	/* vars */
 	uint8_t cmd	= 0x00;
+	uint8_t rrp	= 0x00;
+	uint8_t frp	= 0x00;
+	uint8_t seq	= 0x00;
+	uint8_t rtc	= 0x00;
 	uint32_t crc	= 0x00000000;
 	uint32_t flits	= 0x00000000;
 	uint64_t tmp	= 0x00ll;
@@ -251,19 +306,30 @@ extern int	hmcsim_build_memrequest( struct hmcsim_t *hmc,
 	 */
 
 	/* -- return retry pointer : bits 7:0 */
+	rrp = hmcsim_rqst_getrrp( hmc );
+	tmp |= rrp;
 
 	/* -- forward retry pointer : bits 15:8 */
+	frp = hmcsim_rqst_getfrp( hmc );
+	tmp |= ( (uint64_t)(frp) << 8 );
 
 	/* -- sequence number : bits 18:16 */
+	seq = hmcsim_rqst_getseq( hmc, type );
+	tmp |= ( (uint64_t)(seq) << 16 );
 
 	/* -- source link id : bits 26:24 */
 	tmp |= ( (uint64_t)(link) << 24 );
 
 	/* -- return token count : bits 31:27 */
+	rtc = hmcsim_rqst_getrtc( hmc );
+	tmp |= ( (uint64_t)(rtc) << 27 );
 
 	/* -- retrieve the crc : bits 63:32 */
 	crc = hmcsim_crc32( addr, payload, (2*flits) );
 	tmp |= ( (uint64_t)(crc) << 32 );
+
+	/* write the request tail out */
+	*rqst_tail	= tmp;
 	
 	return 0;
 }
