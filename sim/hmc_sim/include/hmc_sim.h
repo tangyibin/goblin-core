@@ -42,6 +42,33 @@ extern int	hmcsim_link_config( struct hmcsim_t *hmc,
 extern int	hmcsim_trace_handle( struct hmcsim_t *hmc, FILE *tfile );
 extern int	hmcsim_trace_level( struct hmcsim_t *hmc, uint32_t level );
 
+extern int      hmcsim_build_memrequest( struct hmcsim_t *hmc,
+                                        uint8_t  cub,
+                                        uint64_t addr,
+                                        uint16_t  tag,
+                                        hmc_rqst_t type,
+                                        uint8_t link,
+                                        uint64_t *payload,
+                                        uint64_t *rqst_head,
+                                        uint64_t *rqst_tail );
+
+extern int      hmcsim_decode_memresponse(      struct hmcsim_t *hmc,
+                                                uint64_t *packet,
+                                                uint64_t *response_head,
+                                                uint64_t *response_tail,
+                                                hmc_response_t *type,
+                                                uint8_t *length,
+                                                uint16_t *tag,
+                                                uint8_t *rtn_tag,
+                                                uint8_t *src_link,
+                                                uint8_t *rrp,
+                                                uint8_t *frp,
+                                                uint8_t *seq,
+                                                uint8_t *dinv,
+                                                uint8_t *errstat,
+                                                uint8_t *rtc,
+                                                uint32_t *crc );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

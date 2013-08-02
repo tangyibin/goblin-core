@@ -51,6 +51,12 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 	hmc->devs	= hmc->__ptr_devs;		
 
 	/* 
+	 * zero the sequence number
+	 * 
+	 */
+	hmc->seq 	= 0x00;
+
+	/* 
 	 * for each device, set the sub-device pointers
 	 * 
 	 */
@@ -62,6 +68,25 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 		 *
 		 */
 		hmc->devs[i].id	= i;
+		
+		/* 
+		 * clear the valid bit
+		 * 
+		 */
+		hmc->devs[i].valid = 0;
+
+		/* 
+	 	 * zero the sequence number
+		 * 
+		 */
+		hmc->devs[i].seq = 0x00;
+
+		/* 
+		 * clear the message buffers
+		 * 
+		 */
+		memset( hmc->devs[i].rqst_packet, 0, sizeof( uint64_t ) * 18 );
+		memset( hmc->devs[i].response_packet, 0, sizeof( uint64_t ) * 18 );
 
 		/* 
 		 * links on each device

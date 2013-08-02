@@ -30,6 +30,15 @@ typedef enum{
 
 
 typedef enum{
+	RD_RS, 				/*! HMC-SIM: HMC_RESPONSE_T: READ RESPONSE */
+	WR_RS,				/*! HMC-SIM: HMC_RESPONSE_T: WRITE RESPONSE */
+	MD_RD_RS, 			/*! HMC-SIM: HMC_RESPONSE_T: MODE READ RESPONSE */
+	MD_WR_RS,			/*! HMC-SIM: HMC_RESPONSE_T: MODE WRITE RESPONSE */
+	ERROR				/*! HMC-SIM: HMC_RESPONSE_T: ERROR RESPONSE */
+	
+}hmc_response_t;
+
+typedef enum{
 	WR16, 				/*! HMC-SIM: HMC_RQST_T: 16-BYTE WRITE REQUEST */
 	WR32, 				/*! HMC-SIM: HMC_RQST_T: 32-BYTE WRITE REQUEST */
 	WR48, 				/*! HMC-SIM: HMC_RQST_T: 48-BYTE WRITE REQUEST */
@@ -115,7 +124,14 @@ struct hmc_dev_t{
 	
 	struct hmc_quad_t *quads;	/*! HMC-SIM: HMC_DEV_T: QUADRANT STRUCTURE */
 
+	uint64_t rqst_packet[18];	/*! HMC-SIM: HMC_DEV_T: PACKET BUFFER FOR 9 FLITS */
+	uint64_t response_packet[18];	/*! HMC-SIM: HMC_DEV_T: PACKET BUFFER FOR 9 FLITS */
+
+	uint32_t valid;			/*! HMC-SIM: HMC_DEV_T: VALID STATE */
+
 	uint32_t id;			/*! HMC-SIM: HMC_DEV_T: CUBE ID */
+
+	uint8_t seq;			/*! HMC-SIM: HMC_DEV_T: SEQUENCE NUMBER */
 };
 
 struct hmcsim_t{
@@ -131,6 +147,8 @@ struct hmcsim_t{
 
 	FILE *tfile;			/*! HMC-SIM: HMCSIM_T: TRACE FILE HANDLER */
 	uint32_t tracelevel;		/*! HMC-SIM: HMCSIM_T: TRACE LEVEL */
+
+	uint8_t seq;			/*! HMC-SIM: HCMSIM_T: SEQUENCE NUMBER */
 
 	struct hmc_dev_t	*__ptr_devs;	
 	struct hmc_quad_t	*__ptr_quads;	
