@@ -132,7 +132,7 @@ extern int	hmcsim_allocate_memory( struct hmcsim_t *hmc )
 		return -1;
 	}
 
-	hmc->__ptr_xbars = malloc( sizeof( struct hmc_xbar_t ) * hmc->num_devs );
+	hmc->__ptr_xbars = malloc( sizeof( struct hmc_xbar_t ) * hmc->num_devs * hmc->num_links );
 	if( hmc->__ptr_xbars == NULL ){
 		return -1;
 	}
