@@ -37,6 +37,9 @@ extern "C" {
 #define		HMC_MAX_QUEUE_DEPTH	65536
 #define 	HMC_MAX_UQ_PACKET	18
 
+#define		HMC_RQST_VALID		1
+#define		HMC_RQST_INVALID	0
+
 #define		HMC_1GB		1073741824
 
 #ifdef __cplusplus
