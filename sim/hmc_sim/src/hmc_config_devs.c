@@ -28,12 +28,14 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 	uint32_t k		= 0;
 	uint32_t x		= 0;
 	uint32_t y		= 0;
+	uint32_t a		= 0;
 	uint32_t cur_quad	= 0;
 	uint32_t cur_vault	= 0;
 	uint32_t cur_bank	= 0;
 	uint32_t cur_dram	= 0;
 	uint32_t cur_link	= 0;
 	uint32_t cur_queue	= 0;
+	uint32_t cur_xbar	= 0;
 	//uint32_t cur_stor	= 0;
 	/* ---- */
 
@@ -75,6 +77,26 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 		 * 
 		 */
 		hmc->devs[i].seq = 0x00;
+
+		/* 
+	 	 * xbars on each device
+	 	 * 
+		 */
+		hmc->devs[i].xbar		= &(hmc->__ptr_xbars[i]);
+
+		hmc->devs[i].xbar->xbar_rqst	= &(hmc->__ptr_xbar_rqst[cur_xbar]);
+		hmc->devs[i].xbar->xbar_rsp	= &(hmc->__ptr_xbar_rsp[cur_xbar]);
+
+		/* 
+		 * set all the valid bits
+		 *
+	 	 */
+		for( a=0; a<hmc->xbar_depth; a++ ){
+			hmc->devs[i].xbar->xbar_rqst[a].valid	= 0x00000000;
+			hmc->devs[i].xbar->xbar_rsp[a].valid	= 0x00000000;
+		}
+
+		cur_xbar += hmc->xbar_depth;
 
 		/* 
 		 * links on each device
@@ -184,10 +206,17 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 				 * request and response queues 
 				 * 
 				 */
-				hmc->devs[i].quads[j].vaults[k].rqst_valid 	= &(hmc->__ptr_rqst_valid[cur_queue]);
-				hmc->devs[i].quads[j].vaults[k].response_valid 	= &(hmc->__ptr_response_valid[cur_queue]);
-				hmc->devs[i].quads[j].vaults[k].rqst_packet	= &(hmc->__ptr_rqst_queue[cur_queue]);
-				hmc->devs[i].quads[j].vaults[k].response_packet	= &(hmc->__ptr_response_queue[cur_queue]);
+				hmc->devs[i].quads[j].vaults[k].rqst_queue	= &(hmc->__ptr_vault_rqst[cur_queue]);
+				hmc->devs[i].quads[j].vaults[k].rsp_queue	= &(hmc->__ptr_vault_rsp[cur_queue]);
+			
+				/* 
+				 * clear the valid bits
+				 * 
+				 */	
+				for( a=0; a<hmc->queue_depth; a++ ){
+					hmc->devs[i].quads[j].vaults[k].rqst_queue[a].valid	= 0x00000000;
+					hmc->devs[i].quads[j].vaults[k].rsp_queue[a].valid	= 0x00000000;
+				}
 				
 				for( x=0; x<hmc->num_banks; x++ ){ 
 

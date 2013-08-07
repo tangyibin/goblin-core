@@ -32,7 +32,8 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 			uint32_t queue_depth,
 			uint32_t num_banks, 
 			uint32_t num_drams, 
-			uint32_t capacity )
+			uint32_t capacity, 
+			uint32_t xbar_depth )
 {
 	/*
 	 * ensure we have a good structure
@@ -60,8 +61,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 		return -1;
 	}else if( (queue_depth < HMC_MIN_QUEUE_DEPTH ) || (queue_depth > HMC_MAX_QUEUE_DEPTH ) ){
 		return -1;
+	}else if( (xbar_depth < HMC_MIN_QUEUE_DEPTH ) || (xbar_depth > HMC_MAX_QUEUE_DEPTH ) ){
+		return -1;
 	}
-
+	
 	/* 
 	 * look deeper to make sure the default addressing works
 	 * 
@@ -100,6 +103,9 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	hmc->num_drams	= num_drams;
 	hmc->capacity	= capacity;
 	hmc->queue_depth= queue_depth;
+	hmc->xbar_depth	= xbar_depth;
+
+	hmc->clk	= 0x00ll;
 
 	/* 
 	 * pointers
@@ -110,11 +116,12 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	hmc->__ptr_banks		= NULL;
 	hmc->__ptr_drams		= NULL;
 	hmc->__ptr_links		= NULL;
+	hmc->__ptr_xbars		= NULL;
 	hmc->__ptr_stor			= NULL;
-	hmc->__ptr_rqst_queue		= NULL;
-	hmc->__ptr_response_queue	= NULL;
-	hmc->__ptr_rqst_valid		= NULL;
-	hmc->__ptr_response_valid	= NULL;
+	hmc->__ptr_xbar_rqst		= NULL;
+	hmc->__ptr_xbar_rsp		= NULL;
+	hmc->__ptr_vault_rqst		= NULL;
+	hmc->__ptr_vault_rsp		= NULL;
 
 	/* 
 	 * 
