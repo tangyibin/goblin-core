@@ -73,6 +73,8 @@ extern int      hmcsim_decode_memresponse(      struct hmcsim_t *hmc,
 extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet );
 extern int	hmcsim_recv( struct hmcsim_t *hmc, uint64_t *packet );
 
+extern int	hmcsim_clock( struct hmcsim_t *hmc );
+
 
 #ifdef __cplusplus
 } /* extern C */
