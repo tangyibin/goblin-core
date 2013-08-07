@@ -11,7 +11,8 @@ SRC=`pwd`/src
 
 LIBOBJS=$(SRC)/hmc_init.o $(SRC)/hmc_mem.o $(SRC)/hmc_config_devs.o\
 	$(SRC)/hmc_links.o $(SRC)/hmc_trace.o $(SRC)/hmc_rqst.o\
-	$(SRC)/hmc_response.o $(SRC)/hmc_send.o $(SRC)/hmc_recv.o
+	$(SRC)/hmc_response.o $(SRC)/hmc_send.o $(SRC)/hmc_recv.o\
+	$(SRC)/hmc_clock.o
 
 all: libhmcsim.a
 libhmcsim.a: 
@@ -24,6 +25,7 @@ libhmcsim.a:
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_rqst.o $(SRC)/hmc_rqst.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_response.o $(SRC)/hmc_response.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_config_devs.o $(SRC)/hmc_config_devs.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_clock.o $(SRC)/hmc_clock.c
 	$(AR) $(AROPTS) $@ $(LIBOBJS)
 clean:
 	rm -Rf ./src/*.o ./libhmcsim.a
