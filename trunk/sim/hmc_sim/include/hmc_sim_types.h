@@ -21,6 +21,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <sys/types.h>
+#include "hmc_sim_macros.h"
 
 /* -------------------------------------------------- ENUMERATED TYPES */
 typedef enum{
@@ -104,15 +105,18 @@ struct hmc_bank_t{
 					/* 16-BYTE BANK INTERLEAVE */	
 };
 
+struct hmc_queue_t{
+	uint32_t valid;				/*! HMC-SIM: HMC_QUEUE_T: VALID BIT */
+	uint64_t packet[HMC_MAX_UQ_PACKET];	/*! HMC-SIM: HMC_QUEUE_T: PACKET */
+};
+
 struct hmc_vault_t{ 
 
 	struct hmc_bank_t *banks;	/*! HMC-SIM: HMC_VAULT_T: BANK STRUCTURE */
 
-	uint32_t *rqst_valid;		/*! HMC-SIM: HMC_VAULT_T: REQUEST VALID */
-	uint32_t *response_valid;	/*! HMC-SIM: HMC_VAULT_T: RESPONSE VALID */
 
-	uint64_t *rqst_packet;		/*! HMC-SIM: HMC_VAULT_T: REQUEST PACKET QUEUE */
-	uint64_t *response_packet;	/*! HMC-SIM: HMC_VAULT_T: RESPONSE PACKET QUEUE */
+	struct hmc_queue_t *rqst_queue;	/*! HMC-SIM: HMC_VAULT_T: REQUEST PACKET QUEUE */
+	struct hmc_queue_t *rsp_queue;	/*! HMC-SIM: HMC_VAULT_T: REQUEST PACKET QUEUE */
 
 	uint32_t id;			/*! HMC-SIM: HMC_VAULT_T: VAULT ID */
 };
@@ -124,11 +128,18 @@ struct hmc_quad_t{
 	uint32_t 	id;		/*! HMC-SIM: HMC_QUAD_T: QUADRANT ID */
 };
 
+struct hmc_xbar_t{
+	struct hmc_queue_t *xbar_rqst;	/*! HMC-SIM: HMC_XBAR_T: CROSSBAR REQUEST QUEUE */
+	struct hmc_queue_t *xbar_rsp;	/*! HMC-SIM: HMC_XBAR_T: CROSSBAR RESPONSE QUEUE */
+};
+
 struct hmc_dev_t{
 
 	struct hmc_link_t *links;	/* HMC-SIM: HMC_DEV_T: LINK STRUCTURE */
 	
 	struct hmc_quad_t *quads;	/*! HMC-SIM: HMC_DEV_T: QUADRANT STRUCTURE */
+	
+	struct hmc_xbar_t *xbar;	/*! HMC-SIM: HMC_DEV_T: CROSSBAR STRUCTURE */
 
 	uint32_t id;			/*! HMC-SIM: HMC_DEV_T: CUBE ID */
 
@@ -147,11 +158,14 @@ struct hmcsim_t{
 	uint32_t capacity;		/*! HMC-SIM: HMCSIM_T: CAPACITY PER DEVICE */
 
 	uint32_t queue_depth;		/*! HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH */
+	uint32_t xbar_depth;		/*! HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH */
 
 	FILE *tfile;			/*! HMC-SIM: HMCSIM_T: TRACE FILE HANDLER */
 	uint32_t tracelevel;		/*! HMC-SIM: HMCSIM_T: TRACE LEVEL */
 
 	uint8_t seq;			/*! HMC-SIM: HCMSIM_T: SEQUENCE NUMBER */
+
+	uint64_t clk;			/*! HMC-SIM: HMCSIM_T: CLOCK TICK */
 
 	struct hmc_dev_t	*__ptr_devs;	
 	struct hmc_quad_t	*__ptr_quads;	
@@ -159,11 +173,12 @@ struct hmcsim_t{
 	struct hmc_bank_t 	*__ptr_banks;	
 	struct hmc_dram_t 	*__ptr_drams;	
 	struct hmc_link_t 	*__ptr_links;	
+	struct hmc_xbar_t	*__ptr_xbars;
+	struct hmc_queue_t	*__ptr_xbar_rqst;
+	struct hmc_queue_t	*__ptr_xbar_rsp;
+	struct hmc_queue_t	*__ptr_vault_rqst;
+	struct hmc_queue_t	*__ptr_vault_rsp;
 	uint64_t 		*__ptr_stor;
-	uint64_t		*__ptr_rqst_queue;
-	uint64_t		*__ptr_response_queue;
-	uint32_t		*__ptr_rqst_valid;
-	uint32_t 		*__ptr_response_valid;
 };
 
 

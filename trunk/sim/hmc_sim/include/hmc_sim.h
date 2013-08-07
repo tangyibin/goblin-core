@@ -29,7 +29,8 @@ extern int	hmcsim_init(	struct hmcsim_t *hmc,
 				uint32_t queue_depth,
 				uint32_t num_banks, 
 				uint32_t num_drams, 
-				uint32_t capacity );
+				uint32_t capacity, 
+				uint32_t xbar_depth );
 
 extern int	hmcsim_free( struct hmcsim_t *hmc );
 

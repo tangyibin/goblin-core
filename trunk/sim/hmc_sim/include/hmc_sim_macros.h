@@ -35,6 +35,7 @@ extern "C" {
 #define		HMC_MAX_DRAMS		20
 #define		HMC_MIN_QUEUE_DEPTH	2
 #define		HMC_MAX_QUEUE_DEPTH	65536
+#define 	HMC_MAX_UQ_PACKET	18
 
 #define		HMC_1GB		1073741824
 
