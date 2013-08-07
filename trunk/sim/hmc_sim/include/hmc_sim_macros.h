@@ -16,6 +16,11 @@ extern "C" {
 #endif
 
 
+/* -------------------------------------------- RETURN CODES */
+#define		HMC_ERROR		-1
+#define		HMC_OK			0
+#define		HMC_STALL		2
+
 /* -------------------------------------------- MACROS */
 #define		HMC_MAX_DEVS		8
 #define		HMC_MAX_LINKS		8
