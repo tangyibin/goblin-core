@@ -19,7 +19,7 @@
  * HMCSIM_RECV
  * 
  */
-extern int	hmcsim_recv( struct hmcsim_t *hmc )
+extern int	hmcsim_recv( struct hmcsim_t *hmc, uint64_t *packet )
 {
 	if( hmc == NULL ){ 
 		return -1;

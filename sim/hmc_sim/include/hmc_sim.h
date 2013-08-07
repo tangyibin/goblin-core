@@ -22,10 +22,11 @@ extern "C" {
 #include "hmc_sim_macros.h"
 
 /* -------------------------------------------- FUNCTION PROTOTYPES */
-extern int	hcmsim_init(	struct hmcsim_t *hmc, 
+extern int	hmcsim_init(	struct hmcsim_t *hmc, 
 				uint32_t num_devs, 
 				uint32_t num_links, 
 				uint32_t num_vaults, 
+				uint32_t queue_depth,
 				uint32_t num_banks, 
 				uint32_t num_drams, 
 				uint32_t capacity );
@@ -68,6 +69,10 @@ extern int      hmcsim_decode_memresponse(      struct hmcsim_t *hmc,
                                                 uint8_t *errstat,
                                                 uint8_t *rtc,
                                                 uint32_t *crc );
+
+extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet );
+extern int	hmcsim_recv( struct hmcsim_t *hmc, uint64_t *packet );
+
 
 #ifdef __cplusplus
 } /* extern C */

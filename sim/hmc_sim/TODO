@@ -2,4 +2,5 @@
 - build functions to dump trace info 
 - build internal routing info for dev to dev xfers
 - decode bank to dram association 
+- add function to simulate "clock"
 

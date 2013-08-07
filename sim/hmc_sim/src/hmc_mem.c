@@ -60,6 +60,26 @@ extern int	hmcsim_free_memory( struct hmcsim_t *hmc )
 		hmc->__ptr_stor = NULL;
 	}
 
+	if( hmc->__ptr_rqst_queue != NULL ){ 
+		free( hmc->__ptr_rqst_queue );
+		hmc->__ptr_rqst_queue = NULL;
+	}
+
+	if( hmc->__ptr_response_queue != NULL ){ 
+		free( hmc->__ptr_response_queue );
+		hmc->__ptr_response_queue = NULL;
+	}
+
+	if( hmc->__ptr_rqst_valid != NULL ){ 
+		free( hmc->__ptr_rqst_valid );
+		hmc->__ptr_rqst_valid = NULL;
+	}
+
+	if( hmc->__ptr_response_valid != NULL ){
+		free( hmc->__ptr_response_valid );
+		hmc->__ptr_response_valid = NULL;
+	}
+
 	return 0;
 }
 
@@ -111,6 +131,39 @@ extern int	hmcsim_allocate_memory( struct hmcsim_t *hmc )
 	if( hmc->__ptr_stor == NULL ){ 
 		return -1;
 	}
+
+	hmc->__ptr_rqst_queue = malloc( sizeof( uint64_t ) * hmc->num_devs
+							   * hmc->num_vaults
+							   * hmc->queue_depth );
+	if( hmc->__ptr_rqst_queue == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_response_queue = malloc( sizeof( uint64_t ) * hmc->num_devs
+							   * hmc->num_vaults
+							   * hmc->queue_depth );
+	if( hmc->__ptr_response_queue == NULL ){ 
+		return -1;
+	}
+
+	hmc->__ptr_rqst_valid = malloc( sizeof( uint32_t ) * hmc->num_devs
+							      * hmc->num_vaults
+							      * hmc->queue_depth );
+	if( hmc->__ptr_rqst_valid == NULL ){
+		return -1;
+	}
+
+	hmc->__ptr_response_valid = malloc( sizeof( uint32_t ) * hmc->num_devs
+							      * hmc->num_vaults
+							      * hmc->queue_depth );
+	if( hmc->__ptr_response_valid == NULL ){
+		return -1;
+	}
+
+	memset( hmc->__ptr_rqst_queue, 0, sizeof( uint64_t ) * hmc->num_devs * hmc->num_vaults * hmc->queue_depth );
+	memset( hmc->__ptr_response_queue, 0, sizeof( uint64_t ) * hmc->num_devs * hmc->num_vaults * hmc->queue_depth );
+	memset( hmc->__ptr_rqst_valid, 0, sizeof( uint32_t ) * hmc->num_devs * hmc->num_vaults * hmc->queue_depth );
+	memset( hmc->__ptr_response_valid, 0, sizeof( uint32_t ) * hmc->num_devs * hmc->num_vaults * hmc->queue_depth );
 
 	return 0;
 }
