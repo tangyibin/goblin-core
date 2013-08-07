@@ -29,6 +29,7 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 			uint32_t num_devs, 
 			uint32_t num_links, 
 			uint32_t num_vaults, 
+			uint32_t queue_depth,
 			uint32_t num_banks, 
 			uint32_t num_drams, 
 			uint32_t capacity )
@@ -56,6 +57,8 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	}else if( (num_drams < HMC_MIN_DRAMS) || (num_drams > HMC_MAX_DRAMS) ){ 
 		return -1;
 	}else if( (capacity < HMC_MIN_CAPACITY) || (capacity > HMC_MAX_CAPACITY) ){
+		return -1;
+	}else if( (queue_depth < HMC_MIN_QUEUE_DEPTH ) || (queue_depth > HMC_MAX_QUEUE_DEPTH ) ){
 		return -1;
 	}
 
@@ -96,17 +99,22 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	hmc->num_banks	= num_banks;
 	hmc->num_drams	= num_drams;
 	hmc->capacity	= capacity;
+	hmc->queue_depth= queue_depth;
 
 	/* 
 	 * pointers
 	 */
-	hmc->__ptr_devs		= NULL;
-	hmc->__ptr_quads	= NULL;
-	hmc->__ptr_vaults	= NULL;
-	hmc->__ptr_banks	= NULL;
-	hmc->__ptr_drams	= NULL;
-	hmc->__ptr_links	= NULL;
-	hmc->__ptr_stor		= NULL;
+	hmc->__ptr_devs			= NULL;
+	hmc->__ptr_quads		= NULL;
+	hmc->__ptr_vaults		= NULL;
+	hmc->__ptr_banks		= NULL;
+	hmc->__ptr_drams		= NULL;
+	hmc->__ptr_links		= NULL;
+	hmc->__ptr_stor			= NULL;
+	hmc->__ptr_rqst_queue		= NULL;
+	hmc->__ptr_response_queue	= NULL;
+	hmc->__ptr_rqst_valid		= NULL;
+	hmc->__ptr_response_valid	= NULL;
 
 	/* 
 	 * 

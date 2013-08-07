@@ -108,6 +108,12 @@ struct hmc_vault_t{
 
 	struct hmc_bank_t *banks;	/*! HMC-SIM: HMC_VAULT_T: BANK STRUCTURE */
 
+	uint32_t *rqst_valid;		/*! HMC-SIM: HMC_VAULT_T: REQUEST VALID */
+	uint32_t *response_valid;	/*! HMC-SIM: HMC_VAULT_T: RESPONSE VALID */
+
+	uint64_t *rqst_packet;		/*! HMC-SIM: HMC_VAULT_T: REQUEST PACKET QUEUE */
+	uint64_t *response_packet;	/*! HMC-SIM: HMC_VAULT_T: RESPONSE PACKET QUEUE */
+
 	uint32_t id;			/*! HMC-SIM: HMC_VAULT_T: VAULT ID */
 };
 
@@ -123,11 +129,6 @@ struct hmc_dev_t{
 	struct hmc_link_t *links;	/* HMC-SIM: HMC_DEV_T: LINK STRUCTURE */
 	
 	struct hmc_quad_t *quads;	/*! HMC-SIM: HMC_DEV_T: QUADRANT STRUCTURE */
-
-	uint64_t rqst_packet[18];	/*! HMC-SIM: HMC_DEV_T: PACKET BUFFER FOR 9 FLITS */
-	uint64_t response_packet[18];	/*! HMC-SIM: HMC_DEV_T: PACKET BUFFER FOR 9 FLITS */
-
-	uint32_t valid;			/*! HMC-SIM: HMC_DEV_T: VALID STATE */
 
 	uint32_t id;			/*! HMC-SIM: HMC_DEV_T: CUBE ID */
 
@@ -145,6 +146,8 @@ struct hmcsim_t{
 	uint32_t num_drams;		/*! HMC-SIM: HMCSIM_T: DRAMS PER BANK */
 	uint32_t capacity;		/*! HMC-SIM: HMCSIM_T: CAPACITY PER DEVICE */
 
+	uint32_t queue_depth;		/*! HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH */
+
 	FILE *tfile;			/*! HMC-SIM: HMCSIM_T: TRACE FILE HANDLER */
 	uint32_t tracelevel;		/*! HMC-SIM: HMCSIM_T: TRACE LEVEL */
 
@@ -157,6 +160,10 @@ struct hmcsim_t{
 	struct hmc_dram_t 	*__ptr_drams;	
 	struct hmc_link_t 	*__ptr_links;	
 	uint64_t 		*__ptr_stor;
+	uint64_t		*__ptr_rqst_queue;
+	uint64_t		*__ptr_response_queue;
+	uint32_t		*__ptr_rqst_valid;
+	uint32_t 		*__ptr_response_valid;
 };
 
 

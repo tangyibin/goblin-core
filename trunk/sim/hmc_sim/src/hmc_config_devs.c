@@ -33,6 +33,7 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 	uint32_t cur_bank	= 0;
 	uint32_t cur_dram	= 0;
 	uint32_t cur_link	= 0;
+	uint32_t cur_queue	= 0;
 	//uint32_t cur_stor	= 0;
 	/* ---- */
 
@@ -70,23 +71,10 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 		hmc->devs[i].id	= i;
 		
 		/* 
-		 * clear the valid bit
-		 * 
-		 */
-		hmc->devs[i].valid = 0;
-
-		/* 
 	 	 * zero the sequence number
 		 * 
 		 */
 		hmc->devs[i].seq = 0x00;
-
-		/* 
-		 * clear the message buffers
-		 * 
-		 */
-		memset( hmc->devs[i].rqst_packet, 0, sizeof( uint64_t ) * 18 );
-		memset( hmc->devs[i].response_packet, 0, sizeof( uint64_t ) * 18 );
 
 		/* 
 		 * links on each device
@@ -191,6 +179,15 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 				 * 
 				 */
 				hmc->devs[i].quads[j].vaults[k].banks	= &(hmc->__ptr_banks[cur_bank]);
+
+				/* 
+				 * request and response queues 
+				 * 
+				 */
+				hmc->devs[i].quads[j].vaults[k].rqst_valid 	= &(hmc->__ptr_rqst_valid[cur_queue]);
+				hmc->devs[i].quads[j].vaults[k].response_valid 	= &(hmc->__ptr_response_valid[cur_queue]);
+				hmc->devs[i].quads[j].vaults[k].rqst_packet	= &(hmc->__ptr_rqst_queue[cur_queue]);
+				hmc->devs[i].quads[j].vaults[k].response_packet	= &(hmc->__ptr_response_queue[cur_queue]);
 				
 				for( x=0; x<hmc->num_banks; x++ ){ 
 
@@ -223,7 +220,8 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 				cur_bank += hmc->num_banks; 
 
 			}
-		
+	
+			cur_queue += hmc->queue_depth;	
 			cur_vault += hmc->num_vaults;
 
 		}

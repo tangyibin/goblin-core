@@ -28,6 +28,8 @@ extern "C" {
 #define		HMC_MIN_BANKS		16
 #define		HMC_MIN_DRAMS		20
 #define		HMC_MAX_DRAMS		20
+#define		HMC_MIN_QUEUE_DEPTH	2
+#define		HMC_MAX_QUEUE_DEPTH	65536
 
 #define		HMC_1GB		1073741824
 
