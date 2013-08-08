@@ -5,6 +5,8 @@ INC=-I./include/
 CFLAGS=-O2 -Wall -g $(INC) 
 
 DOXYGEN=`which doxygen`
+WIKI=`which doxygen2gwiki`
+WIKI_SRC=../../../goblin-core-wiki/
 
 AR=ar
 AROPTS=rcs
@@ -19,6 +21,8 @@ LIBOBJS=$(SRC)/hmc_init.o $(SRC)/hmc_mem.o $(SRC)/hmc_config_devs.o\
 .PHONY : test
 
 all: libhmcsim.a
+wiki: docs
+	$(WIKI) -s -d ./doxygen/xml -o $(WIKI_SRC) -p HMCSIM
 docs:
 	$(DOXYGEN) ./doxygen/hmc_sim.cfg
 libhmcsim.a: 
