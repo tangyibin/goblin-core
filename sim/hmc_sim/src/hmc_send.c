@@ -52,7 +52,7 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	 * 
 	 */
 	len = (uint32_t)( (header & 0x780) >> 7 );
-	t_len = len *2;
+	t_len = len * 2;
 	
 	tail = packet[t_len-1];	
 
