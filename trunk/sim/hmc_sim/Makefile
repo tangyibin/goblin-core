@@ -14,6 +14,8 @@ LIBOBJS=$(SRC)/hmc_init.o $(SRC)/hmc_mem.o $(SRC)/hmc_config_devs.o\
 	$(SRC)/hmc_response.o $(SRC)/hmc_send.o $(SRC)/hmc_recv.o\
 	$(SRC)/hmc_clock.o
 
+.PHONY : test
+
 all: libhmcsim.a
 libhmcsim.a: 
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_init.o $(SRC)/hmc_init.c
