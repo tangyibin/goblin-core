@@ -19,11 +19,72 @@
  * HMCSIM_RECV
  * 
  */
-extern int	hmcsim_recv( struct hmcsim_t *hmc, uint64_t *packet )
+extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint64_t *packet )
 {
+	/* vars */
+	uint32_t target	= hmc->xbar_depth+1;
+	uint32_t found	= 0;
+	uint32_t i	= 0;
+	/* ---- */
+
 	if( hmc == NULL ){ 
 		return -1;
 	}
+
+	if( dev > hmc->num_devs ){
+		return -1;
+	}		
+
+	if( link > hmc->num_links ) {
+		return -1;
+	}
+
+	if( hmc->devs[dev].links[link].type != HMC_LINK_HOST_DEV ){
+		/* 
+	 	 * oops, I'm not connected to this link 
+		 *
+		 */
+		return -1;	
+	}
+
+	/* 
+	 * ok, sanity check complete; 
+	 * go walk the response queues associated
+	 * with the target device+link combo
+	 * 
+	 * If nothing is found, return a stall signal
+	 * 
+	 */	
+	while( (found != 1 ) && ( i < hmc->xbar_depth ) ){
+
+		if( hmc->devs[dev].xbar[link].xbar_rsp[i].valid == HMC_RQST_VALID ){
+
+			/* 
+			 * found a good response 
+			 *
+		 	 */
+		
+			target = i;
+			found = 1;
+		}
+
+		i++;
+	}
+
+	if( target ==  hmc->xbar_depth ){
+		/* 
+		 * no responses found
+		 * 
+		 */
+		return HMC_STALL;
+	}
+
+	/* -- else, pull the response and clear the queue entry */
+	for( i=0; i<HMC_MAX_UQ_PACKET; i++ ){
+		packet[i]	= hmc->devs[dev].xbar[link].xbar_rsp[i].packet[i];
+	}
+
+	hmc->devs[dev].xbar[link].xbar_rsp[target].valid = HMC_RQST_INVALID;
 
 	return 0;
 }
