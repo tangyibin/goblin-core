@@ -4,6 +4,8 @@ CC=gcc
 INC=-I./include/
 CFLAGS=-O2 -Wall -g $(INC) 
 
+DOXYGEN=`which doxygen`
+
 AR=ar
 AROPTS=rcs
 
@@ -17,6 +19,8 @@ LIBOBJS=$(SRC)/hmc_init.o $(SRC)/hmc_mem.o $(SRC)/hmc_config_devs.o\
 .PHONY : test
 
 all: libhmcsim.a
+docs:
+	$(DOXYGEN) ./doxygen/hmc_sim.cfg
 libhmcsim.a: 
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_init.o $(SRC)/hmc_init.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_mem.o $(SRC)/hmc_mem.c
@@ -29,7 +33,9 @@ libhmcsim.a:
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_config_devs.o $(SRC)/hmc_config_devs.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_clock.o $(SRC)/hmc_clock.c
 	$(AR) $(AROPTS) $@ $(LIBOBJS)
-clean:
+doclean:
+	rm -Rf ./doxygen/{html,latex,man,rtf}
+clean: doclean
 	rm -Rf ./src/*.o ./libhmcsim.a
 test: 
 	make -C ./test/
