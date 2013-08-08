@@ -90,6 +90,7 @@ extern int	hmcsim_free( struct hmcsim_t *hmc );
 	\param dest_link is the link ID of the destination link 
 	\param type is one of HMC_LINK_HOST_DEV or HMC_LINK_DEV_DEV
 	\return 0 on success, nonzero otherwise
+*/
 extern int	hmcsim_link_config( struct hmcsim_t *hmc, 
 					uint32_t src_dev,
 					uint32_t dest_dev, 
