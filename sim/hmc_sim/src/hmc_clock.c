@@ -25,8 +25,12 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 {
 	/* vars */
 	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t found	= 0;
 	uint32_t success= 0;
 	uint32_t len	= 0;
+	uint32_t t_link	= 0;
+	uint32_t t_slot	= 0;
 	uint8_t	cub	= 0;
 	uint8_t plink	= 0;
 	uint64_t header	= 0x00ll;
@@ -91,6 +95,17 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 				 * local request
 				 *
 				 */
+				
+				/* 
+				 * 7a: Retrieve the vault id
+				 * 
+				 */
+				
+				/* 
+				 * 8a: Search the vault queue for valid slot
+				 * 
+				 */
+
 			}else{
 
 				/* 
@@ -98,6 +113,83 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 				 *
 				 */
 
+				/* 
+				 * Stage 7b: Decide whether cub is accessible
+				 * 
+				 */
+				found = 0;
+	
+				while( (found != 1) && (j<hmc->num_links) ){ 
+					
+					if( hmc->devs[dev].links[j].dest_cub == cub ){ 
+						found = 1;
+						t_link = j;
+					}
+
+					j++;
+				}
+
+				if( found == 0 ){ 
+					/* 
+					 * oh snap! can't route to that CUB
+					 *
+					 */
+					/* -- TODO, RETURN AN ERROR */
+				}else{ 
+					/* 
+					 * 8b: routing is good, look for an empty slot
+					 * in the target xbar link queue
+					 *
+					 */
+					t_slot = hmc->xbar_depth+1;
+					for( j=hmc->xbar_depth-1; j>= 0; j-- ){
+	
+						/* 
+						 * walk the queue from the bottom
+						 * up
+						 */			
+						if( hmc->devs[cub].xbar[t_link].xbar_rqst[j].valid == 
+							HMC_RQST_INVALID ) {
+							t_slot = j;
+						}
+					}
+
+					/* 
+				 	 * 9b: If available, insert into remote xbar slot 
+					 * 
+					 */
+					if( t_slot == hmc->xbar_depth+1 ){
+						/* 
+						 * STALL!
+						 *
+						 */
+						success = 0;
+					}else {
+						/* 
+						 * put the new link in the link field
+						 *  
+						 */
+						 hmc->devs[dev].xbar[link].xbar_rqst[i].packet[len-1] |= 
+										((uint64_t)(plink)<<24);
+
+						/* 
+						 * transfer the packet to the target slot
+						 * 
+						 */
+						hmc->devs[cub].xbar[t_link].xbar_rqst[t_slot].valid = 
+							HMC_RQST_VALID;	
+						for( j=0; j<HMC_MAX_UQ_PACKET; j++ ){ 
+							hmc->devs[cub].xbar[t_link].xbar_rqst[t_slot].packet[j] = 
+							hmc->devs[dev].xbar[link].xbar_rqst[i].packet[j];
+						}	
+
+						/* 
+						 * signal success
+						 *
+						 */
+						success = 1;
+					}
+				}
 			}
 
 			if( success == 1 ){ 
