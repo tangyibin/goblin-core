@@ -107,6 +107,12 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 
 	hmc->clk	= 0x00ll;
 
+	if( num_links == 4 ){ 
+		hmc->num_quads = 4;
+	}else{ 
+		hmc->num_quads = 8;
+	}
+
 	/* 
 	 * pointers
 	 */

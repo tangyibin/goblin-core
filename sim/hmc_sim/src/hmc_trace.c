@@ -13,6 +13,24 @@
 #include <string.h>
 #include "hmc_sim.h"
 
+/* ----------------------------------------------------- HMCSIM_TRACE */
+/* 
+ * HMCSIM_TRACE
+ * 
+ */
+extern int	hmcsim_trace( struct hmcsim_t *hmc, char *str )
+{
+	if( hmc->tfile == NULL ){ 
+		return -1;
+	}	
+
+	fprintf( hmc->tfile, "%s%lld%s%s\n", 	"HMCSIM_TRACE : ", 
+					hmc->clk, 
+					" : ", 
+					str );
+
+	return 0;
+}
 
 /* ----------------------------------------------------- HMCSIM_TRACE_LEVEL */
 /* 
