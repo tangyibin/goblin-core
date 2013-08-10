@@ -152,6 +152,7 @@ struct hmcsim_t{
 
 	uint32_t num_devs;		/*! HMC-SIM: HMCSIM_T: NUMBER OF DEVICES */ 
 	uint32_t num_links;		/*! HMC-SIM: HMCSIM_T: LINKS PER DEVICE */	
+	uint32_t num_quads;		/*! HMC-SIM: HCMSIM_T: QUADS PER DEVICE */
 	uint32_t num_vaults;		/*! HMC-SIM: HMCSIM_T: VAULTS PER DEVICE */
 	uint32_t num_banks;		/*! HMC-SIM: HMCSIM_T: BANKS PER VAULT */
 	uint32_t num_drams;		/*! HMC-SIM: HMCSIM_T: DRAMS PER BANK */

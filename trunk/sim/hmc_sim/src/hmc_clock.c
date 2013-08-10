@@ -14,6 +14,9 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- FUNCTION PROTOTYPES */
+extern int hmcsim_trace( struct hmcsim_t *hmc, char *str );
+
 /* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RQST_QUEUE */
 /* 
  * HMCSIM_CLOCK_PROCESS_RQST_QUEUE
@@ -31,6 +34,8 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 	uint32_t len	= 0;
 	uint32_t t_link	= 0;
 	uint32_t t_slot	= 0;
+	uint32_t t_quad = 0;
+	uint32_t t_vault= hmc->queue_depth+1;
 	uint8_t	cub	= 0;
 	uint8_t plink	= 0;
 	uint64_t header	= 0x00ll;
@@ -100,11 +105,44 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 				 * 7a: Retrieve the vault id
 				 * 
 				 */
-				
+				/* TODO: RETRIEVE THE VAULT FROM THE ADDRESS */
+				t_vault = 0;
+
 				/* 
-				 * 8a: Search the vault queue for valid slot
+				 * 8a: Retrieve the quad id
 				 * 
 				 */
+				t_quad = plink % hmc->num_quads;
+					
+				
+				/* 
+				 * 9a: Search the vault queue for valid slot
+				 *     Search bottom-up
+				 * 
+				 */
+				t_slot = hmc->queue_depth+1;
+
+				for( j=hmc->queue_depth-1; j>=0; j-- ){
+					if( hmc->devs[dev].quads[t_quad].vaults[t_vault].rqst_queue[j].valid == HMC_RQST_INVALID ){
+						t_slot = j;	
+					}
+				}
+
+				if( t_slot == hmc->queue_depth+1 ){ 
+					/* STALL */
+				}else {
+
+					/*
+					 * push it into the designated queue slot
+					 * 
+					 */
+					hmc->devs[dev].quads[t_quad].vaults[t_vault].rqst_queue[t_slot].valid = HMC_RQST_VALID;
+					for( j=0; j<HMC_MAX_UQ_PACKET; j++ ){ 
+						hmc->devs[dev].quads[t_quad].vaults[t_vault].rqst_queue[t_slot].packet[j] = 
+							hmc->devs[dev].xbar[link].xbar_rqst[i].packet[j];
+					}
+
+				}
 
 			}else{
 

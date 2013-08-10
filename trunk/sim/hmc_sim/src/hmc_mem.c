@@ -104,7 +104,7 @@ extern int	hmcsim_allocate_memory( struct hmcsim_t *hmc )
 		return -1;
 	}
 
-	hmc->__ptr_quads = malloc( sizeof( struct hmc_quad_t ) * hmc->num_devs * hmc->num_links );
+	hmc->__ptr_quads = malloc( sizeof( struct hmc_quad_t ) * hmc->num_devs * hmc->num_quads );
 	if( hmc->__ptr_quads == NULL ) { 
 		return -1;
 	}

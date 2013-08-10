@@ -255,7 +255,7 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 
 		}
 	
-		cur_quad+=4;
+		cur_quad+=hmc->num_quads;
 	}	
 
 	return 0;
