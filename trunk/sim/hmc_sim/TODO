@@ -1,9 +1,12 @@
 - build funtions to send/recv packets
   -- DONE
 - build functions to dump trace info 
+  -- DONE
 - build internal routing info for dev to dev xfers
   -- DONE: handled in hmcsim_clock
 - decode bank to dram association 
 - add function to simulate "clock"
   -- in progress: need to finish the xbar section; then add the finish the top-level stages
+- add functions and handlers for HMC internal registers  
+
 
