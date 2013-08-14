@@ -319,9 +319,111 @@ static int hmcsim_clock_child_xbar( struct hmcsim_t *hmc )
  */
 static int hmcsim_clock_root_xbar( struct hmcsim_t *hmc )
 {
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t host_l	= 0;
+	/* ---- */
+
+	/* 
+	 * walk each device and interpret the links
+	 * if you find a HOST link, no dice. 
+	 * otherwise, process the xbar queues
+	 * 
+	 */
+	for( i=0; i<hmc->num_devs; i++ ){ 
+		
+		/* 
+		 * walk the links
+	 	 * 
+	 	 */
+		
+		for( j=0; j<hmc->num_links; j++ ){ 
+			
+			if( hmc->devs[i].links[j].type == HMC_LINK_HOST_DEV ){ 
+				host_l++;
+			}
+
+		}
+
+		/* 
+		 * if no host links found, process the queues
+	 	 *
+		 */
+		if( host_l != 0 ) {
+
+			/* 
+			 * walk the xbar queues and process the 
+			 * incoming packets
+			 *
+			 */
+			for( j=0; j<hmc->num_links; j++ ){ 
+
+				hmcsim_clock_process_rqst_queue( hmc, i, j );
+
+			}		
+		}
+
+		/* 
+		 * reset the host links
+		 *
+		 */
+		host_l	= 0;
+	}
+
 	return 0;
 }
 
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_BANK_CONFLICTS */
+/* 
+ * HMCSIM_CLOCK_BANK_CONFLICTS
+ * 
+ */
+static int hmcsim_clock_bank_conflicts( struct hmcsim_t *hmc )
+{
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	/* ---- */
+
+	/* 
+	 * Walk each device+vault combination
+	 * and examination the request queues for 
+	 * bank conflicts
+	 * 
+ 	 */
+	for( i=0; i<hmc->num_devs; i++){ 
+		for( j=0; j<hmc->num_vaults; j++ ){
+
+			
+
+		}
+	}
+	
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_RW_OPS */
+/* 
+ * HMCSIM_CLOCK_RW_OPS
+ * 
+ */
+static int hmcsim_clock_rw_ops( struct hmcsim_t *hmc )
+{
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_REG_RESPONSES */
+/* 
+ * HMCSIM_CLOCK_REG_RESPONSES
+ * 
+ */
+static int hmcsim_clock_reg_responses( struct hmcsim_t *hmc )
+{
+	return 0;
+}
 
 /* ----------------------------------------------------- HMCSIM_CLOCK */
 /* 
@@ -330,9 +432,6 @@ static int hmcsim_clock_root_xbar( struct hmcsim_t *hmc )
  */
 extern int	hmcsim_clock( struct hmcsim_t *hmc )
 {
-	/* vars */
-	/* ---- */
-
 	/* 
 	 * sanity check 
 	 * 
@@ -342,7 +441,7 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	}
 
 	/* 
-	 * Walk all the devices one by one
+	 * Overview of the clock handler structure 
 	 * 
 	 * Stage 1: Walk all the child devices and drain
 	 * 	    their xbars
@@ -376,6 +475,33 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 * 
 	 */
 	if( hmcsim_clock_root_xbar( hmc ) != 0 ){
+		return -1;
+	}
+
+	/* 
+	 * Stage 3: Walk the vault queues and identify
+	 *          bank conflicts
+	 * 
+	 */
+	if( hmcsim_clock_bank_conflicts( hmc ) != 0 ){
+		return -1;
+	}
+
+	/* 
+	 * Stage 4: Walk the vault queues and perform
+	 *          read and write operations
+	 * 
+	 */
+	if( hmcsim_clock_rw_ops( hmc ) != 0 ){
+		return -1;
+	}
+
+	/* 
+	 * Stage 5: Register any responses 
+	 *          with the crossbar
+	 * 
+	 */
+	if( hmcsim_clock_reg_responses( hmc ) != 0 ){ 
 		return -1;
 	}
 
