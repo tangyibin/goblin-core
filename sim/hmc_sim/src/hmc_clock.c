@@ -385,19 +385,28 @@ static int hmcsim_clock_bank_conflicts( struct hmcsim_t *hmc )
 	/* vars */
 	uint32_t i	= 0;
 	uint32_t j	= 0;
+	uint32_t k	= 0;
+	uint32_t x	= 0;
 	/* ---- */
 
 	/* 
 	 * Walk each device+vault combination
-	 * and examination the request queues for 
+	 * and examine the request queues for 
 	 * bank conflicts
 	 * 
  	 */
 	for( i=0; i<hmc->num_devs; i++){ 
-		for( j=0; j<hmc->num_vaults; j++ ){
-
-			
-
+		for( j=0; j<hmc->num_quads; j++ ){
+			for( k=0; j<hmc->num_vaults; k++ ){ 
+				for( x=0; x<(hmc->queue_depth-1); x++ ){
+					//if( ){
+						/* 
+						 * bank conflict exists
+						 *
+						 */
+					//}
+				}
+			}
 		}
 	}
 	
