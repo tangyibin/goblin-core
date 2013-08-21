@@ -8,5 +8,5 @@
 - add function to simulate "clock"
   -- in progress: need to finish the xbar section; then add the finish the top-level stages
 - add functions and handlers for HMC internal registers  
-
+- finalize the bank conflict methdology in hmc_clock_bank_conflicts from hmc_clock.c
 
