@@ -29,6 +29,11 @@ typedef enum{
 	HMC_LINK_HOST_DEV		/*! HMC-SIM: HMC_LINK_DEF_T: HOST TO DEVICE LINK */
 }hmc_link_def_t;
 
+typedef enum{
+	HMC_RW,				/*! HMC-SIM: HMC_REG_DEF_T: READ+WRITE REGISTER */
+	HMC_RO,				/*! HMC-SIM: HMC_REG_DEF_T: READ-ONLY REGISTER */
+	HMC_RWS				/*! HMC-SIM: HMC_REG_DEF_T: CLEAR ON WRITE REGISTER */
+}hmc_reg_def_t;
 
 typedef enum{
 	RD_RS, 				/*! HMC-SIM: HMC_RESPONSE_T: READ RESPONSE */
@@ -133,17 +138,25 @@ struct hmc_xbar_t{
 	struct hmc_queue_t *xbar_rsp;	/*! HMC-SIM: HMC_XBAR_T: CROSSBAR RESPONSE QUEUE */
 };
 
+struct hmc_reg_t{
+	hmc_reg_def_t	type;		/*! HMC-SIM: HMC_REG_T: REGISTER TYPE */
+	uint64_t	phy_idx;	/*! HMC-SIM: HMC_REG_T: REGISTER PHYSICAL DEVICE INDEX */
+	uint64_t	reg;		/*! HMC-SIM: HMC_REG_T: REGISTER STORAGE */
+};
+
 struct hmc_dev_t{
 
-	struct hmc_link_t *links;	/* HMC-SIM: HMC_DEV_T: LINK STRUCTURE */
+	struct hmc_link_t *links;		/* HMC-SIM: HMC_DEV_T: LINK STRUCTURE */
 	
-	struct hmc_quad_t *quads;	/*! HMC-SIM: HMC_DEV_T: QUADRANT STRUCTURE */
+	struct hmc_quad_t *quads;		/*! HMC-SIM: HMC_DEV_T: QUADRANT STRUCTURE */
 	
-	struct hmc_xbar_t *xbar;	/*! HMC-SIM: HMC_DEV_T: CROSSBAR STRUCTURE */
+	struct hmc_xbar_t *xbar;		/*! HMC-SIM: HMC_DEV_T: CROSSBAR STRUCTURE */
 
-	uint32_t id;			/*! HMC-SIM: HMC_DEV_T: CUBE ID */
+	struct hmc_reg_t regs[HMC_NUM_REGS];	/*! HMC-SIM: HMC_DEV_T: DEVICE CONFIGURATION REGISTERS */
+	
+	uint32_t id;				/*! HMC-SIM: HMC_DEV_T: CUBE ID */
 
-	uint8_t seq;			/*! HMC-SIM: HMC_DEV_T: SEQUENCE NUMBER */
+	uint8_t seq;				/*! HMC-SIM: HMC_DEV_T: SEQUENCE NUMBER */
 };
 
 struct hmcsim_t{
