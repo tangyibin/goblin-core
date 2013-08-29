@@ -15,6 +15,7 @@ GASMOBJS=$(SRC)/gasm_main.o $(SRC)/gasm_row.o $(SRC)/gasm_parser.o $(SRC)/gasm_i
 GSIMOBJS=$(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o
 
 all: libgsim.a libhmcsim.a goblin-sim gasm
+docs:
 libhmcsim.a:
 	make -C ./hmc_sim/
 libgsim.a: 

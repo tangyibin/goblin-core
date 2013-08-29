@@ -18,4 +18,5 @@ LEX=flex
 LEX_OPTS=-Pgsim
 YACC=yacc
 
+DOXYGEN=`which doxygen`
 #-- EOF 
