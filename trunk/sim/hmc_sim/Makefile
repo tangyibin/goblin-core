@@ -39,7 +39,7 @@ libhmcsim.a:
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_jtag.o $(SRC)/hmc_jtag.c
 	$(AR) $(AROPTS) $@ $(LIBOBJS)
 doclean:
-	rm -Rf ./doxygen/{html,latex,man,rtf}
+	rm -Rf ./doxygen/{html,latex,man,rtf,xml}
 clean: doclean
 	rm -Rf ./src/*.o ./libhmcsim.a
 test: 
