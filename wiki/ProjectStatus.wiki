@@ -14,6 +14,7 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
   * *Binutils* : current binutils support is provided by GNU binutils 2.23.2.  Note: Binutils references Goblin-Core as "gc64".  This will be consistent across other tools as well.  I've added the necessary BFD, GAS, et.al files, but I have yet to complete the code necessary to have a working binutils toolkit.  This will be an ongoing effort as I finalize the ABI.   
   * *HMC Simulator* : The Hybrid Memory Cube [HMC] simulator library is being developed alongside GC64 in order allow us to do novel research of virtual-to-physical memory translation techniques, relocatable VM layer techniques, bandwidth/latency characterization and HMC topologies.  This library is meant to stand separate in the event that others find it useful.   
   * *Addressing* : Added physical address format [PhysicalMemoryFormat].  Working on virtual address format and virtual to physical translation.
+  * *Documentation* : HMC-Sim API documentation has been posted.  See the [Documentation] page. 
 
 = In Planning = 
   * *Compiler/Optimizer* : Given its deliberate ability to port to new targets, I've chosen LLVM as our candidate compiler+optimizer suite.  I hope to work with Preston Briggs from UWash on his efforts to build Tera MTA-C style parallelization optimizations into LLVM.  More info on this can be found here: https://sites.google.com/site/parallelizationforllvm/loop-transforms
