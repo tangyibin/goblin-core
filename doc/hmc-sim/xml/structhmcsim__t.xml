@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmcsim__t" kind="struct" prot="public">
+    <compoundname>hmcsim_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmcsim__t_1ab9a3966aeabbbad413871979d4694235" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__dev__t" kindref="compound">hmc_dev_t</ref> *</type>
+        <definition>struct hmc_dev_t* hmcsim_t::devs</definition>
+        <argsstring></argsstring>
+        <name>devs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="164" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1aa11e7edf3811b43bcb5e624d2b83dbf6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::num_devs</definition>
+        <argsstring></argsstring>
+        <name>num_devs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: DEVICE STRUCTURES </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="166" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1ad248f0930675a283bdcf821a68703dc3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::num_links</definition>
+        <argsstring></argsstring>
+        <name>num_links</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: NUMBER OF DEVICES </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="167" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a39422582c1c7e0a3b0787b5209887329" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::num_quads</definition>
+        <argsstring></argsstring>
+        <name>num_quads</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: LINKS PER DEVICE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="168" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a66fb8d5d598a7fbceefaad3dd96ec6e0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::num_vaults</definition>
+        <argsstring></argsstring>
+        <name>num_vaults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HCMSIM_T: QUADS PER DEVICE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="169" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1aeb143d0d648144e4daa22d96e395da5c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::num_banks</definition>
+        <argsstring></argsstring>
+        <name>num_banks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: VAULTS PER DEVICE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="170" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a8243c603f7ab323024fd6342c6f856de" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::num_drams</definition>
+        <argsstring></argsstring>
+        <name>num_drams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: BANKS PER VAULT </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="171" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a9471a6617d601750cdbd6db48487a66f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: DRAMS PER BANK </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="172" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a30a69481d824b545c762af1a870a9ec1" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::queue_depth</definition>
+        <argsstring></argsstring>
+        <name>queue_depth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: CAPACITY PER DEVICE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="174" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a9ee666483d49753bf9432eb42fab73eb" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::xbar_depth</definition>
+        <argsstring></argsstring>
+        <name>xbar_depth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="175" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a95541b8744b316387f4eaa026f405e97" prot="public" static="no" mutable="no">
+        <type>FILE *</type>
+        <definition>FILE* hmcsim_t::tfile</definition>
+        <argsstring></argsstring>
+        <name>tfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="177" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a538d618819d1aea568265c4573673265" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmcsim_t::tracelevel</definition>
+        <argsstring></argsstring>
+        <name>tracelevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: TRACE FILE HANDLER </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="178" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a88d9cee2bbc19b8d4b650a9562090366" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hmcsim_t::seq</definition>
+        <argsstring></argsstring>
+        <name>seq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: TRACE LEVEL </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="180" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1afbe3d57099fff20f474d2303fdd599cc" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hmcsim_t::clk</definition>
+        <argsstring></argsstring>
+        <name>clk</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HCMSIM_T: SEQUENCE NUMBER </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="182" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a53692f7358387116e3f506142d5c2029" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__dev__t" kindref="compound">hmc_dev_t</ref> *</type>
+        <definition>struct hmc_dev_t* hmcsim_t::__ptr_devs</definition>
+        <argsstring></argsstring>
+        <name>__ptr_devs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMCSIM_T: CLOCK TICK </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="184" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a29b50f27d4b8dce64cf8745f924c5d92" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__quad__t" kindref="compound">hmc_quad_t</ref> *</type>
+        <definition>struct hmc_quad_t* hmcsim_t::__ptr_quads</definition>
+        <argsstring></argsstring>
+        <name>__ptr_quads</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="185" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a61f351db37f8cc92ecf0d0bd7b0fd012" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__vault__t" kindref="compound">hmc_vault_t</ref> *</type>
+        <definition>struct hmc_vault_t* hmcsim_t::__ptr_vaults</definition>
+        <argsstring></argsstring>
+        <name>__ptr_vaults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="186" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a1b31d84161ee5990b1ae9ff5f86514a6" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__bank__t" kindref="compound">hmc_bank_t</ref> *</type>
+        <definition>struct hmc_bank_t* hmcsim_t::__ptr_banks</definition>
+        <argsstring></argsstring>
+        <name>__ptr_banks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="187" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a5c940e6ad950d96e40dbbf2fd704b5a1" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__dram__t" kindref="compound">hmc_dram_t</ref> *</type>
+        <definition>struct hmc_dram_t* hmcsim_t::__ptr_drams</definition>
+        <argsstring></argsstring>
+        <name>__ptr_drams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="188" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a04458dd6cdbe6f185c9466da46df93e7" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__link__t" kindref="compound">hmc_link_t</ref> *</type>
+        <definition>struct hmc_link_t* hmcsim_t::__ptr_links</definition>
+        <argsstring></argsstring>
+        <name>__ptr_links</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="189" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a414de975dfa4cbea324a2027fa0fb827" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__xbar__t" kindref="compound">hmc_xbar_t</ref> *</type>
+        <definition>struct hmc_xbar_t* hmcsim_t::__ptr_xbars</definition>
+        <argsstring></argsstring>
+        <name>__ptr_xbars</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="190" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a1555210a0af65b6d8423e12a9193558c" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref> *</type>
+        <definition>struct hmc_queue_t* hmcsim_t::__ptr_xbar_rqst</definition>
+        <argsstring></argsstring>
+        <name>__ptr_xbar_rqst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="191" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1abfda44fc9ce14999ff7c001bcfbe62a6" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref> *</type>
+        <definition>struct hmc_queue_t* hmcsim_t::__ptr_xbar_rsp</definition>
+        <argsstring></argsstring>
+        <name>__ptr_xbar_rsp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="192" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a2cf06bc83b201dd13b424f96b6a51624" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref> *</type>
+        <definition>struct hmc_queue_t* hmcsim_t::__ptr_vault_rqst</definition>
+        <argsstring></argsstring>
+        <name>__ptr_vault_rqst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="193" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a2c167080c1820d24ba27d0d11d5a319f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref> *</type>
+        <definition>struct hmc_queue_t* hmcsim_t::__ptr_vault_rsp</definition>
+        <argsstring></argsstring>
+        <name>__ptr_vault_rsp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="194" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmcsim__t_1a1fa5c9f8744ebd8f963abdb010825f1c" prot="public" static="no" mutable="no">
+        <type>uint64_t *</type>
+        <definition>uint64_t* hmcsim_t::__ptr_stor</definition>
+        <argsstring></argsstring>
+        <name>__ptr_stor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="195" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="37">
+        <label>hmc_quad_t</label>
+        <link refid="structhmc__quad__t"/>
+        <childnode refid="38" relation="usage">
+          <edgelabel>vaults</edgelabel>
+        </childnode>
+      </node>
+      <node id="45">
+        <label>hmc_link_t</label>
+        <link refid="structhmc__link__t"/>
+      </node>
+      <node id="39">
+        <label>hmc_bank_t</label>
+        <link refid="structhmc__bank__t"/>
+        <childnode refid="40" relation="usage">
+          <edgelabel>drams</edgelabel>
+        </childnode>
+      </node>
+      <node id="42">
+        <label>hmc_dev_t</label>
+        <link refid="structhmc__dev__t"/>
+        <childnode refid="43" relation="usage">
+          <edgelabel>regs</edgelabel>
+        </childnode>
+        <childnode refid="37" relation="usage">
+          <edgelabel>quads</edgelabel>
+        </childnode>
+        <childnode refid="44" relation="usage">
+          <edgelabel>xbar</edgelabel>
+        </childnode>
+        <childnode refid="45" relation="usage">
+          <edgelabel>links</edgelabel>
+        </childnode>
+      </node>
+      <node id="44">
+        <label>hmc_xbar_t</label>
+        <link refid="structhmc__xbar__t"/>
+        <childnode refid="41" relation="usage">
+          <edgelabel>xbar_rqst</edgelabel>
+          <edgelabel>xbar_rsp</edgelabel>
+        </childnode>
+      </node>
+      <node id="41">
+        <label>hmc_queue_t</label>
+        <link refid="structhmc__queue__t"/>
+      </node>
+      <node id="36">
+        <label>hmcsim_t</label>
+        <link refid="structhmcsim__t"/>
+        <childnode refid="37" relation="usage">
+          <edgelabel>__ptr_quads</edgelabel>
+        </childnode>
+        <childnode refid="40" relation="usage">
+          <edgelabel>__ptr_drams</edgelabel>
+        </childnode>
+        <childnode refid="38" relation="usage">
+          <edgelabel>__ptr_vaults</edgelabel>
+        </childnode>
+        <childnode refid="42" relation="usage">
+          <edgelabel>__ptr_devs</edgelabel>
+          <edgelabel>devs</edgelabel>
+        </childnode>
+        <childnode refid="44" relation="usage">
+          <edgelabel>__ptr_xbars</edgelabel>
+        </childnode>
+        <childnode refid="45" relation="usage">
+          <edgelabel>__ptr_links</edgelabel>
+        </childnode>
+        <childnode refid="39" relation="usage">
+          <edgelabel>__ptr_banks</edgelabel>
+        </childnode>
+        <childnode refid="41" relation="usage">
+          <edgelabel>__ptr_xbar_rsp</edgelabel>
+          <edgelabel>__ptr_xbar_rqst</edgelabel>
+          <edgelabel>__ptr_vault_rsp</edgelabel>
+          <edgelabel>__ptr_vault_rqst</edgelabel>
+        </childnode>
+      </node>
+      <node id="40">
+        <label>hmc_dram_t</label>
+        <link refid="structhmc__dram__t"/>
+      </node>
+      <node id="43">
+        <label>hmc_reg_t</label>
+        <link refid="structhmc__reg__t"/>
+      </node>
+      <node id="38">
+        <label>hmc_vault_t</label>
+        <link refid="structhmc__vault__t"/>
+        <childnode refid="39" relation="usage">
+          <edgelabel>banks</edgelabel>
+        </childnode>
+        <childnode refid="41" relation="usage">
+          <edgelabel>rsp_queue</edgelabel>
+          <edgelabel>rqst_queue</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="162" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="162" bodyend="196"/>
+    <listofallmembers>
+      <member refid="structhmcsim__t_1a1b31d84161ee5990b1ae9ff5f86514a6" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_banks</name></member>
+      <member refid="structhmcsim__t_1a53692f7358387116e3f506142d5c2029" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_devs</name></member>
+      <member refid="structhmcsim__t_1a5c940e6ad950d96e40dbbf2fd704b5a1" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_drams</name></member>
+      <member refid="structhmcsim__t_1a04458dd6cdbe6f185c9466da46df93e7" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_links</name></member>
+      <member refid="structhmcsim__t_1a29b50f27d4b8dce64cf8745f924c5d92" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_quads</name></member>
+      <member refid="structhmcsim__t_1a1fa5c9f8744ebd8f963abdb010825f1c" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_stor</name></member>
+      <member refid="structhmcsim__t_1a2cf06bc83b201dd13b424f96b6a51624" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_vault_rqst</name></member>
+      <member refid="structhmcsim__t_1a2c167080c1820d24ba27d0d11d5a319f" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_vault_rsp</name></member>
+      <member refid="structhmcsim__t_1a61f351db37f8cc92ecf0d0bd7b0fd012" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_vaults</name></member>
+      <member refid="structhmcsim__t_1a1555210a0af65b6d8423e12a9193558c" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_xbar_rqst</name></member>
+      <member refid="structhmcsim__t_1abfda44fc9ce14999ff7c001bcfbe62a6" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_xbar_rsp</name></member>
+      <member refid="structhmcsim__t_1a414de975dfa4cbea324a2027fa0fb827" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>__ptr_xbars</name></member>
+      <member refid="structhmcsim__t_1a9471a6617d601750cdbd6db48487a66f" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>capacity</name></member>
+      <member refid="structhmcsim__t_1afbe3d57099fff20f474d2303fdd599cc" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>clk</name></member>
+      <member refid="structhmcsim__t_1ab9a3966aeabbbad413871979d4694235" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>devs</name></member>
+      <member refid="structhmcsim__t_1aeb143d0d648144e4daa22d96e395da5c" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>num_banks</name></member>
+      <member refid="structhmcsim__t_1aa11e7edf3811b43bcb5e624d2b83dbf6" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>num_devs</name></member>
+      <member refid="structhmcsim__t_1a8243c603f7ab323024fd6342c6f856de" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>num_drams</name></member>
+      <member refid="structhmcsim__t_1ad248f0930675a283bdcf821a68703dc3" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>num_links</name></member>
+      <member refid="structhmcsim__t_1a39422582c1c7e0a3b0787b5209887329" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>num_quads</name></member>
+      <member refid="structhmcsim__t_1a66fb8d5d598a7fbceefaad3dd96ec6e0" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>num_vaults</name></member>
+      <member refid="structhmcsim__t_1a30a69481d824b545c762af1a870a9ec1" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>queue_depth</name></member>
+      <member refid="structhmcsim__t_1a88d9cee2bbc19b8d4b650a9562090366" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>seq</name></member>
+      <member refid="structhmcsim__t_1a95541b8744b316387f4eaa026f405e97" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>tfile</name></member>
+      <member refid="structhmcsim__t_1a538d618819d1aea568265c4573673265" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>tracelevel</name></member>
+      <member refid="structhmcsim__t_1a9ee666483d49753bf9432eb42fab73eb" prot="public" virt="non-virtual"><scope>hmcsim_t</scope><name>xbar_depth</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

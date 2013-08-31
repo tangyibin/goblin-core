@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmc__quad__t" kind="struct" prot="public">
+    <compoundname>hmc_quad_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmc__quad__t_1aecf435c5296822d32f0290bf66d5daba" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__vault__t" kindref="compound">hmc_vault_t</ref> *</type>
+        <definition>struct hmc_vault_t* hmc_quad_t::vaults</definition>
+        <argsstring></argsstring>
+        <name>vaults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="131" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__quad__t_1ac94f470ec6f4729b452f2aae902f3e53" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_quad_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_QUAD_T: VAULT STRUCTURE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="133" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="18">
+        <label>hmc_quad_t</label>
+        <link refid="structhmc__quad__t"/>
+        <childnode refid="19" relation="usage">
+          <edgelabel>vaults</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>hmc_bank_t</label>
+        <link refid="structhmc__bank__t"/>
+        <childnode refid="21" relation="usage">
+          <edgelabel>drams</edgelabel>
+        </childnode>
+      </node>
+      <node id="22">
+        <label>hmc_queue_t</label>
+        <link refid="structhmc__queue__t"/>
+      </node>
+      <node id="21">
+        <label>hmc_dram_t</label>
+        <link refid="structhmc__dram__t"/>
+      </node>
+      <node id="19">
+        <label>hmc_vault_t</label>
+        <link refid="structhmc__vault__t"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>banks</edgelabel>
+        </childnode>
+        <childnode refid="22" relation="usage">
+          <edgelabel>rsp_queue</edgelabel>
+          <edgelabel>rqst_queue</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="129" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="129" bodyend="134"/>
+    <listofallmembers>
+      <member refid="structhmc__quad__t_1ac94f470ec6f4729b452f2aae902f3e53" prot="public" virt="non-virtual"><scope>hmc_quad_t</scope><name>id</name></member>
+      <member refid="structhmc__quad__t_1aecf435c5296822d32f0290bf66d5daba" prot="public" virt="non-virtual"><scope>hmc_quad_t</scope><name>vaults</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

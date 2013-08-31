@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmc__queue__t" kind="struct" prot="public">
+    <compoundname>hmc_queue_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmc__queue__t_1a918387a1b867fe1f6e1929254e547fc0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_queue_t::valid</definition>
+        <argsstring></argsstring>
+        <name>valid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="114" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hmc_queue_t::packet[HMC_MAX_UQ_PACKET]</definition>
+        <argsstring>[HMC_MAX_UQ_PACKET]</argsstring>
+        <name>packet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_QUEUE_T: VALID BIT </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="115" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="113" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="113" bodyend="116"/>
+    <listofallmembers>
+      <member refid="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" prot="public" virt="non-virtual"><scope>hmc_queue_t</scope><name>packet</name></member>
+      <member refid="structhmc__queue__t_1a918387a1b867fe1f6e1929254e547fc0" prot="public" virt="non-virtual"><scope>hmc_queue_t</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

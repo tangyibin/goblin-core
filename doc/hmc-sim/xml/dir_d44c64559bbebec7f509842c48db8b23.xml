@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="dir_d44c64559bbebec7f509842c48db8b23" kind="dir">
+    <compoundname>include</compoundname>
+    <innerfile refid="hmc__sim_8h">hmc_sim.h</innerfile>
+    <innerfile refid="hmc__sim__macros_8h">hmc_sim_macros.h</innerfile>
+    <innerfile refid="hmc__sim__types_8h">hmc_sim_types.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/"/>
+  </compounddef>
+</doxygen>

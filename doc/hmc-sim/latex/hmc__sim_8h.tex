@@ -1,0 +1,314 @@
+\hypertarget{hmc__sim_8h}{\section{include/hmc\-\_\-sim.h File Reference}
+\label{hmc__sim_8h}\index{include/hmc\-\_\-sim.\-h@{include/hmc\-\_\-sim.\-h}}
+}
+
+
+Hybrid Memory Cube Functional Simulation Library Header File.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{hmc__sim_8h_aa800472d739e996abc58805909ff66c1}{hmcsim\-\_\-init} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t num\-\_\-devs, uint32\-\_\-t num\-\_\-links, uint32\-\_\-t num\-\_\-vaults, uint32\-\_\-t queue\-\_\-depth, uint32\-\_\-t num\-\_\-banks, uint32\-\_\-t num\-\_\-drams, uint32\-\_\-t capacity, uint32\-\_\-t xbar\-\_\-depth)
+\begin{DoxyCompactList}\small\item\em Initializes the internal H\-M\-C\-\_\-\-S\-I\-M state with the necessary hardware configuration options. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a92976e293a2ab29a590d00eb4145a826}{hmcsim\-\_\-free} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc)
+\begin{DoxyCompactList}\small\item\em Frees all the internal memory structures associated with the target configuration. Does not free the memory at the $\ast$hmc pointer. \end{DoxyCompactList}\item 
+\hypertarget{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}{int {\bfseries hmcsim\-\_\-link\-\_\-config} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t src\-\_\-dev, uint32\-\_\-t dest\-\_\-dev, uint32\-\_\-t src\-\_\-link, uint32\-\_\-t dest\-\_\-link, hmc\-\_\-link\-\_\-def\-\_\-t type)}\label{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}
+
+\item 
+int \hyperlink{hmc__sim_8h_aa6538f5a29e5aa16903e55f7e6c3c3b9}{hmcsim\-\_\-trace\-\_\-handle} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, F\-I\-L\-E $\ast$tfile)
+\begin{DoxyCompactList}\small\item\em Sets the tracefile output file handle for tracing internal device operation. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_ab08eceb0130f5b1f0fa9bd8eb2419767}{hmcsim\-\_\-trace\-\_\-level} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t level)
+\begin{DoxyCompactList}\small\item\em Sets the trace level of an initialized H\-M\-C library instance. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a3b623425c27023df21ad382d79096f70}{hmcsim\-\_\-build\-\_\-memrequest} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint8\-\_\-t cub, uint64\-\_\-t addr, uint16\-\_\-t tag, hmc\-\_\-rqst\-\_\-t type, uint8\-\_\-t link, uint64\-\_\-t $\ast$payload, uint64\-\_\-t $\ast$rqst\-\_\-head, uint64\-\_\-t $\ast$rqst\-\_\-tail)
+\begin{DoxyCompactList}\small\item\em Builds a memory request packet with up to 9 F\-L\-I\-T\-S of data. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_aa1fcfa11c6a84e6881bcb3300264f27f}{hmcsim\-\_\-decode\-\_\-memresponse} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint64\-\_\-t $\ast$packet, uint64\-\_\-t $\ast$response\-\_\-head, uint64\-\_\-t $\ast$response\-\_\-tail, hmc\-\_\-response\-\_\-t $\ast$type, uint8\-\_\-t $\ast$length, uint16\-\_\-t $\ast$tag, uint8\-\_\-t $\ast$rtn\-\_\-tag, uint8\-\_\-t $\ast$src\-\_\-link, uint8\-\_\-t $\ast$rrp, uint8\-\_\-t $\ast$frp, uint8\-\_\-t $\ast$seq, uint8\-\_\-t $\ast$dinv, uint8\-\_\-t $\ast$errstat, uint8\-\_\-t $\ast$rtc, uint32\-\_\-t $\ast$crc)
+\begin{DoxyCompactList}\small\item\em Decodes a valid response packet with up to 9 F\-L\-I\-T\-S of data. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a12313ad659378fbf0f53e19ba6ee9eed}{hmcsim\-\_\-send} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint64\-\_\-t $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Attempts to send the target packet to an H\-M\-C device. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_ab2739ca92af423efe975b966492dfd7c}{hmcsim\-\_\-recv} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint32\-\_\-t link, uint64\-\_\-t $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Attempts to poll an H\-M\-C device for a response packet. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_af8f192a56096b22dc50827864b5334e9}{hmcsim\-\_\-clock} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc)
+\begin{DoxyCompactList}\small\item\em Instantiates a single leading edge and falling edge clock cycle on all devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Hybrid Memory Cube Functional Simulation Library Header File. The H\-M\-C\-\_\-\-S\-I\-M library is a standard C library that provides functional simulation support for an arbitrarily configured Hybrid Memory Cube device. This libraries enables users to experiment with various H\-M\-C configurations in order to perform research in available bandwidth, memory addressing, connectivity and general simulation archictecture. 
+
+\subsection{Function Documentation}
+\hypertarget{hmc__sim_8h_a3b623425c27023df21ad382d79096f70}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-build\-\_\-memrequest@{hmcsim\-\_\-build\-\_\-memrequest}}
+\index{hmcsim\-\_\-build\-\_\-memrequest@{hmcsim\-\_\-build\-\_\-memrequest}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-build\-\_\-memrequest}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-build\-\_\-memrequest (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint8\-\_\-t}]{cub, }
+\item[{uint64\-\_\-t}]{addr, }
+\item[{uint16\-\_\-t}]{tag, }
+\item[{hmc\-\_\-rqst\-\_\-t}]{type, }
+\item[{uint8\-\_\-t}]{link, }
+\item[{uint64\-\_\-t $\ast$}]{payload, }
+\item[{uint64\-\_\-t $\ast$}]{rqst\-\_\-head, }
+\item[{uint64\-\_\-t $\ast$}]{rqst\-\_\-tail}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a3b623425c27023df21ad382d79096f70}
+
+
+Builds a memory request packet with up to 9 F\-L\-I\-T\-S of data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em cub} & is the cube I\-D of a valid device. \\
+\hline
+{\em addr} & is the starting physical address of the required data block \\
+\hline
+{\em tag} & is the host-\/specified tag field to identify packets \\
+\hline
+{\em type} & is the request type. See hmc\-\_\-rqst\-\_\-t enumerated type definition. \\
+\hline
+{\em link} & the desingated transfer link I\-D \\
+\hline
+{\em $\ast$payload} & is a pointer to the data payload \mbox{[}for write operations\mbox{]} \\
+\hline
+{\em $\ast$rqst\-\_\-head} & is a pointer to an unsigned 8 byte location where the function shall return the completed packet request header in proper form. \\
+\hline
+{\em $\ast$rqst\-\_\-tail} & is a pointer to an unsigned 8 byte location where the function shall return the completed packet request tail in proper form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_af8f192a56096b22dc50827864b5334e9}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-clock@{hmcsim\-\_\-clock}}
+\index{hmcsim\-\_\-clock@{hmcsim\-\_\-clock}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-clock}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-clock (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_af8f192a56096b22dc50827864b5334e9}
+
+
+Instantiates a single leading edge and falling edge clock cycle on all devices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_aa1fcfa11c6a84e6881bcb3300264f27f}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-decode\-\_\-memresponse@{hmcsim\-\_\-decode\-\_\-memresponse}}
+\index{hmcsim\-\_\-decode\-\_\-memresponse@{hmcsim\-\_\-decode\-\_\-memresponse}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-decode\-\_\-memresponse}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-decode\-\_\-memresponse (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint64\-\_\-t $\ast$}]{packet, }
+\item[{uint64\-\_\-t $\ast$}]{response\-\_\-head, }
+\item[{uint64\-\_\-t $\ast$}]{response\-\_\-tail, }
+\item[{hmc\-\_\-response\-\_\-t $\ast$}]{type, }
+\item[{uint8\-\_\-t $\ast$}]{length, }
+\item[{uint16\-\_\-t $\ast$}]{tag, }
+\item[{uint8\-\_\-t $\ast$}]{rtn\-\_\-tag, }
+\item[{uint8\-\_\-t $\ast$}]{src\-\_\-link, }
+\item[{uint8\-\_\-t $\ast$}]{rrp, }
+\item[{uint8\-\_\-t $\ast$}]{frp, }
+\item[{uint8\-\_\-t $\ast$}]{seq, }
+\item[{uint8\-\_\-t $\ast$}]{dinv, }
+\item[{uint8\-\_\-t $\ast$}]{errstat, }
+\item[{uint8\-\_\-t $\ast$}]{rtc, }
+\item[{uint32\-\_\-t $\ast$}]{crc}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_aa1fcfa11c6a84e6881bcb3300264f27f}
+
+
+Decodes a valid response packet with up to 9 F\-L\-I\-T\-S of data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em $\ast$response\-\_\-head} & is a pointer to an unsigned 8 byte location where the function shall return the entire response packet header intact \\
+\hline
+{\em $\ast$response\-\_\-tail} & is a pointer to an unsigned 8 byte location where the function shall return the entire response packet tail intact \\
+\hline
+{\em $\ast$type} & is a pointer to a return type that specifies the return type of the packet \\
+\hline
+{\em $\ast$rtn\-\_\-tag} & is a pointer to an unsigned 8 bit integer that contains the return tag \\
+\hline
+{\em $\ast$src\-\_\-link} & is a pointer to an unsigned 8 bit integer that contains the source link I\-D \\
+\hline
+{\em $\ast$rrp} & is a pointer to an unsigned 8 bit integer that contains the contents of the R\-R\-P field \\
+\hline
+{\em $\ast$frp} & is a pointer to an unsigned 8 bit integer that contains the contents of the F\-R\-P field \\
+\hline
+{\em $\ast$seq} & is a pointer to an unsigned 8 bit integer that contains the sequence number \\
+\hline
+{\em $\ast$dinv} & is a pointer to an unsigned 8 bit integer that contains the contents of the D\-I\-N\-V field \\
+\hline
+{\em $\ast$errstat} & is a pointer to an unsigned 8 bit integer that contains the contents of the errstat field \\
+\hline
+{\em $\ast$rtc} & is a pointer to an unsigned 8 bit integer that contains the contents of the R\-T\-C field \\
+\hline
+{\em $\ast$crc} & is a pointer to an unsigned 32 bit integer that contains the C\-R\-C32 checksum \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a92976e293a2ab29a590d00eb4145a826}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-free@{hmcsim\-\_\-free}}
+\index{hmcsim\-\_\-free@{hmcsim\-\_\-free}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a92976e293a2ab29a590d00eb4145a826}
+
+
+Frees all the internal memory structures associated with the target configuration. Does not free the memory at the $\ast$hmc pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid hmc structure. Must not be null. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise. 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_aa800472d739e996abc58805909ff66c1}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-init@{hmcsim\-\_\-init}}
+\index{hmcsim\-\_\-init@{hmcsim\-\_\-init}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{num\-\_\-devs, }
+\item[{uint32\-\_\-t}]{num\-\_\-links, }
+\item[{uint32\-\_\-t}]{num\-\_\-vaults, }
+\item[{uint32\-\_\-t}]{queue\-\_\-depth, }
+\item[{uint32\-\_\-t}]{num\-\_\-banks, }
+\item[{uint32\-\_\-t}]{num\-\_\-drams, }
+\item[{uint32\-\_\-t}]{capacity, }
+\item[{uint32\-\_\-t}]{xbar\-\_\-depth}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_aa800472d739e996abc58805909ff66c1}
+
+
+Initializes the internal H\-M\-C\-\_\-\-S\-I\-M state with the necessary hardware configuration options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid hmc structure. Must not be null. \\
+\hline
+{\em num\-\_\-devs} & is the number of target H\-M\-C devices in the configuration \\
+\hline
+{\em num\-\_\-links} & is the number of links per H\-M\-C device in the configuration \\
+\hline
+{\em num\-\_\-vaults} & is the number of T\-S\-V vaults per H\-M\-C device in the configuration \\
+\hline
+{\em queue\-\_\-depth} & is the depth of each vaults request and response queues, respectively \\
+\hline
+{\em num\-\_\-banks} & is the number of memory banks per vault in the configuration \\
+\hline
+{\em num\-\_\-drams} & is the number of drams per bank in the configuration \\
+\hline
+{\em capacity} & is the capacity in G\-B per H\-M\-C device \\
+\hline
+{\em xbar\-\_\-depth} & is the queue depth of each device's crossbar request and response queues, respectively \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise. 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_ab2739ca92af423efe975b966492dfd7c}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-recv@{hmcsim\-\_\-recv}}
+\index{hmcsim\-\_\-recv@{hmcsim\-\_\-recv}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-recv (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{dev, }
+\item[{uint32\-\_\-t}]{link, }
+\item[{uint64\-\_\-t $\ast$}]{packet}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_ab2739ca92af423efe975b966492dfd7c}
+
+
+Attempts to poll an H\-M\-C device for a response packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em dev} & is the target device cube I\-D \mbox{[}cub\mbox{]} to poll for a response packet \\
+\hline
+{\em link} & is the target link on the respective cube device to poll for a response packet \\
+\hline
+{\em $\ast$packet} & is a pointer to a valid memory-\/back packet array to contain up to 9 F\-L\-I\-T\-S of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+H\-M\-C\-\_\-\-O\-K on success, H\-M\-C\-\_\-\-E\-R\-R\-O\-R on error, H\-M\-C\-\_\-\-S\-T\-A\-L\-L when there are no response packets available 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a12313ad659378fbf0f53e19ba6ee9eed}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-send@{hmcsim\-\_\-send}}
+\index{hmcsim\-\_\-send@{hmcsim\-\_\-send}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-send (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint64\-\_\-t $\ast$}]{packet}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a12313ad659378fbf0f53e19ba6ee9eed}
+
+
+Attempts to send the target packet to an H\-M\-C device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em $\ast$packet} & is a pointer to a valid packet structure of up to 9 F\-L\-I\-T\-S \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+H\-M\-C\-\_\-\-O\-K on success, H\-M\-C\-\_\-\-E\-R\-R\-O\-R on error, H\-M\-C\-\_\-\-S\-T\-A\-L\-L when there are no xbar queue slots available 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_aa6538f5a29e5aa16903e55f7e6c3c3b9}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-trace\-\_\-handle@{hmcsim\-\_\-trace\-\_\-handle}}
+\index{hmcsim\-\_\-trace\-\_\-handle@{hmcsim\-\_\-trace\-\_\-handle}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-trace\-\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-trace\-\_\-handle (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{F\-I\-L\-E $\ast$}]{tfile}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_aa6538f5a29e5aa16903e55f7e6c3c3b9}
+
+
+Sets the tracefile output file handle for tracing internal device operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em $\ast$tfile} & is a pointer to a valid and open file handle. Must not be null \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_ab08eceb0130f5b1f0fa9bd8eb2419767}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-trace\-\_\-level@{hmcsim\-\_\-trace\-\_\-level}}
+\index{hmcsim\-\_\-trace\-\_\-level@{hmcsim\-\_\-trace\-\_\-level}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-trace\-\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-trace\-\_\-level (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{level}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_ab08eceb0130f5b1f0fa9bd8eb2419767}
+
+
+Sets the trace level of an initialized H\-M\-C library instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em level} & is the target trace level. Larger integers indicate more tracing output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}

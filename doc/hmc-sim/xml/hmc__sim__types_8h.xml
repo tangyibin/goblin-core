@@ -1,0 +1,613 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="hmc__sim__types_8h" kind="file">
+    <compoundname>hmc_sim_types.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes refid="hmc__sim__macros_8h" local="yes">hmc_sim_macros.h</includes>
+    <includedby refid="hmc__sim_8h" local="yes">include/hmc_sim.h</includedby>
+    <incdepgraph>
+      <node id="11">
+        <label>stdint.h</label>
+      </node>
+      <node id="10">
+        <label>include/hmc_sim_types.h</label>
+        <link refid="hmc_sim_types.h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>sys/types.h</label>
+      </node>
+      <node id="13">
+        <label>hmc_sim_macros.h</label>
+        <link refid="hmc__sim__macros_8h_source"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="15">
+        <label>include/hmc_sim.h</label>
+        <link refid="hmc__sim_8h"/>
+      </node>
+      <node id="14">
+        <label>include/hmc_sim_types.h</label>
+        <link refid="hmc_sim_types.h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhmc__link__t" prot="public">hmc_link_t</innerclass>
+    <innerclass refid="structhmc__dram__t" prot="public">hmc_dram_t</innerclass>
+    <innerclass refid="structhmc__bank__t" prot="public">hmc_bank_t</innerclass>
+    <innerclass refid="structhmc__queue__t" prot="public">hmc_queue_t</innerclass>
+    <innerclass refid="structhmc__vault__t" prot="public">hmc_vault_t</innerclass>
+    <innerclass refid="structhmc__quad__t" prot="public">hmc_quad_t</innerclass>
+    <innerclass refid="structhmc__xbar__t" prot="public">hmc_xbar_t</innerclass>
+    <innerclass refid="structhmc__reg__t" prot="public">hmc_reg_t</innerclass>
+    <innerclass refid="structhmc__dev__t" prot="public">hmc_dev_t</innerclass>
+    <innerclass refid="structhmcsim__t" prot="public">hmcsim_t</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="hmc__sim__types_8h_1ac8cf1664997a50dd73f1cbcc232c9574" prot="public" static="no">
+        <name>hmc_link_def_t</name>
+        <enumvalue id="hmc__sim__types_8h_1ac8cf1664997a50dd73f1cbcc232c9574a3b32e6bcf3ff0c959d683492cf310e5a" prot="public">
+          <name>HMC_LINK_DEV_DEV</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1ac8cf1664997a50dd73f1cbcc232c9574ac1d321cbda6c02d56cac0fead7dbe467" prot="public">
+          <name>HMC_LINK_HOST_DEV</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_LINK_DEF_T: DEVICE TO DEVICE LINK</para><para>HMC-SIM: HMC_LINK_DEF_T: HOST TO DEVICE LINK </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="27" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="enum" id="hmc__sim__types_8h_1a85ee35dd506f79e94aba2ff10524496c" prot="public" static="no">
+        <name>hmc_reg_def_t</name>
+        <enumvalue id="hmc__sim__types_8h_1a85ee35dd506f79e94aba2ff10524496ca92d0cd8c6b81404800586c45edca4cd7" prot="public">
+          <name>HMC_RW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a85ee35dd506f79e94aba2ff10524496ca212973c30ca01df766c9221912ae8d8b" prot="public">
+          <name>HMC_RO</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_REG_DEF_T: READ+WRITE REGISTER </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a85ee35dd506f79e94aba2ff10524496ca39b5ee4b779b152fbf9efc4cae24af95" prot="public">
+          <name>HMC_RWS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_REG_DEF_T: READ-ONLY REGISTER</para><para>HMC-SIM: HMC_REG_DEF_T: CLEAR ON WRITE REGISTER </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="32" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="32" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="enum" id="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803" prot="public" static="no">
+        <name>hmc_response_t</name>
+        <enumvalue id="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803adb5b86a87d42a00625ad72224e2c00fc" prot="public">
+          <name>RD_RS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803a947d026110ffd0598206f56843cd14d2" prot="public">
+          <name>WR_RS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RESPONSE_T: READ RESPONSE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803aec93f7a42169edd580b637ad9962b0a2" prot="public">
+          <name>MD_RD_RS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RESPONSE_T: WRITE RESPONSE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803aa890b276a4a6b2b28a00a45c5e49a0f1" prot="public">
+          <name>MD_WR_RS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RESPONSE_T: MODE READ RESPONSE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803a2fd6f336d08340583bd620a7f5694c90" prot="public">
+          <name>ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RESPONSE_T: MODE WRITE RESPONSE</para><para>HMC-SIM: HMC_RESPONSE_T: ERROR RESPONSE </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="38" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="38" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="enum" id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1e" prot="public" static="no">
+        <name>hmc_rqst_t</name>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea59a82726608b8241846f41d411abd0cc" prot="public">
+          <name>WR16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eaa2b10135bf86e6e46a199db67f6a65a5" prot="public">
+          <name>WR32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 16-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eac82792e9f7a2199234570e5857ebb2ee" prot="public">
+          <name>WR48</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 32-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea634408bbf21b9e0c759082c7c0eb66fc" prot="public">
+          <name>WR64</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 48-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea9748eb6b6d0f63bbfc0acc6f60eae1a8" prot="public">
+          <name>WR80</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 64-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea42c22d17a4fbee81ec38a042a0f2364d" prot="public">
+          <name>WR96</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 80-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ead9bfb7ccdb2b868f1b2a60339a5367e9" prot="public">
+          <name>WR112</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 96-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea9c41bb24f891190588b3f1bfefbce63b" prot="public">
+          <name>WR128</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 112-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea15628154b544f035db9ed82488d1bdab" prot="public">
+          <name>MD_WR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 128-BYTE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea68557106ed6f017c5641d52b40211deb" prot="public">
+          <name>BWR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: MODE WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea018d22afef7c7febbbe1fbb3ce87ae66" prot="public">
+          <name>TWOADD8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: BIT WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea774ecc7217e17fb3c29e3fe303318a7b" prot="public">
+          <name>ADD16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: DUAL 8-byte ADD IMMEDIATE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea4fca270141737ef40d309fd5b79d1c6f" prot="public">
+          <name>P_WR16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: SINGLE 16-byte ADD IMMEDIATE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea2c6809734bf3229be329fbe167ad54e7" prot="public">
+          <name>P_WR32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 16-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea309f2c6bc50fc7596c1b9fc095edec78" prot="public">
+          <name>P_WR48</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 32-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eae19621c176a5223b44fa7636035fff26" prot="public">
+          <name>P_WR64</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 48-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea040a200672301b6ff8996c8d267ae82f" prot="public">
+          <name>P_WR80</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 64-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea32ca30d23ffd9906ecdb7a47fd63a266" prot="public">
+          <name>P_WR96</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 80-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea33033bd5a5e20220549ec924022c4bde" prot="public">
+          <name>P_WR112</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 96-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ead175616e671c88728a56bdd67c5d2070" prot="public">
+          <name>P_WR128</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 112-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea6fa4159adae4c568272e7f6093cc7207" prot="public">
+          <name>P_BWR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 128-BYTE POSTED WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea6269869655858e5ad11ac909da5bbdac" prot="public">
+          <name>P_2ADD8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: POSTED BIT WRITE REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea1832664b75ae412d8f1796927de84501" prot="public">
+          <name>P_ADD16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: POSTED DUAL 8-BYTE ADD IMMEDIATE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eaae07bbe6bf0b97e019bf67dcd3eb6855" prot="public">
+          <name>RD16</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: POSTED SINGLE 16-BYTE ADD IMMEDIATE </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea3043133bc68a70519b3c03fb1df4e780" prot="public">
+          <name>RD32</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 16-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea84d19cd315d69f924f449094cb5ea624" prot="public">
+          <name>RD48</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 32-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea8fdb85667a7031404f9be43fe126fe9c" prot="public">
+          <name>RD64</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 48-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea9a73f90c223e3f30c87513c1bbe6ae3b" prot="public">
+          <name>RD80</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 64-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eac4745f04d70a7131dd0da663db9f8dc8" prot="public">
+          <name>RD96</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 80-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea7a1f94af44314f6bdbf9769bc0c63e3a" prot="public">
+          <name>RD112</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 96-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eac957d9f8ecb1d0a5b2618062e6a701e8" prot="public">
+          <name>RD128</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 112-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea39f646f23551e19af4eac15106d90b3e" prot="public">
+          <name>MD_RD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: 128-BYTE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea0a89e3ad7a07364ed4b3150f968e316e" prot="public">
+          <name>FLOW_NULL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: MODE READ REQUEST </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eaddc3bb6a219cf7374e1d8aa4042b6be1" prot="public">
+          <name>PRET</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: NULL FLOW CONTROL </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea5e3ca393886ee3064b2cd0b8d7a05b9c" prot="public">
+          <name>TRET</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: RETRY POINTER RETURN FLOW CONTROL </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea9326f97e513986c4643d1f33e45053ad" prot="public">
+          <name>IRTRY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>HMC-SIM: HMC_RQST_T: TOKEN RETURN FLOW CONTROL</para><para>HMC-SIM: HMC_RQST_T: INIT RETRY FLOW CONTROL </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="47" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="47" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>_HMC_SIM_TYPES_H_</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>HYBRID<sp/>MEMORY<sp/>CUBE<sp/>SIMULATION<sp/>LIBRARY</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>HMC<sp/>TYPES<sp/>HEADER<sp/>FILE<sp/></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>WARNING:<sp/>DO<sp/>NOT<sp/>INCLUDE<sp/>THIS<sp/>FILE<sp/>DIRECTLY</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>ALWAYS<sp/>INCLUDE<sp/>THE<sp/>TOP-LEVEL<sp/>HEADER<sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_HMC_SIM_TYPES_H_</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_HMC_SIM_TYPES_H_</highlight></codeline>
+<codeline lineno="15"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="18"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hmc_sim_macros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------------<sp/>ENUMERATED<sp/>TYPES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>HMC_LINK_DEV_DEV,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>HMC_LINK_HOST_DEV<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}hmc_link_def_t;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>HMC_RW,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>HMC_RO,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>HMC_RWS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}hmc_reg_def_t;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>RD_RS,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>WR_RS,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>MD_RD_RS,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>MD_WR_RS,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}hmc_response_t;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>WR16,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>WR32,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>WR48,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>WR64,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>WR80,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>WR96,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>WR112,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>WR128,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>MD_WR,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>BWR,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>TWOADD8,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>ADD16,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR16,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR32,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR48,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR64,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR80,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR96,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR112,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>P_WR128,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>P_BWR,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>P_2ADD8,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>P_ADD16,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>RD16,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>RD32,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>RD48,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>RD64,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>RD80,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>RD96,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>RD112,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>RD128,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>MD_RD,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>FLOW_NULL,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>PRET,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>TRET,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>IRTRY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}hmc_rqst_t;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------------<sp/>DATA<sp/>STRUCTURES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="structhmc__link__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__link__t" kindref="compound">hmc_link_t</ref>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>id;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91" refid="structhmc__link__t_1afb76b04d4e00b7d2f427b366f74d93f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__link__t_1afb76b04d4e00b7d2f427b366f74d93f7" kindref="member">quad</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92" refid="structhmc__link__t_1a79d6284c61c12019421d79dd355cb461" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__link__t_1a79d6284c61c12019421d79dd355cb461" kindref="member">src_cub</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93" refid="structhmc__link__t_1addb5467768ff0fc1f58b06b5db27050f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__link__t_1addb5467768ff0fc1f58b06b5db27050f" kindref="member">dest_cub</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95" refid="structhmc__link__t_1a5aa05931275099889daaab6641a2844d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>hmc_link_def_t<sp/><sp/><ref refid="structhmc__link__t_1a5aa05931275099889daaab6641a2844d" kindref="member">type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="structhmc__dram__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__dram__t" kindref="compound">hmc_dram_t</ref>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>elems[8];<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102" refid="structhmc__dram__t_1ac7cdf085f9db889682674280e498c48f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__dram__t_1ac7cdf085f9db889682674280e498c48f" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="structhmc__bank__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__bank__t" kindref="compound">hmc_bank_t</ref>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__dram__t" kindref="compound">hmc_dram_t</ref><sp/>*drams;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109" refid="structhmc__bank__t_1ab169221709752bed51d4711bfc63e452" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__bank__t_1ab169221709752bed51d4711bfc63e452" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>16-BYTE<sp/>BANK<sp/>INTERLEAVE<sp/>*/</highlight><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="structhmc__queue__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>valid;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115" refid="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" kindref="member">packet</ref>[HMC_MAX_UQ_PACKET];<sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="structhmc__vault__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__vault__t" kindref="compound">hmc_vault_t</ref>{<sp/></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__bank__t" kindref="compound">hmc_bank_t</ref><sp/>*banks;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123" refid="structhmc__vault__t_1ae4e2005d2a68e9cb409bd2ba56fa77ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/>*<ref refid="structhmc__vault__t_1ae4e2005d2a68e9cb409bd2ba56fa77ab" kindref="member">rqst_queue</ref>;<sp/></highlight></codeline>
+<codeline lineno="124" refid="structhmc__vault__t_1a9bf96f2d49d0a73a779bc200df7e9ca1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/>*<ref refid="structhmc__vault__t_1a9bf96f2d49d0a73a779bc200df7e9ca1" kindref="member">rsp_queue</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="126" refid="structhmc__vault__t_1a012fc49283e599603322364abcbaa00a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__vault__t_1a012fc49283e599603322364abcbaa00a" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="structhmc__quad__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__quad__t" kindref="compound">hmc_quad_t</ref>{<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__vault__t" kindref="compound">hmc_vault_t</ref><sp/>*vaults;<sp/></highlight></codeline>
+<codeline lineno="133" refid="structhmc__quad__t_1ac94f470ec6f4729b452f2aae902f3e53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><ref refid="structhmc__quad__t_1ac94f470ec6f4729b452f2aae902f3e53" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="structhmc__xbar__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__xbar__t" kindref="compound">hmc_xbar_t</ref>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/>*xbar_rqst;<sp/><sp/></highlight></codeline>
+<codeline lineno="138" refid="structhmc__xbar__t_1a185f527dcc5897dfd4e456964d7a57b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/>*<ref refid="structhmc__xbar__t_1a185f527dcc5897dfd4e456964d7a57b9" kindref="member">xbar_rsp</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="structhmc__reg__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__reg__t" kindref="compound">hmc_reg_t</ref>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>hmc_reg_def_t<sp/><sp/><sp/>type;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143" refid="structhmc__reg__t_1ad84180665ae2f75aa32ae32dc402a300" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><ref refid="structhmc__reg__t_1ad84180665ae2f75aa32ae32dc402a300" kindref="member">phy_idx</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144" refid="structhmc__reg__t_1a6fb132b4b46aff074b3cb87452a83a58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><ref refid="structhmc__reg__t_1a6fb132b4b46aff074b3cb87452a83a58" kindref="member">reg</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="structhmc__dev__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__dev__t" kindref="compound">hmc_dev_t</ref>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__link__t" kindref="compound">hmc_link_t</ref><sp/>*links;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>HMC-SIM:<sp/>HMC_DEV_T:<sp/>LINK<sp/>STRUCTURE<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__quad__t" kindref="compound">hmc_quad_t</ref><sp/>*quads;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153" refid="structhmc__dev__t_1ac335689014f65c41ec89b2caeeca7a27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__xbar__t" kindref="compound">hmc_xbar_t</ref><sp/>*<ref refid="structhmc__dev__t_1ac335689014f65c41ec89b2caeeca7a27" kindref="member">xbar</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155" refid="structhmc__dev__t_1a5ce07cc42f7bb6e69fcf918354be02f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__reg__t" kindref="compound">hmc_reg_t</ref><sp/><ref refid="structhmc__dev__t_1a5ce07cc42f7bb6e69fcf918354be02f1" kindref="member">regs</ref>[HMC_NUM_REGS];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="157" refid="structhmc__dev__t_1a1214ed74d329186a43dfcb4d82e0c7a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmc__dev__t_1a1214ed74d329186a43dfcb4d82e0c7a0" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159" refid="structhmc__dev__t_1aff7e17716e5d00e2d796f88e42c3793a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structhmc__dev__t_1aff7e17716e5d00e2d796f88e42c3793a" kindref="member">seq</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="structhmcsim__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__dev__t" kindref="compound">hmc_dev_t</ref><sp/>*devs;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166" refid="structhmcsim__t_1aa11e7edf3811b43bcb5e624d2b83dbf6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1aa11e7edf3811b43bcb5e624d2b83dbf6" kindref="member">num_devs</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="167" refid="structhmcsim__t_1ad248f0930675a283bdcf821a68703dc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1ad248f0930675a283bdcf821a68703dc3" kindref="member">num_links</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168" refid="structhmcsim__t_1a39422582c1c7e0a3b0787b5209887329" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a39422582c1c7e0a3b0787b5209887329" kindref="member">num_quads</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="169" refid="structhmcsim__t_1a66fb8d5d598a7fbceefaad3dd96ec6e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a66fb8d5d598a7fbceefaad3dd96ec6e0" kindref="member">num_vaults</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170" refid="structhmcsim__t_1aeb143d0d648144e4daa22d96e395da5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1aeb143d0d648144e4daa22d96e395da5c" kindref="member">num_banks</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171" refid="structhmcsim__t_1a8243c603f7ab323024fd6342c6f856de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a8243c603f7ab323024fd6342c6f856de" kindref="member">num_drams</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172" refid="structhmcsim__t_1a9471a6617d601750cdbd6db48487a66f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a9471a6617d601750cdbd6db48487a66f" kindref="member">capacity</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174" refid="structhmcsim__t_1a30a69481d824b545c762af1a870a9ec1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a30a69481d824b545c762af1a870a9ec1" kindref="member">queue_depth</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="175" refid="structhmcsim__t_1a9ee666483d49753bf9432eb42fab73eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a9ee666483d49753bf9432eb42fab73eb" kindref="member">xbar_depth</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="177" refid="structhmcsim__t_1a95541b8744b316387f4eaa026f405e97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>FILE<sp/>*<ref refid="structhmcsim__t_1a95541b8744b316387f4eaa026f405e97" kindref="member">tfile</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="178" refid="structhmcsim__t_1a538d618819d1aea568265c4573673265" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="structhmcsim__t_1a538d618819d1aea568265c4573673265" kindref="member">tracelevel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180" refid="structhmcsim__t_1a88d9cee2bbc19b8d4b650a9562090366" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structhmcsim__t_1a88d9cee2bbc19b8d4b650a9562090366" kindref="member">seq</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182" refid="structhmcsim__t_1afbe3d57099fff20f474d2303fdd599cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structhmcsim__t_1afbe3d57099fff20f474d2303fdd599cc" kindref="member">clk</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="184" refid="structhmcsim__t_1a53692f7358387116e3f506142d5c2029" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__dev__t" kindref="compound">hmc_dev_t</ref><sp/><sp/><sp/><sp/>*<ref refid="structhmcsim__t_1a53692f7358387116e3f506142d5c2029" kindref="member">__ptr_devs</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__quad__t" kindref="compound">hmc_quad_t</ref><sp/><sp/><sp/>*__ptr_quads;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__vault__t" kindref="compound">hmc_vault_t</ref><sp/><sp/>*__ptr_vaults;<sp/><sp/></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__bank__t" kindref="compound">hmc_bank_t</ref><sp/><sp/><sp/>*__ptr_banks;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__dram__t" kindref="compound">hmc_dram_t</ref><sp/><sp/><sp/>*__ptr_drams;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__link__t" kindref="compound">hmc_link_t</ref><sp/><sp/><sp/>*__ptr_links;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__xbar__t" kindref="compound">hmc_xbar_t</ref><sp/><sp/><sp/>*__ptr_xbars;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/><sp/>*__ptr_xbar_rqst;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/><sp/>*__ptr_xbar_rsp;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/><sp/>*__ptr_vault_rqst;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref><sp/><sp/>*__ptr_vault_rsp;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*__ptr_stor;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="201"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="203"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_HMC_SIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="205"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h"/>
+  </compounddef>
+</doxygen>

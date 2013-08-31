@@ -1,0 +1,124 @@
+.TH "hmcsim_t" 3 "Sat Aug 31 2013" "Version 1.0" "HMC_SIM" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hmcsim_t \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "struct \fBhmc_dev_t\fP * \fBdevs\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_devs\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_links\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_quads\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_vaults\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_banks\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_drams\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBcapacity\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBqueue_depth\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBxbar_depth\fP"
+.br
+.ti -1c
+.RI "FILE * \fBtfile\fP"
+.br
+.ti -1c
+.RI "uint32_t \fBtracelevel\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBseq\fP"
+.br
+.ti -1c
+.RI "uint64_t \fBclk\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_dev_t\fP * \fB__ptr_devs\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_quad_t\fP * \fB__ptr_quads\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_vault_t\fP * \fB__ptr_vaults\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_bank_t\fP * \fB__ptr_banks\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_dram_t\fP * \fB__ptr_drams\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_link_t\fP * \fB__ptr_links\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_xbar_t\fP * \fB__ptr_xbars\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_queue_t\fP * \fB__ptr_xbar_rqst\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_queue_t\fP * \fB__ptr_xbar_rsp\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_queue_t\fP * \fB__ptr_vault_rqst\fP"
+.br
+.ti -1c
+.RI "struct \fBhmc_queue_t\fP * \fB__ptr_vault_rsp\fP"
+.br
+.ti -1c
+.RI "uint64_t * \fB__ptr_stor\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "struct \fBhmc_dev_t\fP* hmcsim_t::__ptr_devs"
+HMC-SIM: HMCSIM_T: CLOCK TICK 
+.SS "uint32_t hmcsim_t::capacity"
+HMC-SIM: HMCSIM_T: DRAMS PER BANK 
+.SS "uint64_t hmcsim_t::clk"
+HMC-SIM: HCMSIM_T: SEQUENCE NUMBER 
+.SS "uint32_t hmcsim_t::num_banks"
+HMC-SIM: HMCSIM_T: VAULTS PER DEVICE 
+.SS "uint32_t hmcsim_t::num_devs"
+HMC-SIM: HMCSIM_T: DEVICE STRUCTURES 
+.SS "uint32_t hmcsim_t::num_drams"
+HMC-SIM: HMCSIM_T: BANKS PER VAULT 
+.SS "uint32_t hmcsim_t::num_links"
+HMC-SIM: HMCSIM_T: NUMBER OF DEVICES 
+.SS "uint32_t hmcsim_t::num_quads"
+HMC-SIM: HMCSIM_T: LINKS PER DEVICE 
+.SS "uint32_t hmcsim_t::num_vaults"
+HMC-SIM: HCMSIM_T: QUADS PER DEVICE 
+.SS "uint32_t hmcsim_t::queue_depth"
+HMC-SIM: HMCSIM_T: CAPACITY PER DEVICE 
+.SS "uint8_t hmcsim_t::seq"
+HMC-SIM: HMCSIM_T: TRACE LEVEL 
+.SS "FILE* hmcsim_t::tfile"
+HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH 
+.SS "uint32_t hmcsim_t::tracelevel"
+HMC-SIM: HMCSIM_T: TRACE FILE HANDLER 
+.SS "uint32_t hmcsim_t::xbar_depth"
+HMC-SIM: HMCSIM_T: VAULT QUEUE DEPTH 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HMC_SIM from the source code\&.

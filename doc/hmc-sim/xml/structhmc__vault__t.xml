@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmc__vault__t" kind="struct" prot="public">
+    <compoundname>hmc_vault_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmc__vault__t_1aeb6f69ac6b76a660ac1d0111beac630f" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__bank__t" kindref="compound">hmc_bank_t</ref> *</type>
+        <definition>struct hmc_bank_t* hmc_vault_t::banks</definition>
+        <argsstring></argsstring>
+        <name>banks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="120" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__vault__t_1ae4e2005d2a68e9cb409bd2ba56fa77ab" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref> *</type>
+        <definition>struct hmc_queue_t* hmc_vault_t::rqst_queue</definition>
+        <argsstring></argsstring>
+        <name>rqst_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_VAULT_T: BANK STRUCTURE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="123" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__vault__t_1a9bf96f2d49d0a73a779bc200df7e9ca1" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__queue__t" kindref="compound">hmc_queue_t</ref> *</type>
+        <definition>struct hmc_queue_t* hmc_vault_t::rsp_queue</definition>
+        <argsstring></argsstring>
+        <name>rsp_queue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_VAULT_T: REQUEST PACKET QUEUE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="124" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__vault__t_1a012fc49283e599603322364abcbaa00a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_vault_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_VAULT_T: REQUEST PACKET QUEUE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="126" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="29">
+        <label>hmc_bank_t</label>
+        <link refid="structhmc__bank__t"/>
+        <childnode refid="30" relation="usage">
+          <edgelabel>drams</edgelabel>
+        </childnode>
+      </node>
+      <node id="31">
+        <label>hmc_queue_t</label>
+        <link refid="structhmc__queue__t"/>
+      </node>
+      <node id="30">
+        <label>hmc_dram_t</label>
+        <link refid="structhmc__dram__t"/>
+      </node>
+      <node id="28">
+        <label>hmc_vault_t</label>
+        <link refid="structhmc__vault__t"/>
+        <childnode refid="29" relation="usage">
+          <edgelabel>banks</edgelabel>
+        </childnode>
+        <childnode refid="31" relation="usage">
+          <edgelabel>rsp_queue</edgelabel>
+          <edgelabel>rqst_queue</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="118" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="118" bodyend="127"/>
+    <listofallmembers>
+      <member refid="structhmc__vault__t_1aeb6f69ac6b76a660ac1d0111beac630f" prot="public" virt="non-virtual"><scope>hmc_vault_t</scope><name>banks</name></member>
+      <member refid="structhmc__vault__t_1a012fc49283e599603322364abcbaa00a" prot="public" virt="non-virtual"><scope>hmc_vault_t</scope><name>id</name></member>
+      <member refid="structhmc__vault__t_1ae4e2005d2a68e9cb409bd2ba56fa77ab" prot="public" virt="non-virtual"><scope>hmc_vault_t</scope><name>rqst_queue</name></member>
+      <member refid="structhmc__vault__t_1a9bf96f2d49d0a73a779bc200df7e9ca1" prot="public" virt="non-virtual"><scope>hmc_vault_t</scope><name>rsp_queue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,799 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="hmc__sim_8h" kind="file">
+    <compoundname>hmc_sim.h</compoundname>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes refid="hmc__sim__types_8h" local="yes">hmc_sim_types.h</includes>
+    <includes refid="hmc__sim__macros_8h" local="yes">hmc_sim_macros.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>stdint.h</label>
+      </node>
+      <node id="0">
+        <label>include/hmc_sim.h</label>
+        <link refid="hmc_sim.h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hmc_sim_types.h</label>
+        <link refid="hmc__sim__types_8h_source"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>sys/types.h</label>
+      </node>
+      <node id="4">
+        <label>hmc_sim_macros.h</label>
+        <link refid="hmc__sim__macros_8h_source"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="hmc__sim_8h_1aa800472d739e996abc58805909ff66c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_init</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t num_devs, uint32_t num_links, uint32_t num_vaults, uint32_t queue_depth, uint32_t num_banks, uint32_t num_drams, uint32_t capacity, uint32_t xbar_depth)</argsstring>
+        <name>hmcsim_init</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_devs</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_links</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_vaults</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>queue_depth</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_banks</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>num_drams</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>capacity</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>xbar_depth</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the internal HMC_SIM state with the necessary hardware configuration options. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_devs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the number of target HMC devices in the configuration </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_links</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the number of links per HMC device in the configuration </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_vaults</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the number of TSV vaults per HMC device in the configuration </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>queue_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the depth of each vaults request and response queues, respectively </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_banks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the number of memory banks per vault in the configuration </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_drams</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the number of drams per bank in the configuration </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>capacity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the capacity in GB per HMC device </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xbar_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the queue depth of each device&apos;s crossbar request and response queues, respectively </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1a92976e293a2ab29a590d00eb4145a826" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_free</definition>
+        <argsstring>(struct hmcsim_t *hmc)</argsstring>
+        <name>hmcsim_free</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <briefdescription>
+<para>Frees all the internal memory structures associated with the target configuration. Does not free the memory at the *hmc pointer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="77" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1ad2eae4b1a8a1669e02d8c01d01e3c033" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_link_config</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t src_dev, uint32_t dest_dev, uint32_t src_link, uint32_t dest_link, hmc_link_def_t type)</argsstring>
+        <name>hmcsim_link_config</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>src_dev</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>dest_dev</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>src_link</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>dest_link</declname>
+        </param>
+        <param>
+          <type>hmc_link_def_t</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1aa6538f5a29e5aa16903e55f7e6c3c3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_trace_handle</definition>
+        <argsstring>(struct hmcsim_t *hmc, FILE *tfile)</argsstring>
+        <name>hmcsim_trace_handle</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>tfile</declname>
+        </param>
+        <briefdescription>
+<para>Sets the tracefile output file handle for tracing internal device operation. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*tfile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and open file handle. Must not be null </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1ab08eceb0130f5b1f0fa9bd8eb2419767" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_trace_level</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t level)</argsstring>
+        <name>hmcsim_trace_level</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Sets the trace level of an initialized HMC library instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target trace level. Larger integers indicate more tracing output. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="115" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1a3b623425c27023df21ad382d79096f70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_build_memrequest</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint8_t cub, uint64_t addr, uint16_t tag, hmc_rqst_t type, uint8_t link, uint64_t *payload, uint64_t *rqst_head, uint64_t *rqst_tail)</argsstring>
+        <name>hmcsim_build_memrequest</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>cub</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>hmc_rqst_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>payload</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>rqst_head</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>rqst_tail</declname>
+        </param>
+        <briefdescription>
+<para>Builds a memory request packet with up to 9 FLITS of data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cub</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the cube ID of a valid device. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the starting physical address of the required data block </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the host-specified tag field to identify packets </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the request type. See hmc_rqst_t enumerated type definition. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the desingated transfer link ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to the data payload [for write operations] </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*rqst_head</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 byte location where the function shall return the completed packet request header in proper form. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*rqst_tail</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 byte location where the function shall return the completed packet request tail in proper form. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="140" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1aa1fcfa11c6a84e6881bcb3300264f27f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_decode_memresponse</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint64_t *packet, uint64_t *response_head, uint64_t *response_tail, hmc_response_t *type, uint8_t *length, uint16_t *tag, uint8_t *rtn_tag, uint8_t *src_link, uint8_t *rrp, uint8_t *frp, uint8_t *seq, uint8_t *dinv, uint8_t *errstat, uint8_t *rtc, uint32_t *crc)</argsstring>
+        <name>hmcsim_decode_memresponse</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>packet</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>response_head</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>response_tail</declname>
+        </param>
+        <param>
+          <type>hmc_response_t *</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint16_t *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rtn_tag</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>src_link</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rrp</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>frp</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>seq</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>dinv</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>errstat</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>rtc</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>crc</declname>
+        </param>
+        <briefdescription>
+<para>Decodes a valid response packet with up to 9 FLITS of data. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*response_head</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 byte location where the function shall return the entire response packet header intact </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*response_tail</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 byte location where the function shall return the entire response packet tail intact </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a return type that specifies the return type of the packet </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*rtn_tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the return tag </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*src_link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the source link ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*rrp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the contents of the RRP field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*frp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the contents of the FRP field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*seq</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the sequence number </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*dinv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the contents of the DINV field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*errstat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the contents of the errstat field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*rtc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 8 bit integer that contains the contents of the RTC field </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*crc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to an unsigned 32 bit integer that contains the CRC32 checksum </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="184" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1a12313ad659378fbf0f53e19ba6ee9eed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_send</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint64_t *packet)</argsstring>
+        <name>hmcsim_send</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to send the target packet to an HMC device. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*packet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid packet structure of up to 9 FLITS </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HMC_OK on success, HMC_ERROR on error, HMC_STALL when there are no xbar queue slots available </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="207" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1ab2739ca92af423efe975b966492dfd7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_recv</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint64_t *packet)</argsstring>
+        <name>hmcsim_recv</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>link</declname>
+        </param>
+        <param>
+          <type>uint64_t *</type>
+          <declname>packet</declname>
+        </param>
+        <briefdescription>
+<para>Attempts to poll an HMC device for a response packet. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target device cube ID [cub] to poll for a response packet </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>link</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target link on the respective cube device to poll for a response packet </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*packet</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid memory-back packet array to contain up to 9 FLITS of data </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HMC_OK on success, HMC_ERROR on error, HMC_STALL when there are no response packets available </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="218" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1af8f192a56096b22dc50827864b5334e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_clock</definition>
+        <argsstring>(struct hmcsim_t *hmc)</argsstring>
+        <name>hmcsim_clock</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <briefdescription>
+<para>Instantiates a single leading edge and falling edge clock cycle on all devices. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="225" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Hybrid Memory Cube Functional Simulation Library Header File. </para>    </briefdescription>
+    <detaileddescription>
+<para>The HMC_SIM library is a standard C library that provides functional simulation support for an arbitrarily configured Hybrid Memory Cube device. This libraries enables users to experiment with various HMC configurations in order to perform research in available bandwidth, memory addressing, connectivity and general simulation archictecture. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/></highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>_HMC_SIM_H_</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>HYBRID<sp/>MEMORY<sp/>CUBE<sp/>SIMULATION<sp/>LIBRARY</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>MAIN<sp/>HEADER<sp/>FILE<sp/></highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor">#ifndef<sp/>_HMC_SIM_H_</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>_HMC_SIM_H_</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hmc_sim_types.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;hmc_sim_macros.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>FUNCTION<sp/>PROTOTYPES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1aa800472d739e996abc58805909ff66c1" kindref="member">hmcsim_init</ref>(<sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>num_devs,<sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>num_links,<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>num_vaults,<sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>queue_depth,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>num_banks,<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>num_drams,<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>capacity,<sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>xbar_depth<sp/>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1a92976e293a2ab29a590d00eb4145a826" kindref="member">hmcsim_free</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc<sp/>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/>hmcsim_link_config(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>src_dev,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>dest_dev,<sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>src_link,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>dest_link,<sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmc_link_def_t<sp/>type<sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1aa6538f5a29e5aa16903e55f7e6c3c3b9" kindref="member">hmcsim_trace_handle</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>FILE<sp/>*tfile<sp/>);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1ab08eceb0130f5b1f0fa9bd8eb2419767" kindref="member">hmcsim_trace_level</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint32_t<sp/>level<sp/>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hmc__sim_8h_1a3b623425c27023df21ad382d79096f70" kindref="member">hmcsim_build_memrequest</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/>cub,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>addr,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><sp/>tag,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmc_rqst_t<sp/>type,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>link,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*payload,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*rqst_head,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*rqst_tail<sp/>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="hmc__sim_8h_1aa1fcfa11c6a84e6881bcb3300264f27f" kindref="member">hmcsim_decode_memresponse</ref>(<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*<ref refid="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" kindref="member">packet</ref>,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*response_head,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*response_tail,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hmc_response_t<sp/>*type,</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*length,</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>*tag,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*rtn_tag,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*src_link,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*rrp,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*frp,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*seq,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*dinv,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*errstat,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>*rtc,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>*crc<sp/>);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1a12313ad659378fbf0f53e19ba6ee9eed" kindref="member">hmcsim_send</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint64_t<sp/>*<ref refid="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" kindref="member">packet</ref><sp/>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1ab2739ca92af423efe975b966492dfd7c" kindref="member">hmcsim_recv</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint32_t<sp/>dev,<sp/>uint32_t<sp/>link,<sp/>uint64_t<sp/>*<ref refid="structhmc__queue__t_1a1528cdf06246a5e4f8060aa1115728ad" kindref="member">packet</ref><sp/>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1af8f192a56096b22dc50827864b5334e9" kindref="member">hmcsim_clock</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc<sp/>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="229"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="231"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_HMC_SIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="233"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h"/>
+  </compounddef>
+</doxygen>

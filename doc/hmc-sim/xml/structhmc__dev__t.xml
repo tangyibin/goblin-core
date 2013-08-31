@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmc__dev__t" kind="struct" prot="public">
+    <compoundname>hmc_dev_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmc__dev__t_1a183ff448cc1e0ec77d5549858f407c7c" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__link__t" kindref="compound">hmc_link_t</ref> *</type>
+        <definition>struct hmc_link_t* hmc_dev_t::links</definition>
+        <argsstring></argsstring>
+        <name>links</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="149" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__dev__t_1a17f41e431c406a9ad1047dfd089e2a0e" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__quad__t" kindref="compound">hmc_quad_t</ref> *</type>
+        <definition>struct hmc_quad_t* hmc_dev_t::quads</definition>
+        <argsstring></argsstring>
+        <name>quads</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="151" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__dev__t_1ac335689014f65c41ec89b2caeeca7a27" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__xbar__t" kindref="compound">hmc_xbar_t</ref> *</type>
+        <definition>struct hmc_xbar_t* hmc_dev_t::xbar</definition>
+        <argsstring></argsstring>
+        <name>xbar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_DEV_T: QUADRANT STRUCTURE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="153" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__dev__t_1a5ce07cc42f7bb6e69fcf918354be02f1" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structhmc__reg__t" kindref="compound">hmc_reg_t</ref></type>
+        <definition>struct hmc_reg_t hmc_dev_t::regs[HMC_NUM_REGS]</definition>
+        <argsstring>[HMC_NUM_REGS]</argsstring>
+        <name>regs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_DEV_T: CROSSBAR STRUCTURE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="153" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__dev__t_1a1214ed74d329186a43dfcb4d82e0c7a0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_dev_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_DEV_T: DEVICE CONFIGURATION REGISTERS </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="157" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__dev__t_1aff7e17716e5d00e2d796f88e42c3793a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hmc_dev_t::seq</definition>
+        <argsstring></argsstring>
+        <name>seq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_DEV_T: CUBE ID </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="159" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="6">
+        <label>hmc_quad_t</label>
+        <link refid="structhmc__quad__t"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>vaults</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>hmc_link_t</label>
+        <link refid="structhmc__link__t"/>
+      </node>
+      <node id="8">
+        <label>hmc_bank_t</label>
+        <link refid="structhmc__bank__t"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>drams</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hmc_dev_t</label>
+        <link refid="structhmc__dev__t"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>regs</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>quads</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>xbar</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>links</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>hmc_xbar_t</label>
+        <link refid="structhmc__xbar__t"/>
+        <childnode refid="10" relation="usage">
+          <edgelabel>xbar_rqst</edgelabel>
+          <edgelabel>xbar_rsp</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>hmc_queue_t</label>
+        <link refid="structhmc__queue__t"/>
+      </node>
+      <node id="9">
+        <label>hmc_dram_t</label>
+        <link refid="structhmc__dram__t"/>
+      </node>
+      <node id="5">
+        <label>hmc_reg_t</label>
+        <link refid="structhmc__reg__t"/>
+      </node>
+      <node id="7">
+        <label>hmc_vault_t</label>
+        <link refid="structhmc__vault__t"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>banks</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>rsp_queue</edgelabel>
+          <edgelabel>rqst_queue</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="147" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="147" bodyend="160"/>
+    <listofallmembers>
+      <member refid="structhmc__dev__t_1a1214ed74d329186a43dfcb4d82e0c7a0" prot="public" virt="non-virtual"><scope>hmc_dev_t</scope><name>id</name></member>
+      <member refid="structhmc__dev__t_1a183ff448cc1e0ec77d5549858f407c7c" prot="public" virt="non-virtual"><scope>hmc_dev_t</scope><name>links</name></member>
+      <member refid="structhmc__dev__t_1a17f41e431c406a9ad1047dfd089e2a0e" prot="public" virt="non-virtual"><scope>hmc_dev_t</scope><name>quads</name></member>
+      <member refid="structhmc__dev__t_1a5ce07cc42f7bb6e69fcf918354be02f1" prot="public" virt="non-virtual"><scope>hmc_dev_t</scope><name>regs</name></member>
+      <member refid="structhmc__dev__t_1aff7e17716e5d00e2d796f88e42c3793a" prot="public" virt="non-virtual"><scope>hmc_dev_t</scope><name>seq</name></member>
+      <member refid="structhmc__dev__t_1ac335689014f65c41ec89b2caeeca7a27" prot="public" virt="non-virtual"><scope>hmc_dev_t</scope><name>xbar</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmc__reg__t" kind="struct" prot="public">
+    <compoundname>hmc_reg_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmc__reg__t_1ae40516be3c46285fcd080617eef883ff" prot="public" static="no" mutable="no">
+        <type>hmc_reg_def_t</type>
+        <definition>hmc_reg_def_t hmc_reg_t::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="142" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__reg__t_1ad84180665ae2f75aa32ae32dc402a300" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hmc_reg_t::phy_idx</definition>
+        <argsstring></argsstring>
+        <name>phy_idx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_REG_T: REGISTER TYPE </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="143" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__reg__t_1a6fb132b4b46aff074b3cb87452a83a58" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hmc_reg_t::reg</definition>
+        <argsstring></argsstring>
+        <name>reg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_REG_T: REGISTER PHYSICAL DEVICE INDEX </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="144" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="141" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="141" bodyend="145"/>
+    <listofallmembers>
+      <member refid="structhmc__reg__t_1ad84180665ae2f75aa32ae32dc402a300" prot="public" virt="non-virtual"><scope>hmc_reg_t</scope><name>phy_idx</name></member>
+      <member refid="structhmc__reg__t_1a6fb132b4b46aff074b3cb87452a83a58" prot="public" virt="non-virtual"><scope>hmc_reg_t</scope><name>reg</name></member>
+      <member refid="structhmc__reg__t_1ae40516be3c46285fcd080617eef883ff" prot="public" virt="non-virtual"><scope>hmc_reg_t</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structhmc__link__t" kind="struct" prot="public">
+    <compoundname>hmc_link_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhmc__link__t_1a9efacf94edff93c170cfcc6f8e342a52" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_link_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="90" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__link__t_1afb76b04d4e00b7d2f427b366f74d93f7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_link_t::quad</definition>
+        <argsstring></argsstring>
+        <name>quad</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_LINK_T: LINK ID </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="91" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__link__t_1a79d6284c61c12019421d79dd355cb461" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_link_t::src_cub</definition>
+        <argsstring></argsstring>
+        <name>src_cub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_LINK_T: ASSOCIATED QUADRANT </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="92" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__link__t_1addb5467768ff0fc1f58b06b5db27050f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hmc_link_t::dest_cub</definition>
+        <argsstring></argsstring>
+        <name>dest_cub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_LINK_T: SOURCE CUB </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="93" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhmc__link__t_1a5aa05931275099889daaab6641a2844d" prot="public" static="no" mutable="no">
+        <type>hmc_link_def_t</type>
+        <definition>hmc_link_def_t hmc_link_t::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HMC-SIM: HMC_LINK_T: DESTINATION CUB </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="95" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" line="88" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_types.h" bodystart="88" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structhmc__link__t_1addb5467768ff0fc1f58b06b5db27050f" prot="public" virt="non-virtual"><scope>hmc_link_t</scope><name>dest_cub</name></member>
+      <member refid="structhmc__link__t_1a9efacf94edff93c170cfcc6f8e342a52" prot="public" virt="non-virtual"><scope>hmc_link_t</scope><name>id</name></member>
+      <member refid="structhmc__link__t_1afb76b04d4e00b7d2f427b366f74d93f7" prot="public" virt="non-virtual"><scope>hmc_link_t</scope><name>quad</name></member>
+      <member refid="structhmc__link__t_1a79d6284c61c12019421d79dd355cb461" prot="public" virt="non-virtual"><scope>hmc_link_t</scope><name>src_cub</name></member>
+      <member refid="structhmc__link__t_1a5aa05931275099889daaab6641a2844d" prot="public" virt="non-virtual"><scope>hmc_link_t</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

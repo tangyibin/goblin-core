@@ -1,0 +1,275 @@
+.TH "include/hmc_sim.h" 3 "Sat Aug 31 2013" "Version 1.0" "HMC_SIM" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/hmc_sim.h \- 
+Hybrid Memory Cube Functional Simulation Library Header File\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBhmcsim_init\fP (struct \fBhmcsim_t\fP *hmc, uint32_t num_devs, uint32_t num_links, uint32_t num_vaults, uint32_t queue_depth, uint32_t num_banks, uint32_t num_drams, uint32_t capacity, uint32_t xbar_depth)"
+.br
+.RI "\fIInitializes the internal HMC_SIM state with the necessary hardware configuration options\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_free\fP (struct \fBhmcsim_t\fP *hmc)"
+.br
+.RI "\fIFrees all the internal memory structures associated with the target configuration\&. Does not free the memory at the *hmc pointer\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_link_config\fP (struct \fBhmcsim_t\fP *hmc, uint32_t src_dev, uint32_t dest_dev, uint32_t src_link, uint32_t dest_link, hmc_link_def_t type)"
+.br
+.ti -1c
+.RI "int \fBhmcsim_trace_handle\fP (struct \fBhmcsim_t\fP *hmc, FILE *tfile)"
+.br
+.RI "\fISets the tracefile output file handle for tracing internal device operation\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_trace_level\fP (struct \fBhmcsim_t\fP *hmc, uint32_t level)"
+.br
+.RI "\fISets the trace level of an initialized HMC library instance\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_build_memrequest\fP (struct \fBhmcsim_t\fP *hmc, uint8_t cub, uint64_t addr, uint16_t tag, hmc_rqst_t type, uint8_t link, uint64_t *payload, uint64_t *rqst_head, uint64_t *rqst_tail)"
+.br
+.RI "\fIBuilds a memory request packet with up to 9 FLITS of data\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_decode_memresponse\fP (struct \fBhmcsim_t\fP *hmc, uint64_t *packet, uint64_t *response_head, uint64_t *response_tail, hmc_response_t *type, uint8_t *length, uint16_t *tag, uint8_t *rtn_tag, uint8_t *src_link, uint8_t *rrp, uint8_t *frp, uint8_t *seq, uint8_t *dinv, uint8_t *errstat, uint8_t *rtc, uint32_t *crc)"
+.br
+.RI "\fIDecodes a valid response packet with up to 9 FLITS of data\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_send\fP (struct \fBhmcsim_t\fP *hmc, uint64_t *packet)"
+.br
+.RI "\fIAttempts to send the target packet to an HMC device\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_recv\fP (struct \fBhmcsim_t\fP *hmc, uint32_t dev, uint32_t link, uint64_t *packet)"
+.br
+.RI "\fIAttempts to poll an HMC device for a response packet\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_clock\fP (struct \fBhmcsim_t\fP *hmc)"
+.br
+.RI "\fIInstantiates a single leading edge and falling edge clock cycle on all devices\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Hybrid Memory Cube Functional Simulation Library Header File\&. 
+
+The HMC_SIM library is a standard C library that provides functional simulation support for an arbitrarily configured Hybrid Memory Cube device\&. This libraries enables users to experiment with various HMC configurations in order to perform research in available bandwidth, memory addressing, connectivity and general simulation archictecture\&. 
+.SH "Function Documentation"
+.PP 
+.SS "int hmcsim_build_memrequest (struct \fBhmcsim_t\fP *hmc, uint8_tcub, uint64_taddr, uint16_ttag, hmc_rqst_ttype, uint8_tlink, uint64_t *payload, uint64_t *rqst_head, uint64_t *rqst_tail)"
+
+.PP
+Builds a memory request packet with up to 9 FLITS of data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIcub\fP is the cube ID of a valid device\&. 
+.br
+\fIaddr\fP is the starting physical address of the required data block 
+.br
+\fItag\fP is the host-specified tag field to identify packets 
+.br
+\fItype\fP is the request type\&. See hmc_rqst_t enumerated type definition\&. 
+.br
+\fIlink\fP the desingated transfer link ID 
+.br
+\fI*payload\fP is a pointer to the data payload [for write operations] 
+.br
+\fI*rqst_head\fP is a pointer to an unsigned 8 byte location where the function shall return the completed packet request header in proper form\&. 
+.br
+\fI*rqst_tail\fP is a pointer to an unsigned 8 byte location where the function shall return the completed packet request tail in proper form\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_clock (struct \fBhmcsim_t\fP *hmc)"
+
+.PP
+Instantiates a single leading edge and falling edge clock cycle on all devices\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_decode_memresponse (struct \fBhmcsim_t\fP *hmc, uint64_t *packet, uint64_t *response_head, uint64_t *response_tail, hmc_response_t *type, uint8_t *length, uint16_t *tag, uint8_t *rtn_tag, uint8_t *src_link, uint8_t *rrp, uint8_t *frp, uint8_t *seq, uint8_t *dinv, uint8_t *errstat, uint8_t *rtc, uint32_t *crc)"
+
+.PP
+Decodes a valid response packet with up to 9 FLITS of data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fI*response_head\fP is a pointer to an unsigned 8 byte location where the function shall return the entire response packet header intact 
+.br
+\fI*response_tail\fP is a pointer to an unsigned 8 byte location where the function shall return the entire response packet tail intact 
+.br
+\fI*type\fP is a pointer to a return type that specifies the return type of the packet 
+.br
+\fI*rtn_tag\fP is a pointer to an unsigned 8 bit integer that contains the return tag 
+.br
+\fI*src_link\fP is a pointer to an unsigned 8 bit integer that contains the source link ID 
+.br
+\fI*rrp\fP is a pointer to an unsigned 8 bit integer that contains the contents of the RRP field 
+.br
+\fI*frp\fP is a pointer to an unsigned 8 bit integer that contains the contents of the FRP field 
+.br
+\fI*seq\fP is a pointer to an unsigned 8 bit integer that contains the sequence number 
+.br
+\fI*dinv\fP is a pointer to an unsigned 8 bit integer that contains the contents of the DINV field 
+.br
+\fI*errstat\fP is a pointer to an unsigned 8 bit integer that contains the contents of the errstat field 
+.br
+\fI*rtc\fP is a pointer to an unsigned 8 bit integer that contains the contents of the RTC field 
+.br
+\fI*crc\fP is a pointer to an unsigned 32 bit integer that contains the CRC32 checksum 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_free (struct \fBhmcsim_t\fP *hmc)"
+
+.PP
+Frees all the internal memory structures associated with the target configuration\&. Does not free the memory at the *hmc pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid hmc structure\&. Must not be null\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise\&. 
+.RE
+.PP
+
+.SS "int hmcsim_init (struct \fBhmcsim_t\fP *hmc, uint32_tnum_devs, uint32_tnum_links, uint32_tnum_vaults, uint32_tqueue_depth, uint32_tnum_banks, uint32_tnum_drams, uint32_tcapacity, uint32_txbar_depth)"
+
+.PP
+Initializes the internal HMC_SIM state with the necessary hardware configuration options\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid hmc structure\&. Must not be null\&. 
+.br
+\fInum_devs\fP is the number of target HMC devices in the configuration 
+.br
+\fInum_links\fP is the number of links per HMC device in the configuration 
+.br
+\fInum_vaults\fP is the number of TSV vaults per HMC device in the configuration 
+.br
+\fIqueue_depth\fP is the depth of each vaults request and response queues, respectively 
+.br
+\fInum_banks\fP is the number of memory banks per vault in the configuration 
+.br
+\fInum_drams\fP is the number of drams per bank in the configuration 
+.br
+\fIcapacity\fP is the capacity in GB per HMC device 
+.br
+\fIxbar_depth\fP is the queue depth of each device's crossbar request and response queues, respectively 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise\&. 
+.RE
+.PP
+
+.SS "int hmcsim_recv (struct \fBhmcsim_t\fP *hmc, uint32_tdev, uint32_tlink, uint64_t *packet)"
+
+.PP
+Attempts to poll an HMC device for a response packet\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIdev\fP is the target device cube ID [cub] to poll for a response packet 
+.br
+\fIlink\fP is the target link on the respective cube device to poll for a response packet 
+.br
+\fI*packet\fP is a pointer to a valid memory-back packet array to contain up to 9 FLITS of data 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+HMC_OK on success, HMC_ERROR on error, HMC_STALL when there are no response packets available 
+.RE
+.PP
+
+.SS "int hmcsim_send (struct \fBhmcsim_t\fP *hmc, uint64_t *packet)"
+
+.PP
+Attempts to send the target packet to an HMC device\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fI*packet\fP is a pointer to a valid packet structure of up to 9 FLITS 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+HMC_OK on success, HMC_ERROR on error, HMC_STALL when there are no xbar queue slots available 
+.RE
+.PP
+
+.SS "int hmcsim_trace_handle (struct \fBhmcsim_t\fP *hmc, FILE *tfile)"
+
+.PP
+Sets the tracefile output file handle for tracing internal device operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fI*tfile\fP is a pointer to a valid and open file handle\&. Must not be null 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_trace_level (struct \fBhmcsim_t\fP *hmc, uint32_tlevel)"
+
+.PP
+Sets the trace level of an initialized HMC library instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIlevel\fP is the target trace level\&. Larger integers indicate more tracing output\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HMC_SIM from the source code\&.
