@@ -16,8 +16,11 @@
    -- DONE
 -- 4) add auto setup of config regs within the hmc_init() function 
    -- DONE
+-- 5) add to header file 
+   -- DONE
 
 - finalize the bank conflict methdology in hmc_clock_bank_conflicts from hmc_clock.c
+   -- look at the total number of banks and use that as the sliding window of possible values
 - fix case where we have eight quads and four vaults; set pointers accordingly
 - update the host device cub id to be represented as num_devices+1
 - add size to the build_memrequest for the payload 
