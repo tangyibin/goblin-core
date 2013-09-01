@@ -299,6 +299,16 @@ int main( int argc, char **argv )
 
 
 	/* 
+	 * check the incoming arg count 
+	 * 
+	 */	
+	if( argc < 3 ){ 
+		GSIM_PRINT_ERROR( "Insufficient program arguments" );	
+		gsim_print_help( argv );
+		return -1;
+	}
+
+	/* 
 	 * allocate the simulation data
 	 */
 	sim = gsim_malloc( sizeof( struct gsim_t ) );
