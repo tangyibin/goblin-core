@@ -224,6 +224,28 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 */
 extern int	hmcsim_clock( struct hmcsim_t *hmc );
 
+/*!	\fn int hmcsim_jtag_reg_read( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg, uint64_t *result )
+	\brief Attempts to read the value from the specified HMC device register for the target device
+		using the side-band JTAG interface
+	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\param dev is the target device cube ID [cub] to read from
+	\param reg is the target register to read the value
+	\param *result is a pointer to an unsigned 64-bit storage location used to store the returned value. 
+		Must be backed by a valid memory region. 
+	\return 0 on success, nonzero otherwise
+*/
+extern int	hmcsim_jtag_reg_read( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg, uint64_t *result );
+
+/*!	\fn int hmcsim_jtag_reg_write( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg, uint64_t value )
+	\brief Attempts to write the value to the specified HMC device register for the target device
+		using the side-band JTAG interface
+	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\param dev is the target device cube ID [cub] to read from
+	\param reg is the target register whose value is to be written
+	\param value is the value to be written
+	\return 0 on success, nonzero otherwise
+*/
+extern int	hmcsim_jtag_reg_write( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg, uint64_t value );
 
 #ifdef __cplusplus
 } /* extern C */

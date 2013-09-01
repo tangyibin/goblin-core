@@ -120,7 +120,7 @@ extern int	hmcsim_jtag_reg_read( struct hmcsim_t *hmc, uint32_t dev, uint64_t re
  * HMCSIM_JTAG_REG_WRITE
  * 
  */
-extern int	hmcsim_jtag_reg_write( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg )
+extern int	hmcsim_jtag_reg_write( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg, uint64_t value )
 {
 	if( hmc == NULL ){ 
 		return -1;
