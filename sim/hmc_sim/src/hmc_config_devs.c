@@ -295,7 +295,7 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 		 */
 		hmc->devs[i].quads	= &(hmc->__ptr_quads[cur_quad]);
 
-		for( j=0; j<4; j++ ){ 
+		for( j=0; j<hmc->num_links; j++ ){ 
 
 			/* 
 			 * set the id 
