@@ -67,11 +67,15 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	
 	/* 
 	 * look deeper to make sure the default addressing works
+	 * and the vault counts
 	 * 
 	 */
 	if( (num_banks != 8) && (num_banks != 16) ){
 		return -1;
 	}else if( (num_links != 4) && (num_links != 8) ){
+		return -1;
+	}else if( (num_vaults/num_links) != 4 ){
+		/* always maintain 4 vaults per quad, or link */
 		return -1;
 	}else if( (capacity%2) != 0 ){
 		return -1;
