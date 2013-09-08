@@ -42,6 +42,11 @@ extern "C" {
 #define		HMC_PHY_REVISION	0x1
 #endif
 
+/* -------------------------------------------- PHYSICAL MACRO DATA */
+#ifndef		HMC_PHY_SPEED
+#define		HMC_PHY_SPEED		0x0
+#endif
+
 /* -------------------------------------------- RETURN CODES */
 #define		HMC_ERROR		-1
 #define		HMC_OK			0

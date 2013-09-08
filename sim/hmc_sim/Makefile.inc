@@ -26,6 +26,11 @@
 # HMCSIM PHY REVISION [8-bit unsigned int]
 # -DHMC_PHY_REVISION=n
 #
+# HMCSIM PHYSICAL LINK SPEED
+# 0 = 15Gpbs
+# 1 = 10Gpbs
+# -DHMC_PHY_SPEED={0,1}
+#	
 #---------------------------------------------------------
 
 HMCSIM_MACROS=

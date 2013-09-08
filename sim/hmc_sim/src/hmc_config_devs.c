@@ -13,6 +13,160 @@
 #include <string.h>
 #include "hmc_sim.h"
 
+/* ----------------------------------------------------- HMCSIM_CONFIG_FEAT_REG */
+/* 
+ * HMCSIM_CONFIG_FEAT_REG
+ * 
+ */
+static int	hmcsim_config_feat_reg( struct hmcsim_t *hmc, uint32_t dev )
+{
+	/* 
+	 * write the necessary data for the feature register 
+	 * 
+	 */
+	uint64_t feat	= 0x00ll;
+	uint64_t size	= 0x00ll;
+	uint64_t vaults = 0x00ll;
+	uint64_t banks  = 0x00ll;
+	uint64_t phy	= HMC_PHY_SPEED;
+
+	/* 
+	 * determine capacity
+	 *
+	 */
+	switch( hmc->capacity )
+	{
+		case 2 : 
+			size = 0x00;
+			break; 
+		case 4 : 
+			size = 0x01;
+			break; 
+		case 8 : 
+			size = 0x02;
+			break; 
+		case 16: 
+			size = 0x03;
+			break; 
+		default:
+			/* 
+	 		 * we currently don't support vendor specific 
+		     	 * capacities
+			 *
+			 */
+			size = 0x00;
+			break; 
+	}
+
+	/* 
+	 * determine vaults
+	 * 
+	 */	
+	switch( hmc->num_vaults )
+	{
+		case 16:
+			vaults = 0x00;
+			break;
+		case 32:
+			vaults = 0x01;
+			break;
+		default:
+			/* 
+	 		 * we currently don't support vendor specific 
+		     	 * vaults
+			 *
+			 */
+			vaults = 0x00;
+			break;
+	}
+
+	/* 
+	 * banks per vault
+	 * 
+	 */	
+	switch( hmc->num_banks )
+	{
+		case 8: 
+			banks = 0x00;	
+			break;
+		case 16:
+			banks = 0x01;	
+			break;
+		default:
+			/* 
+	 		 * we currently don't support vendor specific 
+		     	 * banks
+			 *
+			 */
+			banks = 0x00;	
+			break;
+	}	
+
+	feat |= size;
+	feat |= (vaults << 4 );
+	feat |= (banks  << 8 );
+	feat |= (phy    << 12);
+
+	/* 
+	 * write the register
+ 	 * 
+	 */
+	hmc->devs[dev].regs[HMC_REG_FEAT_IDX].reg	= feat;
+
+	
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CONFIG_RVID_REG */
+/* 
+ * HMCSIM_CONFIG_RVID_REG
+ * 
+ */
+static int	hmcsim_config_rvid_reg( struct hmcsim_t *hmc, uint32_t dev )
+{
+	/*
+	 * write the necessary data for the revision, vendor, product
+	 * protocol and phy 
+ 	 * 
+	 */	
+
+	uint64_t rev = 0x00ll;
+	
+	/* 
+	 * vendor 
+	 *
+	 */
+	rev |= HMC_VENDOR_ID;
+
+	/* 
+	 * product revision
+	 * 
+ 	 */
+	rev |= (uint64_t)(HMC_PRODUCT_REVISION << 8 );
+
+
+	/* 
+	 * protocol revision
+	 * 
+	 */
+	rev |= (uint64_t)(HMC_PROTOCOL_REVISION << 16 );
+	
+	/* 
+	 * phy revision 
+	 * 
+ 	 */
+	rev |= (uint64_t)(HMC_PHY_REVISION << 24 );
+
+	/* 
+	 * write the register 
+	 * 
+ 	 */
+	hmc->devs[dev].regs[HMC_REG_RVID_IDX].reg	= rev;
+	
+	return 0;
+}
+
+
 /* ----------------------------------------------------- HMCSIM_CONFIG_DEV_REG */
 /* 
  * HMCSIM_CONFIG_DEV_REG
@@ -124,7 +278,20 @@ static int	hmcsim_config_dev_reg( struct hmcsim_t *hmc, uint32_t dev )
 	hmc->devs[dev].regs[HMC_REG_RVID_IDX].type	= HMC_RO;
 	hmc->devs[dev].regs[HMC_REG_RVID_IDX].phy_idx	= HMC_REG_RVID; 
 	hmc->devs[dev].regs[HMC_REG_RVID_IDX].reg	= 0x00ll;
-	
+
+
+	/* 
+	 * write the feature revision register
+	 * 
+ 	 */	
+	hmcsim_config_feat_reg( hmc, dev );
+
+
+	/* 
+	 * write the device revision register
+	 * 
+ 	 */	
+	hmcsim_config_rvid_reg( hmc, dev );
 
 	return 0;	
 }
