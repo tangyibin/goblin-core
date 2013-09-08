@@ -16,6 +16,32 @@ extern "C" {
 #endif
 
 
+/* -------------------------------------------- VERSION MACROS */
+#ifndef 	HMC_MAJOR_VERSION
+#define		HMC_MAJOR_VERSION	0
+#endif
+
+#ifndef		HMC_MINOR_VERSION	
+#define		HMC_MINOR_VERSION	1
+#endif
+
+/* -------------------------------------------- VENDOR ID DATA */
+#ifndef		HMC_VENDOR_ID
+#define		HMC_VENDOR_ID		0xF
+#endif
+
+#ifndef		HMC_PRODUCT_REVISION
+#define		HMC_PRODUCT_REVISION	0x1
+#endif
+
+#ifndef		HMC_PROTOCOL_REVISION	
+#define		HMC_PROTOCOL_REVISION	0x1
+#endif
+
+#ifndef		HMC_PHY_REVISION
+#define		HMC_PHY_REVISION	0x1
+#endif
+
 /* -------------------------------------------- RETURN CODES */
 #define		HMC_ERROR		-1
 #define		HMC_OK			0

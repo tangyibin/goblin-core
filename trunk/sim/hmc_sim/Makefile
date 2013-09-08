@@ -1,15 +1,9 @@
 #!/bin/sh
 
-CC=gcc
-INC=-I./include/
-CFLAGS=-O2 -Wall -g $(INC) 
+include Makefile.inc
 
-DOXYGEN=`which doxygen`
 WIKI=`which doxygen2gwiki`
 WIKI_SRC=../../../goblin-core-wiki/
-
-AR=ar
-AROPTS=rcs
 
 SRC=`pwd`/src
 
