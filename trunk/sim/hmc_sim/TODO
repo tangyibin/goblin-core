@@ -13,8 +13,7 @@
 - add functions and handlers for HMC internal registers  
 -- 1) add handlers for request MODE_READ MODE_WRITE packets
 -- 2) add side-band functions to access registers 
-   -- in progress, JTAG read function done; finish write function
-
+   -- DONE
 -- 3) add macros to decode the spec's notion of a register index versus the internal 
       representation 
    -- DONE
@@ -22,6 +21,8 @@
    -- DONE
 -- 5) add to header file 
    -- DONE
+
+- add warm reset function for JTAG requests
 
 - finalize the bank conflict methdology in hmc_clock_bank_conflicts from hmc_clock.c
    -- look at the total number of banks and use that as the sliding window of possible values
