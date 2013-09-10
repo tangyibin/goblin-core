@@ -1,15 +1,34 @@
+- decode bank to dram association 
+
+- add function to simulate "clock"
+  -- in progress: need to finish the xbar section; then add the finish the top-level stages
+
+- add warm reset function for JTAG requests
+
+- finalize the bank conflict methdology in hmc_clock_bank_conflicts from hmc_clock.c
+   -- look at the total number of banks and use that as the sliding window of possible values
+
+- update the host device cub id to be represented as num_devices+1
+
+- add size to the build_memrequest for the payload 
+  -- maybe not, investigate
+
+- revise the link structure per page 19 of the spec; 
+  -- child device links are configured as host links to go upstream; 
+  -- parent links are configured as pass-thru's; 
+  -- possible mark devices as being connected to real host or uplink
+
+
+
+
+
+Completed Items:
 - build funtions to send/recv packets
   -- DONE
 - build functions to dump trace info 
   -- DONE
 - build internal routing info for dev to dev xfers
   -- DONE: handled in hmcsim_clock
-
-- decode bank to dram association 
-
-- add function to simulate "clock"
-  -- in progress: need to finish the xbar section; then add the finish the top-level stages
-
 - add functions and handlers for HMC internal registers  
 -- 1) add handlers for request MODE_READ MODE_WRITE packets
 -- 2) add side-band functions to access registers 
@@ -21,26 +40,12 @@
    -- DONE
 -- 5) add to header file 
    -- DONE
-
-- add warm reset function for JTAG requests
-
-- finalize the bank conflict methdology in hmc_clock_bank_conflicts from hmc_clock.c
-   -- look at the total number of banks and use that as the sliding window of possible values
-
 - fix case where we have eight quads and four vaults; set pointers accordingly
    -- DONE
-
-- update the host device cub id to be represented as num_devices+1
-
-- add size to the build_memrequest for the payload 
-  -- maybe not, investigate
-
 - add default config register writing for hmc_init(..) function; 
-
+  -- DONE
 - write the feature and version register
   -- do this as a part of configuring the devices
-
+  -- DONE
 - fix vault layout in init : see page 31
   -- DONE
-
-- revise the link structure per page 19 of the spec; child device links are configured as host links to go upstream; parent links are configured as pass-thru's; possible mark devices as being connected to real host or uplink
