@@ -106,6 +106,15 @@ extern int	hmcsim_link_config( struct hmcsim_t *hmc,
 */
 extern int	hmcsim_trace_handle( struct hmcsim_t *hmc, FILE *tfile );
 
+
+/*!	\fn int hmcsim_trace_header( struct hmcsim_t *hmc )
+	\brief Prints a comment block in the tracefile header for future reference.  The 
+		trace handle must be set prior to making a call to this function.  
+	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\return 0 on success, nonzero otherwise 
+*/
+extern int	hmcsim_trace_header( struct hmcsim_t *hmc );
+
 /*!	\fn int hmcsim_trace_level( struct hmcsim_t *hmc, uint32_t level )
 	\brief Sets the trace level of an initialized HMC library instance. 
 	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 

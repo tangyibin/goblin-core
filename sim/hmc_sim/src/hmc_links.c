@@ -32,7 +32,7 @@ extern int	hmcsim_link_config( 	struct hmcsim_t *hmc,
 		return -1;
 	}
 
-	if( src_dev >= hmc->num_devs ){
+	if( src_dev > (hmc->num_devs+1) ){
 		return -1;
 	}	
 
@@ -61,9 +61,9 @@ extern int	hmcsim_link_config( 	struct hmcsim_t *hmc,
 		 */
 
 
-		hmc->devs[ dest_dev ].links[dest_link].src_cub = src_dev;
-		hmc->devs[ dest_dev ].links[dest_link].dest_cub = dest_dev;
-		hmc->devs[ dest_dev ].links[dest_link].type 	= HMC_LINK_HOST_DEV;
+		hmc->devs[ dest_dev ].links[ dest_link ].src_cub 	= (hmc->num_devs+1);
+		hmc->devs[ dest_dev ].links[ dest_link ].dest_cub 	= dest_dev;
+		hmc->devs[ dest_dev ].links[ dest_link ].type 		= HMC_LINK_HOST_DEV;
 
 	}else{
 		/* 
@@ -89,7 +89,7 @@ extern int	hmcsim_link_config( 	struct hmcsim_t *hmc,
 		 */
 		hmc->devs[ dest_dev ].links[ dest_link ].src_cub	= src_dev;
 		hmc->devs[ dest_dev ].links[ dest_link ].dest_cub 	= dest_dev;
-		hmc->devs[ dest_dev ].links[ dest_link ].type		= HMC_LINK_DEV_DEV;
+		hmc->devs[ dest_dev ].links[ dest_link ].type		= HMC_LINK_HOST_DEV;
 	}
 
 	return 0;

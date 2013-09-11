@@ -19,6 +19,8 @@
 extern int	hmcsim_allocate_memory( struct hmcsim_t *hmc );
 extern int	hmcsim_free_memory( struct hmcsim_t *hmc );
 extern int	hmcsim_config_devices( struct hmcsim_t *sim );
+extern int	hmc_reset_device( struct hmcsim_t *hmc, uint32_t dev );
+
 
 /* ----------------------------------------------------- HMCSIM_INIT */
 /* 
@@ -35,6 +37,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 			uint32_t capacity, 
 			uint32_t xbar_depth )
 {
+	/* vars */
+	uint32_t i	= 0;
+	/* ---- */
+
 	/*
 	 * ensure we have a good structure
 	 * 
@@ -155,6 +161,16 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 		hmcsim_free_memory( hmc );
 		return -1;
 	}
+
+	/* 
+	 * warm reset all the devices
+	 * 
+	 */
+	for( i=0; i<hmc->num_devs; i++ ) { 
+
+		hmc_reset_device( hmc, i );
+		
+	}	
 
 	return 0;
 }

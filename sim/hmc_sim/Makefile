@@ -10,7 +10,8 @@ SRC=`pwd`/src
 LIBOBJS=$(SRC)/hmc_init.o $(SRC)/hmc_mem.o $(SRC)/hmc_config_devs.o\
 	$(SRC)/hmc_links.o $(SRC)/hmc_trace.o $(SRC)/hmc_rqst.o\
 	$(SRC)/hmc_response.o $(SRC)/hmc_send.o $(SRC)/hmc_recv.o\
-	$(SRC)/hmc_clock.o $(SRC)/hmc_jtag.o $(SRC)/hmc_reset.o
+	$(SRC)/hmc_clock.o $(SRC)/hmc_jtag.o $(SRC)/hmc_reset.o\
+	$(SRC)/hmc_bank_conflict.o $(SRC)/hmc_process_packet.o
 
 .PHONY : test
 
@@ -32,6 +33,8 @@ libhmcsim.a:
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_clock.o $(SRC)/hmc_clock.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_jtag.o $(SRC)/hmc_jtag.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_reset.o $(SRC)/hmc_reset.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_bank_conflict.o $(SRC)/hmc_bank_conflict.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_process_packet.o $(SRC)/hmc_process_packet.c
 	$(AR) $(AR_OPTS) $@ $(LIBOBJS)
 doclean:
 	rm -Rf ./doxygen/{html,latex,man,rtf,xml}
