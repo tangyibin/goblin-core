@@ -1,4 +1,4 @@
-.TH "include/hmc_sim.h" 3 "Sat Aug 31 2013" "Version 1.0" "HMC_SIM" \" -*- nroff -*-
+.TH "include/hmc_sim.h" 3 "Wed Sep 11 2013" "Version 1.0" "HMC_SIM" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,10 @@ Hybrid Memory Cube Functional Simulation Library Header File\&.
 .br
 .RI "\fISets the tracefile output file handle for tracing internal device operation\&. \fP"
 .ti -1c
+.RI "int \fBhmcsim_trace_header\fP (struct \fBhmcsim_t\fP *hmc)"
+.br
+.RI "\fIPrints a comment block in the tracefile header for future reference\&. The trace handle must be set prior to making a call to this function\&. \fP"
+.ti -1c
 .RI "int \fBhmcsim_trace_level\fP (struct \fBhmcsim_t\fP *hmc, uint32_t level)"
 .br
 .RI "\fISets the trace level of an initialized HMC library instance\&. \fP"
@@ -50,6 +54,14 @@ Hybrid Memory Cube Functional Simulation Library Header File\&.
 .RI "int \fBhmcsim_clock\fP (struct \fBhmcsim_t\fP *hmc)"
 .br
 .RI "\fIInstantiates a single leading edge and falling edge clock cycle on all devices\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_jtag_reg_read\fP (struct \fBhmcsim_t\fP *hmc, uint32_t dev, uint64_t reg, uint64_t *result)"
+.br
+.RI "\fIAttempts to read the value from the specified HMC device register for the target device using the side-band JTAG interface\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_jtag_reg_write\fP (struct \fBhmcsim_t\fP *hmc, uint32_t dev, uint64_t reg, uint64_t value)"
+.br
+.RI "\fIAttempts to write the value to the specified HMC device register for the target device using the side-band JTAG interface\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -194,6 +206,50 @@ Initializes the internal HMC_SIM state with the necessary hardware configuration
 .RE
 .PP
 
+.SS "int hmcsim_jtag_reg_read (struct \fBhmcsim_t\fP *hmc, uint32_tdev, uint64_treg, uint64_t *result)"
+
+.PP
+Attempts to read the value from the specified HMC device register for the target device using the side-band JTAG interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIdev\fP is the target device cube ID [cub] to read from 
+.br
+\fIreg\fP is the target register to read the value 
+.br
+\fI*result\fP is a pointer to an unsigned 64-bit storage location used to store the returned value\&. Must be backed by a valid memory region\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_jtag_reg_write (struct \fBhmcsim_t\fP *hmc, uint32_tdev, uint64_treg, uint64_tvalue)"
+
+.PP
+Attempts to write the value to the specified HMC device register for the target device using the side-band JTAG interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIdev\fP is the target device cube ID [cub] to read from 
+.br
+\fIreg\fP is the target register whose value is to be written 
+.br
+\fIvalue\fP is the value to be written 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
 .SS "int hmcsim_recv (struct \fBhmcsim_t\fP *hmc, uint32_tdev, uint32_tlink, uint64_t *packet)"
 
 .PP
@@ -244,6 +300,22 @@ Sets the tracefile output file handle for tracing internal device operation\&.
 \fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
 .br
 \fI*tfile\fP is a pointer to a valid and open file handle\&. Must not be null 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_trace_header (struct \fBhmcsim_t\fP *hmc)"
+
+.PP
+Prints a comment block in the tracefile header for future reference\&. The trace handle must be set prior to making a call to this function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
 .RE
 .PP
 \fBReturns:\fP

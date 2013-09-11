@@ -79,14 +79,24 @@
     <member refid="hmc__sim_8h_1a92976e293a2ab29a590d00eb4145a826" kind="function"><name>hmcsim_free</name></member>
     <member refid="hmc__sim_8h_1ad2eae4b1a8a1669e02d8c01d01e3c033" kind="function"><name>hmcsim_link_config</name></member>
     <member refid="hmc__sim_8h_1aa6538f5a29e5aa16903e55f7e6c3c3b9" kind="function"><name>hmcsim_trace_handle</name></member>
+    <member refid="hmc__sim_8h_1a9b0cc2e32a3445aa840ab91acd807d22" kind="function"><name>hmcsim_trace_header</name></member>
     <member refid="hmc__sim_8h_1ab08eceb0130f5b1f0fa9bd8eb2419767" kind="function"><name>hmcsim_trace_level</name></member>
     <member refid="hmc__sim_8h_1a3b623425c27023df21ad382d79096f70" kind="function"><name>hmcsim_build_memrequest</name></member>
     <member refid="hmc__sim_8h_1aa1fcfa11c6a84e6881bcb3300264f27f" kind="function"><name>hmcsim_decode_memresponse</name></member>
     <member refid="hmc__sim_8h_1a12313ad659378fbf0f53e19ba6ee9eed" kind="function"><name>hmcsim_send</name></member>
     <member refid="hmc__sim_8h_1ab2739ca92af423efe975b966492dfd7c" kind="function"><name>hmcsim_recv</name></member>
     <member refid="hmc__sim_8h_1af8f192a56096b22dc50827864b5334e9" kind="function"><name>hmcsim_clock</name></member>
+    <member refid="hmc__sim_8h_1a17c848a15bdf0009329b5486df1c0f66" kind="function"><name>hmcsim_jtag_reg_read</name></member>
+    <member refid="hmc__sim_8h_1a9a3f8d88943e73f19bef1978f32b190c" kind="function"><name>hmcsim_jtag_reg_write</name></member>
   </compound>
   <compound refid="hmc__sim__macros_8h" kind="file"><name>hmc_sim_macros.h</name>
+    <member refid="hmc__sim__macros_8h_1a2e78eb267d251b7551146204f323ae97" kind="define"><name>HMC_MAJOR_VERSION</name></member>
+    <member refid="hmc__sim__macros_8h_1a99f1f7c744fade03a4837ff06abf2b85" kind="define"><name>HMC_MINOR_VERSION</name></member>
+    <member refid="hmc__sim__macros_8h_1a0a7530e9f1c7c0566972348a9dbf8c77" kind="define"><name>HMC_VENDOR_ID</name></member>
+    <member refid="hmc__sim__macros_8h_1a652538c4a31096452bc12eae06a7932a" kind="define"><name>HMC_PRODUCT_REVISION</name></member>
+    <member refid="hmc__sim__macros_8h_1a7fd52e0755664958a8a767229c884d58" kind="define"><name>HMC_PROTOCOL_REVISION</name></member>
+    <member refid="hmc__sim__macros_8h_1a794d25af303879af8b9853e15cf6f57e" kind="define"><name>HMC_PHY_REVISION</name></member>
+    <member refid="hmc__sim__macros_8h_1a940f574bde31746bb977c7fbc7207d81" kind="define"><name>HMC_PHY_SPEED</name></member>
     <member refid="hmc__sim__macros_8h_1a40b822d79346dad65f95faab65452aa3" kind="define"><name>HMC_ERROR</name></member>
     <member refid="hmc__sim__macros_8h_1a825483c2ff71a2ca4dccd7ae20234b8c" kind="define"><name>HMC_OK</name></member>
     <member refid="hmc__sim__macros_8h_1a7de9c73e38ba8b8eadc84e5274245f47" kind="define"><name>HMC_STALL</name></member>
@@ -104,8 +114,9 @@
     <member refid="hmc__sim__macros_8h_1aa02153d20364a45e50c23a7520d1196d" kind="define"><name>HMC_MIN_QUEUE_DEPTH</name></member>
     <member refid="hmc__sim__macros_8h_1ad25f601d2dd9c3a5ee0ed6c401cbc7da" kind="define"><name>HMC_MAX_QUEUE_DEPTH</name></member>
     <member refid="hmc__sim__macros_8h_1a3fa63549398a22f5b70e858bf05d2e43" kind="define"><name>HMC_MAX_UQ_PACKET</name></member>
-    <member refid="hmc__sim__macros_8h_1a950109134b75be3f0184cb9afb344c77" kind="define"><name>HMC_RQST_VALID</name></member>
     <member refid="hmc__sim__macros_8h_1a3afb8c91d4889b2b3cb0d83fe0e537ac" kind="define"><name>HMC_RQST_INVALID</name></member>
+    <member refid="hmc__sim__macros_8h_1a950109134b75be3f0184cb9afb344c77" kind="define"><name>HMC_RQST_VALID</name></member>
+    <member refid="hmc__sim__macros_8h_1a6c11562cdc94061caa3b8a2f0997261a" kind="define"><name>HMC_RQST_CONFLICT</name></member>
     <member refid="hmc__sim__macros_8h_1af1b845f22e2033d5570db8a075083fa4" kind="define"><name>HMC_1GB</name></member>
     <member refid="hmc__sim__macros_8h_1a9439480ad972ba04c6aafeebe5ca0d66" kind="define"><name>HMC_NUM_REGS</name></member>
     <member refid="hmc__sim__macros_8h_1a292338a1e7e25836e3e5e3ad42b8d5da" kind="define"><name>HMC_REG_EDR0</name></member>

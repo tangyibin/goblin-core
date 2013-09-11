@@ -18,6 +18,8 @@ int \hyperlink{hmc__sim_8h_a92976e293a2ab29a590d00eb4145a826}{hmcsim\-\_\-free} 
 \item 
 int \hyperlink{hmc__sim_8h_aa6538f5a29e5aa16903e55f7e6c3c3b9}{hmcsim\-\_\-trace\-\_\-handle} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, F\-I\-L\-E $\ast$tfile)
 \begin{DoxyCompactList}\small\item\em Sets the tracefile output file handle for tracing internal device operation. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a9b0cc2e32a3445aa840ab91acd807d22}{hmcsim\-\_\-trace\-\_\-header} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc)
+\begin{DoxyCompactList}\small\item\em Prints a comment block in the tracefile header for future reference. The trace handle must be set prior to making a call to this function. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_ab08eceb0130f5b1f0fa9bd8eb2419767}{hmcsim\-\_\-trace\-\_\-level} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t level)
 \begin{DoxyCompactList}\small\item\em Sets the trace level of an initialized H\-M\-C library instance. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_a3b623425c27023df21ad382d79096f70}{hmcsim\-\_\-build\-\_\-memrequest} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint8\-\_\-t cub, uint64\-\_\-t addr, uint16\-\_\-t tag, hmc\-\_\-rqst\-\_\-t type, uint8\-\_\-t link, uint64\-\_\-t $\ast$payload, uint64\-\_\-t $\ast$rqst\-\_\-head, uint64\-\_\-t $\ast$rqst\-\_\-tail)
@@ -29,7 +31,11 @@ int \hyperlink{hmc__sim_8h_a12313ad659378fbf0f53e19ba6ee9eed}{hmcsim\-\_\-send} 
 int \hyperlink{hmc__sim_8h_ab2739ca92af423efe975b966492dfd7c}{hmcsim\-\_\-recv} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint32\-\_\-t link, uint64\-\_\-t $\ast$packet)
 \begin{DoxyCompactList}\small\item\em Attempts to poll an H\-M\-C device for a response packet. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_af8f192a56096b22dc50827864b5334e9}{hmcsim\-\_\-clock} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc)
-\begin{DoxyCompactList}\small\item\em Instantiates a single leading edge and falling edge clock cycle on all devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Instantiates a single leading edge and falling edge clock cycle on all devices. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a17c848a15bdf0009329b5486df1c0f66}{hmcsim\-\_\-jtag\-\_\-reg\-\_\-read} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint64\-\_\-t reg, uint64\-\_\-t $\ast$result)
+\begin{DoxyCompactList}\small\item\em Attempts to read the value from the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a9a3f8d88943e73f19bef1978f32b190c}{hmcsim\-\_\-jtag\-\_\-reg\-\_\-write} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint64\-\_\-t reg, uint64\-\_\-t value)
+\begin{DoxyCompactList}\small\item\em Attempts to write the value to the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -218,6 +224,62 @@ Initializes the internal H\-M\-C\-\_\-\-S\-I\-M state with the necessary hardwar
 \begin{DoxyReturn}{Returns}
 0 on success, nonzero otherwise. 
 \end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a17c848a15bdf0009329b5486df1c0f66}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-jtag\-\_\-reg\-\_\-read@{hmcsim\-\_\-jtag\-\_\-reg\-\_\-read}}
+\index{hmcsim\-\_\-jtag\-\_\-reg\-\_\-read@{hmcsim\-\_\-jtag\-\_\-reg\-\_\-read}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-jtag\-\_\-reg\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-jtag\-\_\-reg\-\_\-read (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{dev, }
+\item[{uint64\-\_\-t}]{reg, }
+\item[{uint64\-\_\-t $\ast$}]{result}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a17c848a15bdf0009329b5486df1c0f66}
+
+
+Attempts to read the value from the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em dev} & is the target device cube I\-D \mbox{[}cub\mbox{]} to read from \\
+\hline
+{\em reg} & is the target register to read the value \\
+\hline
+{\em $\ast$result} & is a pointer to an unsigned 64-\/bit storage location used to store the returned value. Must be backed by a valid memory region. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a9a3f8d88943e73f19bef1978f32b190c}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-jtag\-\_\-reg\-\_\-write@{hmcsim\-\_\-jtag\-\_\-reg\-\_\-write}}
+\index{hmcsim\-\_\-jtag\-\_\-reg\-\_\-write@{hmcsim\-\_\-jtag\-\_\-reg\-\_\-write}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-jtag\-\_\-reg\-\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-jtag\-\_\-reg\-\_\-write (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{dev, }
+\item[{uint64\-\_\-t}]{reg, }
+\item[{uint64\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a9a3f8d88943e73f19bef1978f32b190c}
+
+
+Attempts to write the value to the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em dev} & is the target device cube I\-D \mbox{[}cub\mbox{]} to read from \\
+\hline
+{\em reg} & is the target register whose value is to be written \\
+\hline
+{\em value} & is the value to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
 \hypertarget{hmc__sim_8h_ab2739ca92af423efe975b966492dfd7c}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-recv@{hmcsim\-\_\-recv}}
 \index{hmcsim\-\_\-recv@{hmcsim\-\_\-recv}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
 \subsubsection[{hmcsim\-\_\-recv}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-recv (
@@ -285,6 +347,25 @@ Sets the tracefile output file handle for tracing internal device operation.
 {\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
 \hline
 {\em $\ast$tfile} & is a pointer to a valid and open file handle. Must not be null \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a9b0cc2e32a3445aa840ab91acd807d22}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-trace\-\_\-header@{hmcsim\-\_\-trace\-\_\-header}}
+\index{hmcsim\-\_\-trace\-\_\-header@{hmcsim\-\_\-trace\-\_\-header}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-trace\-\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-trace\-\_\-header (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a9b0cc2e32a3445aa840ab91acd807d22}
+
+
+Prints a comment block in the tracefile header for future reference. The trace handle must be set prior to making a call to this function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

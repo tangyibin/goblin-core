@@ -25,6 +25,83 @@
       </node>
     </invincdepgraph>
       <sectiondef kind="define">
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a2e78eb267d251b7551146204f323ae97" prot="public" static="no">
+        <name>HMC_MAJOR_VERSION</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="21" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a99f1f7c744fade03a4837ff06abf2b85" prot="public" static="no">
+        <name>HMC_MINOR_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="25" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a0a7530e9f1c7c0566972348a9dbf8c77" prot="public" static="no">
+        <name>HMC_VENDOR_ID</name>
+        <initializer>0xF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="30" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a652538c4a31096452bc12eae06a7932a" prot="public" static="no">
+        <name>HMC_PRODUCT_REVISION</name>
+        <initializer>0x1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="34" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a7fd52e0755664958a8a767229c884d58" prot="public" static="no">
+        <name>HMC_PROTOCOL_REVISION</name>
+        <initializer>0x1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="38" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a794d25af303879af8b9853e15cf6f57e" prot="public" static="no">
+        <name>HMC_PHY_REVISION</name>
+        <initializer>0x1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="42" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a940f574bde31746bb977c7fbc7207d81" prot="public" static="no">
+        <name>HMC_PHY_SPEED</name>
+        <initializer>0x0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="47" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a40b822d79346dad65f95faab65452aa3" prot="public" static="no">
         <name>HMC_ERROR</name>
         <initializer>-1</initializer>
@@ -34,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="20" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="20" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="51" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a825483c2ff71a2ca4dccd7ae20234b8c" prot="public" static="no">
         <name>HMC_OK</name>
@@ -45,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="21" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="21" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="52" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a7de9c73e38ba8b8eadc84e5274245f47" prot="public" static="no">
         <name>HMC_STALL</name>
@@ -56,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="22" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="22" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="53" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a75ab90ca38427c7e48a61b04761a8374" prot="public" static="no">
         <name>HMC_MAX_DEVS</name>
@@ -67,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="25" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="25" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="56" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af3a4cbb7dc903b46c293f29aaa0860ff" prot="public" static="no">
         <name>HMC_MAX_LINKS</name>
@@ -78,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="26" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="26" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="57" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af207e542afb50ed544908141e6a1293c" prot="public" static="no">
         <name>HMC_MIN_LINKS</name>
@@ -89,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="27" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="27" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="58" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ab145cb4cee7b5fc14b41150b5e7e60bd" prot="public" static="no">
         <name>HMC_MAX_CAPACITY</name>
@@ -100,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="28" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="28" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="59" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a4dd44c28ca79cec03e4334e09c61e980" prot="public" static="no">
         <name>HMC_MIN_CAPACITY</name>
@@ -111,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="29" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="29" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="60" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ad0002a88bffbd7e2bd3de53175b5f983" prot="public" static="no">
         <name>HMC_MAX_VAULTS</name>
@@ -122,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="30" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="30" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="61" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ab784f338d8b12729871226c134cbcc3e" prot="public" static="no">
         <name>HMC_MIN_VAULTS</name>
@@ -133,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="31" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="31" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="62" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a8f73c9ef82aba7db68ed8878f2000868" prot="public" static="no">
         <name>HMC_MAX_BANKS</name>
@@ -144,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="32" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="32" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="63" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a879c2be74fdd094e7d409e01c2bbbbfc" prot="public" static="no">
         <name>HMC_MIN_BANKS</name>
@@ -155,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="33" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="33" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="64" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aa706292076864d5299686e308e4e9f47" prot="public" static="no">
         <name>HMC_MIN_DRAMS</name>
@@ -166,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="34" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="34" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="65" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af2ee5e474a15cdb991ebc2061d9b369b" prot="public" static="no">
         <name>HMC_MAX_DRAMS</name>
@@ -177,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="35" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="35" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="66" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aa02153d20364a45e50c23a7520d1196d" prot="public" static="no">
         <name>HMC_MIN_QUEUE_DEPTH</name>
@@ -188,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="36" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="36" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="67" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ad25f601d2dd9c3a5ee0ed6c401cbc7da" prot="public" static="no">
         <name>HMC_MAX_QUEUE_DEPTH</name>
@@ -199,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="37" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="37" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="68" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a3fa63549398a22f5b70e858bf05d2e43" prot="public" static="no">
         <name>HMC_MAX_UQ_PACKET</name>
@@ -210,18 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="38" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="define" id="hmc__sim__macros_8h_1a950109134b75be3f0184cb9afb344c77" prot="public" static="no">
-        <name>HMC_RQST_VALID</name>
-        <initializer>1</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="40" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="40" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="69" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a3afb8c91d4889b2b3cb0d83fe0e537ac" prot="public" static="no">
         <name>HMC_RQST_INVALID</name>
@@ -232,7 +298,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="41" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="41" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="71" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a950109134b75be3f0184cb9afb344c77" prot="public" static="no">
+        <name>HMC_RQST_VALID</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="72" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="hmc__sim__macros_8h_1a6c11562cdc94061caa3b8a2f0997261a" prot="public" static="no">
+        <name>HMC_RQST_CONFLICT</name>
+        <initializer>2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="73" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af1b845f22e2033d5570db8a075083fa4" prot="public" static="no">
         <name>HMC_1GB</name>
@@ -243,7 +331,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="43" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="43" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="75" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a9439480ad972ba04c6aafeebe5ca0d66" prot="public" static="no">
         <name>HMC_NUM_REGS</name>
@@ -254,7 +342,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="45" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="45" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="77" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a292338a1e7e25836e3e5e3ad42b8d5da" prot="public" static="no">
         <name>HMC_REG_EDR0</name>
@@ -265,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="47" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="47" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="79" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a64ca8350b7703e3c2d99d480d51e09ff" prot="public" static="no">
         <name>HMC_REG_EDR1</name>
@@ -276,7 +364,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="48" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="48" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="80" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a86f4db3c3482e3b62df7a3995d862615" prot="public" static="no">
         <name>HMC_REG_EDR2</name>
@@ -287,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="49" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="49" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="81" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aded915bc7db52f6573be9a6b9f7ddc0b" prot="public" static="no">
         <name>HMC_REG_EDR3</name>
@@ -298,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="50" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="50" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="82" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ab018581936b952fe27c11d50011674f4" prot="public" static="no">
         <name>HMC_REG_ERR</name>
@@ -309,7 +397,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="51" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="51" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="83" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a641c89493d1c0a239d8c1139279efa9f" prot="public" static="no">
         <name>HMC_REG_GC</name>
@@ -320,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="52" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="52" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="84" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a257cd57d238a9b9c57c2637677f48261" prot="public" static="no">
         <name>HMC_REG_LC0</name>
@@ -331,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="53" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="53" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="85" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a8eba9e3068826d06351272affe04908b" prot="public" static="no">
         <name>HMC_REG_LC1</name>
@@ -342,7 +430,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="54" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="54" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="86" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ac1b430447bbe27af8126b0aa6fc26b20" prot="public" static="no">
         <name>HMC_REG_LC2</name>
@@ -353,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="55" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="55" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="87" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a2beb34509a6f05019071c74504c384c6" prot="public" static="no">
         <name>HMC_REG_LC3</name>
@@ -364,7 +452,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="56" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="56" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="88" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a5ce07937771fdaffde36f937460f35d0" prot="public" static="no">
         <name>HMC_REG_LRLL0</name>
@@ -375,7 +463,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="57" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="57" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="89" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1add8517111d89ee2c4a6b2c1b9681ca24" prot="public" static="no">
         <name>HMC_REG_LRLL1</name>
@@ -386,7 +474,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="58" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="58" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="90" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a0c4e63a5fa109f83686a07740ffd2631" prot="public" static="no">
         <name>HMC_REG_LRLL2</name>
@@ -397,7 +485,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="59" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="59" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="91" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a1aa3066d757ea36b1fd3425c84f2471e" prot="public" static="no">
         <name>HMC_REG_LRLL3</name>
@@ -408,7 +496,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="60" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="60" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="92" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a875bcb17b171ab40d906c574f8ed85b4" prot="public" static="no">
         <name>HMC_REG_LR0</name>
@@ -419,7 +507,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="61" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="61" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="93" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a4cd4f49ea10fe0768f81522b7bde7d92" prot="public" static="no">
         <name>HMC_REG_LR1</name>
@@ -430,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="62" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="62" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="94" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a4bf1a941e35681fc3b8f7442413dc981" prot="public" static="no">
         <name>HMC_REG_LR2</name>
@@ -441,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="63" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="63" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="95" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af2f763ced529a53ddb258dc7a1a77b7e" prot="public" static="no">
         <name>HMC_REG_LR3</name>
@@ -452,7 +540,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="64" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="64" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="96" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a23085329310c29dbc264633ffb6e00cc" prot="public" static="no">
         <name>HMC_REG_IBTC0</name>
@@ -463,7 +551,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="65" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="65" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="97" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1acba4ba8dc71e456dc055ed10dfe33566" prot="public" static="no">
         <name>HMC_REG_IBTC1</name>
@@ -474,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="66" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="66" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="98" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a5eaaf22ae3c697d16ba0019aeff592b3" prot="public" static="no">
         <name>HMC_REG_IBTC2</name>
@@ -485,7 +573,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="67" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="67" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="99" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a0853d4b8d29997191464444004ec2d0d" prot="public" static="no">
         <name>HMC_REG_IBTC3</name>
@@ -496,7 +584,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="68" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="68" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="100" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a57afa17f6ebdea5a8f77d8e36e8b8cd2" prot="public" static="no">
         <name>HMC_REG_AC</name>
@@ -507,7 +595,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="69" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="69" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="101" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a7868e8ff252864fdc652b9609d2d0c1b" prot="public" static="no">
         <name>HMC_REG_VCR</name>
@@ -518,7 +606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="70" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="70" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="102" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ac1beb0fb6a5995256b99fde53ff0af48" prot="public" static="no">
         <name>HMC_REG_FEAT</name>
@@ -529,7 +617,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="71" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="71" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="103" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aeae4979414b1256f02f22d42484cc073" prot="public" static="no">
         <name>HMC_REG_RVID</name>
@@ -540,7 +628,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="72" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="72" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="104" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af043211236726fa7b6cb3cc8cc0551c1" prot="public" static="no">
         <name>HMC_REG_EDR0_IDX</name>
@@ -551,7 +639,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="74" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="74" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="106" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a5c750a1cee8bb8408e3670ca43eb21a6" prot="public" static="no">
         <name>HMC_REG_EDR1_IDX</name>
@@ -562,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="75" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="75" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="107" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aa4fc45b59c1651c40c6106b26ed316b3" prot="public" static="no">
         <name>HMC_REG_EDR2_IDX</name>
@@ -573,7 +661,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="76" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="76" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="108" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a9123515a555ebf9af7edfb6960f15606" prot="public" static="no">
         <name>HMC_REG_EDR3_IDX</name>
@@ -584,7 +672,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="77" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="77" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="109" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a356e2c8efa71e8491d4433d037123615" prot="public" static="no">
         <name>HMC_REG_ERR_IDX</name>
@@ -595,7 +683,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="78" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="78" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="110" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aa14b05f9f2df4adf8694df359fffaf5a" prot="public" static="no">
         <name>HMC_REG_GC_IDX</name>
@@ -606,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="79" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="79" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="111" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a4688a8611983f41123adcbf291da833b" prot="public" static="no">
         <name>HMC_REG_LC0_IDX</name>
@@ -617,7 +705,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="80" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="80" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="112" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ad5a6d1d055f374b15dd1f05839048486" prot="public" static="no">
         <name>HMC_REG_LC1_IDX</name>
@@ -628,7 +716,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="81" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="81" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="113" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a190dcd680060686a5fc04f846d588e10" prot="public" static="no">
         <name>HMC_REG_LC2_IDX</name>
@@ -639,7 +727,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="82" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="82" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="114" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a1fe4949b69882f0a79d56e7c1013b54d" prot="public" static="no">
         <name>HMC_REG_LC3_IDX</name>
@@ -650,7 +738,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="83" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="83" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="115" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1accafd25a6db25ebfa15420c5175f4d16" prot="public" static="no">
         <name>HMC_REG_LRLL0_IDX</name>
@@ -661,7 +749,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="84" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="84" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="116" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ab5bed20a7ce64d450045dbbc17fe4406" prot="public" static="no">
         <name>HMC_REG_LRLL1_IDX</name>
@@ -672,7 +760,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="85" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="85" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="117" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1af445110ed472cf7ae5d1507c2512c123" prot="public" static="no">
         <name>HMC_REG_LRLL2_IDX</name>
@@ -683,7 +771,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="86" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="86" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="118" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a4edd05283f93b13eeeb707a350bb8da4" prot="public" static="no">
         <name>HMC_REG_LRLL3_IDX</name>
@@ -694,7 +782,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="87" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="87" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="119" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1aa0600eecc51566b7e5e2d0fe225f24d6" prot="public" static="no">
         <name>HMC_REG_LR0_IDX</name>
@@ -705,7 +793,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="88" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="88" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="120" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ade1e63dadfb57b5a71ba145b67069d02" prot="public" static="no">
         <name>HMC_REG_LR1_IDX</name>
@@ -716,7 +804,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="89" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="89" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="121" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a7db08e1360c6ec36bc91be123652a87b" prot="public" static="no">
         <name>HMC_REG_LR2_IDX</name>
@@ -727,7 +815,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="90" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="90" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="122" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a60aea9593718f1e35ebcb3df4e40570a" prot="public" static="no">
         <name>HMC_REG_LR3_IDX</name>
@@ -738,7 +826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="91" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="91" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="123" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1abdf926c62fee19b613ef5f23cbca1a3b" prot="public" static="no">
         <name>HMC_REG_IBTC0_IDX</name>
@@ -749,7 +837,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="92" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="92" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="124" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a265918ebf0c86f2b9553ca6737fa2141" prot="public" static="no">
         <name>HMC_REG_IBTC1_IDX</name>
@@ -760,7 +848,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="93" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="93" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="125" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a41d01c38fecbaa0b08994a2f58ee737a" prot="public" static="no">
         <name>HMC_REG_IBTC2_IDX</name>
@@ -771,7 +859,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="94" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="94" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="126" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a1cbd220394d5e9eaa8af34dc80d91956" prot="public" static="no">
         <name>HMC_REG_IBTC3_IDX</name>
@@ -782,7 +870,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="95" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="95" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="127" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a11dcd1531da2e3f85248a93e74d61a9d" prot="public" static="no">
         <name>HMC_REG_AC_IDX</name>
@@ -793,7 +881,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="96" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="96" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="128" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1a93abb8673c5dbc66ecf8786e6fb306ab" prot="public" static="no">
         <name>HMC_REG_VCR_IDX</name>
@@ -804,7 +892,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="97" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="97" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="129" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ae8c27d1d3ef98b5901015114b492de59" prot="public" static="no">
         <name>HMC_REG_FEAT_IDX</name>
@@ -815,7 +903,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="98" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="98" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="130" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="hmc__sim__macros_8h_1ac7cd8fdfa4b1952c4fb81b57fc6b3a81" prot="public" static="no">
         <name>HMC_REG_RVID_IDX</name>
@@ -826,7 +914,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="99" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="99" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" line="131" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -852,96 +940,128 @@
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="17"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>RETURN<sp/>CODES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-1</highlight></codeline>
-<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_OK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
-<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_STALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>VERSION<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_MAJOR_VERSION</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAJOR_VERSION<sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="23"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_DEVS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8</highlight></codeline>
-<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_LINKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>8</highlight></codeline>
-<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_LINKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
-<codeline lineno="28"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_CAPACITY<sp/><sp/><sp/><sp/>8</highlight></codeline>
-<codeline lineno="29"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_CAPACITY<sp/><sp/><sp/><sp/>2</highlight></codeline>
-<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_VAULTS<sp/><sp/><sp/><sp/><sp/><sp/>16</highlight></codeline>
-<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_VAULTS<sp/><sp/><sp/><sp/><sp/><sp/>32</highlight></codeline>
-<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_BANKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>8</highlight></codeline>
-<codeline lineno="33"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_BANKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>16</highlight></codeline>
-<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_DRAMS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight></codeline>
-<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_DRAMS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_QUEUE_DEPTH<sp/>2</highlight></codeline>
-<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_QUEUE_DEPTH<sp/>65536</highlight></codeline>
-<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_UQ_PACKET<sp/><sp/><sp/>18</highlight></codeline>
-<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_RQST_VALID<sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
-<codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_RQST_INVALID<sp/><sp/><sp/><sp/>0</highlight></codeline>
-<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_1GB<sp/><sp/><sp/><sp/><sp/>1073741824</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_MINOR_VERSION<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MINOR_VERSION<sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>VENDOR<sp/>ID<sp/>DATA<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_VENDOR_ID</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_VENDOR_ID<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xF</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_PRODUCT_REVISION</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_PRODUCT_REVISION<sp/><sp/><sp/><sp/>0x1</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_PROTOCOL_REVISION<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_PROTOCOL_REVISION<sp/><sp/><sp/>0x1</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_PHY_REVISION</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_PHY_REVISION<sp/><sp/><sp/><sp/>0x1</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_NUM_REGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>26</highlight></codeline>
-<codeline lineno="46"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0000</highlight></codeline>
-<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0001</highlight></codeline>
-<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0002</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0003</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_ERR<sp/><sp/><sp/><sp/><sp/>0x2B0004</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_GC<sp/><sp/><sp/><sp/><sp/><sp/>0x280000</highlight></codeline>
-<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC0<sp/><sp/><sp/><sp/><sp/>0x240000</highlight></codeline>
-<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC1<sp/><sp/><sp/><sp/><sp/>0x250000</highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC2<sp/><sp/><sp/><sp/><sp/>0x260000</highlight></codeline>
-<codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC3<sp/><sp/><sp/><sp/><sp/>0x270000</highlight></codeline>
-<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x240003</highlight></codeline>
-<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x250003</highlight></codeline>
-<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x260003</highlight></codeline>
-<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL3<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x270003</highlight></codeline>
-<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR0<sp/><sp/><sp/><sp/><sp/>0x0C0000</highlight></codeline>
-<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR1<sp/><sp/><sp/><sp/><sp/>0x0D0000</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR2<sp/><sp/><sp/><sp/><sp/>0x0E0000</highlight></codeline>
-<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR3<sp/><sp/><sp/><sp/><sp/>0x0F0000</highlight></codeline>
-<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x040000</highlight></codeline>
-<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x050000</highlight></codeline>
-<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x060000</highlight></codeline>
-<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC3<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x070000</highlight></codeline>
-<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_AC<sp/><sp/><sp/><sp/><sp/><sp/>0x2C0000</highlight></codeline>
-<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_VCR<sp/><sp/><sp/><sp/><sp/>0x108000</highlight></codeline>
-<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_FEAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2C0003</highlight></codeline>
-<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_RVID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2C0004</highlight></codeline>
-<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR0_IDX<sp/><sp/><sp/><sp/>0x000000</highlight></codeline>
-<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR1_IDX<sp/><sp/><sp/><sp/>0x000001</highlight></codeline>
-<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR2_IDX<sp/><sp/><sp/><sp/>0x000002</highlight></codeline>
-<codeline lineno="77"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR3_IDX<sp/><sp/><sp/><sp/>0x000003</highlight></codeline>
-<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_ERR_IDX<sp/><sp/><sp/><sp/><sp/>0x000004</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_GC_IDX<sp/><sp/><sp/><sp/><sp/><sp/>0x000005</highlight></codeline>
-<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC0_IDX<sp/><sp/><sp/><sp/><sp/>0x000006</highlight></codeline>
-<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC1_IDX<sp/><sp/><sp/><sp/><sp/>0x000007</highlight></codeline>
-<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC2_IDX<sp/><sp/><sp/><sp/><sp/>0x000008</highlight></codeline>
-<codeline lineno="83"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC3_IDX<sp/><sp/><sp/><sp/><sp/>0x000009</highlight></codeline>
-<codeline lineno="84"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL0_IDX<sp/><sp/><sp/>0x00000A</highlight></codeline>
-<codeline lineno="85"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL1_IDX<sp/><sp/><sp/>0x00000B</highlight></codeline>
-<codeline lineno="86"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL2_IDX<sp/><sp/><sp/>0x00000C</highlight></codeline>
-<codeline lineno="87"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL3_IDX<sp/><sp/><sp/>0x00000D</highlight></codeline>
-<codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR0_IDX<sp/><sp/><sp/><sp/><sp/>0x00000E</highlight></codeline>
-<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR1_IDX<sp/><sp/><sp/><sp/><sp/>0x00000F</highlight></codeline>
-<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR2_IDX<sp/><sp/><sp/><sp/><sp/>0x000010</highlight></codeline>
-<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR3_IDX<sp/><sp/><sp/><sp/><sp/>0x000011</highlight></codeline>
-<codeline lineno="92"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC0_IDX<sp/><sp/><sp/>0x000012</highlight></codeline>
-<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC1_IDX<sp/><sp/><sp/>0x000013</highlight></codeline>
-<codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC2_IDX<sp/><sp/><sp/>0x000014</highlight></codeline>
-<codeline lineno="95"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC3_IDX<sp/><sp/><sp/>0x000015</highlight></codeline>
-<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_AC_IDX<sp/><sp/><sp/><sp/><sp/><sp/>0x000016</highlight></codeline>
-<codeline lineno="97"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_VCR_IDX<sp/><sp/><sp/><sp/><sp/>0x000017</highlight></codeline>
-<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_FEAT_IDX<sp/><sp/><sp/><sp/>0x000018</highlight></codeline>
-<codeline lineno="99"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_RVID_IDX<sp/><sp/><sp/><sp/>0x000019</highlight></codeline>
-<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="103"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>PHYSICAL<sp/>MACRO<sp/>DATA<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/><sp/><sp/><sp/><sp/>HMC_PHY_SPEED</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_PHY_SPEED<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x0</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>RETURN<sp/>CODES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/>-1</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_OK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_STALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_DEVS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>8</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_LINKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>8</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_LINKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>4</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_CAPACITY<sp/><sp/><sp/><sp/>8</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_CAPACITY<sp/><sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_VAULTS<sp/><sp/><sp/><sp/><sp/><sp/>16</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_VAULTS<sp/><sp/><sp/><sp/><sp/><sp/>32</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_BANKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>8</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_BANKS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>16</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_DRAMS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_DRAMS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>20</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MIN_QUEUE_DEPTH<sp/>2</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_QUEUE_DEPTH<sp/>65536</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_MAX_UQ_PACKET<sp/><sp/><sp/>18</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_RQST_INVALID<sp/><sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_RQST_VALID<sp/><sp/><sp/><sp/><sp/><sp/>1</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_RQST_CONFLICT<sp/><sp/><sp/>2</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_1GB<sp/><sp/><sp/><sp/><sp/>1073741824</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_NUM_REGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>26</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0000</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0001</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0002</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2B0003</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_ERR<sp/><sp/><sp/><sp/><sp/>0x2B0004</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_GC<sp/><sp/><sp/><sp/><sp/><sp/>0x280000</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC0<sp/><sp/><sp/><sp/><sp/>0x240000</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC1<sp/><sp/><sp/><sp/><sp/>0x250000</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC2<sp/><sp/><sp/><sp/><sp/>0x260000</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC3<sp/><sp/><sp/><sp/><sp/>0x270000</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x240003</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x250003</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x260003</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL3<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x270003</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR0<sp/><sp/><sp/><sp/><sp/>0x0C0000</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR1<sp/><sp/><sp/><sp/><sp/>0x0D0000</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR2<sp/><sp/><sp/><sp/><sp/>0x0E0000</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR3<sp/><sp/><sp/><sp/><sp/>0x0F0000</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x040000</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x050000</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x060000</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC3<sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x070000</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_AC<sp/><sp/><sp/><sp/><sp/><sp/>0x2C0000</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_VCR<sp/><sp/><sp/><sp/><sp/>0x108000</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_FEAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2C0003</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_RVID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x2C0004</highlight></codeline>
 <codeline lineno="105"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_HMC_SIM_MACROS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="107"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR0_IDX<sp/><sp/><sp/><sp/>0x000000</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR1_IDX<sp/><sp/><sp/><sp/>0x000001</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR2_IDX<sp/><sp/><sp/><sp/>0x000002</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_EDR3_IDX<sp/><sp/><sp/><sp/>0x000003</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_ERR_IDX<sp/><sp/><sp/><sp/><sp/>0x000004</highlight></codeline>
+<codeline lineno="111"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_GC_IDX<sp/><sp/><sp/><sp/><sp/><sp/>0x000005</highlight></codeline>
+<codeline lineno="112"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC0_IDX<sp/><sp/><sp/><sp/><sp/>0x000006</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC1_IDX<sp/><sp/><sp/><sp/><sp/>0x000007</highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC2_IDX<sp/><sp/><sp/><sp/><sp/>0x000008</highlight></codeline>
+<codeline lineno="115"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LC3_IDX<sp/><sp/><sp/><sp/><sp/>0x000009</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL0_IDX<sp/><sp/><sp/>0x00000A</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL1_IDX<sp/><sp/><sp/>0x00000B</highlight></codeline>
+<codeline lineno="118"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL2_IDX<sp/><sp/><sp/>0x00000C</highlight></codeline>
+<codeline lineno="119"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LRLL3_IDX<sp/><sp/><sp/>0x00000D</highlight></codeline>
+<codeline lineno="120"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR0_IDX<sp/><sp/><sp/><sp/><sp/>0x00000E</highlight></codeline>
+<codeline lineno="121"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR1_IDX<sp/><sp/><sp/><sp/><sp/>0x00000F</highlight></codeline>
+<codeline lineno="122"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR2_IDX<sp/><sp/><sp/><sp/><sp/>0x000010</highlight></codeline>
+<codeline lineno="123"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_LR3_IDX<sp/><sp/><sp/><sp/><sp/>0x000011</highlight></codeline>
+<codeline lineno="124"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC0_IDX<sp/><sp/><sp/>0x000012</highlight></codeline>
+<codeline lineno="125"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC1_IDX<sp/><sp/><sp/>0x000013</highlight></codeline>
+<codeline lineno="126"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC2_IDX<sp/><sp/><sp/>0x000014</highlight></codeline>
+<codeline lineno="127"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_IBTC3_IDX<sp/><sp/><sp/>0x000015</highlight></codeline>
+<codeline lineno="128"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_AC_IDX<sp/><sp/><sp/><sp/><sp/><sp/>0x000016</highlight></codeline>
+<codeline lineno="129"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_VCR_IDX<sp/><sp/><sp/><sp/><sp/>0x000017</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_FEAT_IDX<sp/><sp/><sp/><sp/>0x000018</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>HMC_REG_RVID_IDX<sp/><sp/><sp/><sp/>0x000019</highlight></codeline>
+<codeline lineno="132"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="135"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="137"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_HMC_SIM_MACROS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="139"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim_macros.h"/>
   </compounddef>

@@ -111,6 +111,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 <tr class="memitem:aa6538f5a29e5aa16903e55f7e6c3c3b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#aa6538f5a29e5aa16903e55f7e6c3c3b9">hmcsim_trace_handle</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, FILE *tfile)</td></tr>
 <tr class="memdesc:aa6538f5a29e5aa16903e55f7e6c3c3b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the tracefile output file handle for tracing internal device operation.  <a href="#aa6538f5a29e5aa16903e55f7e6c3c3b9">More...</a><br/></td></tr>
 <tr class="separator:aa6538f5a29e5aa16903e55f7e6c3c3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b0cc2e32a3445aa840ab91acd807d22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a9b0cc2e32a3445aa840ab91acd807d22">hmcsim_trace_header</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc)</td></tr>
+<tr class="memdesc:a9b0cc2e32a3445aa840ab91acd807d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints a comment block in the tracefile header for future reference. The trace handle must be set prior to making a call to this function.  <a href="#a9b0cc2e32a3445aa840ab91acd807d22">More...</a><br/></td></tr>
+<tr class="separator:a9b0cc2e32a3445aa840ab91acd807d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab08eceb0130f5b1f0fa9bd8eb2419767"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#ab08eceb0130f5b1f0fa9bd8eb2419767">hmcsim_trace_level</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t level)</td></tr>
 <tr class="memdesc:ab08eceb0130f5b1f0fa9bd8eb2419767"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the trace level of an initialized HMC library instance.  <a href="#ab08eceb0130f5b1f0fa9bd8eb2419767">More...</a><br/></td></tr>
 <tr class="separator:ab08eceb0130f5b1f0fa9bd8eb2419767"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +132,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 <tr class="memitem:af8f192a56096b22dc50827864b5334e9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#af8f192a56096b22dc50827864b5334e9">hmcsim_clock</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc)</td></tr>
 <tr class="memdesc:af8f192a56096b22dc50827864b5334e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a single leading edge and falling edge clock cycle on all devices.  <a href="#af8f192a56096b22dc50827864b5334e9">More...</a><br/></td></tr>
 <tr class="separator:af8f192a56096b22dc50827864b5334e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c848a15bdf0009329b5486df1c0f66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a17c848a15bdf0009329b5486df1c0f66">hmcsim_jtag_reg_read</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t dev, uint64_t reg, uint64_t *result)</td></tr>
+<tr class="memdesc:a17c848a15bdf0009329b5486df1c0f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to read the value from the specified HMC device register for the target device using the side-band JTAG interface.  <a href="#a17c848a15bdf0009329b5486df1c0f66">More...</a><br/></td></tr>
+<tr class="separator:a17c848a15bdf0009329b5486df1c0f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a3f8d88943e73f19bef1978f32b190c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a9a3f8d88943e73f19bef1978f32b190c">hmcsim_jtag_reg_write</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t dev, uint64_t reg, uint64_t value)</td></tr>
+<tr class="memdesc:a9a3f8d88943e73f19bef1978f32b190c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to write the value to the specified HMC device register for the target device using the side-band JTAG interface.  <a href="#a9a3f8d88943e73f19bef1978f32b190c">More...</a><br/></td></tr>
+<tr class="separator:a9a3f8d88943e73f19bef1978f32b190c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Hybrid Memory Cube Functional Simulation Library Header File. </p>
@@ -485,6 +494,106 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 
 </div>
 </div>
+<a class="anchor" id="a17c848a15bdf0009329b5486df1c0f66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_jtag_reg_read </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attempts to read the value from the specified HMC device register for the target device using the side-band JTAG interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">dev</td><td>is the target device cube ID [cub] to read from </td></tr>
+    <tr><td class="paramname">reg</td><td>is the target register to read the value </td></tr>
+    <tr><td class="paramname">*result</td><td>is a pointer to an unsigned 64-bit storage location used to store the returned value. Must be backed by a valid memory region. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9a3f8d88943e73f19bef1978f32b190c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_jtag_reg_write </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attempts to write the value to the specified HMC device register for the target device using the side-band JTAG interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">dev</td><td>is the target device cube ID [cub] to read from </td></tr>
+    <tr><td class="paramname">reg</td><td>is the target register whose value is to be written </td></tr>
+    <tr><td class="paramname">value</td><td>is the value to be written </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ab2739ca92af423efe975b966492dfd7c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -607,6 +716,31 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 
 </div>
 </div>
+<a class="anchor" id="a9b0cc2e32a3445aa840ab91acd807d22"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_trace_header </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints a comment block in the tracefile header for future reference. The trace handle must be set prior to making a call to this function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ab08eceb0130f5b1f0fa9bd8eb2419767"></a>
 <div class="memitem">
 <div class="memproto">
@@ -646,7 +780,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Aug 31 2013 08:43:09 for HMC_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 11 2013 16:37:09 for HMC_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
