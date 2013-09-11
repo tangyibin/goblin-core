@@ -18,7 +18,7 @@
  * HMCSIM_RESET_DEVICE
  * 
  */
-extern int	hmcsim_trace( struct hmcsim_t *hmc, uint32_t dev )
+extern int	hmcsim_reset_device( struct hmcsim_t *hmc, uint32_t dev )
 {
 	if( hmc == NULL ) {
 		return -1;
