@@ -1,18 +1,21 @@
 #!/bin/sh
+# 
+# HMCSIM TEST MAKEFILE 
+# 
+# Drives building all the hmcsim tests
 
-all:
-	@for a in $$(ls) ; do \
-		if [ -d $$a ]; then \
-			echo "processing test folder $$a"; \
-			$(MAKE) -C $$a; \
-		fi; \
-	done; \
-	echo "Done!"
-clean:
-	@for a in $$(ls) ; do \
-		if [ -d $$a ]; then \
-			echo "cleaning test folder $$a"; \
-			$(MAKE) -C $$a clean; \
-		fi; \
-	done; \
-	echo "Done!"
+
+SUBDIRS :=	simple hmc_physrand
+
+CLEANDIRS :=	$(addsuffix .clean, $(SUBDIRS))
+
+all:$(SUBDIRS)
+$(SUBDIRS):
+	$(MAKE) -C $@
+.PHONY: all $(SUBDIRS) 
+
+clean: $(CLEANDIRS) 
+$(CLEANDIRS): 
+	$(MAKE) -C $(basename $@) clean
+.PHONY: clean $(CLEANDIRS)
+
