@@ -1,17 +1,16 @@
 #!/bin/sh
+#
+# HMCSIM TEST APPLICATIONS 
+#
+# TEST: PHYSRAND
+# ---------------------------------------
 
-CC=gcc
-INC=-I../../include/
-CFLAGS=-O2 -Wall -g $(INC) 
-LIBS=-L../../ -lhmcsim
+include ../Makefile.inc
 
-SRC=`pwd`/src
+SRC=./src
 
-OBJS=$(SRC)/physrand_main.o
-
-all: hmc_physrand
-hmc_physrand:
-	$(CC) $(CFLAGS) -c -o $(SRC)/physrand_main.o $(SRC)/physrand_main.c
-	$(CC) $(CFLAGS) -o hmc_physrand $(OBJS) $(LIBS)
-clean:
-	rm -Rf ./src/*.o ./hmc_physrand
+all: physrand
+physrand:
+	$(CC) $(CFLAGS) -o $@ $(SRC)/physrand_main.c $(LDFLAGS) $(LDLIBS)
+clean: 
+	rm -Rf ./physrand ./src/*.o
