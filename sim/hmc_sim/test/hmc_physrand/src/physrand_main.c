@@ -15,7 +15,19 @@
 #include <unistd.h>
 #include "hmc_sim.h"
 
-
+/* ----------------------------------------------------- FUNCTION PROTOTYPES */
+extern int genrands( 	uint64_t *addr, 
+			uint32_t *req, 
+			long num_req, 
+			uint32_t seed, 
+			uint32_t num_dev, 
+			uint32_t capacity, 
+			uint32_t read_perct, 
+			uint32_t write_perct );
+extern int execute_test( struct hmcsim_t *hmc, 
+			uint64_t *addr, 
+			uint32_t *req, 
+			long num_req );
 
 /* ----------------------------------------------------- MAIN */
 /* 
@@ -33,11 +45,17 @@ extern int main( int argc, char **argv )
 	uint32_t num_banks	= 0;
 	uint32_t num_drams	= 0;
 	uint32_t capacity	= 0;
-	uint32_t xbar_depth	= 0;		
+	uint32_t xbar_depth	= 0;	
+	uint32_t read_perct	= 50;
+	uint32_t write_perct	= 50;	
+	uint32_t seed		= 0;
+	long num_req		= 0x0Fl;
+	uint64_t *addr		= NULL;
+	uint32_t *req		= NULL;
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:N:R:S:W:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -51,7 +69,7 @@ extern int main( int argc, char **argv )
 				num_drams = (uint32_t)(atoi(optarg));
 				break;
 			case 'h': 
-				printf( "%s%s%s\n", "usage : ", argv[0], " -bcdhlnqvx" );
+				printf( "%s%s%s\n", "usage : ", argv[0], " -bcdhlnqvxNRSW" );
 				printf( " -b <num_banks>\n" );
 				printf( " -c <capacity>\n" );
 				printf( " -d <num_drams>\n" );
@@ -61,6 +79,10 @@ extern int main( int argc, char **argv )
 				printf( " -q <queue_depth>\n" );
 				printf( " -v <num_vaults>\n" );
 				printf( " -x <xbar_depth>\n" );
+				printf( " -N <num_requests>\n" );
+				printf( " -R <read_percentage>\n" );
+				printf( " -S <seed>\n" );
+				printf( " -W <write_percentage>\n" );
 				return 0;
 				break;
 			case 'l':
@@ -78,14 +100,84 @@ extern int main( int argc, char **argv )
 			case 'x': 
 				xbar_depth = (uint32_t)(atoi(optarg));
 				break;
+			case 'N':
+				num_req	= (long)(atol(optarg));
+				break;
+			case 'R': 
+				read_perct = (uint32_t)(atoi(optarg));
+				break;
+			case 'S':
+				seed = (uint32_t)(atoi(optarg));
+				break;
+			case 'W':
+				write_perct = (uint32_t)(atoi(optarg));
+				break;
 			case '?':
 			default:
-				printf( "%s%s%s\n", "Unknown option: see ", argv[0], " -bcdhlnqvx" );
+				printf( "%s%s%s\n", "Unknown option: see ", argv[0], "-bcdhlnqvxNRSW" );
 				return -1;
 				break;
 		}
 	}
 
+	/* 
+	 * sanity check the runtime args 
+	 * 
+	 */
+	if( (read_perct+write_perct)!=100 ){ 
+		printf( "FAILED TO VALIDATE ARGS: READ+WRITE PERCENTAGE MUST == 100\n" );
+		return -1;
+	}
+
+	if( (num_devs < 1 ) || ( num_devs > 8 ) ){
+		printf( "FAILED TO VALIDATE ARGS: NUM DEVS OUT OF BOUNDS\n" );
+		return -1;
+	}
+
+	if( (num_links != 4) && (num_links != 8) ){
+		printf( "FAILED TO VALIDATE ARGS: NUM LINKS OUT OF BOUNDS\n" );
+		return -1;
+	}
+
+	/* 
+	 * allocate memory 
+	 * 
+ 	 */
+	addr = malloc( sizeof( uint64_t ) * num_req );
+	if( addr == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR\n" );
+		return -1;
+	}
+
+	req = malloc( sizeof( uint32_t ) * num_req );
+	if( req == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR REQ\n" );
+		free( addr ); addr = NULL;
+		return -1;
+	}
+
+	/* 
+	 * generate the inputs
+	 * 
+	 */
+	if( genrands( 	addr, 
+			req, 
+			num_req, 
+			seed, 
+			num_devs,
+			capacity, 
+			read_perct, 
+			write_perct ) != 0 ){
+		printf( "FAILED TO GENERATE RANDOM INPUTS\n" );
+		free( addr );
+		addr = NULL;
+		free( req );
+		req = NULL;
+		return -1;
+	}
+	
+
+	
 	/* 
 	 * init the library 
 	 * 
@@ -107,12 +199,46 @@ extern int main( int argc, char **argv )
 		printf( "SUCCESS : INITALIZED HMCSIM\n" );
 	}
 
-	
+
+	/* 
+	 * setup the device topology
+	 * 
+	 */
+	if( num_devs > 1 ){ 
+
+			
+
+	}
+
+
+	/* 
+	 * execute the test
+	 * 
+	 */
+	if( execute_test( &hmc, addr, req, num_req ) != 0 ) {
+		printf( "FAILED TO EXECUTE TEST\n" );
+		hmcsim_free( &hmc );
+		free( addr );
+		addr = NULL;
+		free( req );
+		req = NULL;
+		return -1;
+	}
+
 	/* 
 	 * free the library data
 	 * 
 	 */	
 	ret = hmcsim_free( &hmc );
+
+	/*
+	 * free the memory 
+	 * 
+ 	 */
+	free( addr );
+	addr = NULL;
+	free( req );
+	req = NULL;
 	
 	if( ret != 0 ){ 
 		printf( "FAILED TO FREE HMCSIM\n" );
