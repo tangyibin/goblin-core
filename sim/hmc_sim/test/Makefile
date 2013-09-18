@@ -5,7 +5,7 @@
 # Drives building all the hmcsim tests
 
 
-SUBDIRS :=	simple hmc_physrand
+SUBDIRS :=	simple hmc_physrand 1dfft 2dfft
 
 CLEANDIRS :=	$(addsuffix .clean, $(SUBDIRS))
 
