@@ -593,6 +593,272 @@ static int hmcsim_clock_reg_responses( struct hmcsim_t *hmc )
 	return 0;
 }
 
+/* ----------------------------------------------------- HMCSIM_CLOCK_REORG_XBAR_RQST */
+/* 
+ * HMCSIM_CLOCK_REORG_XBAR_RQST 
+ * 
+ */
+static int hmcsim_clock_reorg_xbar_rqst( struct hmcsim_t *hmc, uint32_t dev, uint32_t link )
+{
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t slot   = 0;
+	/* ---- */
+
+	/* 
+	 * walk the request queue starting at slot 1 
+	 * 
+	 */
+	for( i=1; i<hmc->xbar_depth; i++ )
+	{
+		/* 
+		 * if the slot is valid, look upstream in the queue
+		 *
+		 */
+		if( hmc->devs[dev].xbar[link].xbar_rqst[i].valid == 1 ){
+
+			/*
+			 * find the lowest appropriate slot
+			 *
+			 */
+			slot = i;
+			for( j=(i-1); j>=0; j-- ){
+				if( hmc->devs[dev].xbar[link].xbar_rqst[j].valid == 0 ){
+					slot = j;
+				}
+			}
+
+			/* 
+		 	 * check to see if a new slot was found
+			 * if so, perform the swap 
+			 *
+			 */
+			if( slot != i ){
+
+				/* 
+				 * perform the swap 
+				 *
+				 */
+				for( j=0; j<HMC_MAX_UQ_PACKET; j++ ){ 
+
+					hmc->devs[dev].xbar[link].xbar_rqst[slot].packet[j] = 
+						hmc->devs[dev].xbar[link].xbar_rqst[i].packet[j];	
+
+					hmc->devs[dev].xbar[link].xbar_rqst[i].packet[j] =0x00ll;	
+					
+				}
+
+				hmc->devs[dev].xbar[link].xbar_rqst[slot].valid = 1;	
+				hmc->devs[dev].xbar[link].xbar_rqst[i].valid    = 0;	
+			}
+		} /* else, slot not valid.. move along */
+	}
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_REORG_XBAR_RSP */
+/* 
+ * HMCSIM_CLOCK_REORG_XBAR_RSP 
+ * 
+ */
+static int hmcsim_clock_reorg_xbar_rsp( struct hmcsim_t *hmc, uint32_t dev, uint32_t link )
+{
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t slot   = 0;
+	/* ---- */
+
+	/* 
+	 * walk the response queue starting at slot 1 
+	 * 
+	 */
+	for( i=1; i<hmc->xbar_depth; i++ )
+	{
+		/* 
+		 * if the slot is valid, look upstream in the queue
+		 *
+		 */
+		if( hmc->devs[dev].xbar[link].xbar_rsp[i].valid == 1 ){
+
+			/*
+			 * find the lowest appropriate slot
+			 *
+			 */
+			slot = i;
+			for( j=(i-1); j>=0; j-- ){
+				if( hmc->devs[dev].xbar[link].xbar_rsp[j].valid == 0 ){
+					slot = j;
+				}
+			}
+
+			/* 
+		 	 * check to see if a new slot was found
+			 * if so, perform the swap 
+			 *
+			 */
+			if( slot != i ){
+
+				/* 
+				 * perform the swap 
+				 *
+				 */
+				for( j=0; j<HMC_MAX_UQ_PACKET; j++ ){ 
+
+					hmc->devs[dev].xbar[link].xbar_rsp[slot].packet[j] = 
+						hmc->devs[dev].xbar[link].xbar_rsp[i].packet[j];	
+
+					hmc->devs[dev].xbar[link].xbar_rsp[i].packet[j] =0x00ll;	
+					
+				}
+
+				hmc->devs[dev].xbar[link].xbar_rsp[slot].valid = 1;	
+				hmc->devs[dev].xbar[link].xbar_rsp[i].valid    = 0;	
+			}
+		} /* else, slot not valid.. move along */
+	}
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_REORG_VAULT_RQST */
+/* 
+ * HMCSIM_CLOCK_REORG_VAULT_RQST
+ * 
+ */
+static int hmcsim_clock_reorg_vault_rqst( 	struct hmcsim_t *hmc, 
+						uint32_t dev, 
+						uint32_t quad, 
+						uint32_t vault )
+{
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t slot   = 0;
+	/* ---- */
+
+	/* 
+	 * walk the request queue starting at slot 1 
+	 * 
+	 */
+	for( i=1; i<hmc->queue_depth; i++ )
+	{
+		/* 
+		 * if the slot is valid, look upstream in the queue
+		 *
+		 */
+		if( hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[i].valid == 1 ){
+
+			/*
+			 * find the lowest appropriate slot
+			 *
+			 */
+			slot = i;
+			for( j=(i-1); j>=0; j-- ){
+				if( hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[j].valid == 0 ){
+					slot = j;
+				}
+			}
+
+			/* 
+		 	 * check to see if a new slot was found
+			 * if so, perform the swap 
+			 *
+			 */
+			if( slot != i ){
+
+				/* 
+				 * perform the swap 
+				 *
+				 */
+				for( j=0; j<HMC_MAX_UQ_PACKET; j++ ){ 
+
+					hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[slot].packet[j] = 
+						hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[i].packet[j];	
+
+					hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[i].packet[j] =0x00ll;	
+					
+				}
+
+				hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[slot].valid = 1;	
+				hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[i].valid    = 0;	
+			}
+		} /* else, slot not valid.. move along */
+	}
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_REORG_VAULT_RSP */
+/* 
+ * HMCSIM_CLOCK_REORG_VAULT_RSP
+ * 
+ */
+static int hmcsim_clock_reorg_vault_rsp( 	struct hmcsim_t *hmc, 
+						uint32_t dev, 
+						uint32_t quad, 
+						uint32_t vault )
+{
+	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t slot   = 0;
+	/* ---- */
+
+	/* 
+	 * walk the response queue starting at slot 1 
+	 * 
+	 */
+	for( i=1; i<hmc->queue_depth; i++ )
+	{
+		/* 
+		 * if the slot is valid, look upstream in the queue
+		 *
+		 */
+		if( hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[i].valid == 1 ){
+
+			/*
+			 * find the lowest appropriate slot
+			 *
+			 */
+			slot = i;
+			for( j=(i-1); j>=0; j-- ){
+				if( hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[j].valid == 0 ){
+					slot = j;
+				}
+			}
+
+			/* 
+		 	 * check to see if a new slot was found
+			 * if so, perform the swap 
+			 *
+			 */
+			if( slot != i ){
+
+				/* 
+				 * perform the swap 
+				 *
+				 */
+				for( j=0; j<HMC_MAX_UQ_PACKET; j++ ){ 
+
+					hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[slot].packet[j] = 
+						hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[i].packet[j];	
+
+					hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[i].packet[j] =0x00ll;	
+					
+				}
+
+				hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[slot].valid = 1;	
+				hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[i].valid    = 0;	
+			}
+		} /* else, slot not valid.. move along */
+	}
+
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_CLOCK_QUEUE_REORG */
 /* 
  * HMCSIM_CLOCK_QUEUE_REORG
@@ -601,17 +867,51 @@ static int hmcsim_clock_reg_responses( struct hmcsim_t *hmc )
 static int hmcsim_clock_queue_reorg( struct hmcsim_t *hmc )
 {
 	/* vars */
+	uint32_t i	= 0;
+	uint32_t j	= 0;
+	uint32_t k	= 0;
 	/* ---- */
 
 	/* 
 	 * crossbar queues 
 	 * 
 	 */
+	for( i=0; i<hmc->num_devs; i++ )
+	{
+		for( j=0; j<hmc->num_links; j++ )
+		{
+			/* 
+			 * reorder:
+			 * hmc->devs[i].xbar[j].xbar_rqst;
+			 * hmc->devs[i].xbar[j].xbar_rsp;
+			 * 
+			 */
+			hmcsim_clock_reorg_xbar_rqst( hmc, i, j );
+			hmcsim_clock_reorg_xbar_rsp( hmc, i, j );
+		}
+	}
 
 	/* 
 	 * vault queues
 	 * 
 	 */
+	for( i=0; i<hmc->num_devs; i++ )
+	{
+		for( j=0; j<hmc->num_quads; j++ )
+		{
+			for( k=0; k<hmc->num_vaults; k++ )
+			{
+				/* 
+				 * reorder: 
+				 * hmc->devs[i].quads[j].vaults[k].rqst_queue;
+				 * hmc->devs[i].quads[j].vaults[k].rsp_queue;
+				 * 
+			 	 */
+				hmcsim_clock_reorg_vault_rqst( hmc, i, j, k );
+				hmcsim_clock_reorg_vault_rsp( hmc, i, j, k );
+			}
+		}
+	}
 
 	return 0;
 }
