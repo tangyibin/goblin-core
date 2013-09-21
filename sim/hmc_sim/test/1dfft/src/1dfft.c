@@ -33,10 +33,11 @@ extern int main( int argc, char **argv )
 	uint32_t num_drams	= 0;
 	uint32_t capacity	= 0;
 	uint32_t xbar_depth	= 0;		
+	uint32_t num_threads	= 2;
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:T:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -60,6 +61,7 @@ extern int main( int argc, char **argv )
 				printf( " -q <queue_depth>\n" );
 				printf( " -v <num_vaults>\n" );
 				printf( " -x <xbar_depth>\n" );
+				printf( " -T <num_threads>\n" );
 				return 0;
 				break;
 			case 'l':
@@ -77,6 +79,8 @@ extern int main( int argc, char **argv )
 			case 'x': 
 				xbar_depth = (uint32_t)(atoi(optarg));
 				break;
+			case 'T': 
+				num_threads = (uint32_t)(atoi(optarg));
 			case '?':
 			default:
 				printf( "%s%s%s\n", "Unknown option: see ", argv[0], " -bcdhlnqvx" );

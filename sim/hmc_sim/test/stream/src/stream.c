@@ -33,10 +33,11 @@ extern int main( int argc, char **argv )
 	uint32_t num_drams	= 0;
 	uint32_t capacity	= 0;
 	uint32_t xbar_depth	= 0;		
+	uint32_t num_threads	= 2;
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:T:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -76,6 +77,9 @@ extern int main( int argc, char **argv )
 				break;
 			case 'x': 
 				xbar_depth = (uint32_t)(atoi(optarg));
+				break;
+			case 'T':
+				num_threads = (uint32_t)(atoi(optarg));
 				break;
 			case '?':
 			default:
