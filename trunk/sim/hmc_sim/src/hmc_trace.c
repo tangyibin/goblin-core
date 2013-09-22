@@ -66,7 +66,7 @@ extern int	hmcsim_trace_rqst( 	struct hmcsim_t *hmc,
 		return -1;
 	}	
 
-	fprintf( hmc->tfile, "%s%lld%s%s%s%d%s%d%s%d%s%d%s0x%016llx%s%d\n", 	
+	fprintf( hmc->tfile, "%s%ld%s%s%s%d%s%d%s%d%s%d%s0x%016lx%s%d\n", 	
 					"HMCSIM_TRACE : ", 
 					hmc->clk,
 					" : ", rqst, " : ",  
@@ -97,7 +97,7 @@ extern int	hmcsim_trace_bank_conflict( struct hmcsim_t *hmc,
 		return -1;
 	}	
 
-	fprintf( hmc->tfile, "%s%lld%s%d%s%d%s%d%s%d%s0x%016llx%s0x%016llx\n", 	
+	fprintf( hmc->tfile, "%s%ld%s%d%s%d%s%d%s%d%s0x%016lx%s0x%016lx\n", 	
 					"HMCSIM_TRACE : ", 
 					hmc->clk, 
 					" : BANK_CONFLICT : ", 
@@ -123,7 +123,7 @@ extern int	hmcsim_trace( struct hmcsim_t *hmc, char *str )
 		return -1;
 	}	
 
-	fprintf( hmc->tfile, "%s%lld%s%s\n", 	"HMCSIM_TRACE : ", 
+	fprintf( hmc->tfile, "%s%ld%s%s\n", 	"HMCSIM_TRACE : ", 
 					hmc->clk, 
 					" : ", 
 					str );
