@@ -1,3 +1,6 @@
+HMC-SIM TODO LIST
+--------------------------------------------------------------------------------------------
+
 - decode bank to dram association 
 
 - add function to simulate "clock"
