@@ -110,6 +110,21 @@ extern int main( int argc, char **argv )
 		printf( "SUCCESS : INITALIZED HMCSIM\n" );
 	}
 
+	/*
+	 * init the max request block size 
+	 * 
+ 	 */
+	ret = hmcsim_util_set_all_max_blocksize( &hmc, 128 );
+	
+	if( ret != 0 ){ 
+		printf( "FAILED TO INIT MAX BLOCK SIZE\n" );
+		hmcsim_free( &hmc );
+		return -1;
+	}else {
+		printf( "SUCCESS : INITIALIZED MAX BLOCK SIZE\n" );
+	}
+	
+	
 	
 	/* 
 	 * free the library data
