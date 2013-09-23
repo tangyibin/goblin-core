@@ -14,9 +14,101 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_UTIL_SET_MAX_BLOCKSIZE */
+/* 
+ * HMCSIM_UTIL_SET_MAX_BLOCKSIZE
+ * See Table38 in the HMC Spec : pg 58
+ * 
+ */
+extern int hmcsim_util_set_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, uint32_t bsize )
+{
+	/* vars */
+	uint64_t tmp = 0x00ll;
+	/* ---- */
+
+	/* 
+	 * sanity check 
+	 * 
+	 */
+	if( hmc == NULL ){ 
+		return -1;
+	} 
+
+	if( dev > (hmc->num_devs-1) ){ 
+
+		/* 
+	 	 * device out of range 
+		 * 
+		 */
+	
+		return -1;
+	}
+
+	/* 
+	 * decide which values to set 
+	 * 
+	 */
+	switch( bsize )
+	{
+		case 32: 
+			tmp = 0x0000000000000000;
+			break;
+		case 64:
+			tmp = 0x0000000000000001;
+			break;
+		case 128:
+		default : 
+			
+			tmp = 0x0000000000000002;
+			break;
+	}
+
+	/* 
+	 * write the register 
+	 * 
+ 	 */
+	hmc->devs[dev].regs[HMC_REG_AC_IDX].reg |= tmp;
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_UTIL_SET_ALL_MAX_BLOCKSIZE */
+/* 
+ * HMCSIM_UTIL_SET_ALL_MAX_BLOCKSIZE
+ * See Table38 in the HMC Spec : pg 58
+ * 
+ */
+extern int hmcsim_util_set_all_max_blocksize( struct hmcsim_t *hmc, uint32_t bsize )
+{
+	/* vars */
+	uint32_t i = 0;
+	/* ---- */
+	
+	if( hmc == NULL ){ 
+		return -1;
+	}
+
+	/* 
+	 * check the bounds of the block size
+	 *
+ 	 */
+	if( (bsize != 32) && 
+		(bsize != 64) &&
+		(bsize != 128) ){
+		return -1;
+	}
+
+	for( i=0; i<hmc->num_devs; i++ ){ 
+		hmcsim_util_set_max_blocksize( hmc, i, bsize );
+	}
+	
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_UTIL_GET_MAX_BLOCKSIZE */
 /* 
  * HMCSIM_UTIL_GET_MAX_BLOCKSIZE
+ * See Table38 in the HMC Spec : pg 58
  * 
  */
 extern int hmcsim_util_get_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, uint32_t *bsize )
@@ -41,6 +133,10 @@ extern int hmcsim_util_get_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, ui
 		 * 
 		 */
 	
+		return -1;
+	}
+
+	if( bsize == NULL ){ 
 		return -1;
 	}
 
