@@ -394,7 +394,6 @@ static int hmcsim_clock_root_xbar( struct hmcsim_t *hmc )
 	return 0;
 }
 
-
 /* ----------------------------------------------------- HMCSIM_CLOCK_BANK_CONFLICTS */
 /* 
  * HMCSIM_CLOCK_BANK_CONFLICTS
@@ -489,6 +488,39 @@ static int hmcsim_clock_bank_conflicts( struct hmcsim_t *hmc )
 		}
 	}
 	
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_ANALYSIS_PHASE */
+/* 
+ * HMCSIM_CLOCK_ANALYSIS_PHASE
+ * 
+ */
+static int hmcsim_clock_analysis_phase( struct hmcsim_t *hmc )
+{
+	/* 
+	 * This is where we put all the inner-clock
+	 * analysis phases.  The current phases
+	 * are as follows: 
+ 	 * 
+	 * 1) Bank conflict analysis
+	 * 2) TODO: cache detection analysis
+	 * 
+	 */
+
+	/* 
+	 * 1) Bank Conflict Analysis
+	 * 
+	 */
+	if( hmcsim_clock_bank_conflicts( hmc ) != 0 ){
+		return -1;
+	}
+
+	/* 
+	 * 2) Cache Detection Analysis
+	 * 
+	 */
 
 	return 0;
 }
@@ -970,11 +1002,11 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	}
 
 	/* 
-	 * Stage 3: Walk the vault queues and identify
-	 *          bank conflicts
+	 * Stage 3: Walk the vault queues and perform
+	 *          any integrated analysis
 	 * 
 	 */
-	if( hmcsim_clock_bank_conflicts( hmc ) != 0 ){
+	if( hmcsim_clock_analysis_phase( hmc ) != 0 ){
 		return -1;
 	}
 

@@ -9,6 +9,7 @@
 
 
 #include <stdio.h>
+#include <inttypes.h>
 #include <stdlib.h>
 #include <string.h>
 #include "hmc_sim.h"
@@ -66,6 +67,24 @@ extern int	hmcsim_trace_rqst( 	struct hmcsim_t *hmc,
 		return -1;
 	}	
 
+	fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+				" : %s"
+				" : %" PRIu32
+				":%" PRIu32 
+				":%" PRIu32 
+				":%" PRIu32 
+				":0x%016" PRIx64 
+				":%" PRIu32 "\n",
+				hmc->clk, 
+				rqst, 
+				dev, 
+				quad, 
+				vault, 
+				bank, 
+				addr1, 
+				size ); 
+
+	/*
 	fprintf( hmc->tfile, "%s%ld%s%s%s%d%s%d%s%d%s%d%s0x%016lx%s%d\n", 	
 					"HMCSIM_TRACE : ", 
 					hmc->clk,
@@ -76,6 +95,7 @@ extern int	hmcsim_trace_rqst( 	struct hmcsim_t *hmc,
 					bank, 	":", 
 					addr1, 	":", 
 					size );
+	*/
 
 	return 0;
 
@@ -97,6 +117,23 @@ extern int	hmcsim_trace_bank_conflict( struct hmcsim_t *hmc,
 		return -1;
 	}	
 
+	fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+				" : BANK_CONFLICT : %" PRIu32
+				":%" PRIu32 
+				":%" PRIu32 
+				":%" PRIu32 
+				":0x%016" PRIx64
+				":0x%016" PRIx64 "\n",
+				hmc->clk, 
+				dev, 
+				quad, 
+				vault, 
+				bank, 
+				addr1, 
+				addr2 );			
+					
+
+	/*
 	fprintf( hmc->tfile, "%s%ld%s%d%s%d%s%d%s%d%s0x%016lx%s0x%016lx\n", 	
 					"HMCSIM_TRACE : ", 
 					hmc->clk, 
@@ -107,6 +144,7 @@ extern int	hmcsim_trace_bank_conflict( struct hmcsim_t *hmc,
 					bank, 	":", 
 					addr1, 	":", 
 					addr2 );
+	*/
 
 	return 0;
 
@@ -123,10 +161,17 @@ extern int	hmcsim_trace( struct hmcsim_t *hmc, char *str )
 		return -1;
 	}	
 
+	fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+				" : %s\n", 
+				hmc->clk, 
+				str );
+
+	/*
 	fprintf( hmc->tfile, "%s%ld%s%s\n", 	"HMCSIM_TRACE : ", 
 					hmc->clk, 
 					" : ", 
 					str );
+	*/
 
 	return 0;
 }

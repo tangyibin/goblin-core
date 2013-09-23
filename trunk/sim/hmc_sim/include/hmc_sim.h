@@ -256,6 +256,34 @@ extern int	hmcsim_jtag_reg_read( struct hmcsim_t *hmc, uint32_t dev, uint64_t re
 */
 extern int	hmcsim_jtag_reg_write( struct hmcsim_t *hmc, uint32_t dev, uint64_t reg, uint64_t value );
 
+
+/*!	\fn int hmcsim_util_set_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, uint32_t bsize )
+	\brief Sets the maximum request size for the target device
+	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\param dev is the target device cube ID [cub] to read from
+	\param bsize is the target block size [32,64,128]
+	\return 0 on success, nonzero otherwise 
+*/
+extern int	hmcsim_util_set_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, uint32_t bsize );
+
+/*!	\fn int hmcsim_util_set_all_max_blocksize( struct hmcsim_t *hmc, uint32_t bsize )
+	\brief Sets the maximum request size for all the devices
+	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\param bsize is the target block size [32,64,128]
+	\return 0 on success, nonzero otherwise 
+*/
+extern int	hmcsim_util_set_all_max_blocksize( struct hmcsim_t *hmc, uint32_t bsize );
+
+
+/*!	\fn int hmcsim_util_get_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, uint32_t *bsize )
+	\brief Gets the maximum request size for the target device
+	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\param dev is the target device cube ID [cub] to read from
+	\param *bsize is a pointer to a valid uint32_t location that will contain the max block size
+	\return 0 on success, nonzero otherwise 
+*/
+extern int	hmcsim_util_get_max_blocksize( struct hmcsim_t *hmc, uint32_t dev, uint32_t *bsize );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
