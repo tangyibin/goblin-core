@@ -49,13 +49,14 @@ extern int main( int argc, char **argv )
 	uint32_t read_perct	= 50;
 	uint32_t write_perct	= 50;	
 	uint32_t seed		= 0;
+	uint32_t bsize		= 128;
 	long num_req		= 0x0Fl;
 	uint64_t *addr		= NULL;
 	uint32_t *req		= NULL;
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:N:R:S:W:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:m:n:q:v:x:N:R:S:W:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -69,12 +70,13 @@ extern int main( int argc, char **argv )
 				num_drams = (uint32_t)(atoi(optarg));
 				break;
 			case 'h': 
-				printf( "%s%s%s\n", "usage : ", argv[0], " -bcdhlnqvxNRSW" );
+				printf( "%s%s%s\n", "usage : ", argv[0], " -bcdhlmnqvxNRSW" );
 				printf( " -b <num_banks>\n" );
 				printf( " -c <capacity>\n" );
 				printf( " -d <num_drams>\n" );
 				printf( " -h ...print help\n" );
 				printf( " -l <num_links>\n" );
+				printf( " -m <max_bsize>\n" );
 				printf( " -n <num_devs>\n" );
 				printf( " -q <queue_depth>\n" );
 				printf( " -v <num_vaults>\n" );
@@ -87,6 +89,9 @@ extern int main( int argc, char **argv )
 				break;
 			case 'l':
 				num_links = (uint32_t)(atoi(optarg));
+				break;
+			case 'm':
+				bsize 	= (uint32_t)(atoi(optarg));
 				break;
 			case 'n':
 				num_devs = (uint32_t)(atoi(optarg));
@@ -208,6 +213,20 @@ extern int main( int argc, char **argv )
 
 			
 
+	}
+
+	/* 
+	 * init the max block size 
+	 * 
+ 	 */
+	ret = hmcsim_util_set_all_max_blocksize( &hmc, bsize );
+	
+	if( ret != 0 ){ 
+		printf( "FAILED TO INIT MAX BLOCK SIZE\n" );
+		hmcsim_free( &hmc );
+		return -1;
+	}else {
+		printf( "SUCCESS : INITALIZED MAX BLOCK SIZE\n" );
 	}
 
 

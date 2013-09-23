@@ -105,6 +105,20 @@ extern int main( int argc, char **argv )
 		printf( "SUCCESS : INITALIZED HMCSIM\n" );
 	}
 
+	/* 
+	 * set the maximum request size for all devices
+	 * 
+	 */
+	ret = hmcsim_util_set_all_max_blocksize( &hmc, 128 );
+	if( ret != 0 ){ 
+		printf( "FAILED TO SET MAXIMUM BLOCK SIZE\n" );	
+		hmcsim_free( &hmc );
+		return -1;
+	}else {
+		printf( "SUCCESS : SET MAXIMUM BLOCK SIZE\n" );
+	}
+
+
 	
 	/* 
 	 * free the library data
