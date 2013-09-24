@@ -14,6 +14,34 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_UTIL_ZERO_PACKET */
+/* 
+ * HMCSIM_UTIL_ZERO_PACKET
+ * 
+ */
+extern int hmcsim_util_zero_packet( struct hmc_queue_t *queue  )
+{
+	/* vars */
+	uint64_t i	= 0;
+	/* ---- */
+
+	/* 
+	 * sanity check 
+	 * 
+ 	 */
+	if( queue == NULL ){ 
+		return -1;
+	}
+
+	for( i=0; i<HMC_MAX_UQ_PACKET; i++){
+		queue->packet[i]	= 0x00ll;
+	}
+
+	queue->valid = HMC_RQST_INVALID;
+
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_UTIL_SET_MAX_BLOCKSIZE */
 /* 
  * HMCSIM_UTIL_SET_MAX_BLOCKSIZE

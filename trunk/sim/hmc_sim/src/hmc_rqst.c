@@ -283,7 +283,7 @@ extern int	hmcsim_build_memrequest( struct hmcsim_t *hmc,
 	/* -- lng field in flits : bits 10:7 */
 	tmp |= ( (uint64_t)(flits) << 7 );
 
-	/* -- dng field; duplicate of lng : bits 14:11 */
+	/* -- dln field; duplicate of lng : bits 14:11 */
 	tmp |= ( (uint64_t)(flits) << 11 );
 
 	/* -- tag field: bits 23:15 */

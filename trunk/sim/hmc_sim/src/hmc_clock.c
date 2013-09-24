@@ -26,7 +26,7 @@ extern int hmcsim_process_rqst( struct hmcsim_t *hmc,
 				uint32_t quad, 
 				uint32_t vault, 
 				uint32_t slot );
-
+extern int hmcsim_util_zero_packet( struct hmc_queue_t *queue );
 
 
 /* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RQST_QUEUE */
@@ -248,8 +248,7 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 				 * clear the packet 
 				 * 
 				 */
-				hmc->devs[dev].xbar[link].xbar_rqst[i].valid = HMC_RQST_INVALID;
-				memset( hmc->devs[dev].xbar[link].xbar_rqst[i].packet, 0, sizeof( uint64_t ) * HMC_MAX_UQ_PACKET ); 
+				hmcsim_util_zero_packet( &(hmc->devs[dev].xbar[link].xbar_rqst[i]));
 			}
 
 		}
