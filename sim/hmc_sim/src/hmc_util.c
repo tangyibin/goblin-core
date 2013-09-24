@@ -14,6 +14,144 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_UTIL_DECODE_VAULT */
+/* 
+ * HMCSIM_UTIL_DECODE_VAULT
+ * 
+ */
+extern int hmcsim_util_decode_vault( 	struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t bsize, 
+					uint64_t addr,
+					uint32_t *vault )
+{
+	/* vars */
+	uint32_t num_links	= 0x00;
+	uint32_t capacity	= 0x00;
+	uint32_t tmp		= 0x00;
+	/* ---- */
+
+	/*
+	 * sanity check 
+	 * 
+	 */
+	if( hmc == NULL ){ 
+		return -1;
+	}
+
+	num_links	= hmc->num_links;
+	capacity	= hmc->capacity;	
+
+	/* 
+	 * link layout 
+	 * 
+	 */
+	if( num_links == 4 ){ 
+		/* 
+	 	 * 4-link device 
+		 *
+		 */
+		if( capacity == 2 ){
+
+			switch( bsize )
+			{
+				case 32:
+					/* [8:5] */
+					tmp = (uint32_t)((addr>>5) & 0xF);
+					break;
+				case 64:
+					/* [9:6] */
+					tmp = (uint32_t)((addr>>6) & 0xF);
+					break;
+				case 128:
+					/* [10:7] */
+					tmp = (uint32_t)((addr>>7) & 0xF);
+					break;
+				default:
+					break;
+			}
+
+		} else if( capacity == 4 ){ 
+
+			switch( bsize )
+			{
+				case 32:
+					/* [12:9] */
+					tmp = (uint32_t)((addr>>9) & 0xF);
+					break;
+				case 64:
+					/* [13:10] */
+					tmp = (uint32_t)((addr>>10) & 0xF);
+					break;
+				case 128:
+					/* [14:11] */
+					tmp = (uint32_t)((addr>>11) & 0xF);
+					break;
+				default:
+					break;
+			}
+
+		}
+	} else if( num_links == 8 ){ 
+		/* 
+	 	 * 8-link device 
+		 *
+		 */
+		if( capacity == 4 ){
+	
+			switch( bsize )
+			{
+				case 32:
+					/* [9:5] */
+					tmp = (uint32_t)((addr>>5) & 0x7);
+					break;
+				case 64:
+					/* [10:6] */
+					tmp = (uint32_t)((addr>>6) & 0x7);
+					break;
+				case 128:
+					/* [11:7] */
+					tmp = (uint32_t)((addr>>7) & 0x7);
+					break;
+				default:
+					break;
+			}
+
+			
+		} else if( capacity == 8 ){ 
+
+			switch( bsize )
+			{
+				case 32:
+					/* [9:5] */
+					tmp = (uint32_t)((addr>>5) & 0x1F);
+					break;
+				case 64:
+					/* [10:6] */
+					tmp = (uint32_t)((addr>>6) & 0x1F);
+					break;
+				case 128:
+					/* [10:7] */
+					tmp = (uint32_t)((addr>>7) & 0xF);
+					break;
+				default:
+					break;
+			}
+
+		}
+	} else {	
+		return -1;
+	}
+
+	/* 
+	 * write out the value 
+	 * 
+ 	 */
+	*vault = tmp;
+
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_UTIL_DECODE_BANK */
 /* 
  * HMCSIM_UTIL_DECODE_BANK 
