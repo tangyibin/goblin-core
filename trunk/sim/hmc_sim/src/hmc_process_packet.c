@@ -47,6 +47,8 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	uint64_t head			= 0x00ll;
 	uint64_t tail			= 0x00ll;
 
+	uint32_t t_slot			= hmc->queue_depth+1;
+	uint32_t j			= 0x00;
 	uint32_t length			= 0x00;
 	uint32_t cmd			= 0x00;
 	uint32_t tag			= 0x00;
@@ -90,6 +92,33 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 	/* -- get the bank */
 	hmcsim_util_decode_bank( hmc, dev, bsize, addr, &bank );
+
+	/* 
+ 	 * Step 3: find a response slot
+	 *         if no slots available, then this operation must stall
+	 * 
+ 	 */
+
+	/* -- find a response slot */
+	for( j=hmc->queue_depth-1; j>= 0; j++ ){
+		if( hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[j].valid == HMC_RQST_INVALID ){
+			t_slot = j;
+		}
+	}
+
+	if( t_slot == hmc->queue_depth+1 ){
+
+		/* STALL */
+
+		queue->valid = HMC_RQST_STALLED;
+
+		/* 
+		 * print a stall trace
+		 * 
+		 */
+
+		return HMC_STALL;
+	}	
 
 	/* 
 	 * Step 3: perform the op 
@@ -642,13 +671,13 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	}
 
 	/* 
- 	 * Step 4: register the response
+ 	 * Step 4: build and register the response
 	 * 
  	 */
 
-	/* -- find a response slot */
-
 	/* -- build the response */
+
+	/* -- register the response */
 
 	/* 
 	 * Step 5: invalidate the request queue slot
