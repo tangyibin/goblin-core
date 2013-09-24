@@ -55,8 +55,7 @@ extern "C" {
 /* -------------------------------------------- TRACE VALUES */
 #define		HMC_TRACE_BANK		0x0001
 #define		HMC_TRACE_QUEUE		0x0002
-#define		HMC_TRACE_SEND		0x0004
-#define		HMC_TRACE_RECV		0x0008
+#define		HMC_TRACE_CMD		0x0004
 
 /* -------------------------------------------- MACROS */
 #define		HMC_MAX_DEVS		8
