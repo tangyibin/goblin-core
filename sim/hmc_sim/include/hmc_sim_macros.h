@@ -76,6 +76,7 @@ extern "C" {
 #define		HMC_RQST_INVALID	0
 #define		HMC_RQST_VALID		1
 #define		HMC_RQST_CONFLICT	2
+#define		HMC_RQST_STALLED	3
 
 #define		HMC_1GB		1073741824
 

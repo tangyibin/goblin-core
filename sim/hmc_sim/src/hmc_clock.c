@@ -62,7 +62,7 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 
 	for( i=0; i<hmc->xbar_depth; i++ ){
 		
-		if( hmc->devs[dev].xbar[link].xbar_rqst[i].valid == HMC_RQST_VALID ){ 
+		if( hmc->devs[dev].xbar[link].xbar_rqst[i].valid != HMC_RQST_INVALID ){ 
 			
 			/* 
 			 * process me
@@ -142,6 +142,14 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 
 				if( t_slot == hmc->queue_depth+1 ){ 
 					/* STALL */
+					hmc->devs[dev].xbar[link].xbar_rqst[i].valid = HMC_RQST_STALLED;
+					
+					/* 
+					 * print a stall trace 
+					 *
+					 */
+		
+					success = 0;	
 				}else {
 
 					/*
@@ -153,6 +161,8 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 						hmc->devs[dev].quads[t_quad].vaults[t_vault].rqst_queue[t_slot].packet[j] = 
 							hmc->devs[dev].xbar[link].xbar_rqst[i].packet[j];
 					}
+				
+					success = 1;
 
 				}
 
@@ -213,6 +223,7 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 						 * STALL!
 						 *
 						 */
+						hmc->devs[dev].xbar[link].xbar_rqst[i].valid = HMC_RQST_STALLED;
 						success = 0;
 					}else {
 						/* 
