@@ -16,7 +16,11 @@
 /* ----------------------------------------------------- FUNCTION PROTOTYPES */
 extern int	hmcsim_trace( struct hmcsim_t *hmc, char *str );
 extern int	hmcsim_util_zero_packet( struct hmc_queue_t *queue );
-
+extern int	hmcsim_util_decode_bank( struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t bsize, 
+					uint64_t addr,
+					uint32_t *bank );
 
 
 /* ----------------------------------------------------- HMCSIM_PROCESS_RQST */
@@ -38,6 +42,8 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	uint32_t length			= 0x00;
 	uint32_t cmd			= 0x00;
 	uint32_t tag			= 0x00;
+	uint32_t bsize			= 0x00;
+	uint32_t bank			= 0x00;
 	uint64_t addr			= 0x00ll; 
 	/* ---- */
 
@@ -70,6 +76,12 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 	/* -- addr = [57:24] */
 	addr	= ((head >> 24) & 0x3FFFFFFFF );
+
+	/* -- block size */
+	hmcsim_util_get_max_blocksize( hmc, dev, &bsize );
+
+	/* -- get the bank */
+	hmcsim_util_decode_bank( hmc, dev, bsize, addr, &bank );
 
 	/* 
 	 * Step 3: perform the op 
