@@ -16,6 +16,12 @@
 
 /* ----------------------------------------------------- FUNCTION PROTOTYPES */
 extern int hmcsim_trace( struct hmcsim_t *hmc, char *str );
+extern int hmcsim_trace_stall( 	struct hmcsim_t *hmc, 
+				uint32_t dev, 
+				uint32_t quad, 
+				uint32_t vault, 
+				uint32_t slot, 
+				uint32_t type );
 extern int hmcsim_process_bank_conflicts( struct hmcsim_t *hmc, 
 						uint32_t dev, 
 						uint32_t quad, 
@@ -27,6 +33,11 @@ extern int hmcsim_process_rqst( struct hmcsim_t *hmc,
 				uint32_t vault, 
 				uint32_t slot );
 extern int hmcsim_util_zero_packet( struct hmc_queue_t *queue );
+extern int hmcsim_util_decode_vault( 	struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t bsize, 
+					uint64_t addr, 
+					uint32_t *vault );
 
 
 /* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RQST_QUEUE */
@@ -47,12 +58,20 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 	uint32_t t_link	= 0;
 	uint32_t t_slot	= 0;
 	uint32_t t_quad = 0;
+	uint32_t bsize	= 0;
 	uint32_t t_vault= hmc->queue_depth+1;
 	uint8_t	cub	= 0;
 	uint8_t plink	= 0;
 	uint64_t header	= 0x00ll;
 	uint64_t tail	= 0x00ll;
+	uint64_t addr	= 0x00ll;
 	/* ---- */
+
+	/* 
+	 * get the block size 
+	 * 
+	 */
+	hmcsim_util_get_max_blocksize( hmc, dev, &bsize );
 
 	/* 
 	 * walk the queue and process all the valid
@@ -73,7 +92,9 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 			 * Step 1: Get the header
 			 * 
 			 */
-			header = hmc->devs[dev].xbar[link].xbar_rqst[i].packet[0];
+			header	= hmc->devs[dev].xbar[link].xbar_rqst[i].packet[0];
+
+			addr	= ((header >> 24) & 0x3FFFFFFFF);
 
 			/* 
 			 * Step 2: Get the CUB.  
@@ -117,8 +138,11 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 				 * 7a: Retrieve the vault id
 				 * 
 				 */
-				/* TODO: RETRIEVE THE VAULT FROM THE ADDRESS */
-				t_vault = 0;
+				hmcsim_util_decode_vault( hmc, 
+							dev, 
+							bsize, 
+							addr, 
+							&t_vault );
 
 				/* 
 				 * 8a: Retrieve the quad id
@@ -148,6 +172,14 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 					 * print a stall trace 
 					 *
 					 */
+					if ((hmc->tracelevel & HMC_TRACE_STALL) >0 ) {
+						hmcsim_trace_stall(	hmc, 
+									dev, 
+									t_quad,
+									t_vault, 
+									i, 
+									0 ); 
+					}
 		
 					success = 0;	
 				}else {
@@ -224,6 +256,19 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 						 *
 						 */
 						hmc->devs[dev].xbar[link].xbar_rqst[i].valid = HMC_RQST_STALLED;
+						/* 
+					 	 * print a stall trace 
+					 	 *
+					 	 */
+						if ((hmc->tracelevel & HMC_TRACE_STALL) >0 ) {
+							hmcsim_trace_stall(	hmc, 
+										dev, 
+										t_quad,
+										t_vault, 
+										i, 
+										3 ); 
+						}
+		
 						success = 0;
 					}else {
 						/* 
