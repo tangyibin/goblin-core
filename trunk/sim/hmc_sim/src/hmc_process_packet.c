@@ -671,7 +671,7 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	}
 
 	/* 
- 	 * Step 4: build and register the response
+ 	 * Step 4: build and register the response with vault response queue
 	 * 
  	 */
 
