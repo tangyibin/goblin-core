@@ -49,6 +49,147 @@ extern int	hmcsim_trace_header( struct hmcsim_t *hmc )
 	return 0;
 }
 
+/* ----------------------------------------------------- HMCSIM_TRACE_STALL */
+/* 
+ * HMCSIM_TRACE_STALL
+ * 
+ */
+extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
+					uint32_t dev, 
+					uint32_t quad, 
+					uint32_t vault, 
+					uint32_t slot,
+					uint32_t type )
+{
+	if( hmc->tfile == NULL ){ 
+		return -1;
+	}
+
+	/* 
+	 * Determine which stall type
+ 	 * 
+	 */
+	if( type == 0 ){ 
+		
+		/* 
+		 * xbar stall 
+	 	 * 
+		 */	
+
+		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+					" : XBAR_RQST_STALL"
+					" :%" PRIu32
+					":%" PRIu32 
+					":%" PRIu32 
+					":%" PRIu32 "\n",
+					hmc->clk, 
+					dev, 
+					quad, 
+					vault, 
+					slot );
+
+	} else if( type == 1 ){ 
+
+		/* 
+	 	 * vault request stall
+		 * 
+		 */
+
+		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+					" : VAULT_RQST_STALL"
+					" :%" PRIu32
+					":%" PRIu32 
+					":%" PRIu32 
+					":%" PRIu32 "\n",
+					hmc->clk, 
+					dev, 
+					quad, 
+					vault, 
+					slot );
+
+	
+	} else if( type == 2 ){ 
+
+		/* 
+		 * xbar response stall 
+	 	 * 
+		 */
+
+		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+					" : XBAR_RSP_STALL"
+					" :%" PRIu32
+					":%" PRIu32 
+					":%" PRIu32 
+					":%" PRIu32 "\n",
+					hmc->clk, 
+					dev, 
+					quad, 
+					vault, 
+					slot );
+
+	} else if( type == 3 ){ 
+
+		/* 
+		 * device request route stall 
+	 	 * 
+		 */
+
+		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+					" : ROUTE_RQST_STALL"
+					" :%" PRIu32
+					":%" PRIu32 
+					":%" PRIu32 
+					":%" PRIu32 "\n",
+					hmc->clk, 
+					dev, 
+					quad, 
+					vault, 
+					slot );
+
+	}else if( type == 4 ){ 
+
+		/* 
+		 * device response route stall 
+	 	 * 
+		 */
+
+		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+					" : ROUTE_RSP_STALL"
+					" :%" PRIu32
+					":%" PRIu32 
+					":%" PRIu32 
+					":%" PRIu32 "\n",
+					hmc->clk, 
+					dev, 
+					quad, 
+					vault, 
+					slot );
+
+		
+	}else {
+
+		/* 
+		 * undefined stall event
+		 * 
+		 */
+
+		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+					" : UNDEF_STALL"
+					" :%" PRIu32
+					":%" PRIu32 
+					":%" PRIu32 
+					":%" PRIu32 "\n",
+					hmc->clk, 
+					dev, 
+					quad, 
+					vault, 
+					slot );
+
+	}
+
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_TRACE_RQST */
 /* 
  * HMCSIM_TRACE_RQST
@@ -83,19 +224,6 @@ extern int	hmcsim_trace_rqst( 	struct hmcsim_t *hmc,
 				bank, 
 				addr1, 
 				size ); 
-
-	/*
-	fprintf( hmc->tfile, "%s%ld%s%s%s%d%s%d%s%d%s%d%s0x%016lx%s%d\n", 	
-					"HMCSIM_TRACE : ", 
-					hmc->clk,
-					" : ", rqst, " : ",  
-					dev, 	":", 
-					quad, 	":", 
-					vault, 	":", 
-					bank, 	":", 
-					addr1, 	":", 
-					size );
-	*/
 
 	return 0;
 
