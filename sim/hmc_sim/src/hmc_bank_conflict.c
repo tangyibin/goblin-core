@@ -15,13 +15,17 @@
 
 /* ----------------------------------------------------- FUNCTION PROTOTYPES */
 extern int	hmcsim_trace( struct hmcsim_t *hmc, char *str );
+extern int	hmcsim_util_decode_bank( struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t bsize, 
+					uint64_t addr, 
+					uint32_t *bank );
 extern int	hmcsim_trace_bank_conflict( 	struct hmcsim_t *hmc, 
 						uint32_t dev, 
 						uint32_t quad, 
 						uint32_t vault, 
 						uint32_t bank, 
-						uint64_t addr1, 
-						uint64_t addr2 );
+						uint64_t addr1 );
 
 
 
@@ -38,6 +42,10 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 						uint64_t *addr )
 {
 	/* vars */
+	uint32_t i		= 0;
+	uint32_t bsize		= 0;
+	uint64_t bitarray	= 0x00ll;
+	uint32_t bank[HMC_MAX_BANKS];
 	/* ---- */
 
 	/* 
@@ -50,6 +58,66 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 
 	if( addr == NULL ){ 
 		return -1;
+	}
+
+	/* 
+	 * get the block size 
+	 * 
+	 */
+	hmcsim_util_get_max_blocksize( hmc, dev, &bsize );
+
+	/* 
+	 * walk the addresses and get the banks
+	 * 
+	 */
+	for( i=0; i<hmc->num_banks; i++ ){ 
+
+		hmcsim_util_decode_bank( hmc, dev, bsize, addr[i], &(bank[i]) );
+	}	
+
+	/* 
+	 * map the banks to the bit array
+	 * 
+	 */		
+	for( i=0; i<hmc->num_banks; i++ ){ 
+		
+
+		/*
+	 	 * check to see if the bank is set 
+		 * 
+		 */
+		if( (bitarray & (uint64_t)(1<<(uint64_t)(bank[i]))) > 0 ){
+		
+			/* 
+			 * BANK CONFLICT!!
+		 	 * 
+			 * Mark the ancillary address
+			 * and print the trace
+			 * 
+		 	 */
+		
+			hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[i].valid = HMC_RQST_CONFLICT;
+	
+			if( (hmc->tracelevel & HMC_TRACE_BANK) > 0 ) {
+			
+				hmcsim_trace_bank_conflict( 	hmc, 
+								dev, 
+								quad, 
+								vault, 
+								bank[i], 
+								addr[i] );	
+	
+			}
+	
+		}else{ 
+			/* 
+			 * NO CONFLICT
+			 * OR' in the bit
+			 * 
+			 */
+			bitarray |= (uint64_t)(1<<(uint64_t)(bank[i]));
+		}
+
 	}
 
 	return 0;

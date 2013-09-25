@@ -238,8 +238,7 @@ extern int	hmcsim_trace_bank_conflict( struct hmcsim_t *hmc,
 						uint32_t quad, 
 						uint32_t vault, 
 						uint32_t bank, 
-						uint64_t addr1, 
-						uint64_t addr2 )
+						uint64_t addr1 )
 {
 	if( hmc->tfile == NULL ){ 
 		return -1;
@@ -250,29 +249,14 @@ extern int	hmcsim_trace_bank_conflict( struct hmcsim_t *hmc,
 				":%" PRIu32 
 				":%" PRIu32 
 				":%" PRIu32 
-				":0x%016" PRIx64
 				":0x%016" PRIx64 "\n",
 				hmc->clk, 
 				dev, 
 				quad, 
 				vault, 
 				bank, 
-				addr1, 
-				addr2 );			
+				addr1 );
 					
-
-	/*
-	fprintf( hmc->tfile, "%s%ld%s%d%s%d%s%d%s%d%s0x%016lx%s0x%016lx\n", 	
-					"HMCSIM_TRACE : ", 
-					hmc->clk, 
-					" : BANK_CONFLICT : ", 
-					dev, 	":", 
-					quad, 	":", 
-					vault, 	":", 
-					bank, 	":", 
-					addr1, 	":", 
-					addr2 );
-	*/
 
 	return 0;
 

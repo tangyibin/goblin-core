@@ -25,7 +25,7 @@ extern int hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 extern int hmcsim_process_bank_conflicts( struct hmcsim_t *hmc, 
 						uint32_t dev, 
 						uint32_t quad, 
-						uint32_t vault, 
+						uint32_t vault,
 						uint64_t *addr ); 
 extern int hmcsim_process_rqst( struct hmcsim_t *hmc, 
 				uint32_t dev, 
@@ -371,7 +371,7 @@ static int hmcsim_clock_child_xbar( struct hmcsim_t *hmc )
 			for( j=0; j<hmc->num_links; j++ ){ 
 
 				hmcsim_clock_process_rqst_queue( hmc, i, j );
-
+				/* TODO : process the response queues */
 			}		
 		}
 
@@ -435,6 +435,7 @@ static int hmcsim_clock_root_xbar( struct hmcsim_t *hmc )
 			for( j=0; j<hmc->num_links; j++ ){ 
 
 				hmcsim_clock_process_rqst_queue( hmc, i, j );
+				/* TODO : process the response queues */
 
 			}		
 		}
@@ -1076,7 +1077,10 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 
 	/* 
 	 * Stage 5: Register any responses 
-	 *          with the crossbar
+	 *          with the crossbar. 
+	 *          This is registering responses
+	 * 	    from the respective vault response
+	 * 	    queues with a crossbar response queue
 	 * 
 	 */
 	if( hmcsim_clock_reg_responses( hmc ) != 0 ){ 

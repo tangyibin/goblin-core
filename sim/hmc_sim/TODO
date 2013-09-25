@@ -5,12 +5,16 @@ HMC-SIM TODO LIST
 
 - add function to simulate "clock"
   -- in progress: need to finish the xbar section; then add the finish the top-level stages
+  -- S1:	add process response queue 
+  -- S2: 	add process response queue
+  -- S3:	done
+  -- S4:	finish hmcsim_process_rqst 
+  -- S5:	write function to bounce child response queues; use slid value
+  -- S5a:	done
+  -- S6:	done
+  -- look for 'todo'
 
 - add warm reset function for JTAG requests
-
--- finish the hmc_bank_conflict code
-  -- make sure and mark the conflicts with HMC_RQST_CONFLICT
-  -- make sure and figure out the packet type
 
 -- finish the packet processor 
 
@@ -31,6 +35,10 @@ HMC-SIM TODO LIST
 - add cache analysis functions
 
 Completed Items:
+-- finish the hmc_bank_conflict code
+  -- DONE: make sure and mark the conflicts with HMC_RQST_CONFLICT
+  -- DONE: make sure and figure out the packet type
+
 - add functions to simplify writing the max request width
   -- only support for default addressing modes
   -- DONE : Checkin 119
