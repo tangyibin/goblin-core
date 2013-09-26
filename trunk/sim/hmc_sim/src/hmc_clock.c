@@ -33,6 +33,10 @@ extern int hmcsim_process_rqst( struct hmcsim_t *hmc,
 				uint32_t vault, 
 				uint32_t slot );
 extern int hmcsim_util_zero_packet( struct hmc_queue_t *queue );
+extern int hmcsim_util_decode_slid( 	struct hmcsim_t *hmc, 
+					struct hmc_queue_t *queue, 
+					uint32_t slot, 
+					uint32_t *slid );
 extern int hmcsim_util_decode_vault( 	struct hmcsim_t *hmc, 
 					uint32_t dev, 
 					uint32_t bsize, 
@@ -678,6 +682,121 @@ static int hmcsim_clock_rw_ops( struct hmcsim_t *hmc )
  */
 static int hmcsim_clock_reg_responses( struct hmcsim_t *hmc )
 {
+	/* vars */
+	uint32_t i		= 0;
+	uint32_t j		= 0;
+	uint32_t k		= 0;
+	uint32_t x		= 0;
+	uint32_t y		= 0;
+	uint32_t r_link		= 0;
+	uint32_t r_slot		= hmc->xbar_depth+1;
+	struct hmc_queue_t *lq	= NULL;
+	/* ---- */
+
+
+	/* 
+	 * Walk all the vault response queues
+	 * For each queue, attempt to push it into a crossbar
+	 * slot.  If not, signal a stall 
+	 * 
+ 	 */
+	for( i=0; i<hmc->num_devs; i++){ 
+		for( j=0; j<hmc->num_quads; j++ ){
+			for( k=0; j<hmc->num_vaults; k++ ){ 
+
+				lq = hmc->devs[i].quads[j].vaults[k].rsp_queue;
+
+				for( x=0; x<hmc->queue_depth; x++ ){ 
+				
+					/* 
+					 * Determine if I am a live response
+					 * If so, check for an appropriate
+					 * response queue slot
+					 *
+					 */
+					if( lq[x].valid != HMC_RQST_INVALID ){ 
+						
+						/* 
+						 * determine which link response
+						 * queue we're supposed to route
+						 * use the SLID value
+						 *
+						 */
+						hmcsim_util_decode_slid( hmc,
+									lq, 
+									x, 
+									&r_link );
+
+						/* 
+						 * determine if the response
+						 * xbar queue has an empty slot
+						 * 
+						 */
+						for( y=(hmc->xbar_depth-1); y>=0; y++ ){
+							
+							if( hmc->devs[i].xbar[r_link].xbar_rsp[y].valid == 
+									HMC_RQST_INVALID ){
+								/* empty queue slot */
+								r_slot = y;
+							}
+						}
+
+						/* 
+						 * if we found a good slot, insert it
+						 * and zero the vault response slot
+						 *
+						 */
+						if( r_slot != (hmc->xbar_depth+1) ){
+
+							/*
+							 * slot found!
+							 * transfer the data
+							 *
+							 */
+							for( y=0; y<HMC_MAX_UQ_PACKET; y++){ 
+								hmc->devs[i].xbar[r_link].xbar_rsp[r_slot].packet[y] = 
+										lq[x].packet[y];
+								hmc->devs[i].xbar[r_link].xbar_rsp[r_slot].valid = 
+										HMC_RQST_VALID;
+								lq[x].packet[y]	= 0x00ll;
+							}
+
+							/* 
+							 * clear the source slot
+							 * 
+							 */
+							lq[x].valid = HMC_RQST_INVALID;
+
+						}else{
+
+							/* 
+							 * STALL! 
+							 *
+							 */
+
+							lq[x].valid = HMC_RQST_STALLED;
+
+							if( (hmc->tracelevel & HMC_TRACE_STALL)>0 ){
+							
+								/*
+								 * print a trace signal 
+								 *
+								 */
+								hmcsim_trace_stall( hmc, 
+										i, 
+										j, 
+										k, 
+										x, 
+										2 );
+							}
+						}
+					}	
+					/* else, request not valid */
+				}	
+			}
+		}
+	}
+					
 	return 0;
 }
 

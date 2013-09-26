@@ -9,7 +9,7 @@ HMC-SIM TODO LIST
   -- S2: 	add process response queue
   -- S3:	done
   -- S4:	finish hmcsim_process_rqst 
-  -- S5:	write function to bounce child response queues; use slid value
+  -- S5:	done
   -- S5a:	done
   -- S6:	done
   -- look for 'todo'
