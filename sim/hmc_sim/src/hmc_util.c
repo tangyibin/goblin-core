@@ -14,6 +14,58 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_UTIL_DECODE_SLID */
+/* 
+ * HMCSIM_UTIL_DECODE_SLID 
+ *
+ */
+extern int hmcsim_util_decode_slid(	struct hmcsim_t *hmc, 
+					struct hmc_queue_t *queue, 
+					uint32_t slot, 
+					uint32_t *slid )
+{
+	/* vars */
+	uint64_t header	= 0x00ll;
+	uint32_t tmp	= 0x00;
+	/* ---- */
+
+	/* 
+	 * sanity check 
+	 * 
+	 */
+	if( hmc == NULL ){ 
+		return -1;
+	}
+
+	if( slid == NULL ){ 
+		return -1;
+	}
+
+	if( queue == NULL ){ 
+		return -1;
+	}
+
+	/* 
+	 * get the packet header
+	 * 
+	 */
+	header 	= queue[slot].packet[0];
+
+	/* 
+	 * get the slid value [41:39]
+	 * 
+	 */
+	tmp 	= (uint32_t)((header>>39) & 0x7);
+
+	/* 
+	 * write it out 
+	 * 
+	 */
+	*slid 	= tmp;
+
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_UTIL_DECODE_VAULT */
 /* 
  * HMCSIM_UTIL_DECODE_VAULT
