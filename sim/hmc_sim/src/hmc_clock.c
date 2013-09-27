@@ -42,6 +42,17 @@ extern int hmcsim_util_decode_vault( 	struct hmcsim_t *hmc,
 					uint32_t bsize, 
 					uint64_t addr, 
 					uint32_t *vault );
+extern int hmcsim_util_decode_quad( 	struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t bsize, 
+					uint64_t addr, 
+					uint32_t *quad );
+extern int hmcsim_util_decode_qv(	struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t bsize, 
+					uint64_t addr, 
+					uint32_t *quad, 
+					uint32_t *vault );
 
 
 /* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RQST_QUEUE */
@@ -149,10 +160,14 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 							&t_vault );
 
 				/* 
-				 * 8a: Retrieve the quad id
+				 * 8a: Retrieve the quad id 
 				 * 
 				 */
-				t_quad = plink % hmc->num_quads;
+				hmcsim_util_decode_quad( hmc, 
+							dev, 
+							bsize, 
+							addr, 
+							&t_quad );
 					
 				
 				/* 
@@ -228,9 +243,11 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 				if( found == 0 ){ 
 					/* 
 					 * oh snap! can't route to that CUB
+					 * Mark it as a zombie request 
+					 * Future: return an error packet 
 					 *
 					 */
-					/* -- TODO, RETURN AN ERROR */
+					hmc->devs[dev].xbar[link].xbar_rqst[i].valid = HMC_RQST_ZOMBIE;
 				}else{ 
 					/* 
 					 * 8b: routing is good, look for an empty slot

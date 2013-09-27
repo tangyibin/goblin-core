@@ -14,9 +14,9 @@ HMC-SIM TODO LIST
   -- S6:	done
   -- look for 'todo'
 
-- add warm reset function for JTAG requests
-
 -- finish the packet processor 
+
+- add warm reset function for JTAG requests
 
 - add size to the build_memrequest for the payload 
   -- maybe not, investigate
@@ -34,7 +34,16 @@ HMC-SIM TODO LIST
 
 - add cache analysis functions
 
+
+--------------------------------------------------------------------------------------------
 Completed Items:
+--------------------------------------------------------------------------------------------
+- revise physical address decoding : see Table 9: Pg 31
+  -- DONE: this means fixing all the decode_vault logic
+  -- DONE: add a decode_quad function
+  -- DONE: wrap everything up with a top-level function: decode_qv
+  -- DONE: make sure all the functions in hmc_clock are correct now
+
 -- finish the hmc_bank_conflict code
   -- DONE: make sure and mark the conflicts with HMC_RQST_CONFLICT
   -- DONE: make sure and figure out the packet type
