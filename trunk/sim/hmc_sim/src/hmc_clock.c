@@ -25,6 +25,12 @@ extern int hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 				uint32_t link,
 				uint32_t slot, 
 				uint32_t type );
+extern int hmcsim_trace_latency( struct hmcsim_t *hmc, 
+				uint32_t dev, 
+				uint32_t link, 
+				uint32_t slot, 
+				uint32_t quad, 
+				uint32_t vault );
 extern int hmcsim_process_bank_conflicts( struct hmcsim_t *hmc, 
 						uint32_t dev, 
 						uint32_t quad, 
@@ -296,7 +302,28 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 							addr, 
 							&t_quad );
 					
-				
+			
+				/* 
+				 * if quad is not directly attached
+				 * to my link, print a trace message
+				 * indicating higher latency
+				 */
+				if( link != t_quad ){ 
+					/* 
+					 * higher latency 
+					 *
+					 */
+
+					if( (hmc->tracelevel & HMC_TRACE_LATENCY) > 0 ){ 
+						hmcsim_trace_latency( hmc, 
+									dev, 
+									link, 
+									i,
+									t_quad, 
+									t_vault );
+					}
+				}
+	
 				/* 
 				 * 9a: Search the vault queue for valid slot
 				 *     Search bottom-up
