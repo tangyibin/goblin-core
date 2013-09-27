@@ -20,6 +20,9 @@ extern int hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 				uint32_t dev, 
 				uint32_t quad, 
 				uint32_t vault, 
+				uint32_t src, 
+				uint32_t dest,
+				uint32_t link,
 				uint32_t slot, 
 				uint32_t type );
 extern int hmcsim_process_bank_conflicts( struct hmcsim_t *hmc, 
@@ -53,7 +56,131 @@ extern int hmcsim_util_decode_qv(	struct hmcsim_t *hmc,
 					uint64_t addr, 
 					uint32_t *quad, 
 					uint32_t *vault );
+extern int hmcsim_util_is_root( 	struct hmcsim_t *hmc, 
+					uint32_t dev );
 
+
+/* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RSP_QUEUE */
+/* 
+ * HMCSIM_CLOCK_PROCESS_RSP_QUEUE
+ * 
+ */
+static int hmcsim_clock_process_rsp_queue( 	struct hmcsim_t *hmc, 
+						uint32_t dev, 
+						uint32_t link )
+{
+	/* vars */
+	uint32_t i			= 0;
+	uint32_t j			= 0;
+	uint32_t dest			= 0;
+	uint32_t t_slot			= hmc->xbar_depth+1;
+	struct hmc_queue_t *queue	= NULL;
+	/* ---- */
+
+	if( hmcsim_util_is_root( hmc, dev ) == 1 ){ 
+		
+		/* 
+		 * i am a root device, nothing to do here 
+		 * 
+		 */
+
+		return 0;
+	}	
+
+	/* 
+	 * walk the response queue and process all the responses
+	 * 
+ 	 */
+	for( i=0; i<hmc->xbar_depth; i++ ){
+		
+		if( hmc->devs[dev].xbar[link].xbar_rsp[i].valid != HMC_RQST_INVALID ){ 
+
+			/* 
+	 		 * process me 
+			 * 
+			 */
+
+			/* 
+			 * Stage 1: get the corresponding cub device 
+			 * 	    and its response queue 
+			 *
+			 */
+			dest	= hmc->devs[dev].links[link].dest_cub;
+			queue	= hmc->devs[dev].xbar[dest].xbar_rsp;
+			
+
+			/* 
+			 * Stage 2: determine if the destination cub
+			 * 	    device has empty response queue
+			 * 	    slots
+			 *
+			 */
+			for( j=(hmc->xbar_depth-1); j>=0; j++ ){
+			
+				if( queue[j].valid == HMC_RQST_INVALID ){ 
+
+					/* 
+					 * found an empty slot 
+					 */
+					t_slot = j;
+				}
+			}
+
+			/* 
+			 * Stage 3: if slots exist, perform the transfer
+			 *          else, stall the slot
+			 * 
+			 */
+			if( t_slot != (hmc->xbar_depth+1) ){
+
+				/* 
+				 * found a good slot 
+				 *
+				 */
+
+				for( j=0; j<HMC_MAX_UQ_PACKET; j++){ 
+					queue[t_slot].packet[j]	= 
+						hmc->devs[dev].xbar[link].xbar_rsp[i].packet[j];
+				}
+
+				queue[t_slot].valid = HMC_RQST_VALID;
+
+				/* 
+				 * zero the packet 
+				 *
+				 */
+				hmcsim_util_zero_packet( &(hmc->devs[dev].xbar[link].xbar_rsp[i]));
+
+			}else{ 
+
+				/*
+				 * STALL! 
+				 *
+			 	 */
+				hmc->devs[dev].xbar[link].xbar_rsp[i].valid	= HMC_RQST_STALLED;
+
+				/* 
+				 * Print a stall trace
+				 *
+				 */
+				if ((hmc->tracelevel & HMC_TRACE_STALL) >0 ) {
+					hmcsim_trace_stall(	hmc, 
+								dev, 
+								0,
+								0, 
+								dev, 
+								dest,
+								link,
+								i, 
+								4 ); 
+				}
+			}
+
+		}
+	}
+			
+	return 0;
+}
 
 /* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RQST_QUEUE */
 /* 
@@ -196,6 +323,9 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 									dev, 
 									t_quad,
 									t_vault, 
+									0,
+									0,
+									0,
 									i, 
 									0 ); 
 					}
@@ -284,8 +414,11 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 						if ((hmc->tracelevel & HMC_TRACE_STALL) >0 ) {
 							hmcsim_trace_stall(	hmc, 
 										dev, 
-										t_quad,
-										t_vault, 
+										0,
+										0, 
+										dev, 
+										cub,
+										link,
 										i, 
 										3 ); 
 						}
@@ -359,23 +492,12 @@ static int hmcsim_clock_child_xbar( struct hmcsim_t *hmc )
 	for( i=0; i<hmc->num_devs; i++ ){ 
 		
 		/* 
-		 * walk the links
+		 * determine if i am connected to the host device
 	 	 * 
 	 	 */
 		
-		for( j=0; j<hmc->num_links; j++ ){ 
-			
-			if( (hmc->devs[i].links[j].type == HMC_LINK_HOST_DEV) &&
-				(hmc->devs[i].links[j].src_cub == (hmc->num_devs+1) )){ 
-				/* 
-				 * This device is connected directly
-				 * to the host processor 
-				 * We want to record this such that we can skip it
-			 	 *
-				 */
-				host_l++;
-			}
-
+		if( hmcsim_util_is_root( hmc, i ) == 1 ){ 
+			host_l++;
 		}
 
 		/* 
@@ -392,7 +514,7 @@ static int hmcsim_clock_child_xbar( struct hmcsim_t *hmc )
 			for( j=0; j<hmc->num_links; j++ ){ 
 
 				hmcsim_clock_process_rqst_queue( hmc, i, j );
-				/* TODO : process the response queues */
+				hmcsim_clock_process_rsp_queue( hmc, i, j );
 			}		
 		}
 
@@ -429,17 +551,12 @@ static int hmcsim_clock_root_xbar( struct hmcsim_t *hmc )
 	for( i=0; i<hmc->num_devs; i++ ){ 
 		
 		/* 
-		 * walk the links
+		 * determine if i am connected to the host device
 	 	 * 
 	 	 */
 		
-		for( j=0; j<hmc->num_links; j++ ){ 
-			
-			if( (hmc->devs[i].links[j].type == HMC_LINK_HOST_DEV) &&
-				(hmc->devs[i].links[j].src_cub == (hmc->num_devs+1) )){ 
-				host_l++;
-			}
-
+		if( hmcsim_util_is_root( hmc, i ) == 1 ){ 
+			host_l++;
 		}
 
 		/* 
@@ -456,8 +573,13 @@ static int hmcsim_clock_root_xbar( struct hmcsim_t *hmc )
 			for( j=0; j<hmc->num_links; j++ ){ 
 
 				hmcsim_clock_process_rqst_queue( hmc, i, j );
-				/* TODO : process the response queues */
 
+				/* 
+				 * no point in walking the response queues, 
+				 * the host must drain these manually 
+				 * using recv's 
+				 *
+				 */
 			}		
 		}
 
@@ -802,7 +924,10 @@ static int hmcsim_clock_reg_responses( struct hmcsim_t *hmc )
 								hmcsim_trace_stall( hmc, 
 										i, 
 										j, 
-										k, 
+										k,
+										0,
+										0,
+										0, 
 										x, 
 										2 );
 							}
