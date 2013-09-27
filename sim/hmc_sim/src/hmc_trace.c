@@ -269,6 +269,39 @@ extern int	hmcsim_trace_bank_conflict( struct hmcsim_t *hmc,
 
 }
 
+/* ----------------------------------------------------- HMCSIM_TRACE_LATENCY */
+/* 
+ * HMCSIM_TRACE_LATENCY
+ * 
+ */
+extern int	hmcsim_trace_latency( 	struct hmcsim_t *hmc,  
+					uint32_t dev, 
+					uint32_t link,
+					uint32_t slot,
+					uint32_t quad, 
+					uint32_t vault )
+{
+	if( hmc->tfile == NULL ){ 
+		return -1;
+	}
+
+	fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
+				" : XBAR_LATENCY : %" PRIu32
+				":%" PRIu32 
+				":%" PRIu32 
+				":%" PRIu32 
+				":%" PRIu32 "\n",
+				hmc->clk, 
+				dev, 
+				link,
+				slot,
+				quad, 
+				vault );
+					
+
+	return 0;
+}
+
 /* ----------------------------------------------------- HMCSIM_TRACE */
 /* 
  * HMCSIM_TRACE
