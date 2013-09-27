@@ -58,6 +58,9 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 					uint32_t dev, 
 					uint32_t quad, 
 					uint32_t vault, 
+					uint32_t src, 
+					uint32_t dest,
+					uint32_t link,
 					uint32_t slot,
 					uint32_t type )
 {
@@ -139,11 +142,13 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 					" :%" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
+					":%" PRIu32 
 					":%" PRIu32 "\n",
 					hmc->clk, 
 					dev, 
-					quad, 
-					vault, 
+					src, 
+					dest, 
+					link,
 					slot );
 
 	}else if( type == 4 ){ 
@@ -158,11 +163,13 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 					" :%" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
+					":%" PRIu32 
 					":%" PRIu32 "\n",
 					hmc->clk, 
 					dev, 
-					quad, 
-					vault, 
+					src, 
+					dest, 
+					link,
 					slot );
 
 		

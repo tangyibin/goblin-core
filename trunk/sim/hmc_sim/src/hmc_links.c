@@ -87,8 +87,8 @@ extern int	hmcsim_link_config( 	struct hmcsim_t *hmc,
 		/* 
 		 * config the dest
 		 */
-		hmc->devs[ dest_dev ].links[ dest_link ].src_cub	= src_dev;
-		hmc->devs[ dest_dev ].links[ dest_link ].dest_cub 	= dest_dev;
+		hmc->devs[ dest_dev ].links[ dest_link ].src_cub	= dest_dev;
+		hmc->devs[ dest_dev ].links[ dest_link ].dest_cub 	= src_dev;
 		hmc->devs[ dest_dev ].links[ dest_link ].type		= HMC_LINK_HOST_DEV;
 	}
 

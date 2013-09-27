@@ -14,6 +14,35 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- HMCSIM_UTIL_IS_ROOT */
+/* 
+ * HMCSIM_UTIL_IS_ROOT 
+ *
+ */
+extern int hmcsim_util_is_root( struct hmcsim_t *hmc, 
+				uint32_t dev )
+{
+	/* vars */
+	uint32_t	is_root = 0; 
+	uint32_t 	i	= 0;
+	/* ---- */
+
+	/* 
+	 * walk the links and see if i am a root device 
+	 * root devices have a src_cub == num_devs+1
+	 * 
+	 */
+	for( i=0; i<hmc->num_links;i++ ){ 
+
+		if( hmc->devs[dev].links[i].src_cub == (hmc->num_devs+1) ){
+			is_root = 1;
+		}
+
+	}
+
+	return is_root;
+}
+
 /* ----------------------------------------------------- HMCSIM_UTIL_DECODE_SLID */
 /* 
  * HMCSIM_UTIL_DECODE_SLID 
