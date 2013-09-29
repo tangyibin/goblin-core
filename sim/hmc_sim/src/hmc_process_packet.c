@@ -23,6 +23,15 @@ extern int	hmcsim_trace_rqst( 	struct hmcsim_t *hmc,
 					uint32_t bank, 
 					uint64_t addr1, 
 					uint32_t size );
+extern int	hmcsim_trace_stall(	struct hmcsim_t *hmc, 
+					uint32_t dev, 
+					uint32_t quad, 
+					uint32_t vault, 
+					uint32_t src, 
+					uint32_t dest, 
+					uint32_t link, 
+					uint32_t slot, 
+					uint32_t type );
 extern int	hmcsim_util_zero_packet( struct hmc_queue_t *queue );
 extern int	hmcsim_util_decode_bank( struct hmcsim_t *hmc, 
 					uint32_t dev, 
@@ -47,6 +56,7 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	uint64_t head			= 0x00ll;
 	uint64_t tail			= 0x00ll;
 
+	uint32_t error			= 0x00;
 	uint32_t t_slot			= hmc->queue_depth+1;
 	uint32_t j			= 0x00;
 	uint32_t length			= 0x00;
@@ -56,6 +66,25 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	uint32_t bank			= 0x00;
 	uint64_t addr			= 0x00ll; 
 	/* ---- */
+
+
+	/* 	
+	 * -- Description of error types --
+	 * Given that the various requests can return 
+	 * varying results and errors, we define a 
+ 	 * generic error type above that is handled
+	 * when building the response packets. 
+	 * In this manner, we can signal a varying
+	 * number of errors in the packet handlers
+	 * without disrupting everything too much. 
+	 * The error codes are described as follows: 
+	 * 
+	 * error = 0 : no error has occurred [default]
+	 * error = 1 : packet request exceeds maximum 
+	 *             block size [bsize] 
+	 * 
+ 	 */
+
 
 	if( hmc == NULL ){ 
 		return -1;
@@ -159,6 +188,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x0A:
 			/* WR48 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 48 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"WR48", 
@@ -173,6 +211,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x0B:
 			/* WR64 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 64 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -189,6 +236,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x0C:
 			/* WR80 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 80 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"WR80", 
@@ -203,6 +259,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x0D:
 			/* WR96 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 96 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -219,6 +284,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x0E:
 			/* WR112 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 112 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"WR112", 
@@ -233,6 +307,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x0F:
 			/* WR128 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 128 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -339,6 +422,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x1A:
 			/* P_WR48 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 48 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"P_WR48", 
@@ -353,6 +445,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x1B:
 			/* P_WR64 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 64 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -369,6 +470,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x1C:
 			/* P_WR80 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 80 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"P_WR80", 
@@ -383,6 +493,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x1D:
 			/* P_WR96 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 96 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -399,6 +518,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x1E:
 			/* P_WR112 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 112 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"P_WR112", 
@@ -413,6 +541,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x1F:
 			/* P_WR128 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 128 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -504,6 +641,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x32:
 			/* RD48 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 48 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"RD48", 
@@ -518,6 +664,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x33:
 			/* RD64 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 64 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -534,6 +689,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x34:
 			/* RD80 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 80 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"RD80", 
@@ -548,6 +712,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x35:
 			/* RD96 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 96 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
@@ -564,6 +737,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		case 0x36:
 			/* RD112 */
 
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 112 ){ 
+				error = 1;
+				break;
+			}
+
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
 							"RD112", 
@@ -578,6 +760,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			break;
 		case 0x37:
 			/* RD128 */
+
+			/* 
+			 * check to see if we exceed maximum block size 
+			 * 
+			 */
+			if( bsize < 128 ){ 
+				error = 1;
+				break;
+			}
 
 			if( (hmc->tracelevel & HMC_TRACE_CMD) > 0 ){ 
 				hmcsim_trace_rqst(	hmc, 
