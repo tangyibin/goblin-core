@@ -145,6 +145,17 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		 * print a stall trace
 		 * 
 		 */
+		if( (hmc->tracelevel & HMC_TRACE_STALL) > 0 ){ 
+			hmcsim_trace_stall(	hmc, 
+						dev, 
+						quad, 
+						vault, 
+						0, 
+						0,
+						0,
+						slot, 
+						1 );
+		}
 
 		return HMC_STALL;
 	}	
