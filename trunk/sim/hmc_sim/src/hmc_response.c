@@ -14,9 +14,43 @@
 #include "hmc_sim.h"
 
 
-/* ----------------------------------------------------- HMCSIM_BUILD_MEMREQUEST */
+/* ----------------------------------------------------- HMCSIM_DECODE_RSP_CMD */
 /* 
- * HMCSIM_BUILD_MEMREQUEST
+ * HMCSIM_DECODE_RSP_CMD
+ * 
+ */
+extern int	hmcsim_decode_rsp_cmd(	hmc_response_t rsp_cmd, uint8_t *cmd )
+{
+	switch( rsp_cmd )
+	{
+		case RD_RS:
+			*cmd = 0x38;
+			break;
+		case WR_RS:
+			*cmd = 0x39;
+			break;
+		case MD_RD_RS:
+			*cmd = 0x3A;
+			break;
+		case MD_WR_RS:
+			*cmd = 0x3B;
+			break;
+		case RSP_ERROR:
+			*cmd = 0x3E;
+			break;
+		case RSP_NONE:
+			*cmd = 0x00;
+			break;
+		default:
+			break;
+	} 
+
+	return 0;
+}
+
+/* ----------------------------------------------------- HMCSIM_DECODE_MEMRESPONSE */
+/* 
+ * HMCSIM_DECODE_MEMRESPONSE
  * 
  */
 extern int	hmcsim_decode_memresponse( 	struct hmcsim_t *hmc, 
@@ -67,6 +101,9 @@ extern int	hmcsim_decode_memresponse( 	struct hmcsim_t *hmc,
 
 	switch( tmp8 )
 	{
+		case 0x00:
+			*type	= RSP_NONE;
+			break;
 		case 0x38:
 			/* 111000 */
 			*type	= RD_RS;
@@ -85,7 +122,7 @@ extern int	hmcsim_decode_memresponse( 	struct hmcsim_t *hmc,
 			break;
 		case 0x3E:
 			/* 111110 */
-			*type	= ERROR;
+			*type	= RSP_ERROR;
 			break;
 		default:
 			return -1;
