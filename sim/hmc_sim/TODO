@@ -8,7 +8,8 @@ HMC-SIM TODO LIST
   -- S1:	done
   -- S2: 	done
   -- S3:	done
-  -- S4:	finish hmcsim_process_rqst 
+  -- S4:	finish hmcsim_process_rqst : finish rsp_len for each packet type; 
+					   : build the response tail 
   -- S5:	done
   -- S5a:	done
   -- S6:	done
@@ -17,6 +18,7 @@ HMC-SIM TODO LIST
 -- finish the packet processor 
   - make sure and pay attention to the SLID value in the tail 
     for response routing
+  - go back through the response routing and make sure this is true 
 
 - add warm reset function for JTAG requests
 
