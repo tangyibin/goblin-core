@@ -67,7 +67,11 @@ extern int execute_test(	struct hmcsim_t *hmc,
 	}
 
 	hmcsim_trace_handle( hmc, ofile );
-	hmcsim_trace_level( hmc, 10 );
+	hmcsim_trace_level( hmc, (HMC_TRACE_BANK|
+				HMC_TRACE_QUEUE|
+				HMC_TRACE_CMD|
+				HMC_TRACE_STALL|
+				HMC_TRACE_LATENCY) );
 
 	/* 
 	 * zero the packet
@@ -170,6 +174,9 @@ extern int execute_test(	struct hmcsim_t *hmc,
 
 			link++;
 			if( link == hmc->num_links ){
+				/* -- TODO : look at the number of connected links
+				 * to the host processor
+				 */
 				link = 0;
 			}
 
