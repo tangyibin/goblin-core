@@ -62,6 +62,11 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	uint64_t rsp_tail		= 0x00ll;
 	uint64_t rsp_slid		= 0x00ll;
 	uint64_t rsp_tag		= 0x00ll;
+	uint64_t rsp_crc		= 0x00ll;
+	uint64_t rsp_rtc		= 0x00ll;
+	uint64_t rsp_seq		= 0x00ll;
+	uint64_t rsp_frp		= 0x00ll;
+	uint64_t rsp_rrp		= 0x00ll;
 	uint32_t rsp_len		= 0x00;
 	uint64_t packet[HMC_MAX_UQ_PACKET];
 
@@ -127,6 +132,7 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 	/* -- addr = [57:24] */
 	addr	= ((head >> 24) & 0x3FFFFFFFF );
+
 
 	/* -- block size */
 	hmcsim_util_get_max_blocksize( hmc, dev, &bsize );
@@ -416,6 +422,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 			/* set the response command */
 			rsp_cmd = MD_WR_RS; 		
+
+			/* set the response length in FLITS */
+			rsp_len = 1;
 
 			break;
 		case 0x11:
@@ -741,6 +750,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
 
+			/* set the response length in FLITS */
+			rsp_len = 2;
+
 			break;
 		case 0x31:
 			/* RD32 */
@@ -758,6 +770,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
+
+			/* set the response length in FLITS */
+			rsp_len = 3;
 
 			break;
 		case 0x32:
@@ -786,6 +801,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
 
+			/* set the response length in FLITS */
+			rsp_len = 4;
+
 			break;
 		case 0x33:
 			/* RD64 */
@@ -812,6 +830,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
+
+			/* set the response length in FLITS */
+			rsp_len = 5;
 
 			break;
 		case 0x34:
@@ -840,6 +861,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
 
+			/* set the response length in FLITS */
+			rsp_len = 6;
+
 			break;
 		case 0x35:
 			/* RD96 */
@@ -866,6 +890,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
+
+			/* set the response length in FLITS */
+			rsp_len = 7;
 
 			break;
 		case 0x36:
@@ -894,6 +921,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
 
+			/* set the response length in FLITS */
+			rsp_len = 8;
+
 			break;
 		case 0x37:
 			/* RD128 */
@@ -921,6 +951,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 			/* set the response command */
 			rsp_cmd = RD_RS; 		
 
+			/* set the response length in FLITS */
+			rsp_len = 9;
+
 			break;
 		case 0x28:
 			/* MD_RD */
@@ -938,6 +971,9 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 			/* set the response command */
 			rsp_cmd = MD_RD_RS; 		
+
+			/* set the response length in FLITS */
+			rsp_len = 2;
 
 			break;
 		case 0x00:
@@ -1024,7 +1060,12 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 
 		/* -- build the response */
 		rsp_slid 	= ((tail>>24) & 0x07);
-		rsp_tag		=  ((head>>15) & 0x1FF );
+		rsp_tag		= ((head>>15) & 0x1FF );
+		rsp_crc		= ((tail>>32) & 0xFFFFFFFF);
+		rsp_rtc		= ((tail>>27) & 0x3F);
+		rsp_seq		= ((tail>>16) & 0x07);
+		rsp_frp		= ((tail>>8) & 0xFF);
+		rsp_rrp		= (tail & 0xFF);
 
 		/* -- decode the repsonse command : see hmc_response.c */
 		hmcsim_decode_rsp_cmd( rsp_cmd, &(tmp8) );
@@ -1037,7 +1078,11 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 		rsp_head	|= (rsp_slid<<39); 
 
 		/* -- packet tail */
-		rsp_tail	|= 0x00ll; 
+		rsp_tail	|= (rsp_rrp);
+		rsp_tail	|= (rsp_frp<<8);
+		rsp_tail	|= (rsp_seq<<16);
+		rsp_tail	|= (rsp_rtc<<27);
+		rsp_tail	|= (rsp_crc<<32); 
 
 		packet[0] 		= rsp_head;
 		packet[((rsp_len*2)-1)]	= rsp_tail;
