@@ -15,6 +15,8 @@ LIBS :=
 TARGET := lib$(LIBNAME).a
 LDFLAGS := 
 ARFLAGS := rcs
+
+.PHONY : test
  
 SRCEXT = c
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
@@ -34,6 +36,8 @@ doclean:
 	@echo " Cleaning Docs..."; $(RM) -Rf ./doxygen/{html,latex,man,rtf,xml}
 clean: doclean
 	@echo " Cleaning..."; $(RM) -r $(BUILDDIR) $(TARGET)
+test: 
+	make -C ./test/
  
 -include $(DEPS)
  
