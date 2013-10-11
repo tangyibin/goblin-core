@@ -1,46 +1,40 @@
-#!/bin/sh
+#
+# LIBPIM_COMP MAKEFILE
+#
+# Copyright (c) 2013 Micron Technology, Inc.
+#
 
 include Makefile.inc
-
-WIKI=`which doxygen2gwiki`
-WIKI_SRC=../../../goblin-core-wiki/
-
-SRC=`pwd`/src
-
-LIBOBJS=$(SRC)/hmc_init.o $(SRC)/hmc_mem.o $(SRC)/hmc_config_devs.o\
-	$(SRC)/hmc_links.o $(SRC)/hmc_trace.o $(SRC)/hmc_rqst.o\
-	$(SRC)/hmc_response.o $(SRC)/hmc_send.o $(SRC)/hmc_recv.o\
-	$(SRC)/hmc_clock.o $(SRC)/hmc_jtag.o $(SRC)/hmc_reset.o\
-	$(SRC)/hmc_bank_conflict.o $(SRC)/hmc_process_packet.o\
-	$(SRC)/hmc_util.o
-
-.PHONY : test
-
-all: libhmcsim.a
-wiki: docs
-	$(WIKI) -s -d ./doxygen/xml -o $(WIKI_SRC) -p HMCSIM
-docs:
-	$(DOXYGEN) ./doxygen/hmc_sim.cfg
-libhmcsim.a: 
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_init.o $(SRC)/hmc_init.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_mem.o $(SRC)/hmc_mem.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_send.o $(SRC)/hmc_send.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_recv.o $(SRC)/hmc_recv.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_trace.o $(SRC)/hmc_trace.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_links.o $(SRC)/hmc_links.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_rqst.o $(SRC)/hmc_rqst.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_response.o $(SRC)/hmc_response.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_config_devs.o $(SRC)/hmc_config_devs.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_clock.o $(SRC)/hmc_clock.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_jtag.o $(SRC)/hmc_jtag.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_reset.o $(SRC)/hmc_reset.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_bank_conflict.o $(SRC)/hmc_bank_conflict.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_process_packet.o $(SRC)/hmc_process_packet.c
-	$(CC) $(CFLAGS) -c -o $(SRC)/hmc_util.o $(SRC)/hmc_util.c
-	$(AR) $(AR_OPTS) $@ $(LIBOBJS)
+ 
+PKGS := ...
+LIBNAME := hmcsim
+SRCDIR := src
+BUILDDIR := build
+INC := -I./include/
+LIBS :=
+TARGET := lib$(LIBNAME).a
+LDFLAGS := 
+ARFLAGS := rcs
+ 
+SRCEXT = c
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+DEPS := $(OBJECTS:.o=.deps)
+ 
+$(TARGET): $(OBJECTS)
+	@echo " Linking..."; $(AR) $(AR_OPTS) $(TARGET) $(OBJECTS) 
+ 
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(BUILDDIR)
+	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
+ 
+docs: 
+	@echo " Building Docs..."; $(DOXYGEN) ./doxygen/hmc_sim.cfg
 doclean:
-	rm -Rf ./doxygen/{html,latex,man,rtf,xml}
+	@echo " Cleaning Docs..."; $(RM) -Rf ./doxygen/{html,latex,man,rtf,xml}
 clean: doclean
-	rm -Rf ./src/*.o ./libhmcsim.a
-test: 
-	make -C ./test/
+	@echo " Cleaning..."; $(RM) -r $(BUILDDIR) $(TARGET)
+ 
+-include $(DEPS)
+ 
+.PHONY: clean
