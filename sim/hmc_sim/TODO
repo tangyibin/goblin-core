@@ -8,8 +8,7 @@ HMC-SIM TODO LIST
   -- S1:	done
   -- S2: 	done
   -- S3:	done
-  -- S4:	finish hmcsim_process_rqst : finish rsp_len for each packet type; 
-					   : build the response tail 
+  -- S4:	finish hmcsim_process_rqst : add dram handlers to each command block
   -- S5:	done
   -- S5a:	done
   -- S6:	done
