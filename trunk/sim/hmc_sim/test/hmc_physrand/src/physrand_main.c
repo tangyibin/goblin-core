@@ -23,11 +23,16 @@ extern int genrands( 	uint64_t *addr,
 			uint32_t num_dev, 
 			uint32_t capacity, 
 			uint32_t read_perct, 
-			uint32_t write_perct );
+			uint32_t write_perct, 
+			uint32_t shiftamt );
 extern int execute_test( struct hmcsim_t *hmc, 
 			uint64_t *addr, 
 			uint32_t *req, 
 			long num_req );
+extern int getshiftamount( uint32_t num_links, 
+			uint32_t capacity,
+			uint32_t bsize, 
+			uint32_t *shiftamt );
 
 /* ----------------------------------------------------- MAIN */
 /* 
@@ -50,6 +55,7 @@ extern int main( int argc, char **argv )
 	uint32_t write_perct	= 50;	
 	uint32_t seed		= 0;
 	uint32_t bsize		= 128;
+	uint32_t shiftamt	= 0;
 	long num_req		= 0x0Fl;
 	uint64_t *addr		= NULL;
 	uint32_t *req		= NULL;
@@ -162,6 +168,18 @@ extern int main( int argc, char **argv )
 	}
 
 	/* 
+	 * get the address shift amount based upon 
+	 * the max block size, device size and link count
+	 *
+	 */
+	if( getshiftamount( num_links, capacity, bsize, &shiftamt ) != 0 ){ 
+		printf( "FAILED TO RETRIEVE SHIFT AMOUNT\n" );
+		hmcsim_free( &hmc );
+		free( addr );
+		return -1;
+	}	
+	
+	/* 
 	 * generate the inputs
 	 * 
 	 */
@@ -172,7 +190,8 @@ extern int main( int argc, char **argv )
 			num_devs,
 			capacity, 
 			read_perct, 
-			write_perct ) != 0 ){
+			write_perct, 
+			shiftamt ) != 0 ){
 		printf( "FAILED TO GENERATE RANDOM INPUTS\n" );
 		free( addr );
 		addr = NULL;
@@ -229,6 +248,21 @@ extern int main( int argc, char **argv )
 		printf( "SUCCESS : INITALIZED MAX BLOCK SIZE\n" );
 	}
 
+	/* 
+	 * get the address shift amount based upon 
+	 * the max block size, device size and link count
+	 *
+	 */
+	if( getshiftamount( num_links, capacity, bsize, &shiftamt ) != 0 ){ 
+		printf( "FAILED TO RETRIEVE SHIFT AMOUNT\n" );
+		hmcsim_free( &hmc );
+		free( addr );
+		addr = NULL;
+		free( req );
+		req = NULL;
+		return -1;
+	}	
+	
 
 	/* 
 	 * execute the test
