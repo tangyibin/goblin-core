@@ -127,7 +127,8 @@ extern int genrands( 	uint64_t *addr,
 			uint32_t num_devs,
 			uint32_t capacity, 
 			uint32_t read_perct, 
-			uint32_t write_perct )
+			uint32_t write_perct, 
+			uint32_t shiftamt )
 {
 	/* vars */
 	long i		= 0x00l;
@@ -167,7 +168,7 @@ extern int genrands( 	uint64_t *addr,
 	 */
 	for( i=0; i<num_req; i++ ){ 
 
-		addr[i] = (uint64_t)(longrands( max_slot ) * (long)(8));
+		addr[i] = (uint64_t)(longrands( max_slot ) * (long)(8))<<(uint64_t)(shiftamt);
 	
 	}
 	
