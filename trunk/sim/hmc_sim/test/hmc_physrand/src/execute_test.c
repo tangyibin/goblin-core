@@ -61,6 +61,7 @@ extern int execute_test(	struct hmcsim_t *hmc,
 	int *rtns		= NULL;
 	long all_sent		= 0;
 	long all_recv		= 0;
+	int done		= 0;
 	/* ---- */
 
 	rtns = malloc( sizeof( int ) * hmc->num_links );
@@ -100,20 +101,20 @@ extern int execute_test(	struct hmcsim_t *hmc,
 	 * Push requests into the device
 	 * until we get a stall signal 
  	 */ 
-	while( (all_sent != num_req) && (all_recv != num_req) ){
+	while( done != 1 ){
 
-		printf( "....sending packets\n" );
 
 		/* 
 	 	 * attempt to push a request in 
 		 * as long as we don't stall
 		 *
 	 	 */		
-		if( iter == num_req ){ 
+		if( iter >= num_req ){ 
 			/* everything is sent, go to receive side */
 			goto packet_recv;
 		}
 
+		printf( "....sending packets\n" );
 		while( ret != HMC_STALL ){
 
 			/* 
@@ -122,7 +123,7 @@ extern int execute_test(	struct hmcsim_t *hmc,
 			 * Step 1: Build the Request
 			 * 
 			 */		
-			if( req[(int)iter] == 1 ){
+			if( req[(int)(iter)] == 1 ){
 				/* 
 			 	 * read request
 				 *
@@ -203,6 +204,8 @@ extern int execute_test(	struct hmcsim_t *hmc,
 			switch( ret ){ 
 				case 0: 
 					printf( "SUCCESS : PACKET WAS SUCCESSFULLY SENT\n" );
+					all_sent++;
+					iter++;
 					break;
 				case HMC_STALL:
 					printf( "STALLED : PACKET WAS STALLED IN SENDING\n" );
@@ -210,6 +213,7 @@ extern int execute_test(	struct hmcsim_t *hmc,
 				case -1:
 				default:
 					printf( "FAILED : PACKET SEND FAILED\n" );
+					goto complete_failure;
 					break;
 			}
 
@@ -218,17 +222,6 @@ extern int execute_test(	struct hmcsim_t *hmc,
 			 * 
 			 */
 			zero_packet( &(packet[0]) );
-
-			/* 
-			 * update the counts
-			 *
-			 */
-			if( ret == 0 ){ 
-				all_sent++;
-				iter++;
-			}else if( ret == -1 ){ 
-				goto complete_failure;
-			}/* if ret == HMC_STALL, do not update iter */
 
 			tag++;
 			if( tag == (UINT8_MAX-1) ){
@@ -241,6 +234,14 @@ extern int execute_test(	struct hmcsim_t *hmc,
 				 * to the host processor
 				 */
 				link = 0;
+			}
+
+			/* 
+			 * check to see if we're at the end of the packet queue
+			 *
+			 */
+			if( iter >= num_req ){ 
+				goto packet_recv;
 			}
 
 			/* DONE SENDING REQUESTS */
@@ -261,7 +262,7 @@ packet_recv:
 		 */
 		printf( "...reading responses\n" );
 		while( ret != HMC_STALL ){ 
-	
+
 			for( z=0; z<hmc->num_links; z++){ 
 				
 				rtns[z] = hmcsim_recv( hmc, cub, z, &(packet[0]) );
@@ -292,6 +293,11 @@ packet_recv:
 				printf( "STALLED : STALLED IN RECEIVING\n" );
 				ret = HMC_STALL;
 			}
+
+			stall_sig = 0;
+			for( z=0; z<hmc->num_links; z++){
+				rtns[z] = HMC_OK;
+			}
 		}
 
 		/* 
@@ -299,7 +305,9 @@ packet_recv:
 		 * 
 		 */
 		stall_sig = 0;
-		memset( rtns, 0, sizeof( int ) * hmc->num_links );
+		for( z=0; z<hmc->num_links; z++ ){ 
+			rtns[z] = HMC_OK;
+		}
 		ret = HMC_OK;
 	
 
@@ -313,6 +321,13 @@ packet_recv:
 		printf( "ALL_SENT = %ld\n", all_sent );
 		printf( "ALL_RECV = %ld\n", all_recv );
 		fflush( stdout );
+
+
+		if( all_sent == num_req ){ 
+			if( all_recv == num_req ){ 
+				done = 1;
+			}
+		}
 	}
 
 

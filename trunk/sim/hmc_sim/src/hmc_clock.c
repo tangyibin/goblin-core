@@ -66,7 +66,7 @@ extern int hmcsim_util_decode_qv(	struct hmcsim_t *hmc,
 extern int hmcsim_util_is_root( 	struct hmcsim_t *hmc, 
 					uint32_t dev );
 
-
+#ifdef HMC_DEBUG
 /* ----------------------------------------------------- HMCSIM_CLOCK_PRINT_XBAR_STATS */
 static int hmcsim_clock_print_xbar_stats( struct hmcsim_t *hmc, 
 					struct hmc_queue_t *queue )
@@ -124,6 +124,7 @@ static int hmcsim_clock_print_vault_stats( struct hmcsim_t *hmc,
 	
 	return 0;
 }
+#endif
 
 /* ----------------------------------------------------- HMCSIM_CLOCK_PROCESS_RSP_QUEUE */
 /* 
@@ -585,8 +586,8 @@ static int hmcsim_clock_process_rqst_queue( 	struct hmcsim_t *hmc,
 		success = 0;
 	}		
 
-	hmcsim_clock_print_xbar_stats( hmc, hmc->devs[dev].xbar[link].xbar_rqst );
 #ifdef HMC_DEBUG
+	hmcsim_clock_print_xbar_stats( hmc, hmc->devs[dev].xbar[link].xbar_rqst );
 	HMCSIM_PRINT_TRACE( "FINISHED PROCESSING REQUEST QUEUE" );	
 #endif
 	
@@ -1115,8 +1116,10 @@ static int hmcsim_clock_reg_responses( struct hmcsim_t *hmc )
 					/* else, request not valid */
 				}	
 
+#ifdef HMC_DEBUG
 				hmcsim_clock_print_vault_stats( hmc, hmc->devs[i].quads[j].vaults[k].rqst_queue );
 				hmcsim_clock_print_vault_stats( hmc, hmc->devs[i].quads[j].vaults[k].rsp_queue );
+#endif
 			}
 		}
 	}
@@ -1490,7 +1493,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 * Stage 1: Drain the child devices
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE1: DRAIN CHILD DEVICES" );
+#endif
 	if( hmcsim_clock_child_xbar( hmc ) != 0 ){
 		return -1;
 	}
@@ -1499,7 +1504,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 * Stage 2: Drain the root devices
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE2: DRAIN ROOT DEVICES" );
+#endif
 	if( hmcsim_clock_root_xbar( hmc ) != 0 ){
 		return -1;
 	}
@@ -1509,7 +1516,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 *          any integrated analysis
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE3: ANALYSIS PHASE" );
+#endif
 	if( hmcsim_clock_analysis_phase( hmc ) != 0 ){
 		return -1;
 	}
@@ -1519,7 +1528,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 *          read and write operations
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE4: R/W OPERATIONS" );
+#endif
 	if( hmcsim_clock_rw_ops( hmc ) != 0 ){
 		return -1;
 	}
@@ -1532,7 +1543,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 * 	    queues with a crossbar response queue
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE5: REGISTER RESPONSES" );
+#endif
 	if( hmcsim_clock_reg_responses( hmc ) != 0 ){ 
 		return -1;
 	}
@@ -1541,7 +1554,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 * Stage 5a: Reorder all the request queues
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE5a: REORDER THE QUEUES" );
+#endif
 	if( hmcsim_clock_queue_reorg( hmc ) != 0 ){
 		return -1;
 	}
@@ -1550,7 +1565,9 @@ extern int	hmcsim_clock( struct hmcsim_t *hmc )
 	 * Stage 6: update the clock value
 	 * 
 	 */
+#ifdef HMC_DEBUG
 	HMCSIM_PRINT_TRACE( "STAGE6: UPDATE THE CLOCK" );
+#endif
 	hmc->clk++;
 
 	return 0;
