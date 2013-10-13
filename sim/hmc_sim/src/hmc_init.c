@@ -71,6 +71,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 		return HMC_ERROR_PARAMS;
 	}
 
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "PASSED LEVEL1 INIT SANITY CHECK" );
+#endif
+
 	/* 
 	 * look deeper to make sure the default addressing works
 	 * and the vault counts
@@ -87,6 +91,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 		return HMC_ERROR_PARAMS;
 	}
 
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "PASSED LEVEL2 INIT SANITY CHECK" );
+#endif
+
 	/* 
 	 * go deeper still...
 	 * 
@@ -100,6 +108,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	}else if( (capacity == 8) && ( (num_banks == 8 ) || (num_links==4) ) ){
 		return HMC_ERROR_PARAMS;
 	}	
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "PASSED LEVEL3 INIT SANITY CHECK" );
+#endif
 
 	/* 
 	 * init all the internals 
