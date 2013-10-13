@@ -14,6 +14,10 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- FUNCTION_PROTOTYPES */
+extern int hmcsim_util_zero_packet( struct hmc_queue_t *queue );
+
+
 /* ----------------------------------------------------- HMCSIM_SEND */
 /* 
  * HMCSIM_SEND
@@ -28,8 +32,10 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	uint32_t t_len	= 0;
 	uint32_t target	= hmc->xbar_depth+1;	/* -- out of bounds to check for stalls */
 	uint32_t i	= 0;
+	uint32_t cur	= 0;
 	uint8_t link	= 0;
 	uint8_t cub	= 0;
+	struct hmc_queue_t *queue = NULL;
 	/* ---- */
 
 	if( hmc == NULL ){ 
@@ -47,6 +53,10 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	 */
 	header = packet[0];
 
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_ADDR_TRACE( "PACKET HEADER", header );
+#endif
+
 	/* 
 	 * pull the packet length and grab the tail
 	 * 
@@ -56,11 +66,20 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	
 	tail = packet[t_len-1];	
 
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_ADDR_TRACE( "PACKET TAIL", tail );
+	HMCSIM_PRINT_INT_TRACE( "PACKET T_LEN", (int)(t_len) );
+#endif
+
 	/* 
 	 * grab the cub 
 	 * 
 	 */
-	cub = (uint8_t)( header & 0x3F );
+	cub = (uint8_t)( (header >> 61) & 0x7 );
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_INT_TRACE( "PACKET CUB", (int)(cub) );
+#endif
 
 	/* 
 	 * grab the link id 
@@ -68,11 +87,21 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	 */
 	link = (uint8_t)( (tail & 0x7000000 ) >> 24 );
 
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_INT_TRACE( "PACKET LINK", (int)(link) );
+#endif
+
 
 	/* 
 	 * validate the cub:link 
 	 * 
 	 */
+	if( cub > (hmc->num_devs+1) ){
+		return -1;
+	}else if( cub == hmc->num_devs ){ 
+		return -1;
+	}
+
 	if( hmc->devs[cub].links[link].type != HMC_LINK_HOST_DEV ){
 		/* 
 		 * NOT A HOST LINK!!
@@ -81,6 +110,10 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 
 		return -1;
 	}
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "FOUND A VALID PACKET STRUCTURE" );
+#endif
 
 	/* 
 	 * Now that we have the locality details
@@ -91,15 +124,22 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	 * 
 	 * NOTE: this will likely need to be changed
 	 *       if we ever support proper ordering
-	 * 	 constraints on the devsice
+	 * 	 constraints on the devices
 	 * 
 	 */	
 
-	for( i=hmc->xbar_depth-1; i>=0; i-- ){
-		if( hmc->devs[cub].xbar[link].xbar_rqst[i].valid == HMC_RQST_INVALID ){
-			target = i;
+	cur = hmc->xbar_depth-1;
+	for( i=0; i<hmc->xbar_depth; i++ ){ 
+		if( hmc->devs[cub].xbar[link].xbar_rqst[cur].valid == HMC_RQST_INVALID ){
+			target = cur;
 		} 
-	}		
+		cur--;
+	}
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_INT_TRACE( "TARGET SLOT", (int)(target) );
+#endif
+	
 
 	if( target == (hmc->xbar_depth+1) ) {
 		/* 
@@ -110,11 +150,20 @@ extern int	hmcsim_send( struct hmcsim_t *hmc, uint64_t *packet )
 	}
 
 	/* else, push the packet into the designate queue slot */
-	hmc->devs[cub].xbar[link].xbar_rqst[target].valid = HMC_RQST_VALID;	
-	memset( hmc->devs[cub].xbar[link].xbar_rqst[target].packet, 0, sizeof( uint64_t ) * HMC_MAX_UQ_PACKET );	
+	queue = &( hmc->devs[cub].xbar[link].xbar_rqst[target] );
+
+	hmcsim_util_zero_packet( queue );
+
+	/* set the packet to valid */
+	queue->valid = HMC_RQST_VALID;	
+	
 	for( i=0; i<t_len; i++ ) { 
-		hmc->devs[cub].xbar[link].xbar_rqst[target].packet[i] = packet[i];
+		queue->packet[i] = packet[i];
 	}
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "PACKET INJECTION SUCCESSFUL" );
+#endif
 
 	return 0;
 }

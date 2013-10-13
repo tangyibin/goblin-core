@@ -39,7 +39,6 @@ extern int	hmcsim_link_config( 	struct hmcsim_t *hmc,
 	if( dest_dev >= hmc->num_devs ){
 		return -1;
 	}	
-
 	if( src_link >= hmc->num_links) {
 		return -1;
 	}

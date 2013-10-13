@@ -54,37 +54,37 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	 *
 	 */	
 	if( (num_devs > HMC_MAX_DEVS) || (num_devs < 1) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (num_links < HMC_MIN_LINKS) || (num_links > HMC_MAX_LINKS) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (num_vaults < HMC_MIN_VAULTS) || (num_vaults > HMC_MAX_VAULTS) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (num_banks < HMC_MIN_BANKS) || (num_banks > HMC_MAX_BANKS) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (num_drams < HMC_MIN_DRAMS) || (num_drams > HMC_MAX_DRAMS) ){ 
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (capacity < HMC_MIN_CAPACITY) || (capacity > HMC_MAX_CAPACITY) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (queue_depth < HMC_MIN_QUEUE_DEPTH ) || (queue_depth > HMC_MAX_QUEUE_DEPTH ) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (xbar_depth < HMC_MIN_QUEUE_DEPTH ) || (xbar_depth > HMC_MAX_QUEUE_DEPTH ) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}
-	
+
 	/* 
 	 * look deeper to make sure the default addressing works
 	 * and the vault counts
 	 * 
 	 */
 	if( (num_banks != 8) && (num_banks != 16) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (num_links != 4) && (num_links != 8) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (num_vaults/num_links) != 4 ){
 		/* always maintain 4 vaults per quad, or link */
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}else if( (capacity%2) != 0 ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}
 
 	/* 
@@ -92,11 +92,13 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	 * 
 	 */
 	if( (capacity == 2) && ( (num_banks == 16) || (num_links==8) ) ){
-		return -1;
-	}else if( (capacity == 4) && ( (num_banks == 16) && (num_links==4) ) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
+	}else if( (capacity == 4) && ( (num_banks == 8) && (num_links==4) ) ){
+		return HMC_ERROR_PARAMS;
+	}else if( (capacity == 4) && ( (num_banks == 16) && (num_links==8) ) ){
+		return HMC_ERROR_PARAMS;
 	}else if( (capacity == 8) && ( (num_banks == 8 ) || (num_links==4) ) ){
-		return -1;
+		return HMC_ERROR_PARAMS;
 	}	
 
 	/* 
@@ -168,7 +170,7 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	 */
 	for( i=0; i<hmc->num_devs; i++ ) { 
 
-		hmc_reset_device( hmc, i );
+		//hmc_reset_device( hmc, i );
 		
 	}	
 

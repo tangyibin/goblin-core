@@ -48,6 +48,8 @@ extern "C" {
 #endif
 
 /* -------------------------------------------- RETURN CODES */
+#define		HMC_ERROR_PARAMS	-3
+#define		HMC_ERROR_DEV_INIT	-2
 #define		HMC_ERROR		-1
 #define		HMC_OK			0
 #define		HMC_STALL		2
@@ -65,10 +67,10 @@ extern "C" {
 #define		HMC_MIN_LINKS		4
 #define		HMC_MAX_CAPACITY	8
 #define		HMC_MIN_CAPACITY	2
-#define		HMC_MAX_VAULTS		16
-#define		HMC_MIN_VAULTS		32
-#define		HMC_MAX_BANKS		8
-#define		HMC_MIN_BANKS		16
+#define		HMC_MAX_VAULTS		32
+#define		HMC_MIN_VAULTS		16
+#define		HMC_MAX_BANKS		16
+#define		HMC_MIN_BANKS		8
 #define		HMC_MIN_DRAMS		20
 #define		HMC_MAX_DRAMS		20
 #define		HMC_MIN_QUEUE_DEPTH	2
@@ -139,6 +141,10 @@ extern "C" {
 #define		HMC_REG_FEAT_IDX	0x000018
 #define		HMC_REG_RVID_IDX	0x000019
 
+/* -------------------------------------------- TRACE MACROS */
+#define HMCSIM_PRINT_TRACE( s )		( fprintf( stdout, "HCMSIM_TRACE %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
+#define HMCSIM_PRINT_ADDR_TRACE( s, a )	( fprintf( stdout, "HCMSIM_TRACE %s:%d : %s : 0x%016llx\n", __FUNCTION__, __LINE__, s, a ) )
+#define HMCSIM_PRINT_INT_TRACE( s, d )	( fprintf( stdout, "HCMSIM_TRACE %s:%d : %s : %d\n", __FUNCTION__, __LINE__, s, d ) )
 
 #ifdef __cplusplus
 } /* extern C */

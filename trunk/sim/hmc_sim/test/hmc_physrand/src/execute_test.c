@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <inttypes.h>
+#include <string.h>
 #include "hmc_sim.h"
 
 
@@ -46,15 +48,23 @@ extern int execute_test(	struct hmcsim_t *hmc,
 	long iter		= 0x00l;
 	uint64_t head		= 0x00ll;
 	uint64_t tail		= 0x00ll;
-	uint64_t payload[2]	= {0x00ll,0x00ll};
+	uint64_t payload[8]	= {0x00ll,0x00ll,0x00ll,0x00ll,
+				   0x00ll,0x00ll,0x00ll,0x00ll};
 	uint64_t packet[HMC_MAX_UQ_PACKET];
 	uint8_t	cub		= 0;
 	uint16_t tag		= 0;
 	uint8_t link		= 0;
 	int ret			= HMC_OK;
+	int stall_sig		= 0;
+	
 	FILE *ofile		= NULL;
+	int *rtns		= NULL;
+	long all_sent		= 0;
+	long all_recv		= 0;
 	/* ---- */
 
+	rtns = malloc( sizeof( int ) * hmc->num_links );
+	memset( rtns, 0, sizeof( int ) * hmc->num_links );
 
 	/* 
 	 * Setup the tracing mechanisms
@@ -73,25 +83,38 @@ extern int execute_test(	struct hmcsim_t *hmc,
 				HMC_TRACE_STALL|
 				HMC_TRACE_LATENCY) );
 
+	printf( "SUCCESS : INITIALIZED TRACE HANDLERS\n" );				
+	
+
 	/* 
 	 * zero the packet
 	 * 
 	 */
 	zero_packet( &(packet[0]) );
 
+	printf( "SUCCESS : ZERO'D PACKETS\n" );
+	printf( "SUCCESS : BEGINNING TEST EXECUTION\n" );
+
 	/* 
 	 * Attempt to execute all the requests
 	 * Push requests into the device
 	 * until we get a stall signal 
  	 */ 
-	while( iter < num_req ){ 
+	while( (all_sent != num_req) && (all_recv != num_req) ){
+
+		printf( "....sending packets\n" );
 
 		/* 
 	 	 * attempt to push a request in 
 		 * as long as we don't stall
 		 *
 	 	 */		
-		while( (ret != HMC_STALL) && (ret != HMC_ERROR) ){
+		if( iter == num_req ){ 
+			/* everything is sent, go to receive side */
+			goto packet_recv;
+		}
+
+		while( ret != HMC_STALL ){
 
 			/* 
 			 * try to push another request 
@@ -104,11 +127,12 @@ extern int execute_test(	struct hmcsim_t *hmc,
 			 	 * read request
 				 *
 				 */
+				printf( "...building read request for device : %d\n", cub );
 				hmcsim_build_memrequest( hmc, 
 							cub, 
 							addr[iter], 
 							tag, 
-							RD16, 
+							RD64, 
 							link, 
 							&(payload[0]), 
 							&head, 
@@ -126,11 +150,12 @@ extern int execute_test(	struct hmcsim_t *hmc,
 				 * write request
 				 *
 				 */
+				printf( "...building write request for device : %d\n", cub );
 				hmcsim_build_memrequest( hmc, 
 							cub, 
 							addr[iter], 
 							tag, 
-							WR16, 
+							WR64, 
 							link, 
 							&(payload[0]), 
 							&head, 
@@ -140,20 +165,53 @@ extern int execute_test(	struct hmcsim_t *hmc,
 				 * head + 
 				 * data + 
 				 * data + 
+				 * data + 
+				 * data + 
+				 * data + 
+				 * data + 
+				 * data + 
+				 * data + 
 				 * tail
 				 * 
 				 */
 				packet[0] = head;
-				packet[1] = 0x00ll;
-				packet[2] = 0x00ll;
-				packet[3] = tail;
+				packet[1] = 0x05ll;
+				packet[2] = 0x06ll;
+				packet[3] = 0x07ll;
+				packet[4] = 0x08l;
+				packet[5] = 0x09ll;
+				packet[6] = 0x0All;
+				packet[7] = 0x0Bll;
+				packet[8] = 0x0Cll;
+				packet[9] = tail;
 			}
 			
 			/* 
 			 * Step 2: Send it 
 			 *
 			 */
+			printf( "...sending packet : base addr=0x%016llx\n", addr[iter] );
+
+#if 0
+			for( i=0; i<HMC_MAX_UQ_PACKET; i++){ 
+				printf( "packet[%" PRIu64 "] = 0x%016llx\n", i, packet[i] );
+			}
+#endif
+	
 			ret = hmcsim_send( hmc, &(packet[0]) );
+
+			switch( ret ){ 
+				case 0: 
+					printf( "SUCCESS : PACKET WAS SUCCESSFULLY SENT\n" );
+					break;
+				case HMC_STALL:
+					printf( "STALLED : PACKET WAS STALLED IN SENDING\n" );
+					break;
+				case -1:
+				default:
+					printf( "FAILED : PACKET SEND FAILED\n" );
+					break;
+			}
 
 			/* 
 			 * zero the packet 
@@ -165,7 +223,12 @@ extern int execute_test(	struct hmcsim_t *hmc,
 			 * update the counts
 			 *
 			 */
-			iter++;
+			if( ret == 0 ){ 
+				all_sent++;
+				iter++;
+			}else if( ret == -1 ){ 
+				goto complete_failure;
+			}/* if ret == HMC_STALL, do not update iter */
 
 			tag++;
 			if( tag == (UINT8_MAX-1) ){
@@ -183,6 +246,7 @@ extern int execute_test(	struct hmcsim_t *hmc,
 			/* DONE SENDING REQUESTS */
 		}
 
+packet_recv:
 		/* 
 		 * reset the return code for receives
 		 * 
@@ -195,23 +259,38 @@ extern int execute_test(	struct hmcsim_t *hmc,
 		 * Try to drain the responses off all the links
 		 * 
 		 */
-		for( z=0; z<hmc->num_links; z++ ){
+		printf( "...reading responses\n" );
+		while( ret != HMC_STALL ){ 
+	
+			for( z=0; z<hmc->num_links; z++){ 
+				
+				rtns[z] = hmcsim_recv( hmc, cub, z, &(packet[0]) );
 
-			/* 
-			 * try link 'z' 
-			 * pull responses until you get a stall signal 
-			 * 
-	 		 */
-			while( (ret != HMC_STALL) && (ret != HMC_ERROR) ){
-
-				ret = hmcsim_recv(hmc,cub,z,&(packet[0]) );
+				if( rtns[z] == HMC_STALL ){ 
+					stall_sig++;
+				}else{ 
+					/* successfully received a packet */
+					printf( "SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE\n" );	
+					all_recv++;
+				}
 
 				/* 
 				 * zero the packet 
 				 * 
 				 */
 				zero_packet( &(packet[0]) );
+			}
 
+			/* count the number of stall signals received */
+			if( stall_sig == hmc->num_links ){ 
+				/* 
+				 * if all links returned stalls, 
+				 * then we're done receiving packets
+				 *
+				 */
+				
+				printf( "STALLED : STALLED IN RECEIVING\n" );
+				ret = HMC_STALL;
 			}
 		}
 
@@ -219,6 +298,8 @@ extern int execute_test(	struct hmcsim_t *hmc,
 		 * reset the return code
 		 * 
 		 */
+		stall_sig = 0;
+		memset( rtns, 0, sizeof( int ) * hmc->num_links );
 		ret = HMC_OK;
 	
 
@@ -226,12 +307,22 @@ extern int execute_test(	struct hmcsim_t *hmc,
 	 	 * done with sending/receiving packets
 		 * update the clock 
 		 */
+		printf( "SIGNALING HMCSIM TO CLOCK\n" );
 		hmcsim_clock( hmc );
 
+		printf( "ALL_SENT = %ld\n", all_sent );
+		printf( "ALL_RECV = %ld\n", all_recv );
+		fflush( stdout );
 	}
+
+
+complete_failure:
 
 	fclose( ofile );
 	ofile = NULL;
+
+	free( rtns ); 
+	rtns = NULL;
 
 	return 0;
 }

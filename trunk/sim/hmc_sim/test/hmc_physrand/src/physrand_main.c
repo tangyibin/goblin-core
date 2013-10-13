@@ -43,6 +43,7 @@ extern int main( int argc, char **argv )
 {
 	/* vars */
 	int ret			= 0;
+	uint32_t i		= 0;
 	uint32_t num_devs	= 0;
 	uint32_t num_links	= 0;
 	uint32_t num_vaults	= 0;
@@ -217,7 +218,7 @@ extern int main( int argc, char **argv )
 				capacity, 
 				xbar_depth );
 	if( ret != 0 ){ 
-		printf( "FAILED TO INIT HMCSIM\n" );	
+		printf( "FAILED TO INIT HMCSIM : return code=%d\n", ret );	
 		return -1;
 	}else {
 		printf( "SUCCESS : INITALIZED HMCSIM\n" );
@@ -232,6 +233,32 @@ extern int main( int argc, char **argv )
 
 		/* -- TODO */			
 
+	}else{ 
+		/* 
+	 	 * single device, connect everyone 
+		 *
+		 */
+		for( i=0; i<num_links; i++ ){ 
+	
+			ret = hmcsim_link_config( &hmc, 
+						(num_devs+1), 
+						0, 
+						i, 
+						i,
+						HMC_LINK_HOST_DEV );
+	
+			if( ret != 0 ){ 
+				printf( "FAILED TO INIT LINK %d\n", i );
+				hmcsim_free( &hmc );
+				free( addr );
+				addr = NULL;
+				free( req );
+				req = NULL;
+				return -1;
+			}else{ 
+				printf( "SUCCESS : INITIALIZED LINK %d\n", i );
+			}
+		}
 	}
 
 	/* 
@@ -243,26 +270,14 @@ extern int main( int argc, char **argv )
 	if( ret != 0 ){ 
 		printf( "FAILED TO INIT MAX BLOCK SIZE\n" );
 		hmcsim_free( &hmc );
-		return -1;
-	}else {
-		printf( "SUCCESS : INITALIZED MAX BLOCK SIZE\n" );
-	}
-
-	/* 
-	 * get the address shift amount based upon 
-	 * the max block size, device size and link count
-	 *
-	 */
-	if( getshiftamount( num_links, capacity, bsize, &shiftamt ) != 0 ){ 
-		printf( "FAILED TO RETRIEVE SHIFT AMOUNT\n" );
-		hmcsim_free( &hmc );
 		free( addr );
 		addr = NULL;
 		free( req );
 		req = NULL;
 		return -1;
-	}	
-	
+	}else {
+		printf( "SUCCESS : INITALIZED MAX BLOCK SIZE\n" );
+	}
 
 	/* 
 	 * execute the test

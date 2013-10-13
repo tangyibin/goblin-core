@@ -281,19 +281,19 @@ extern int	hmcsim_build_memrequest( struct hmcsim_t *hmc,
 	tmp |= (cmd & 0x3F);
 	
 	/* -- lng field in flits : bits 10:7 */
-	tmp |= ( (uint64_t)(flits) << 7 );
+	tmp |= ( (uint64_t)(flits & 0xF) << 7 );
 
 	/* -- dln field; duplicate of lng : bits 14:11 */
-	tmp |= ( (uint64_t)(flits) << 11 );
+	tmp |= ( (uint64_t)(flits & 0xF) << 11 );
 
 	/* -- tag field: bits 23:15 */
-	tmp |= ( (uint64_t)(tag) << 15 );
+	tmp |= ( (uint64_t)(tag & 0x1FF) << 15 );
 
 	/* -- address field : bits 57:24 */
-	tmp |= ( addr << 24 );
+	tmp |= ( (addr& 0x3FFFFFFFF) << 24 );
 
 	/* -- cube id field : bits 63:61 */
-	tmp |= ( (uint64_t)(cub) << 61 );
+	tmp |= ( (uint64_t)(cub&0x7) << 61 );
 
 	/* write the request header out */
 	*rqst_head	= tmp;	
@@ -311,22 +311,22 @@ extern int	hmcsim_build_memrequest( struct hmcsim_t *hmc,
 
 	/* -- forward retry pointer : bits 15:8 */
 	frp = hmcsim_rqst_getfrp( hmc );
-	tmp |= ( (uint64_t)(frp) << 8 );
+	tmp |= ( (uint64_t)(frp & 0xFF) << 8 );
 
 	/* -- sequence number : bits 18:16 */
 	seq = hmcsim_rqst_getseq( hmc, type );
-	tmp |= ( (uint64_t)(seq) << 16 );
+	tmp |= ( (uint64_t)(seq & 0x7) << 16 );
 
 	/* -- source link id : bits 26:24 */
-	tmp |= ( (uint64_t)(link) << 24 );
+	tmp |= ( (uint64_t)(link & 0x7) << 24 );
 
 	/* -- return token count : bits 31:27 */
 	rtc = hmcsim_rqst_getrtc( hmc );
-	tmp |= ( (uint64_t)(rtc) << 27 );
+	tmp |= ( (uint64_t)(rtc & 0x1F) << 27 );
 
 	/* -- retrieve the crc : bits 63:32 */
 	crc = hmcsim_crc32( addr, payload, (2*flits) );
-	tmp |= ( (uint64_t)(crc) << 32 );
+	tmp |= ( (uint64_t)(crc & 0xFFFFFFFF) << 32 );
 
 	/* write the request tail out */
 	*rqst_tail	= tmp;
