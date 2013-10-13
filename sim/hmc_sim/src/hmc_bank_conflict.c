@@ -39,7 +39,8 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 						uint32_t dev, 
 						uint32_t quad, 
 						uint32_t vault, 
-						uint64_t *addr )
+						uint64_t *addr, 
+						uint64_t num_valid )
 {
 	/* vars */
 	uint32_t i		= 0;
@@ -70,7 +71,7 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 	 * walk the addresses and get the banks
 	 * 
 	 */
-	for( i=0; i<hmc->num_banks; i++ ){ 
+	for( i=0; i<num_valid; i++ ){ 
 
 		hmcsim_util_decode_bank( hmc, dev, bsize, addr[i], &(bank[i]) );
 	}	
@@ -79,7 +80,7 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 	 * map the banks to the bit array
 	 * 
 	 */		
-	for( i=0; i<hmc->num_banks; i++ ){ 
+	for( i=0; i<num_valid; i++ ){ 
 		
 
 		/*
@@ -95,11 +96,15 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 			 * and print the trace
 			 * 
 		 	 */
-		
+
+#ifdef HMC_DEBUG
+			HMCSIM_PRINT_TRACE( "FOUND A BANK CONFLICT" );
+#endif
+	
 			hmc->devs[dev].quads[quad].vaults[vault].rqst_queue[i].valid = HMC_RQST_CONFLICT;
 	
 			if( (hmc->tracelevel & HMC_TRACE_BANK) > 0 ) {
-			
+		
 				hmcsim_trace_bank_conflict( 	hmc, 
 								dev, 
 								quad, 
@@ -115,10 +120,18 @@ extern int	hmcsim_process_bank_conflicts( struct hmcsim_t *hmc,
 			 * OR' in the bit
 			 * 
 			 */
+#ifdef HMC_DEBUG
+			HMCSIM_PRINT_TRACE( "NO BANK CONFLICT FOUND" );
+#endif
+
 			bitarray |= (uint64_t)(1<<(uint64_t)(bank[i]));
 		}
 
 	}
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_INT_TRACE( "COMPLETED BANK CONFLICT ANALYSIS FOR VAULT", (int)(vault) );
+#endif
 
 	return 0;
 }

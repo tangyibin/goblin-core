@@ -69,7 +69,8 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	uint64_t rsp_rrp		= 0x00ll;
 	uint32_t rsp_len		= 0x00;
 	uint64_t packet[HMC_MAX_UQ_PACKET];
-
+	
+	uint32_t cur			= 0x00;
 	uint32_t error			= 0x00;
 	uint32_t t_slot			= hmc->queue_depth+1;
 	uint32_t j			= 0x00;
@@ -147,10 +148,15 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
  	 */
 
 	/* -- find a response slot */
-	for( j=hmc->queue_depth-1; j>= 0; j++ ){
-		if( hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[j].valid == HMC_RQST_INVALID ){
-			t_slot = j;
+	cur = hmc->queue_depth-1;
+
+	for( j=0; j<hmc->queue_depth; j++){
+
+		if( hmc->devs[dev].quads[quad].vaults[vault].rsp_queue[cur].valid == HMC_RQST_INVALID ){
+			t_slot = cur;
 		}
+
+		cur--;
 	}
 
 	if( t_slot == hmc->queue_depth+1 ){

@@ -51,7 +51,7 @@ INC=-I./include/
 
 #-- CFLAGS
 #-- C COMPILER FLAGS
-CFLAGS=-O2 -Wall -g $(INC) $(HMCSIM_MACROS)
+CFLAGS=-O0 -Wall -g $(INC) $(HMCSIM_MACROS)
 
 #-- CXXFLAGS
 #-- C++ COMPILER FLAGS

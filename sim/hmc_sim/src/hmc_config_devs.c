@@ -318,7 +318,6 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 	uint32_t cur_link	= 0;
 	uint32_t cur_queue	= 0;
 	uint32_t cur_xbar	= 0;
-	//uint32_t cur_stor	= 0;
 	/* ---- */
 
 	/* 
@@ -367,32 +366,35 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 		hmcsim_config_dev_reg( hmc, i );
 
 		/* 
-	 	 * xbars on each device
-	 	 * 
-		 */
-		hmc->devs[i].xbar		= &(hmc->__ptr_xbars[i]);
-
-		hmc->devs[i].xbar->xbar_rqst	= &(hmc->__ptr_xbar_rqst[cur_xbar]);
-		hmc->devs[i].xbar->xbar_rsp	= &(hmc->__ptr_xbar_rsp[cur_xbar]);
-
-		/* 
-		 * set all the valid bits
-		 *
-	 	 */
-		for( a=0; a<hmc->xbar_depth; a++ ){
-			hmc->devs[i].xbar->xbar_rqst[a].valid	= 0x00000000;
-			hmc->devs[i].xbar->xbar_rsp[a].valid	= 0x00000000;
-		}
-
-		cur_xbar += hmc->xbar_depth;
-
-		/* 
 		 * links on each device
 		 *
 		 */
 		hmc->devs[i].links	= &(hmc->__ptr_links[cur_link]);
 
+		/* 
+		 * xbars on each device
+		 * 
+		 */
+		hmc->devs[i].xbar	= &(hmc->__ptr_xbars[cur_link]);
+
 		for( j=0; j<hmc->num_links; j++ ){
+
+			/* 
+			 * xbar queues
+			 * 
+			 */
+			hmc->devs[i].xbar[j].xbar_rqst= &(hmc->__ptr_xbar_rqst[cur_xbar]);
+			hmc->devs[i].xbar[j].xbar_rsp = &(hmc->__ptr_xbar_rsp[cur_xbar]);
+
+			printf( "hmc->devs[].xbar[].xbar_rsp  = 0x%016llx\n", 
+							(uint64_t)&(hmc->__ptr_xbar_rsp[cur_xbar]) );
+
+			for( a=0; a<hmc->xbar_depth; a++){ 
+				hmc->devs[i].xbar[j].xbar_rqst[a].valid	= HMC_RQST_INVALID;
+				hmc->devs[i].xbar[j].xbar_rsp[a].valid	= HMC_RQST_INVALID;
+			}
+
+			cur_xbar += hmc->xbar_depth;
 
 			/* 
 			 * set the id 
@@ -406,52 +408,14 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 			 *
 			 */	
 			hmc->devs[i].links[j].type	= HMC_LINK_HOST_DEV;
-			hmc->devs[i].links[j].src_cub	= 0;
-			hmc->devs[i].links[j].src_cub	= i;
+			hmc->devs[i].links[j].src_cub	= hmc->num_devs+1;
+			hmc->devs[i].links[j].dest_cub	= i;
 		
 			/* 
 			 * set the associated quad
-			 *
+			 * quad == link 
 			 */
-			if( hmc->num_links == 4 ){ 
-
-				/* 
-				 * one to one relationship 
-				 * 
-				 */
-				hmc->devs[i].links[j].quad = j;
-
-			}else {
-				/* 
-				 * two to one relationship
-				 * 
-			 	 */
-
-				switch( j )
-				{	
-					case 0:
-					case 1:
-						hmc->devs[i].links[j].quad = 0;
-						break;
-					case 2:
-					case 3:
-						hmc->devs[i].links[j].quad = 1;
-						break;
-					case 4:
-					case 5:
-						hmc->devs[i].links[j].quad = 2;
-						break;
-					case 6:
-					case 7:
-						hmc->devs[i].links[j].quad = 3;
-						break;
-					default:
-						hmc->devs[i].links[j].quad = 0;
-						break;
-							
-				}
-			}
-
+			hmc->devs[i].links[j].quad = j;
 		}
 
 		cur_link += hmc->num_links;
@@ -476,7 +440,8 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 			 */
 			hmc->devs[i].quads[j].vaults	= &(hmc->__ptr_vaults[cur_vault]);
 
-			for( k=0; k<hmc->num_vaults; k++ ){ 
+			//for( k=0; k<hmc->num_vaults; k++ ){ 
+			for( k=0; k<4; k++ ){ 
 
 				/* 
 				 * set the id 
@@ -502,8 +467,8 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 				 * 
 				 */	
 				for( a=0; a<hmc->queue_depth; a++ ){
-					hmc->devs[i].quads[j].vaults[k].rqst_queue[a].valid	= 0x00000000;
-					hmc->devs[i].quads[j].vaults[k].rsp_queue[a].valid	= 0x00000000;
+					hmc->devs[i].quads[j].vaults[k].rqst_queue[a].valid	= HMC_RQST_INVALID;
+					hmc->devs[i].quads[j].vaults[k].rsp_queue[a].valid	= HMC_RQST_INVALID;
 				}
 				
 				for( x=0; x<hmc->num_banks; x++ ){ 
@@ -539,7 +504,8 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 			}
 	
 			cur_queue += hmc->queue_depth;	
-			cur_vault += hmc->num_vaults;
+			//cur_vault += hmc->num_vaults;
+			cur_vault += 4;
 
 		}
 	

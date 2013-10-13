@@ -23,8 +23,8 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 {
 	/* vars */
 	uint32_t target	= hmc->xbar_depth+1;
-	uint32_t found	= 0;
 	uint32_t i	= 0;
+	uint32_t cur	= 0;
 	/* ---- */
 
 	if( hmc == NULL ){ 
@@ -38,6 +38,12 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 	if( link > hmc->num_links ) {
 		return -1;
 	}
+
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "CHECKING LINK FOR CONNECTIVITY" );
+	HMCSIM_PRINT_INT_TRACE( "DEV", (int)(dev) );
+	HMCSIM_PRINT_INT_TRACE( "LINK", (int)(link) );
+#endif	
 
 	if( hmc->devs[dev].links[link].type != HMC_LINK_HOST_DEV ){
 		/* 
@@ -55,23 +61,39 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 	 * If nothing is found, return a stall signal
 	 * 
 	 */	
-	while( (found != 1 ) && ( i < hmc->xbar_depth ) ){
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "CHECKING LINK FOR VALID RESPONSE" );
+#endif
 
-		if( hmc->devs[dev].xbar[link].xbar_rsp[i].valid == HMC_RQST_VALID ){
+	cur = hmc->xbar_depth-1;
+	
+	for( i=0; i<hmc->xbar_depth; i++ ){ 
 
-			/* 
-			 * found a good response 
-			 *
-		 	 */
-		
-			target = i;
-			found = 1;
+#ifdef HMC_DEBUG
+		HMCSIM_PRINT_INT_TRACE( "CHECKING XBAR RESPONSE QUEUE SLOT", (int)(cur) );
+
+		HMCSIM_PRINT_ADDR_TRACE( "xbar_rsp", 
+					(uint64_t)(hmc->devs[dev].xbar[link].xbar_rsp) );
+		HMCSIM_PRINT_ADDR_TRACE( "xbar_rsp[cur]", 
+					(uint64_t)&(hmc->devs[dev].xbar[link].xbar_rsp[cur]) );
+#endif
+		if( hmc->devs[dev].xbar[link].xbar_rsp[cur].valid == HMC_RQST_VALID ){
+			//printf( "VALID:dev:link:xbar_rsp_slot == %d:%d:%d\n", dev,link,cur );
+		}else{ 
+			//printf( "INVALID:dev:link:xbar_rsp_slot == %d:%d:%d\n", dev,link,cur );
 		}
 
-		i++;
+		if( hmc->devs[dev].xbar[link].xbar_rsp[cur].valid == HMC_RQST_VALID ){
+#ifdef HMC_DEBUG
+			HMCSIM_PRINT_INT_TRACE( "FOUND A VALID RESPONSE PACKET AT SLOT", cur );
+#endif
+			target = cur;
+		}
+
+		cur--;
 	}
 
-	if( target ==  hmc->xbar_depth ){
+	if( target ==  hmc->xbar_depth+1 ){
 		/* 
 		 * no responses found
 		 * 
@@ -79,9 +101,14 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 		return HMC_STALL;
 	}
 
+#ifdef HMC_DEBUG
+	HMCSIM_PRINT_TRACE( "VALID RESPONSE FOUND" );
+#endif
+
 	/* -- else, pull the response and clear the queue entry */
 	for( i=0; i<HMC_MAX_UQ_PACKET; i++ ){
-		packet[i]	= hmc->devs[dev].xbar[link].xbar_rsp[i].packet[i];
+		packet[i]	= hmc->devs[dev].xbar[link].xbar_rsp[target].packet[i];
+		hmc->devs[dev].xbar[link].xbar_rsp[target].packet[i] = 0x00l;
 	}
 
 	hmc->devs[dev].xbar[link].xbar_rsp[target].valid = HMC_RQST_INVALID;

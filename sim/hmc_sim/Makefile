@@ -36,8 +36,11 @@ doclean:
 	@echo " Cleaning Docs..."; $(RM) -Rf ./doxygen/{html,latex,man,rtf,xml}
 clean: doclean
 	@echo " Cleaning..."; $(RM) -r $(BUILDDIR) $(TARGET)
-test: 
+test: $(TARGET)
 	make -C ./test/
+testclean:
+	make -C ./test/ clean
+distclean: clean testclean doclean
  
 -include $(DEPS)
  

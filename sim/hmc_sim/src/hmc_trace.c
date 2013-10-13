@@ -81,7 +81,7 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 
 		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
 					" : XBAR_RQST_STALL"
-					" :%" PRIu32
+					" : %" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
 					":%" PRIu32 "\n",
@@ -100,7 +100,7 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 
 		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
 					" : VAULT_RQST_STALL"
-					" :%" PRIu32
+					" : %" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
 					":%" PRIu32 "\n",
@@ -120,7 +120,7 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 
 		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
 					" : XBAR_RSP_STALL"
-					" :%" PRIu32
+					" : %" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
 					":%" PRIu32 "\n",
@@ -139,7 +139,7 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 
 		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
 					" : ROUTE_RQST_STALL"
-					" :%" PRIu32
+					" : %" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
 					":%" PRIu32 
@@ -160,7 +160,7 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 
 		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
 					" : ROUTE_RSP_STALL"
-					" :%" PRIu32
+					" : %" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
 					":%" PRIu32 
@@ -182,7 +182,7 @@ extern int	hmcsim_trace_stall( 	struct hmcsim_t *hmc,
 
 		fprintf( hmc->tfile, 	"HMCSIM_TRACE : %" PRIu64 
 					" : UNDEF_STALL"
-					" :%" PRIu32
+					" : %" PRIu32
 					":%" PRIu32 
 					":%" PRIu32 
 					":%" PRIu32 "\n",
