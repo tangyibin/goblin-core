@@ -3,7 +3,7 @@
 set title "HMC-SIM" 
 set xlabel "Clock Tick" 
 set ylabel "Count" 
-set ytics "10"
+#set ytics "10"
 set term png
 set output "1024.png"
 
