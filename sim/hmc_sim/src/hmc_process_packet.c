@@ -116,8 +116,17 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	head	= queue->packet[0];	
 
 	/* -- get the packet length [10:7] */
-	length	= (uint32_t)((head & 0x780) >> 7 );	
-	
+	length 	= (uint32_t)( (head >> 7) & 0x0F );
+
+	/* -- cmd = [5:0] */
+	cmd	= (uint32_t)(head & 0x3F);
+
+	if( cmd == 0x00 ){ 
+		/* command is flow control, dump out */	
+		no_response = 1;
+		goto step4_vr;	
+	}
+
 	/* -- decide where the tail is */	
 	tail	= queue->packet[ ((length*2)-1) ];
 
@@ -129,11 +138,10 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
 	cmd	= (uint32_t)(head & 0x3F);
 
 	/* -- tag = [23:15] */
-	tag	= (uint32_t)((head & 0xFF8000) >> 15 );	
+	tag	= (uint32_t)((head >> 15) & 0x1FF);
 
 	/* -- addr = [57:24] */
 	addr	= ((head >> 24) & 0x3FFFFFFFF );
-
 
 	/* -- block size */
 	hmcsim_util_get_max_blocksize( hmc, dev, &bsize );
@@ -1062,6 +1070,7 @@ extern int	hmcsim_process_rqst( 	struct hmcsim_t *hmc,
  	 * Step 4: build and register the response with vault response queue
 	 * 
  	 */
+step4_vr:
 	if( no_response == 0 ){
 
 		/* -- build the response */
