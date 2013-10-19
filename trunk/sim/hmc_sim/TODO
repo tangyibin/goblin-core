@@ -20,6 +20,7 @@ HMC-SIM TODO LIST
   - make sure and pay attention to the SLID value in the tail 
     for response routing
   - go back through the response routing and make sure this is true 
+  - probably done; but make sure 
 
 - add warm reset function for JTAG requests
 
