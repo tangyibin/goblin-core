@@ -16,7 +16,7 @@ TARGET := lib$(LIBNAME).a
 LDFLAGS := 
 ARFLAGS := rcs
 
-.PHONY : test
+.PHONY : test tools
  
 SRCEXT = c
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
@@ -38,9 +38,13 @@ clean: doclean
 	@echo " Cleaning..."; $(RM) -r $(BUILDDIR) $(TARGET)
 test: $(TARGET)
 	make -C ./test/
+tools:
+	make -C ./tools/
+toolsclean:
+	make -C ./tools/ clean
 testclean:
 	make -C ./test/ clean
-distclean: clean testclean doclean
+distclean: clean testclean doclean toolsclean
  
 -include $(DEPS)
  
