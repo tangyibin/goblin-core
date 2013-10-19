@@ -25,7 +25,7 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
   * *System Management Controller/Library* : We're looking at various methods by which we can decouple compute and management resources.  This would require abstracting the handlers for job startup, debugging, I/O, memory management and other general purpose OS duties.  
 
 = Not Yet Attempted = 
-  * *Debugger* : I've wavering on whether to port GDB or LLDB.  There are certainly more people familiar with GDB, but the code base is more difficult to work in than LLDB.  
+  * *Debugger* : ~~I've wavering on whether to port GDB or LLDB.  There are certainly more people familiar with GDB, but the code base is more difficult to work in than LLDB.~~ Solved:  We're going to support the LLDB debugger.  I'd like to stay closer to the LLVM tool chain as much as possible.    
   * *Performance Optimization Tools* : I have yet to generate a plan for performance optimization tools
   * *Kernel Modifications* : Goblin-Core is designed to operate as a core processor and boot an operating system.  However, I have yet to determine what kernel modifications may or may not be necessary.  I have done some reading on low-jitter Linux-derived OS models from the likes of Sandia and Argonne.  Both are interesting candidates.  The biggest concern is providing a fast, global memory allocation schema.  
   * *Development Board* : I have yet to work through the process of identifying a candidate development board for the purposes of prototyping.  There are a plethora of known good dev platforms, but cost is always a factor. 
