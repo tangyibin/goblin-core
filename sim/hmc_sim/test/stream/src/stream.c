@@ -16,6 +16,34 @@
 
 
 
+/* ----------------------------------------------------- ZERO_PACKET */
+/* 
+ * ZERO_PACKET
+ * 
+ */
+static void zero_packet( uint64_t *packet )
+{
+	for( i=0; i<HMC_MAX_UQ_PAKCET; i++ ){ 
+		packet[i] = 0x00ll;
+	}
+
+	return ;
+}
+
+/* ----------------------------------------------------- EXECUTE_TEST */
+/* 
+ * EXECUTE_TEST
+ * 
+ */
+extern int execute_test(	struct hmcsim_t *hmc )
+{
+	/* vars */
+	uint64_t packet[HMX_MAX_UQ_PAKCET];
+	/* ---- */
+
+	return 0;
+}
+
 /* ----------------------------------------------------- MAIN */
 /* 
  * MAIN 
@@ -34,10 +62,11 @@ extern int main( int argc, char **argv )
 	uint32_t capacity	= 0;
 	uint32_t xbar_depth	= 0;		
 	uint32_t num_threads	= 2;
+	uint32_t bsize		= 128;
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:n:q:v:x:T:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:m:n:q:v:x:T:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -65,6 +94,9 @@ extern int main( int argc, char **argv )
 				break;
 			case 'l':
 				num_links = (uint32_t)(atoi(optarg));
+				break;
+			case 'm': 
+				bsize = (uint32_t)(atoi(optarg));
 				break;
 			case 'n':
 				num_devs = (uint32_t)(atoi(optarg));
@@ -111,10 +143,26 @@ extern int main( int argc, char **argv )
 	}
 
 	/* 
+	 * setup the device topology
+	 * 
+	 */
+	if( num_devs > 1 ){ 
+		/* 
+		 * MULTIPLE DEVICES
+		 *
+		 */
+	}else{
+		/* 
+		 * SINGLE DEVICE
+		 *
+		 */
+	}	
+
+	/* 
 	 * init the max request block size 
  	 * 
 	 */
-	ret = hmcsim_util_set_all_max_blocksize( &hmc, 128 );
+	ret = hmcsim_util_set_all_max_blocksize( &hmc, bsize );
 
 	if( ret != 0 ){ 
 		printf( "FAILED TO INIT MAX BLOCKSIZE\n" );
@@ -123,6 +171,12 @@ extern int main( int argc, char **argv )
 	}else {
 		printf( "SUCCESS : INITIALIZED MAX BLOCK SIZE\n" );
 	}
+
+
+	/* 
+	 * execute the test
+	 * 
+	 */
 	
 	/* 
 	 * free the library data
