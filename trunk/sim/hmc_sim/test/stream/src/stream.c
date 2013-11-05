@@ -23,7 +23,9 @@
  */
 static void zero_packet( uint64_t *packet )
 {
-	for( i=0; i<HMC_MAX_UQ_PAKCET; i++ ){ 
+	uint64_t i = 0x00ll;
+
+	for( i=0; i<HMC_MAX_UQ_PACKET; i++ ){ 
 		packet[i] = 0x00ll;
 	}
 
@@ -38,7 +40,7 @@ static void zero_packet( uint64_t *packet )
 extern int execute_test(	struct hmcsim_t *hmc )
 {
 	/* vars */
-	uint64_t packet[HMX_MAX_UQ_PAKCET];
+	uint64_t packet[HMC_MAX_UQ_PACKET];
 	/* ---- */
 
 	return 0;
@@ -63,10 +65,15 @@ extern int main( int argc, char **argv )
 	uint32_t xbar_depth	= 0;		
 	uint32_t num_threads	= 2;
 	uint32_t bsize		= 128;
+	uint32_t simd		= 1;
+	long num_req		= 0;
+	uint64_t *addr_a	= NULL;
+	uint64_t *addr_b	= NULL;
+	uint64_t *addr_c	= NULL;
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:m:n:q:v:x:T:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:m:n:q:s:v:x:N:T:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -86,10 +93,14 @@ extern int main( int argc, char **argv )
 				printf( " -d <num_drams>\n" );
 				printf( " -h ...print help\n" );
 				printf( " -l <num_links>\n" );
+				printf( " -m <block_size>\n" );
 				printf( " -n <num_devs>\n" );
 				printf( " -q <queue_depth>\n" );
+				printf( " -s <simd_width>\n" );
 				printf( " -v <num_vaults>\n" );
 				printf( " -x <xbar_depth>\n" );
+				printf( " -N <num_requests>\n" );
+				printf( " -T <num_threads>\n" );
 				return 0;
 				break;
 			case 'l':
@@ -104,22 +115,59 @@ extern int main( int argc, char **argv )
 			case 'q':
 				queue_depth = (uint32_t)(atoi(optarg));
 				break;
+			case 's':
+				simd	= (uint32_t)(atoi(optarg));
+				break;
 			case 'v': 
 				num_vaults = (uint32_t)(atoi(optarg));
 				break;
 			case 'x': 
 				xbar_depth = (uint32_t)(atoi(optarg));
 				break;
+			case 'N':
+				num_req	= (long)(atol(optarg));
+				break;
 			case 'T':
 				num_threads = (uint32_t)(atoi(optarg));
 				break;
 			case '?':
 			default:
-				printf( "%s%s%s\n", "Unknown option: see ", argv[0], " -bcdhlnqvx" );
+				printf( "%s%s%s\n", "Unknown option: see ", argv[0], " -bcdhlmnqsvxNT" );
 				return -1;
 				break;
 		}
 	}
+
+
+	/* 
+	 * allocate memory 
+	 * 
+	 */
+	addr_a = malloc( sizeof( uint64_t ) * num_req );
+	if( addr_a == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR_A\n" );
+		return -1;
+	}
+	addr_b = malloc( sizeof( uint64_t ) * num_req );
+	if( addr_b == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR_B\n" );
+		free( addr_a );
+		return -1;
+	}
+
+	addr_c = malloc( sizeof( uint64_t ) * num_req );
+	if( addr_c == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR_C\n" );
+		free( addr_a );
+		free( addr_b );
+		return -1;
+	}
+
+
+	/* 
+	 * setup the addressing structure 
+	 * 
+ 	 */
 
 	/* 
 	 * init the library 
