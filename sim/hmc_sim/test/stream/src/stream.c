@@ -22,36 +22,6 @@ extern int getshiftamount( 	uint32_t num_links,
 				uint32_t *shiftamt );
 
 
-/* ----------------------------------------------------- ZERO_PACKET */
-/* 
- * ZERO_PACKET
- * 
- */
-static void zero_packet( uint64_t *packet )
-{
-	uint64_t i = 0x00ll;
-
-	for( i=0; i<HMC_MAX_UQ_PACKET; i++ ){ 
-		packet[i] = 0x00ll;
-	}
-
-	return ;
-}
-
-/* ----------------------------------------------------- EXECUTE_TEST */
-/* 
- * EXECUTE_TEST
- * 
- */
-extern int execute_test(	struct hmcsim_t *hmc )
-{
-	/* vars */
-	uint64_t packet[HMC_MAX_UQ_PACKET];
-	/* ---- */
-
-	return 0;
-}
-
 /* ----------------------------------------------------- MAIN */
 /* 
  * MAIN 
@@ -186,6 +156,7 @@ extern int main( int argc, char **argv )
 
 	/* 
 	 * setup the addressing structure 
+	 * decide where to start the respective arrays
 	 * 
  	 */
 
