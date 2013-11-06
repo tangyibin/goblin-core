@@ -15,6 +15,12 @@
 #include "hmc_sim.h"
 
 
+/* ----------------------------------------------------- FUNCTION PROTOTYPES */
+extern int getshiftamount( 	uint32_t num_links, 
+				uint32_t capacity, 
+				uint32_t bsize, 
+				uint32_t *shiftamt );
+
 
 /* ----------------------------------------------------- ZERO_PACKET */
 /* 
@@ -66,6 +72,7 @@ extern int main( int argc, char **argv )
 	uint32_t num_threads	= 2;
 	uint32_t bsize		= 128;
 	uint32_t simd		= 1;
+	uint32_t shiftamt	= 0;
 	long num_req		= 0;
 	uint64_t *addr_a	= NULL;
 	uint64_t *addr_b	= NULL;
@@ -161,6 +168,19 @@ extern int main( int argc, char **argv )
 		free( addr_a );
 		free( addr_b );
 		return -1;
+	}
+
+	/* 
+	 * get the shift amount based upon
+	 * the max block size, device size and link count
+ 	 * 
+	 */
+	if( getshiftamount( num_links, capacity, bsize, &shiftamt ) != 0 ){ 
+		printf( "FAILED TO RETRIEVE SHIFT AMOUNT\n" );
+		hmcsim_free( &hmc );
+		free( addr_a );
+		free( addr_b );
+		free( addr_c );
 	}
 
 
