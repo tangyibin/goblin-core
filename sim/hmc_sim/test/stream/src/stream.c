@@ -20,29 +20,83 @@ extern int getshiftamount( 	uint32_t num_links,
 				uint32_t capacity, 
 				uint32_t bsize, 
 				uint32_t *shiftamt );
-
+extern int execute_test(        struct hmcsim_t *hmc,
+                                uint64_t *addr_a,
+                                uint64_t *addr_b,
+                                uint64_t *addr_c,
+				uint64_t addr_scalar,
+                                long num_req,
+                                uint32_t num_threads, 
+				uint32_t simd );
 
 /* ----------------------------------------------------- GENRANDS */
 static int genrands( 	uint64_t *addr_a,
 			uint64_t *addr_b,
 			uint64_t *addr_c,
+			uint64_t *addr_scalar,
 			long num_req, 
 			uint32_t num_devs, 
 			uint32_t capacity, 
 			uint32_t shiftamt )	
 {
 	/* vars */
+	long i		= 0x00l;
+	uint64_t base_a	= 0x00ll;
+	uint64_t base_b	= 0x00ll;
+	uint64_t base_c = 0x00ll;
+	uint64_t nrpo	= 0x00ll;
+	uint64_t offset	= 0x00ll;
 	/* ---- */
 
 	if( addr_a == NULL ){ 
 		return -1;
-	}else if( addr_b ){ 
+	}else if( addr_b == NULL ){ 
 		return -1;
-	}else if( addr_c ){
+	}else if( addr_c == NULL ){
+		return -1;
+	}else if( addr_scalar == NULL ){
 		return -1;
 	}
 
-	
+	/* 
+	 * make sure we have enough capacity
+	 *
+	 */
+
+#define	SLOTS_PER_GB	134217728
+
+	if( (long)((long)capacity*(long)num_devs*(long)SLOTS_PER_GB) <
+		(long)((num_req*(long)(3))+1) ) {
+		printf( "ERROR : NOT ENOUGH AVAILABLE PHYSICAL STORAGE\n" );
+		return -1;
+	}	
+
+	/* 
+	 * scalar value : set it to 0x00ll
+	 * 
+	 */
+	*addr_scalar	= (uint64_t)( 0x00ll );
+
+	/* 
+	 * calculate the base of each vector
+	 * 
+	 */
+	nrpo	= (uint64_t)(num_req)+1;
+	offset	= nrpo*0x08ll;
+
+	base_a	= (0x00ll) + ((0x08ll ) << (uint64_t)(shiftamt));
+	base_b	= base_a + ( ( offset ) << (uint64_t)(shiftamt) );
+	base_c	= base_b + ( ( offset ) << (uint64_t)(shiftamt) );
+
+	/* 
+	 * vectors a, b, c
+ 	 * 
+	 */
+	for( i=0; i<num_req; i++ ){ 
+		addr_a[i]	= (uint64_t)(base_a + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
+		addr_b[i]	= (uint64_t)(base_b + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
+		addr_c[i]	= (uint64_t)(base_c + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
+	}
 
 	return 0;	
 }
@@ -73,6 +127,7 @@ extern int main( int argc, char **argv )
 	uint64_t *addr_a	= NULL;
 	uint64_t *addr_b	= NULL;
 	uint64_t *addr_c	= NULL;
+	uint64_t addr_scalar	= 0x00ll;
 	struct hmcsim_t hmc;
 	/* ---- */
 
@@ -185,6 +240,19 @@ extern int main( int argc, char **argv )
 	 * decide where to start the respective arrays
 	 * 
  	 */
+	if( genrands( 	addr_a,
+			addr_b,
+			addr_c,
+			&addr_scalar,
+			num_req, 
+			num_devs, 
+			capacity, 
+			shiftamt ) !=0 ){
+		printf( "FAILED TO GENERATE ADDRESSING SCHEMA\n" );
+		return -1;
+	}
+
+
 
 	/* 
 	 * init the library 
@@ -242,6 +310,24 @@ extern int main( int argc, char **argv )
 	 * execute the test
 	 * 
 	 */
+	if( execute_test(	&hmc,
+            	            	addr_a,
+               		      	addr_b,
+               	            	addr_c,
+                             	addr_scalar,
+                             	num_req,
+                             	num_threads, 
+				simd ) != 0 ){ 
+		printf( "ERROR : FAILED TO EXECUTE THE TEST\n" );
+		ret = -1;
+		goto cleanup;
+	}
+
+cleanup:
+	free( addr_a );
+	free( addr_b );
+	free( addr_c );
+	
 	
 	/* 
 	 * free the library data
