@@ -22,6 +22,32 @@ extern int getshiftamount( 	uint32_t num_links,
 				uint32_t *shiftamt );
 
 
+/* ----------------------------------------------------- GENRANDS */
+static int genrands( 	uint64_t *addr_a,
+			uint64_t *addr_b,
+			uint64_t *addr_c,
+			long num_req, 
+			uint32_t num_devs, 
+			uint32_t capacity, 
+			uint32_t shiftamt )	
+{
+	/* vars */
+	/* ---- */
+
+	if( addr_a == NULL ){ 
+		return -1;
+	}else if( addr_b ){ 
+		return -1;
+	}else if( addr_c ){
+		return -1;
+	}
+
+	
+
+	return 0;	
+}
+
+
 /* ----------------------------------------------------- MAIN */
 /* 
  * MAIN 
