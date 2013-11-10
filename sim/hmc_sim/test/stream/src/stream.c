@@ -277,7 +277,7 @@ extern int main( int argc, char **argv )
 		printf( "FAILED TO INIT HMCSIM\n" );	
 		return -1;
 	}else {
-		printf( "SUCCESS : INITALIZED HMCSIM\n" );
+		printf( "SUCCESS : INITIALIZED HMCSIM\n" );
 	}
 
 	/* 
