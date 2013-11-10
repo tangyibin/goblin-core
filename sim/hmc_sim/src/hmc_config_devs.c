@@ -386,8 +386,10 @@ extern int	hmcsim_config_devices( struct hmcsim_t *hmc )
 			hmc->devs[i].xbar[j].xbar_rqst= &(hmc->__ptr_xbar_rqst[cur_xbar]);
 			hmc->devs[i].xbar[j].xbar_rsp = &(hmc->__ptr_xbar_rsp[cur_xbar]);
 
+#if 0
 			printf( "hmc->devs[].xbar[].xbar_rsp  = 0x%016llx\n", 
 							(uint64_t)&(hmc->__ptr_xbar_rsp[cur_xbar]) );
+#endif
 
 			for( a=0; a<hmc->xbar_depth; a++){ 
 				hmc->devs[i].xbar[j].xbar_rqst[a].valid	= HMC_RQST_INVALID;

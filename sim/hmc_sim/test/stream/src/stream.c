@@ -196,6 +196,11 @@ extern int main( int argc, char **argv )
 		}
 	}
 
+	if( ((long)(num_req) % (long)( (long)(simd) * (long)(num_threads) )) != 0 ){
+		printf( "ERROR : NUM_REQ MUST BE A DIVISIBLE EVENLY BY NUM_THREADS * SIMD\n" );
+		return -1;
+	}
+
 
 	/* 
 	 * allocate memory 
