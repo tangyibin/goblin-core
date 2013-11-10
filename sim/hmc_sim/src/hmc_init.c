@@ -163,6 +163,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 		 * probably ran out of memory 
 		 *
 		 */
+#ifdef HMC_DEBUG
+		HMCSIM_PRINT_TRACE( "FAILED TO ALLOCATE INTERNAL MEMORY" );
+#endif
+
 		return -1;
 	}
 
@@ -172,6 +176,10 @@ extern int hmcsim_init(	struct hmcsim_t *hmc,
 	 * 
 	 */
 	if( hmcsim_config_devices( hmc ) != 0 ){
+#ifdef HMC_DEBUG
+		HMCSIM_PRINT_TRACE( "FAILED TO CONFIGURE THE INTERNAL DEVICE STRUCTURE" );
+#endif
+
 		hmcsim_free_memory( hmc );
 		return -1;
 	}
