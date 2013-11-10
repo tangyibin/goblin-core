@@ -204,7 +204,6 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 			}else if( status[i] == 0 ){
 				/* push loads for the current thread at b[j] */
-
 				while(	(count[i] < (uint64_t)(simd) ) && 
 					( ret != HMC_STALL) ){
 			
@@ -260,9 +259,9 @@ extern int execute_test(        struct hmcsim_t *hmc,
 					 */
 					zero_packet( &(packet[0]) );
 
-					ret = HMC_OK;
-
 				}
+
+				ret = HMC_OK;
 
 				if( count[i] == simd ){ 	
 					/* b[j] loads are done */
@@ -273,7 +272,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 			}else if( status[i] == 1 ){
 				/* push the loads for the current thread at c[j] */
-
+				printf( "load c[j]\n" );
 				while(	(count[i] < (uint64_t)(simd) ) && 
 					( ret != HMC_STALL) ){
 			
@@ -329,8 +328,9 @@ extern int execute_test(        struct hmcsim_t *hmc,
 					 */
 					zero_packet( &(packet[0]) );
 
-					ret = HMC_OK;
 				}	
+
+				ret = HMC_OK;
 
 				if( count[i] == simd ){ 	
 					/* c[j] loads are done */
@@ -346,11 +346,11 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 			}else if( status[i] == 3 ){ 
 				/* push stores for the current thread */
-
+				printf( "initiating stores from %"PRIu32"\n", i );
 				while(	(count[i] < (uint64_t)(simd) ) && 
 					( ret != HMC_STALL) ){
 			
-					/* push out a load */
+					/* push out a store */
 
 					/* build the request */
 					hmcsim_build_memrequest( hmc,
@@ -411,8 +411,9 @@ extern int execute_test(        struct hmcsim_t *hmc,
 					 */
 					zero_packet( &(packet[0]) );
 
-					ret = HMC_OK;
 				}
+
+				ret = HMC_OK;
 
 				if( count[i] == simd ){ 	
 					/* c[j] loads are done */
@@ -433,12 +434,13 @@ extern int execute_test(        struct hmcsim_t *hmc,
 		 * drain all the responses 
 		 * 	
 		 */
-		ret = HMC_OK;
-
 		for( i=0; i<hmc->num_links; i++ ){ 
+
+			ret = HMC_OK;
 			while( ret != HMC_STALL ){ 
 				ret = hmcsim_recv( hmc, cub, i, &(packet[0]) );
 			}
+
 		}
 
 		/* 
