@@ -87,6 +87,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	 */
 	niter	= (uint64_t)(num_req)/(uint64_t)(num_threads);
 
+
 	for( i=0; i<num_threads; i++ ){ 
 		count[i] 	= 0x00ll;
 		start[i]	= niter * (uint64_t)(i);	
@@ -98,8 +99,13 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			/* last thread */
 			end[i]	= (uint64_t)(num_req-1);
 		}else{
-			end[i]	= start[i]+niter;
+			end[i]	= start[i]+(niter-1);
 		}
+
+#if 0
+		printf( "start[%"PRIu32"] = %"PRIu64"\n", i, start[i] );
+		printf( "end[%"PRIu32"]   = %"PRIu64"\n", i, end[i] );
+#endif
 	}
 		
 
@@ -131,7 +137,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	printf( "BEGINNING EXECUTION\n" );
 
 	/* -- begin cycle loop */
-	while( done != num_threads ){
+	while( done < num_threads ){
 
 		/* 
 	 	 * each thread needs to push out requests for its given	
@@ -149,7 +155,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				/* this thread is done */
 			}else if( scalar[i] == 0 ){
 				/* request the scalar */
-
+				
 				/* -- build the request */
 				hmcsim_build_memrequest( hmc,
                                                         0,
@@ -171,6 +177,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 					case 0:
 						/* success */
 						scalar[i]++;
+						count[i] = 0x00ll;
 
 						tag++;
 						if( tag == (UINT8_MAX-1)) {
@@ -204,9 +211,13 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 			}else if( status[i] == 0 ){
 				/* push loads for the current thread at b[j] */
+
+				/* reset the status */			
+				ret = HMC_OK;
+
 				while(	(count[i] < (uint64_t)(simd) ) && 
 					( ret != HMC_STALL) ){
-			
+	
 					/* push out a load */
 
 					/* build the request */
@@ -272,7 +283,10 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 			}else if( status[i] == 1 ){
 				/* push the loads for the current thread at c[j] */
-				printf( "load c[j]\n" );
+
+				/* reset the status */			
+				ret = HMC_OK;
+
 				while(	(count[i] < (uint64_t)(simd) ) && 
 					( ret != HMC_STALL) ){
 			
@@ -341,12 +355,20 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			}else if( status[i] == 2 ){
 				/* pause this clock cycle to compute */
 
+				/* reset the status */			
+				ret = HMC_OK;
+				
+
 				status[i]++;
 				count[i] = 0x00ll;	
 
 			}else if( status[i] == 3 ){ 
 				/* push stores for the current thread */
-				printf( "initiating stores from %"PRIu32"\n", i );
+
+				/* reset the status */			
+				ret = HMC_OK;
+				
+
 				while(	(count[i] < (uint64_t)(simd) ) && 
 					( ret != HMC_STALL) ){
 			
@@ -421,8 +443,11 @@ extern int execute_test(        struct hmcsim_t *hmc,
 					count[i] 	= 0x00ll;
 
 					cur[i] += (uint64_t)(simd);
+					
+
 					if( cur[i] >= end[i] ){ 
 						cur[i] = end[i];
+						printf( "thread %"PRIu32" done; done = %"PRIu32 "\n", i, done );
 						done++;
 					}
 				}
