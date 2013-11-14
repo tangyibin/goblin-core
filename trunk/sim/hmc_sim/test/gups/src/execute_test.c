@@ -36,17 +36,18 @@ static void zero_packet( uint64_t *packet )
 /* 
  * EXECUTE_TEST
  * 
- * Executes a Stream Triad : 
+ * Executes a series of parallel GUPS operations
  * 
- * a[j] = b[j] + scalar * c[j];
- * where, 0 <= j < num_req
+ * for( i=0; i<NUPDATE/VECT_WIDTH; i++ ){ 
+ * 	ran[j] = (ran[j]<<1) ^ (ran[j]) < 0 ? POLY : 0)
+ * 	Table[ ran[j] & (TableSize-1) ] ^= ran[j]
+ * }
  * 
  */
 extern int execute_test(        struct hmcsim_t *hmc,
-                                uint64_t *addr_a,
-                                uint64_t *addr_b,
-                                uint64_t *addr_c,
-                                uint64_t addr_scalar,
+                                uint64_t *Table,
+				uint64_t *ran,
+				uint64_t TableSize,
                                 long num_req,
                                 uint32_t num_threads,  
                                 uint32_t simd )
