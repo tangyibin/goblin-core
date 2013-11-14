@@ -14,6 +14,9 @@
 #include <unistd.h>
 #include "hmc_sim.h"
 
+#define TWO_GB	2147483648
+#define POLY	0x0000000000000007UL
+#define PERIOD	1317624576693539401L
 
 /* ----------------------------------------------------- FUNCTION PROTOTYPES */
 extern int getshiftamount( 	uint32_t num_links, 
@@ -21,82 +24,97 @@ extern int getshiftamount( 	uint32_t num_links,
 				uint32_t bsize, 
 				uint32_t *shiftamt );
 extern int execute_test(        struct hmcsim_t *hmc,
-                                uint64_t *addr_a,
-                                uint64_t *addr_b,
-                                uint64_t *addr_c,
-				uint64_t addr_scalar,
+                                uint64_t *Table,
+                                uint64_t *ran,
+				uint64_t TableSize,
                                 long num_req,
                                 uint32_t num_threads, 
 				uint32_t simd );
 
+/* ----------------------------------------------------- HPCC_starts */
+uint64_t HPCC_starts( uint64_t n )
+{
+	int i, j;
+	uint64_t m2[64];
+	uint64_t temp, ran;
+
+	while (n < 0) { 
+		n += PERIOD;
+	}
+	
+	while (n > PERIOD) {
+		n -= PERIOD;
+	}
+
+	if( n == 0 ){ return 0x1; }
+
+	temp = 0x1;
+	for( i=0; i<64; i++ ){ 
+		m2[i] 	= temp;
+		temp	= (temp << 1) ^ ((uint64_t)temp < 0 ? POLY : 0 );
+		temp	= (temp << 1) ^ ((uint64_t)temp < 0 ? POLY : 0 );
+	}
+
+	for( i=62; i>=0; i-- ){ 
+		if ((n >> i) & 1 )
+			break;
+	}
+
+	ran = 0x2;
+	while( i > 0 ){ 
+		temp = 0;
+		for( j=0; j<64; j++ ){ 
+			if ((ran>>j) & 1 ){
+				temp ^= m2[j];
+			}
+		}
+		ran = temp;
+
+		 i-=1;
+		if(( n >> i) & 1){
+			ran = (ran << 1) ^ ((uint64_t) ran < 0 ? POLY : 0 );
+		}
+	}
+
+	return ran;
+}
+
 /* ----------------------------------------------------- GENRANDS */
-static int genrands( 	uint64_t *addr_a,
-			uint64_t *addr_b,
-			uint64_t *addr_c,
-			uint64_t *addr_scalar,
+static int genrands( 	uint64_t *Table,
+			uint64_t *ran,
 			long num_req, 
 			uint32_t num_devs, 
 			uint32_t capacity, 
-			uint32_t shiftamt )	
+			uint32_t shiftamt, 
+			uint32_t num_threads, 
+			uint32_t simd  )	
 {
 	/* vars */
-	long i		= 0x00l;
-	uint64_t base_a	= 0x00ll;
-	uint64_t base_b	= 0x00ll;
-	uint64_t base_c = 0x00ll;
-	uint64_t nrpo	= 0x00ll;
-	uint64_t offset	= 0x00ll;
+	uint64_t i 	= 0x00ll;
 	/* ---- */
 
-	if( addr_a == NULL ){ 
+	if( Table == NULL ){ 
 		return -1;
-	}else if( addr_b == NULL ){ 
-		return -1;
-	}else if( addr_c == NULL ){
-		return -1;
-	}else if( addr_scalar == NULL ){
+	}else if( ran == NULL ){ 
 		return -1;
 	}
 
 	/* 
-	 * make sure we have enough capacity
-	 *
-	 */
-
-#define	SLOTS_PER_GB	134217728
-
-	if( (long)((long)capacity*(long)num_devs*(long)SLOTS_PER_GB) <
-		(long)((num_req*(long)(3))+1) ) {
-		printf( "ERROR : NOT ENOUGH AVAILABLE PHYSICAL STORAGE\n" );
-		return -1;
-	}	
-
-	/* 
-	 * scalar value : set it to 0x00ll
-	 * 
-	 */
-	*addr_scalar	= (uint64_t)( 0x00ll );
-
-	/* 
-	 * calculate the base of each vector
-	 * 
-	 */
-	nrpo	= (uint64_t)(num_req)+1;
-	offset	= nrpo*0x08ll;
-
-	base_a	= (0x00ll) + ((0x08ll ) << (uint64_t)(shiftamt));
-	base_b	= base_a + ( ( offset ) << (uint64_t)(shiftamt) );
-	base_c	= base_b + ( ( offset ) << (uint64_t)(shiftamt) );
-
-	/* 
-	 * vectors a, b, c
+	 * get all the addresses for the first
+ 	 * run of the Table
  	 * 
 	 */
-	for( i=0; i<num_req; i++ ){ 
-		addr_a[i]	= (uint64_t)(base_a + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
-		addr_b[i]	= (uint64_t)(base_b + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
-		addr_c[i]	= (uint64_t)(base_c + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
+	for( i=0; i<TWO_GB; i++ ){ 
+		Table[i] = ((uint64_t)(i) << (uint64_t)(shiftamt)); 
 	}
+
+	/* 
+	 * init the rans; mimic HPCC_starts
+	 * 
+	 */
+	for( i=0; i<(num_threads*simd); i++ ){ 
+		ran[i] = HPCC_starts( i );
+	}		
 
 	return 0;	
 }
@@ -125,10 +143,9 @@ extern int main( int argc, char **argv )
 	uint32_t simd		= 1;
 	uint32_t shiftamt	= 0;
 	long num_req		= 0;
-	uint64_t *addr_a	= NULL;
-	uint64_t *addr_b	= NULL;
-	uint64_t *addr_c	= NULL;
-	uint64_t addr_scalar	= 0x00ll;
+
+	uint64_t *Table		= NULL;
+	uint64_t *ran		= NULL;
 	struct hmcsim_t hmc;
 	/* ---- */
 
@@ -207,23 +224,16 @@ extern int main( int argc, char **argv )
 	 * allocate memory 
 	 * 
 	 */
-	addr_a = malloc( sizeof( uint64_t ) * num_req );
-	if( addr_a == NULL ){ 
-		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR_A\n" );
+	Table	= malloc( sizeof( uint64_t ) * TWO_GB );
+	if( Table == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR TABLE\n" );
 		return -1;
-	}
-	addr_b = malloc( sizeof( uint64_t ) * num_req );
-	if( addr_b == NULL ){ 
-		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR_B\n" );
-		free( addr_a );
-		return -1;
-	}
+	} 
 
-	addr_c = malloc( sizeof( uint64_t ) * num_req );
-	if( addr_c == NULL ){ 
-		printf( "FAILED TO ALLOCATE MEMORY FOR ADDR_C\n" );
-		free( addr_a );
-		free( addr_b );
+	ran	= malloc( sizeof( uint64_t ) * simd * num_threads );
+	if( ran == NULL ){ 
+		printf( "FAILED TO ALLOCATE MEMORY FOR RAN\n" );
+		free( Table );
 		return -1;
 	}
 
@@ -235,9 +245,8 @@ extern int main( int argc, char **argv )
 	if( getshiftamount( num_links, capacity, bsize, &shiftamt ) != 0 ){ 
 		printf( "FAILED TO RETRIEVE SHIFT AMOUNT\n" );
 		hmcsim_free( &hmc );
-		free( addr_a );
-		free( addr_b );
-		free( addr_c );
+		free( Table );
+		free( ran );
 	}
 
 
@@ -246,14 +255,14 @@ extern int main( int argc, char **argv )
 	 * decide where to start the respective arrays
 	 * 
  	 */
-	if( genrands( 	addr_a,
-			addr_b,
-			addr_c,
-			&addr_scalar,
+	if( genrands( 	Table,
+			ran,
 			num_req, 
 			num_devs, 
 			capacity, 
-			shiftamt ) !=0 ){
+			shiftamt,
+			num_threads,
+			simd ) !=0 ){
 		printf( "FAILED TO GENERATE ADDRESSING SCHEMA\n" );
 		return -1;
 	}
@@ -308,9 +317,8 @@ extern int main( int argc, char **argv )
                         if( ret != 0 ){
                                 printf( "FAILED TO INIT LINK %d\n", i );
                                 hmcsim_free( &hmc );
-				free( addr_a );
-				free( addr_b );
-				free( addr_c );
+				free( Table );
+				free( ran );
                                 return -1;
                         }else{
                                 printf( "SUCCESS : INITIALIZED LINK %d\n", i );
@@ -339,10 +347,9 @@ extern int main( int argc, char **argv )
 	 * 
 	 */
 	if( execute_test(	&hmc,
-            	            	addr_a,
-               		      	addr_b,
-               	            	addr_c,
-                             	addr_scalar,
+				Table,
+				ran,
+				(uint64_t)(TWO_GB),
                              	num_req,
                              	num_threads, 
 				simd ) != 0 ){ 
@@ -352,9 +359,8 @@ extern int main( int argc, char **argv )
 	}
 
 cleanup:
-	free( addr_a );
-	free( addr_b );
-	free( addr_c );
+	free( Table );
+	free( ran );
 	
 	
 	/* 
