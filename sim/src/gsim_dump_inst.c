@@ -54,19 +54,19 @@ extern void gsim_gen_inst( struct gsim_t *sim, uint32_t inst )
 			/* 
 			 * print inst + %rN
 			 */
-			printf( "%s%s%s%d\n", sim->opcodes.name[inst], "  ", "%%r", gsim_rand_reg_r() );
+			printf( "%s%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, "r", gsim_rand_reg_r() );
 
 			/* 
 			 * print inst + %vN
 			 */
 			if( vect == 1 ){ 
-				printf( "%s%s%s%d\n", sim->opcodes.name[inst], "  ", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, "v", gsim_rand_reg_v() );
 			}
 
 			/* 
 			 * print inst + %r[32-y]; y is RW
 			 */
-			printf( "%s%s%s%s\n", sim->opcodes.name[inst], "  ", "%%", 
+			printf( "%s%s%c%s\n", sim->opcodes.name[inst], "  ", 37, 
 					sim->registers.name[gsim_rand_reg_ctrl_rw()] );
 
 			break;
@@ -75,19 +75,19 @@ extern void gsim_gen_inst( struct gsim_t *sim, uint32_t inst )
 			/* 
 			 * print inst + %rN
 			 */
-			printf( "%s%s%s%d\n", sim->opcodes.name[inst], "  ", "%%r", gsim_rand_reg_r() );
+			printf( "%s%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, "r", gsim_rand_reg_r() );
 
 			/* 
 			 * print inst + %vN
 			 */
 			if( vect == 1 ){ 
-				printf( "%s%s%s%d\n", sim->opcodes.name[inst], "  ", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, "v", gsim_rand_reg_v() );
 			}
 
 			/* 
 			 * print inst + %r[32-y]; y is RW
 			 */
-			printf( "%s%s%s%s\n", sim->opcodes.name[inst], "  ", "%%", 
+			printf( "%s%s%c%s\n", sim->opcodes.name[inst], "  ", 37, 
 					sim->registers.name[gsim_rand_reg_ctrl()] );
 
 			break;
@@ -96,25 +96,25 @@ extern void gsim_gen_inst( struct gsim_t *sim, uint32_t inst )
 			/* 
 			 * print inst + %rN + %rN
 			 */
-			printf( "%s%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-						"  ", "%%r", gsim_rand_reg_r(), 
-						",", "%%r", gsim_rand_reg_r() );
+			printf( "%s%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+						"  ", 37, "r", gsim_rand_reg_r(), 
+						",", 37, "r", gsim_rand_reg_r() );
 
 			/* 
 			 * print inst + %vN + %vN
 			 */
 			if( vect == 1 ){ 
-				printf( "%s%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-					"  ", "%%v", gsim_rand_reg_v(), 
-					",", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+					"  ", 37, "v", gsim_rand_reg_v(), 
+					",", 37, "v", gsim_rand_reg_v() );
 			}
 
 			/* 
 			 * print inst + %r[32-y] + %rN; y is RW
 			 */
-			printf( "%s%s%s%s%s%s%d\n", sim->opcodes.name[inst], "  ", "%%", 
+			printf( "%s%s%c%s%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, 
 					sim->registers.name[gsim_rand_reg_ctrl()], 
-					",", "%%r", gsim_rand_reg_r() );
+					",", 37, "r", gsim_rand_reg_r() );
 
 			break;
 		case GSIM_OPCODE_RART:
@@ -122,32 +122,32 @@ extern void gsim_gen_inst( struct gsim_t *sim, uint32_t inst )
 			/* 
 			 * print inst + %rN + %rN
 			 */
-			printf( "%s%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-						"  ", "%%r", gsim_rand_reg_r(), 
-						",", "%%r", gsim_rand_reg_r() );
+			printf( "%s%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+						"  ", 37, "r", gsim_rand_reg_r(), 
+						",", 37, "r", gsim_rand_reg_r() );
 
 			if( vect == 1 ){ 
 				/* 
 			 	 * print inst + %vN + %vN
 			 	 */
-				printf( "%s%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-					"  ", "%%v", gsim_rand_reg_v(), 
-					",", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+					"  ", 37, "v", gsim_rand_reg_v(), 
+					",", 37, "v", gsim_rand_reg_v() );
 
 				/* 
 			 	 * print inst + %rN + %vN
 			 	 */
-				printf( "%s%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-					"  ", "%%v", gsim_rand_reg_r(), 
-					",", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+					"  ", 37, "v", gsim_rand_reg_r(), 
+					",", 37, "v", gsim_rand_reg_v() );
 			}
 
 			/* 
 			 * print inst + %r[32-y] + %rN; y is RW
 			 */
-			printf( "%s%s%s%s%s%s%d\n", sim->opcodes.name[inst], "  ", "%%", 
+			printf( "%s%s%c%s%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, 
 					sim->registers.name[gsim_rand_reg_ctrl()], 
-					",", "%%r", gsim_rand_reg_r() );
+					",", 37, "r", gsim_rand_reg_r() );
 
 			break;
 		case GSIM_OPCODE_RARBRT:
@@ -155,36 +155,36 @@ extern void gsim_gen_inst( struct gsim_t *sim, uint32_t inst )
 			/* 
 			 * print inst + %rN + %rN + %rN
 			 */
-			printf( "%s%s%s%d%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-						"  ", "%%r", gsim_rand_reg_r(), 
-						",", "%%r", gsim_rand_reg_r(), 
-						",", "%%r", gsim_rand_reg_r() );
+			printf( "%s%s%c%s%d%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+						"  ", 37, "r", gsim_rand_reg_r(), 
+						",", 37, "r", gsim_rand_reg_r(), 
+						",", 37, "r", gsim_rand_reg_r() );
 
 			if( vect == 1 ){ 
 				/* 
 			 	 * print inst + %vN + %vN + %vN
 			 	 */
-				printf( "%s%s%s%d%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-						"  ", "%%v", gsim_rand_reg_v(), 
-						",", "%%v", gsim_rand_reg_v(), 
-						",", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+						"  ", 37, "v", gsim_rand_reg_v(), 
+						",", 37, "v", gsim_rand_reg_v(), 
+						",", 37, "v", gsim_rand_reg_v() );
 
 				/* 
 			 	 * print inst + %vN + %rN + %vN
 			 	 */
-				printf( "%s%s%s%d%s%s%d%s%s%d\n", sim->opcodes.name[inst], 
-						"  ", "%%v", gsim_rand_reg_v(), 
-						",", "%%r", gsim_rand_reg_r(), 
-						",", "%%v", gsim_rand_reg_v() );
+				printf( "%s%s%c%s%d%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], 
+						"  ", 37, "v", gsim_rand_reg_v(), 
+						",", 37, "r", gsim_rand_reg_r(), 
+						",", 37, "v", gsim_rand_reg_v() );
 			}
 
 			/* 
 			 * print inst + %r[32-y] + %rN + %rN; y is RW
 			 */
-			printf( "%s%s%s%s%s%s%d%s%s%d\n", sim->opcodes.name[inst], "  ", "%%", 
+			printf( "%s%s%c%s%s%c%s%d%s%c%s%d\n", sim->opcodes.name[inst], "  ", 37, 
 					sim->registers.name[gsim_rand_reg_ctrl()], 
-					",", "%%r", gsim_rand_reg_r(),
-					",", "%%r", gsim_rand_reg_r() );
+					",", 37, "r", gsim_rand_reg_r(),
+					",", 37, "r", gsim_rand_reg_r() );
 
 			break;
 		default:
