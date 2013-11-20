@@ -38,13 +38,13 @@ doclean:
 clean: doclean
 	@echo " Cleaning..."; $(RM) -r $(BUILDDIR) $(TARGET)
 test: $(TARGET)
-	make -C ./test/
+	@echo " Building Tests..."; make -C ./test/
 tools:
-	make -C ./tools/
+	@echo " Building Tools..."; make -C ./tools/
 toolsclean:
-	make -C ./tools/ clean
+	@echo " Cleaning Tools..."; make -C ./tools/ clean
 testclean:
-	make -C ./test/ clean
+	@echo " Cleaning Tests..."; make -C ./test/ clean
 distclean: clean testclean doclean toolsclean
  
 -include $(DEPS)

@@ -29,7 +29,8 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				uint64_t TableSize,
                                 long num_req,
                                 uint32_t num_threads, 
-				uint32_t simd );
+				uint32_t simd, 
+				uint32_t shiftamt );
 
 /* ----------------------------------------------------- HPCC_starts */
 uint64_t HPCC_starts( uint64_t n )
@@ -352,7 +353,8 @@ extern int main( int argc, char **argv )
 				(uint64_t)(TWO_GB),
                              	num_req,
                              	num_threads, 
-				simd ) != 0 ){ 
+				simd, 
+				shiftamt ) != 0 ){ 
 		printf( "ERROR : FAILED TO EXECUTE THE TEST\n" );
 		ret = -1;
 		goto cleanup;

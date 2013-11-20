@@ -11,6 +11,19 @@
 #include <string.h>
 #include "hmc_sim.h"
 
+/* ------------------------------------------------- TAG MACROS */
+#define TAG_INV		0x0000	/* -- tag is invalid */
+#define	TAG_RD64	0x0001	/* -- tag is a rd64 request */
+#define TAG_WR64	0x0002	/* -- tag is a wr64 request */
+#define TAG_RSP		0x0004	/* -- received a response for this tag */
+
+/* ------------------------------------------------- TAG STRUCTURE */
+struct memtag_t{
+	uint64_t 	addr;	/* addresss of the tag 	*/	
+	uint32_t	stat;	/* status flag */
+	uint8_t 	tag;	/* the tag itself	*/
+};
+
 
 /* ------------------------------------------------- ZERO_PACKET */
 /* 
@@ -43,6 +56,24 @@ static void zero_packet( uint64_t *packet )
  * 	Table[ ran[j] & (TableSize-1) ] ^= ran[j]
  * }
  * 
+ * Finite State Machine : 
+ *
+ * local_thread_counter = num_elem / (num_threads * simd)  
+ * 
+ * - load TableSize scalar [really TableSize-1]
+ * - load ran[thread*simd]   
+ * -- all loads must return 
+ * - shift clock 
+ * - compare clock 
+ * - logical xor clock 
+ * - write ran[j]
+ * - "logical and ran[j] & (Tablesize-1)" clock 
+ * - load of Table [index]   
+ * -- must wait for load to return 
+ * - xor clock { Table[ index ] ^ ran[j] }
+ * - write Table[ index ] 
+ * - goto ==> shift clock [ran[j] is already in register state]
+ * 
  */
 extern int execute_test(        struct hmcsim_t *hmc,
                                 uint64_t *Table,
@@ -50,7 +81,8 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				uint64_t TableSize,
                                 long num_req,
                                 uint32_t num_threads,  
-                                uint32_t simd )
+                                uint32_t simd, 
+				uint32_t shiftamt )
 {
 	/* vars */
 	uint64_t head		= 0x00ll;
@@ -83,40 +115,19 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	scalar	= malloc( sizeof( uint64_t ) * num_threads );
 
 	/* 
-	 * setup the address strides for each thread
+ 	 * figure out the number of updates per thread
 	 * 
 	 */
-	niter	= (uint64_t)(num_req)/(uint64_t)(num_threads);
+	niter	= (uint64_t)(num_req)/(uint64_t)(num_threads*simd);
 
-
-	for( i=0; i<num_threads; i++ ){ 
-		count[i] 	= 0x00ll;
-		start[i]	= niter * (uint64_t)(i);	
-		cur[i]		= start[i];
-		status[i]	= 0x00ll;
-		scalar[i]	= 0x00ll;
-
-		if( i == (num_threads-1) ){
-			/* last thread */
-			end[i]	= (uint64_t)(num_req-1);
-		}else{
-			end[i]	= start[i]+(niter-1);
-		}
-
-#if 0
-		printf( "start[%"PRIu32"] = %"PRIu64"\n", i, start[i] );
-		printf( "end[%"PRIu32"]   = %"PRIu64"\n", i, end[i] );
-#endif
-	}
-		
 
 	/* 
 	 * setup the tracing mechanisms
 	 * 
 	 */
-	ofile = fopen( "stream.out", "w" );
+	ofile = fopen( "gups.out", "w" );
 	if( ofile == NULL ){ 
-		printf( "FAILED : COULD NOT OPEN OUPUT FILE stream.out\n" );
+		printf( "FAILED : COULD NOT OPEN OUPUT FILE gups.out\n" );
 		return -1;
 	}
 
@@ -152,6 +163,15 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			 * width of requests out on each clock 
 			 * 
 			 */
+
+			if( cur[i] == niter ){ 
+			}else if( scalar[i] == 0 ){ 
+				/* load TableSize scalar [just 0x00ll] */
+			}else if( status[i] == 0 ){ 
+				/* load ran[j] */
+			}
+
+			/* DEPRECATED FROM HERE BELOW */
 			if( cur[i] == end[i] ){ 
 				/* this thread is done */
 			}else if( scalar[i] == 0 ){
