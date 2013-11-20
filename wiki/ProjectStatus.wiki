@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary GC64 Project Status.
 #labels Phase-Design,Featured,Phase-Requirements
 
 = Introduction =
@@ -12,7 +12,7 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
   * *Arch Specs Doc* : Ongoing and coming up well: https://code.google.com/p/goblin-core/source/browse/trunk/doc/goblin-core_arch_specs.docx
   * *Initial Simulator Model* : The initial code compiles and links.  The base simulator is a static library object such that it can be embedded in other applications or simulation objects.  See the simulator source tree.
   * *Binutils* : current binutils support is provided by GNU binutils 2.23.2.  Note: Binutils references Goblin-Core as "gc64".  This will be consistent across other tools as well.  I've added the necessary BFD, GAS, et.al files, but I have yet to complete the code necessary to have a working binutils toolkit.  This will be an ongoing effort as I finalize the ABI.   
-  * *HMC Simulator* : The Hybrid Memory Cube [HMC] simulator library is being developed alongside GC64 in order allow us to do novel research of virtual-to-physical memory translation techniques, relocatable VM layer techniques, bandwidth/latency characterization and HMC topologies.  This library is meant to stand separate in the event that others find it useful.   
+  * *HMC Simulator* : The Hybrid Memory Cube [HMC] simulator library is being developed alongside GC64 in order allow us to do novel research of virtual-to-physical memory translation techniques, relocatable VM layer techniques, bandwidth/latency characterization and HMC topologies.  This library is meant to stand separate in the event that others find it useful.    
   * *Addressing* : Added physical address format [PhysicalMemoryFormat].  Working on virtual address format and virtual to physical translation.
   * *Documentation* : HMC-Sim API documentation has been posted.  See the [Documentation] page. 
 
