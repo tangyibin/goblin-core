@@ -77,11 +77,14 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 		HMCSIM_PRINT_ADDR_TRACE( "xbar_rsp[cur]", 
 					(uint64_t)&(hmc->devs[dev].xbar[link].xbar_rsp[cur]) );
 #endif
+
+#if 0
 		if( hmc->devs[dev].xbar[link].xbar_rsp[cur].valid == HMC_RQST_VALID ){
 			//printf( "VALID:dev:link:xbar_rsp_slot == %d:%d:%d\n", dev,link,cur );
 		}else{ 
 			//printf( "INVALID:dev:link:xbar_rsp_slot == %d:%d:%d\n", dev,link,cur );
 		}
+#endif
 
 		if( hmc->devs[dev].xbar[link].xbar_rsp[cur].valid == HMC_RQST_VALID ){
 #ifdef HMC_DEBUG
