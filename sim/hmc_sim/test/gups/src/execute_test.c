@@ -165,11 +165,38 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			 */
 
 			if( cur[i] == niter ){ 
+				/* this thread is done */
 			}else if( scalar[i] == 0 ){ 
 				/* load TableSize scalar [just 0x00ll] */
 			}else if( status[i] == 0 ){ 
 				/* load ran[j] */
+				/* all loads must return */
+			}else if( status[i] == 1 ){ 
+				/* shift clock */
+			}else if( status[i] == 2 ){ 
+				/* compare clock */
+			}else if( status[i] == 3 ){
+				/* logical xor clock */
+			}else if( status[i] == 4 ){ 
+				/* write ran[j] */
+			}else if( status[i] == 5 ){ 
+ 				/* logical and ran[j] & (Tablesize-1) clock */
+			}else if( status[i] == 6 ){
+				/* load of Table[index] */
+				/* must wait for load to return */
+			}else if( status[i] == 7 ){
+ 				/* xor clock { Table[ index ] ^ ran[j] } */
+			}else if( status[i] == 8 ){
+				/* write Table[ index ] */
+			}else if( status[i] == 9 ){
+				/* goto shift clock; status == 1 */
 			}
+
+
+
+
+
+
 
 			/* DEPRECATED FROM HERE BELOW */
 			if( cur[i] == end[i] ){ 
