@@ -30,6 +30,8 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 	 * 
 	 */
 
+	
+
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
