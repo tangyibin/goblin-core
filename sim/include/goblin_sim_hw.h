@@ -20,6 +20,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <sys/types.h>
+#include "hmc_sim.h"
 
 /* --------------------------------------------- DATA STRUCTURES */
 struct gsim_icache_t{ 
@@ -60,6 +61,7 @@ struct gsim_socket_t{
 	
 	/* -- inclusive hw units */
 	struct gsim_task_group_t *task_groups;
+	struct hmcsim_t *hmc;
 	
 	/* -- id's */
 	uint8_t			id;
@@ -99,6 +101,7 @@ struct gsim_hw_t{
 	struct gsim_task_proc_t		*__ptr_task_proc;
 	struct gsim_task_unit_t		*__ptr_task;
 	struct gsim_icache_t		*__ptr_icache;
+	struct hmcsim_t			*__ptr_hmc;
 };
 
 #ifdef __cplusplus

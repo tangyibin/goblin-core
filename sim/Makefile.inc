@@ -6,7 +6,7 @@
 
 CC=gcc
 CXX=g++
-INC=-I./include/
+INC=-I./include/ -I./hmc_sim/include/
 CFLAGS=-O2 -Wall -g $(INC) -DGSIM_DEBUG
 CXXFLAGS=-O2 -Wall -g $(INC) -DGSIM_DEBUG
 LINK=-L./ -lgsim -L./hmc_sim -lhmcsim
