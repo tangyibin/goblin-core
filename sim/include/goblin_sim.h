@@ -34,6 +34,8 @@ extern int	gsim_hw_reset( struct gsim_t *sim );
 
 extern void	gsim_dump_inst( struct gsim_t *sim );
 
+extern void	gsim_free_sim( struct gsim_t *sim );
+
 extern uint32_t gsim_rand_reg_ctrl();
 extern uint32_t gsim_rand_reg_ctrl_ro();
 extern uint32_t gsim_rand_reg_ctrl_rw();
