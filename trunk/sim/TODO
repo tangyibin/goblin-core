@@ -1,4 +1,4 @@
-- move gsim_free_sim to the library 
+- move gsim_init_sim to the library 
 - update the comparitor registers in the 'reset' function 
 - fix object file parsing 
 - gasm instruction parsing 
@@ -6,3 +6,8 @@
 -- spawn %ra, %rt; ra is a new ip; rt is a return code 
 -- spawn.m %ra, %rt; ra is a pointer to memory; rt is a return code or a tid?? 
 - finish the hmc sim spec; add the request functions; trace functions
+
+- development constructor library interface for cross-compiling the simulator model 
+
+
+- move gsim_free_sim to the library: DONE
