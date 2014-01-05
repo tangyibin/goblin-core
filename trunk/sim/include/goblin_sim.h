@@ -17,6 +17,7 @@ extern "C" {
 #include <sys/types.h>
 #include "goblin_sim_types.h"
 #include "goblin_sim_macros.h"
+#include "hmc_sim.h"
 
 /* --------------------------------------------- FUNCTION PROTOTYPES */
 

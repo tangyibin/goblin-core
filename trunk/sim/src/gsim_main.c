@@ -402,7 +402,7 @@ int main( int argc, char **argv )
 	 *
 	 */
 	if( gsim_config_read( sim ) != 0 ){
-		GSIM_PRINT_ERROR( "Could to find a valid configuration" );
+		GSIM_PRINT_ERROR( "Could not find a valid configuration" );
 		gsim_free( sim );
 		return -1;
 	}

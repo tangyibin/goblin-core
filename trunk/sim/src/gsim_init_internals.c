@@ -151,6 +151,7 @@ extern int gsim_init_internals( struct gsim_t *sim )
 	sim->hw->__ptr_task_proc	= NULL;
 	sim->hw->__ptr_task		= NULL;
 	sim->hw->__ptr_icache		= NULL;
+	sim->hw->__ptr_hmc		= NULL;
 
 	
 	/* 
@@ -251,6 +252,23 @@ extern int gsim_init_internals( struct gsim_t *sim )
 		return -1;
 	}
 
+	/* -- hmc */
+	sim->hw->__ptr_hmc	= gsim_malloc( sizeof( struct hmcsim_t ) 
+							* sim->sockets
+							* sim->nodes
+							* sim->partitions );
+	if( sim->hw->__ptr_hmc == NULL ){ 
+		GSIM_PRINT_ERROR( "GSIM_ERROR : could not allocate memory for hardware icache" );
+		gsim_free( sim->hw->__ptr_partition );
+		gsim_free( sim->hw->__ptr_node );
+		gsim_free( sim->hw->__ptr_socket );
+		gsim_free( sim->hw->__ptr_task_group );
+		gsim_free( sim->hw->__ptr_task_proc );
+		gsim_free( sim->hw->__ptr_task );
+		gsim_free( sim->hw->__ptr_icache );
+		return -1;
+	}
+
 	/* 
 	 * we already have our partition pointer 
 	 *
@@ -273,6 +291,32 @@ extern int gsim_init_internals( struct gsim_t *sim )
 
 				sim->hw->partitions[ i ].nodes[ j ].sockets[ k ].task_groups = 
 							&(sim->hw->__ptr_task_group[ cur_tg ]);
+
+				sim->hw->partitions[ i ].nodes[ j ].sockets[ k ].hmc =
+							&(sim->hw->__ptr_hmc[ cur_tg ]);
+				/*
+				 * init the hmc instance 
+	 			 *
+				 */
+				if( hmcsim_init( sim->hw->partitions[ i ].nodes[ j ].sockets[ k ].hmc, 
+						sim->hmc_num_devs, 
+						sim->hmc_num_links, 
+						sim->hmc_num_vaults, 
+						sim->hmc_queue_depth, 
+						sim->hmc_num_banks, 
+						sim->hmc_num_drams, 
+						sim->hmc_capacity, 
+						sim->hmc_xbar_depth ) != 0 ){
+					GSIM_PRINT_ERROR( "GSIM_ERROR : could not init the hmc devices" );
+					gsim_free( sim->hw->__ptr_partition );
+					gsim_free( sim->hw->__ptr_node );
+					gsim_free( sim->hw->__ptr_socket );
+					gsim_free( sim->hw->__ptr_task_group );
+					gsim_free( sim->hw->__ptr_task_proc );
+					gsim_free( sim->hw->__ptr_task );
+					gsim_free( sim->hw->__ptr_icache );
+					return -1;
+				}	
 
 				/* -- task groups */
 				for( a=0; a<sim->task_groups; a++ ){ 

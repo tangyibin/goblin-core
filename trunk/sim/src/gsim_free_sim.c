@@ -24,9 +24,17 @@ extern void gsim_free_sim( struct gsim_t *sim )
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
+	int i		= 0;
+	int T_HMC	= 0;
+	T_HMC	= sim->sockets*sim->nodes*sim->partitions;
+
 	if( sim == NULL ){
 		/* nothing to do, return */
 		return ;
+	}
+
+	for( i=0; i<T_HMC; i++ ){ 
+		hmcsim_free( &(sim->hw->__ptr_hmc[i]) );	
 	}
 
 	if( sim->hw != NULL ){ 
@@ -37,6 +45,7 @@ extern void gsim_free_sim( struct gsim_t *sim )
 		gsim_free( sim->hw->__ptr_task_proc );
 		gsim_free( sim->hw->__ptr_task );
 		gsim_free( sim->hw->__ptr_icache );
+		gsim_free( sim->hw->__ptr_hmc );
 		gsim_free( sim->hw );
 	}
 
