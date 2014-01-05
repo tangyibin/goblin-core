@@ -1,7 +1,6 @@
 #
-# LIBPIM_COMP MAKEFILE
-#
-# Copyright (c) 2013 Micron Technology, Inc.
+# HMCSIM TOP-LEVEL MAKEFILE
+# GOBLIN-CORE 64
 #
 
 include Makefile.inc
