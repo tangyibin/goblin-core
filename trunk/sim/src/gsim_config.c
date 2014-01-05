@@ -99,6 +99,7 @@ extern int gsim_config_read( struct gsim_t *sim )
 		sim->options &= ~GSIM_OPT_VECTOR;
 	}
 
+	/* -- hw */
 	sim->task_groups 	= task_groups;
 	sim->task_procs		= task_procs;
 	sim->tasks		= tasks;
@@ -106,7 +107,15 @@ extern int gsim_config_read( struct gsim_t *sim )
 	sim->icache_sets	= icache_sets;
 	sim->amo_slots		= amo_slots;
 
-	/* TODO : INIT THE GLOBAL HMC OPTS */
+	/* -- hmc */
+	sim->hmc_num_devs	= hmc_num_devs;
+	sim->hmc_num_links	= hmc_num_links;
+	sim->hmc_num_vaults	= hmc_num_vaults;
+	sim->hmc_queue_depth	= hmc_queue_depth;
+	sim->hmc_num_banks	= hmc_num_banks;
+	sim->hmc_num_drams	= hmc_num_drams;
+	sim->hmc_capacity	= hmc_capacity;
+	sim->hmc_xbar_depth	= hmc_xbar_depth;
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
