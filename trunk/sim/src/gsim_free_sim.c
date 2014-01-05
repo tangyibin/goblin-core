@@ -1,6 +1,6 @@
 /* 
  * 
- * _GSIM_FREE_ 
+ * _GSIM_FREE_SIM_
  * 
  * GOBLIN-SIM LIBRARY FREE FUNCTIONS
  * 

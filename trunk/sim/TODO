@@ -1,4 +1,5 @@
-- move gsim_init_sim to the library 
+#################### TODO #################### 
+
 - update the comparitor registers in the 'reset' function 
 - fix object file parsing 
 - gasm instruction parsing 
@@ -9,5 +10,7 @@
 
 - development constructor library interface for cross-compiling the simulator model 
 
+#################### DONE #################### 
 
+- move gsim_init_sim to the library: DONE 
 - move gsim_free_sim to the library: DONE
