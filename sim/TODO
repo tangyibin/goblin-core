@@ -9,6 +9,9 @@
 - finish the hmc sim spec; add the request functions; trace functions
 
 - development constructor library interface for cross-compiling the simulator model 
+- integrate the hmcsim startup functions in gsim_init_sim
+-- this includes adding a feature to goblin_sim_hw.h && init internals
+-- maybe some additional info in the parser
 
 #################### DONE #################### 
 
