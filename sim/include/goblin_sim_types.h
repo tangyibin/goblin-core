@@ -59,6 +59,16 @@ struct gsim_t{
 	uint32_t	icache_sets;		/*! GOBLIN-SIM ICACHE SETS */
 	uint32_t	amo_slots;		/*! GOBLIN-SIM AMO SLOTS */
 
+	/* -- hmc layout */
+	uint32_t 	hmc_num_devs;		/*! GOBLIN-SIM NUMBER OF HMC DEVICES PER SOCKET */
+	uint32_t	hmc_num_links;		/*! GOBLIN-SIM NUMBER OF LINKS PER HMC DEVICE */
+	uint32_t	hmc_num_vaults;		/*! GOBLIN-SIM NUMBER OF VAULTS PER HMC DEVICE */
+	uint32_t 	hmc_queue_depth;	/*! GOBLIN-SIM NUMBER OF QUEUE SLOTS PER VAULT */
+	uint32_t	hmc_num_banks;		/*! GOBLIN-SIM NUMBER OF BANKS PER DEVICE */
+	uint32_t 	hmc_num_drams;		/*! GOBLIN-SIM NUMBER OF DRAMS PER DEVICE */
+	uint32_t 	hmc_capacity;		/*! GOBLIN-SIM NUMBER OF GB PER DEVICE */
+	uint32_t	hmc_xbar_depth;		/*! GOBLIN-SIM NUMBER OF QUEUE SLOTS PER LINK */
+
 	/* -- hardware units */
 	struct gsim_hw_t *hw;			/*! GOBLIN-SIM HARDWARE STRUCTURE */	
 };
