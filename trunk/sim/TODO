@@ -13,6 +13,8 @@
 -- this includes adding a feature to goblin_sim_hw.h && init internals
 -- maybe some additional info in the parser
 
+- build an instruction table in header file
+
 #################### DONE #################### 
 
 - move gsim_init_sim to the library: DONE 
