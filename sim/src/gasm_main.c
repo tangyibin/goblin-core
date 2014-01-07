@@ -75,7 +75,12 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	}
 
 	/* 
-	 * Stage4: I/O; Write the Binary File Out
+	 * Stage4: Assemble into binary format
+	 */
+	/* TODO */
+
+	/* 
+	 * Stage5: I/O; Write the Binary File Out
 	 */
 	if( gasm_write_object( ofile, inter, nread ) != 0 ){
 		GSIM_PRINT_ERROR( "GASM_ERROR : Could not write object file" );

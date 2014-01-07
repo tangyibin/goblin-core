@@ -27,6 +27,7 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows )
 	uint64_t insts	= 0x00ll;
 	uint64_t tmp	= 0x00ll;
 	int imm		= 0;
+	int line	= 0;
 	/* ---- */
 
 #ifdef GSIM_TRACE
@@ -62,11 +63,13 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows )
 			/* 
 			 * this buffer is an instruction 
 			 */		
+					
 		}
 
 		memset( buf, 0, sizeof( char ) * 2048 );
 		imm = 0;
 		tmp = 0x00ll;
+		line++;
 	}
 
 	/* 
