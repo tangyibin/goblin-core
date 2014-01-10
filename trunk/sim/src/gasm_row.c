@@ -57,8 +57,6 @@ extern uint64_t gasm_row_walker( char *afile )
 
 		if( (strlen( buf ) > 2) && (buf[0] != '#') ){
 
-			printf( "buffer = %s\n", buf );		
-	
 			/* 
 			 * parse the line and look for immediates
 			 * immediates appear as '$value'

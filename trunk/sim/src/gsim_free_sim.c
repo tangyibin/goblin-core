@@ -34,7 +34,7 @@ extern void gsim_free_sim( struct gsim_t *sim )
 	}
 
 	for( i=0; i<T_HMC; i++ ){ 
-		hmcsim_free( &(sim->hw->__ptr_hmc[i]) );	
+		//hmcsim_free( &(sim->hw->__ptr_hmc[i]) );	
 	}
 
 	if( sim->hw != NULL ){ 

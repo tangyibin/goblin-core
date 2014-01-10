@@ -3,7 +3,6 @@
 #-- GC64 INSTRUCTION ENCODING TESTS
 #-- TESTS THE ENCODING OF ALL INSTRUCTIONS
 
-
 nop
 mov  %r25,%r5
 mov  %v6,%v2
@@ -415,30 +414,30 @@ max.fd  %r27,%r1
 max.fd  %v3,%v4
 max.fd  %v14,%v3
 max.fd  %up,%r4
-sel  %r9,%r0,%r9
-sel  %v3,%v6,%v4
-sel  %v1,%r22,%v4
-sel  %gt,%r28,%r17
-sel  %r23,%r22,%r25
-sel  %v6,%v3,%v5
-sel  %v5,%r22,%v1
-sel  %rp,%r20,%r18
-sel  %r23,%r25,%r0
-sel  %v5,%v4,%v1
-sel  %v1,%r21,%v2
-sel  %sp,%r6,%r13
-sel  %r27,%r3,%r29
-sel  %v1,%v5,%v3
-sel  %v4,%r26,%v3
-sel  %vl,%r28,%r1
-sel  %r5,%r25,%r1
-sel  %v0,%v0,%v3
-sel  %v5,%r2,%v1
-sel  %r31,%r11,%r21
-sel  %r5,%r9,%r18
-sel  %v6,%v2,%v5
-sel  %v4,%r5,%v6
-sel  %gconst,%r26,%r21
+sel.cc3.ne  %r9,%r0,%r9
+sel.cc3.ne  %v3,%v6,%v4
+sel.cc3.ne  %v1,%r22,%v4
+sel.cc3.ne  %gt,%r28,%r17
+sel.cc3.eq  %r23,%r22,%r25
+sel.cc3.eq  %v6,%v3,%v5
+sel.cc3.eq  %v5,%r22,%v1
+sel.cc3.eq  %rp,%r20,%r18
+sel.cc3.gt  %r23,%r25,%r0
+sel.cc3.gt  %v5,%v4,%v1
+sel.cc3.gt  %v1,%r21,%v2
+sel.cc3.gt  %sp,%r6,%r13
+sel.cc3.lt  %r27,%r3,%r29
+sel.cc3.lt  %v1,%v5,%v3
+sel.cc3.lt  %v4,%r26,%v3
+sel.cc3.lt  %vl,%r28,%r1
+sel.cc3.gte  %r5,%r25,%r1
+sel.cc3.gte  %v0,%v0,%v3
+sel.cc3.gte  %v5,%r2,%v1
+sel.cc3.gte  %r31,%r11,%r21
+sel.cc3.lte  %r5,%r9,%r18
+sel.cc3.lte  %v6,%v2,%v5
+sel.cc3.lte  %v4,%r5,%v6
+sel.cc3.lte  %gconst,%r26,%r21
 rtn
 rtn  %r11
 rtn  %up

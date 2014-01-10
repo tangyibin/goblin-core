@@ -61,7 +61,8 @@ extern "C" {
 #define	GSIM_OPCODE_RARB	0x00000008		/*! INSTRUCTION FORMAT: Ra,Rb ARGUMENTS ONLY */
 #define	GSIM_OPCODE_RART	0x00000010		/*! INSTRUCTION FORMAT: Ra,Rt ARGUMENTS */
 #define	GSIM_OPCODE_RARBRT	0x00000020		/*! INSTRUCTION FORMAT: Ra,Rb,Rt ARGUMENTS */
-#define GSIM_OPCODE_VECTOR	0x00000040		/*! INSTRUCTION TYPE:   VECTOR MODE */
+#define	GSIM_OPCODE_RTRARB	0x00000040		/*! INSTRUCTION FORMAT: Rt,Ra,Rb ARGUMENTS */
+#define GSIM_OPCODE_VECTOR	0x00000080		/*! INSTRUCTION TYPE:   VECTOR MODE */
 
 #define	GSIM_REG_RW		0x00000001		/*! REGISTER TYPE:      READ-WRITE */
 #define	GSIM_REG_RO		0x00000002		/*! REGISTER TYPE:      READ-ONLY */
@@ -110,6 +111,7 @@ extern "C" {
 #define	GSIM_REG_GCONST_TC	0xFF00000000000000	/*! REGISTER: GCONST: TASK COUNT */
 
 /* --------------------------------------------- DATA STRUCTURES */
+
 struct gsim_opcodes_t{
 	uint32_t	valid[256];
 	uint32_t	format[256];
@@ -125,6 +127,6 @@ struct gsim_reg_t{
 } /* extern C */
 #endif
 
-#endif	/* _GOBLIN_SIM_TYPES_H_ */
+#endif	/* _GOBLIN_SIM_OPCODES_H_ */
 
 /* EOF */
