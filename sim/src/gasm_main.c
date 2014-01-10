@@ -17,7 +17,7 @@
 extern int	gsim_opcodes_init( struct gsim_t *sim );
 extern int	gsim_reg_init( struct gsim_t *sim );
 extern uint64_t gasm_row_walker( char *afile );
-extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows );
+extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *error );
 extern int	gasm_verify( struct gsim_t *sim, uint64_t *inter, uint64_t nread );
 extern int	gasm_write_object( char *ofile, uint64_t *inter, uint64_t nread );
 
@@ -34,6 +34,7 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	/* vars */
 	uint64_t nrows	= 0x00ll;
 	uint64_t nread	= 0x00ll;
+	int error	= 0;
 	uint64_t *inter	= NULL;
 	/* ---- */
 
@@ -58,13 +59,16 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	/* 
 	 * Stage2: Parse Into Row Format 
 	 */
-	nread = gasm_parser( afile, inter, nrows );
+	nread = gasm_parser( afile, inter, nrows, &error );
 	if( nread == 0x00ll ){ 
 		GSIM_PRINT_ERROR( "GASM_ERROR : No Instructions Read" );
 		gsim_free( inter );
 		return -1;
+	}else if( error == -1 ){ 
+		gsim_free( inter );
+		return -1;
 	}
-
+	goto shortcut;
 	/* 
 	 * Stage 3: Validate the Ops
 	 */
@@ -91,6 +95,7 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 	/* 
 	 * Stage5: Cleanup
 	 */
+shortcut:
 	gsim_free( inter );
 
 #ifdef GSIM_TRACE

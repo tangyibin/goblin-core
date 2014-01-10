@@ -906,35 +906,35 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	opcodes->valid[0x9F]	= GSIM_OPCODE_INVALID;
 	sprintf( opcodes->name[0x9F], "%s", "INVALID" );
 
-	/* -- SEL CC3.NE */	
+	/* -- SEL.CC3.NE */	
 	opcodes->valid[0xA0]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xA0]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xA0], "%s", "sel" );
+	sprintf( opcodes->name[0xA0], "%s", "sel.cc3.ne" );
 
-	/* -- SEL CC3.EQ */
+	/* -- SEL.CC3.EQ */
 	opcodes->valid[0xA1]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xA1]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xA1], "%s", "sel" );
+	sprintf( opcodes->name[0xA1], "%s", "sel.cc3.eq" );
 
-	/* -- SEL CC3.GT */
+	/* -- SEL.CC3.GT */
 	opcodes->valid[0xA2]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xA2]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xA2], "%s", "sel" );
+	sprintf( opcodes->name[0xA2], "%s", "sel.cc3.gt" );
 
-	/* -- SEL CC3.LT */
+	/* -- SEL.CC3.LT */
 	opcodes->valid[0xA3]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xA3]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xA3], "%s", "sel" );
+	sprintf( opcodes->name[0xA3], "%s", "sel.cc3.lt" );
 
-	/* -- SEL CC3.GTE */
+	/* -- SEL.CC3.GTE */
 	opcodes->valid[0xA4]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xA4]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xA4], "%s", "sel" );
+	sprintf( opcodes->name[0xA4], "%s", "sel.cc3.gte" );
 
-	/* -- SEL CC3.LTE */
+	/* -- SEL.CC3.LTE */
 	opcodes->valid[0xA5]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xA5]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xA5], "%s", "sel" );
+	sprintf( opcodes->name[0xA5], "%s", "sel.cc3.lte" );
 
 	/* -- 0xA6 */
 	opcodes->valid[0xA6]	= GSIM_OPCODE_INVALID;
