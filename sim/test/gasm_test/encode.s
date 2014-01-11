@@ -194,10 +194,10 @@ add.fs  %r8,%r23,%r29
 add.fs  %v1,%v6,%v3
 add.fs  %v5,%r16,%v5
 add.fs  %gkey,%r24,%r11
-ADD.FD  %r1,%r15,%r8
-ADD.FD  %v5,%v2,%v6
-ADD.FD  %v6,%r4,%v4
-ADD.FD  %eq,%r28,%r12
+add.fd  %r1,%r15,%r8
+add.fd  %v5,%v2,%v6
+add.fd  %v6,%r4,%v4
+add.fd  %eq,%r28,%r12
 sub.fs  %r25,%r28,%r21
 sub.fs  %v4,%v5,%v4
 sub.fs  %v2,%r9,%v6
