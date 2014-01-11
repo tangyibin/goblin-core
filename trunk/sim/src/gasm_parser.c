@@ -13,7 +13,16 @@
 #include <string.h>
 #include <inttypes.h>
 #include "goblin_sim.h"
-#include "goblin_sim_optable.h"
+
+/* -------------------------------------------------- FUNCTION PROTOTYPES */
+extern int gasm_asm(	char *inst, 
+			char *arg1, 
+			char *arg2, 
+			char *arg3, 
+			int count,
+			uint64_t *inter, 
+			uint64_t insts, 
+			uint64_t line );
 
 /* -------------------------------------------------- GASM_PARSER_REMOVE_NEWLINE */
 /* 
@@ -43,9 +52,10 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 	char tokstr[]	= " ,";
 	uint64_t insts	= 0x00ll;
 	uint64_t tmp	= 0x00ll;
+	uint64_t line	= 1;
 	int imm		= 0;
-	uint64_t line	= 0;
 	int i		= 0;
+	int count	= 0;
 	char inst[16];
 	char arg1[16]; 
 	char arg2[16]; 
@@ -93,6 +103,8 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 			 * - determine the arg types 
 			 * - assemble the payload
 			 */
+
+			count = 0;
 	
 			tokbuf	= strtok( buf, tokstr );	
 			while( tokbuf != NULL ){ 
@@ -106,14 +118,17 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 					case 1:
 						/* arg1 */
 						sprintf( arg1, "%s", tokbuf );
+						count++;
 						break;
 					case 2:
 						/* arg2 */
 						sprintf( arg2, "%s", tokbuf );
+						count++;
 						break;
 					case 3:
 						/* arg3 */
 						sprintf( arg3, "%s", tokbuf );
+						count++;
 						break;
 					default:
 						printf( "gasm: Error parsing assembly file at line %" PRIu64 "\n",
@@ -130,6 +145,19 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 				i++;
 				tokbuf = strtok( NULL, tokstr );	
 			}
+
+			/* 
+			 * we have all the details, assemble the instruction
+			 *
+			 */
+			if( gasm_asm( &inst, &arg1, &arg2, &arg3, count, inter, insts, line ) != 0 ){ 
+				fflush( stdout );
+				free( buf );
+				fclose( ifile );
+				*error = -1;
+				return 0x01;
+			}
+			
 		}
 
 		memset( buf,  0, sizeof( char ) * 2048 );

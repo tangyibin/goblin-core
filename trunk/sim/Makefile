@@ -11,7 +11,7 @@ LIBOBJS=$(SRC)/gsim_opcodes.o $(SRC)/gsim_reg.o $(SRC)/gsim_mem.o $(SRC)/gsim_el
 	$(SRC)/gsim_init_sim.o
 
 GASMOBJS=$(SRC)/gasm_main.o $(SRC)/gasm_row.o $(SRC)/gasm_parser.o $(SRC)/gasm_io.o\
-	$(SRC)/gasm_verify.o
+	$(SRC)/gasm_verify.o $(SRC)/gasm_asm.o
 
 GSIMOBJS=$(SRC)/gsim_main.o $(SRC)/gsim_config.yy.o
 
@@ -47,6 +47,7 @@ gasm: libgsim.a
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_verify.o $(SRC)/gasm_verify.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_row.o $(SRC)/gasm_row.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_parser.o $(SRC)/gasm_parser.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_asm.o $(SRC)/gasm_asm.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_main.o $(SRC)/gasm_main.c
 	$(CC) $(CFLAGS) -o $@ $(GASMOBJS) $(LINK)
 clean: 
