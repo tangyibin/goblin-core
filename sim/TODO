@@ -2,7 +2,6 @@
 
 - update the comparitor registers in the 'reset' function 
 - fix object file parsing 
-- gasm instruction parsing 
 - spawn instruction format? 
 -- spawn %ra, %rt; ra is a new ip; rt is a return code 
 -- spawn.m %ra, %rt; ra is a pointer to memory; rt is a return code or a tid?? 
@@ -13,9 +12,9 @@
 -- this includes adding a feature to goblin_sim_hw.h && init internals
 -- maybe some additional info in the parser
 
-- build an instruction table in header file
-
 #################### DONE #################### 
 
+- build an instruction table in header file: DONE
+- gasm instruction parsing: DONE
 - move gsim_init_sim to the library: DONE 
 - move gsim_free_sim to the library: DONE
