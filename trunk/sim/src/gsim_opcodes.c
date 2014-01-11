@@ -984,7 +984,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- RTN */
 	opcodes->valid[0xB1]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xB1]	= GSIM_OPCODE_RT;
-	sprintf( opcodes->name[0xB1], "%s", "rtn" );
+	sprintf( opcodes->name[0xB1], "%s", "rtna" );
 
 	/* -- 0xB2 */
 	opcodes->valid[0xB2]	= GSIM_OPCODE_INVALID;
@@ -1026,7 +1026,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- BR */
 	opcodes->valid[0xBB]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xBB]	= GSIM_OPCODE_RARBRT;
-	sprintf( opcodes->name[0xBB], "%s", "br" );
+	sprintf( opcodes->name[0xBB], "%s", "brc" );
 
 	/* -- 0xBC */
 	opcodes->valid[0xBC]	= GSIM_OPCODE_INVALID;
@@ -1052,7 +1052,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- BRA */
 	opcodes->valid[0xC1]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xC1]	= GSIM_OPCODE_RARBRT;
-	sprintf( opcodes->name[0xC1], "%s", "bra" );
+	sprintf( opcodes->name[0xC1], "%s", "brac" );
 
 	/* -- 0xC2 */
 	opcodes->valid[0xC2]	= GSIM_OPCODE_INVALID;
@@ -1094,7 +1094,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- CALL */
 	opcodes->valid[0xCB]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xCB]	= GSIM_OPCODE_RARBRT;
-	sprintf( opcodes->name[0xCB], "%s", "call" );
+	sprintf( opcodes->name[0xCB], "%s", "callc" );
 
 	/* -- 0xCC */
 	opcodes->valid[0xCC]	= GSIM_OPCODE_INVALID;
@@ -1120,7 +1120,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- CALLA */
 	opcodes->valid[0xD1]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xD1]	= GSIM_OPCODE_RART;
-	sprintf( opcodes->name[0xD1], "%s", "calla" );
+	sprintf( opcodes->name[0xD1], "%s", "callac" );
 
 	/* -- 0xD2 */
 	opcodes->valid[0xD2]	= GSIM_OPCODE_INVALID;
@@ -1236,12 +1236,12 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	/* -- TZC */
 	opcodes->valid[0xEB]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xEB]	= GSIM_OPCODE_RART|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xEB], "%s", "addc" );
+	sprintf( opcodes->name[0xEB], "%s", "tzc" );
 
 	/* -- BSEL */
 	opcodes->valid[0xEC]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xEC]	= GSIM_OPCODE_RARBRT|GSIM_OPCODE_VECTOR;
-	sprintf( opcodes->name[0xEC], "%s", "addc" );
+	sprintf( opcodes->name[0xEC], "%s", "bsel" );
 
 	/* -- 0xED */
 	opcodes->valid[0xED]	= GSIM_OPCODE_INVALID;
@@ -1321,7 +1321,7 @@ extern int gsim_opcodes_init( struct gsim_t *sim )
 	opcodes->valid[0xFE]	= GSIM_OPCODE_INVALID;
 	sprintf( opcodes->name[0xFE], "%s", "INVALID" );
 
-	/* -- LFSHV */
+	/* -- LDSHV */
 	opcodes->valid[0xFF]	= GSIM_OPCODE_VALID;
 	opcodes->format[0xFF]	= GSIM_OPCODE_RA|GSIM_OPCODE_VECTOR;
 	sprintf( opcodes->name[0xFF], "%s", "ldshv" );

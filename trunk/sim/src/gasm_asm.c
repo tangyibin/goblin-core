@@ -65,6 +65,7 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -74,6 +75,7 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s %%RT\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -83,6 +85,7 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s %%RA\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -92,6 +95,8 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s %%RA,%%RB\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -101,6 +106,7 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s %%RA,%%RT\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -110,6 +116,7 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s %%RA,%%RB,%%RT\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -119,6 +126,7 @@ extern uint64_t gasm_asm( char *inst,
                                                                 line );	
 						printf( "\t>%s\n", inst );
 						printf( "\t>Expecting %s %%RT,%%RB,%%RA\n", gsim_optable_t[cur].name );
+						printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 						return -1;
 					}
 					break;
@@ -126,6 +134,7 @@ extern uint64_t gasm_asm( char *inst,
 					printf( "gasm: Incorrect instruction arguments at line %" PRIu64 "\n",
                                                                 line );	
 					printf( "\t>%s\n", inst );
+					printf( "\t>Found %s %s %s %s\n", inst, arg1, arg2, arg3 );
 					return -1;
 					break;
 			}
