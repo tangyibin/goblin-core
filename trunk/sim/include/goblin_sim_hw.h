@@ -60,8 +60,8 @@ struct gsim_task_group_t{
 struct gsim_socket_t{
 	
 	/* -- inclusive hw units */
-	struct gsim_task_group_t *task_groups;
 	struct hmcsim_t *hmc;
+	struct gsim_task_group_t *task_groups;
 	
 	/* -- id's */
 	uint8_t			id;

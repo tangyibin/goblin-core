@@ -33,11 +33,14 @@ extern void gsim_free_sim( struct gsim_t *sim )
 		return ;
 	}
 
-	for( i=0; i<T_HMC; i++ ){ 
-		//hmcsim_free( &(sim->hw->__ptr_hmc[i]) );	
-	}
-
 	if( sim->hw != NULL ){ 
+
+		if( sim->hw->__ptr_hmc != NULL ) {
+			for( i=0; i<T_HMC; i++ ){ 
+				hmcsim_free( &(sim->hw->__ptr_hmc[i]) );	
+			}
+		}
+
 		gsim_free( sim->hw->__ptr_partition );
 		gsim_free( sim->hw->__ptr_node );
 		gsim_free( sim->hw->__ptr_socket );
