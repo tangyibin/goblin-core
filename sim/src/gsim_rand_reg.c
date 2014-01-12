@@ -33,7 +33,7 @@ extern uint32_t gsim_rand_reg_ctrl()
 
 	tmp += 31;
 
-	if( (tmp==0x30) || (tmp==0x31) || (tmp==0x32) ){ 
+	if( (tmp==0x31) || (tmp==0x32) ){ 
 		tmp = 0x33;
 	}
 	if( (tmp==0x2A) || (tmp==0x2B) ){ 
