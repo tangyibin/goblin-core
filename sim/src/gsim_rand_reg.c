@@ -86,7 +86,7 @@ extern uint32_t gsim_rand_reg_ctrl_rw()
 	GSIM_PRINT_FUNC_ENTRY();
 #endif
 
-	tmp = (uint32_t)(rand() % 0x2F);
+	tmp = (uint32_t)(rand() % 0x30);
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();

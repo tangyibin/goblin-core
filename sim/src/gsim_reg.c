@@ -188,8 +188,8 @@ extern int gsim_reg_init( struct gsim_t *sim )
 	sprintf( reg->name[0x2F], "%s", "tid" );
 
 	/* -- 0x30 */
-	reg->format[0x30]	= GSIM_REG_INVALID;
-	sprintf( reg->name[0x30], "%s", "INVALID" );
+	reg->format[0x30]	= GSIM_REG_RW;
+	sprintf( reg->name[0x30], "%s", "ip" );
 
 	/* -- 0x31 */
 	reg->format[0x31]	= GSIM_REG_INVALID;
