@@ -454,11 +454,11 @@ call  %r31
 callc  %r23,%r14,%r8
 callc  %cc1,%r14,%r11
 calla  %r11
-calla  %vs
+calla  %ip
 callac  %r15,%r20
 callac  %pic,%r1
 system  %r13
-system  %vl
+system  %up
 spawn  %r14
 spawn  %r30
 join  %r0
