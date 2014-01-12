@@ -1,4 +1,5 @@
 #################### TODO #################### 
+- IP is missing!!! 
 
 - update the comparitor registers in the 'reset' function 
 - fix object file parsing 

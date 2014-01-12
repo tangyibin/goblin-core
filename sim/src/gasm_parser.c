@@ -150,7 +150,7 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 			 * we have all the details, assemble the instruction
 			 *
 			 */
-			if( gasm_asm( &inst, &arg1, &arg2, &arg3, count, inter, insts, line ) != 0 ){ 
+			if( gasm_asm( &(inst[0]), &(arg1[0]), &(arg2[0]), &(arg3[0]), count, inter, insts, line ) != 0 ){ 
 				fflush( stdout );
 				free( buf );
 				fclose( ifile );

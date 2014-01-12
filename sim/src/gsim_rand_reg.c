@@ -36,6 +36,10 @@ extern uint32_t gsim_rand_reg_ctrl()
 	if( (tmp==0x30) || (tmp==0x31) || (tmp==0x32) ){ 
 		tmp = 0x33;
 	}
+	if( (tmp==0x2A) || (tmp==0x2B) ){ 
+		tmp = 0x29;
+	}
+
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
@@ -87,6 +91,9 @@ extern uint32_t gsim_rand_reg_ctrl_rw()
 #endif
 
 	tmp = (uint32_t)(rand() % 0x30);
+	if( (tmp==0x2A) || (tmp==0x2B) ){ 
+		tmp = 0x29;
+	}
 
 #ifdef GSIM_TRACE
 	GSIM_PRINT_FUNC_EXIT();
