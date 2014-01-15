@@ -11,6 +11,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>	/* -- stat */
+#include <sys/stat.h>	/* -- stat */
+
 #include "goblin_sim.h"
 
 /* -------------------------------------------------- FUNCTION_PROTOTYPES */
@@ -143,6 +146,7 @@ int main( int argc, char **argv )
 	char *afile		= NULL;
 	char *ofile		= NULL;
 	struct gsim_t *sim	= NULL;
+	struct stat astat;
 	/* ---- */
 
 #ifdef GSIM_TRACE
@@ -218,6 +222,26 @@ int main( int argc, char **argv )
 		/* build the output file name */
 		ofile = gsim_malloc( (strlen( afile ) + 2) * sizeof( char ) );
 		sprintf( ofile, "%s%s", afile, ".o" );
+	}
+
+	/*
+	 * stat the file
+	 * 
+	 */
+	if( stat( afile, &astat ) != 0 ){ 
+		GSIM_PRINT_ERROR( "GASM_ERROR: Could not stat the assembly file" );
+		gsim_free( afile );
+		gsim_free( ofile );
+		gsim_free( sim );
+		return -1;		
+	}	
+
+	if( !(S_ISREG( astat.st_mode )) ){ 
+		GSIM_PRINT_ERROR( "GASM_ERROR: Could not read the assembly file" );
+		gsim_free( afile );
+		gsim_free( ofile );
+		gsim_free( sim );
+		return -1;		
 	}
 
 	/*
