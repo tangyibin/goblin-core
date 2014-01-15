@@ -21,7 +21,7 @@
  * GASM_ASM_IS_CTRL
  * 
  */
-static int gasm_asm_is_ctrl( char *arg, uint32_t *enc, uint32_t *ro  ){
+static int gasm_asm_is_ctrl( char *arg, uint32_t *enc, uint8_t *ro  ){
 
 	if( (strstr( arg, "%sp" ) == NULL) || (strstr( arg, "%SP") == NULL) ){ 
 		*enc	= 0x20;
@@ -120,7 +120,7 @@ static int gasm_asm_is_ctrl( char *arg, uint32_t *enc, uint32_t *ro  ){
 		return -1;
 	}
 
-	return 0;
+	return 1;
 }
 
 /* -------------------------------------------------- GASM_ASM_IS_VECTOR */
@@ -158,14 +158,19 @@ extern uint64_t gasm_asm( char *inst,
 	int cur		= 0;
 	uint32_t opcode	= 0x00;
 	uint32_t format	= 0x00;
-	uint32_t arg1_e	= 0x00;
-	uint32_t arg2_e	= 0x00;
-	uint32_t arg3_e	= 0x00;
-	uint8_t vector	= 0x0;
-	uint8_t arg1_v	= 0x0;
-	uint8_t arg2_v	= 0x0;
-	uint8_t arg3_v	= 0x0;
-	uint8_t ro	= 0x0;
+	uint32_t arg1_e	= 0x00;	/* -- arg1 encoding */
+	uint32_t arg2_e	= 0x00;	/* -- arg2 encoding */
+	uint32_t arg3_e	= 0x00;	/* -- arg3 encoding */
+	uint8_t vector	= 0x0;	/* -- vectors present */
+	uint8_t arg1_v	= 0x0;	/* -- arg1 is a vector */
+	uint8_t arg2_v	= 0x0;	/* -- arg2 is a vector */
+	uint8_t arg3_v	= 0x0;	/* -- arg3 is a vector */
+	uint8_t arg1_ro	= 0x0;	/* -- arg1 is read-only */
+	uint8_t arg2_ro	= 0x0;	/* -- arg2 is read-only */
+	uint8_t arg3_ro	= 0x0;	/* -- arg3 is read-only */
+	uint8_t arg1_c	= 0x0;	/* -- arg1 is control */
+	uint8_t arg2_c	= 0x0;	/* -- arg2 is control */
+	uint8_t arg3_c	= 0x0;	/* -- arg3 is control */
 	/* ---- */
 
 #ifdef GSIM_TRACE
@@ -221,10 +226,24 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s\n", inst, arg1 );
+						return -1;
 					}else{
 						/* set vector enable */
 						arg1_v	= 1;
 					}
+
+					/* check for control regs */
+					if( gasm_asm_is_ctrl( arg1, &arg1_e, &arg1_ro  ) ==  1 ){
+						if( arg1_ro == 1 ){ 
+							/* this is Rt, can't have a RO register */
+							printf( "gasm: Invalid use of target register %s at line %" PRIu64 "\n", 
+								arg1, line );
+							return -1;
+						}else{
+							arg1_c	= 1;
+						}
+					}
+					
 
 					break;
 				case GSIM_OPCODE_RA:
@@ -243,9 +262,16 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s\n", inst, arg1 );
+						return -1;
 					}else{ 
 						arg1_v = 1;
 					}
+
+					/* check for control regs */
+					if( gasm_asm_is_ctrl( arg1, &arg1_e, &arg1_ro  ) ==  1 ){
+						arg1_c	= 1;
+					}
+					
 
 					break;
 				case GSIM_OPCODE_RARB:
@@ -265,6 +291,7 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s\n", inst, arg1, arg2 );
+						return -1;
 					}else{ 
 						arg1_v = 1;
 					}
@@ -275,6 +302,16 @@ extern uint64_t gasm_asm( char *inst,
 					}else{ 
 						arg2_v = 1;
 					}
+
+					/* check for control regs */
+					if( gasm_asm_is_ctrl( arg1, &arg1_e, &arg1_ro  ) ==  1 ){
+						arg1_c	= 1;
+					}
+					if( gasm_asm_is_ctrl( arg2, &arg2_e, &arg2_ro  ) ==  1 ){
+						arg1_c	= 1;
+					}
+					
+					
 
 					break;
 				case GSIM_OPCODE_RART:
@@ -293,6 +330,7 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s\n", inst, arg1, arg2 );
+						return -1;
 					}else{ 
 						arg1_v = 1;
 					}
@@ -303,6 +341,21 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "\t>Found %s %s,%s\n", inst, arg1, arg2 );
 					}else{ 
 						arg2_v = 1;
+					}
+					
+					/* check for control regs */
+					if( gasm_asm_is_ctrl( arg1, &arg1_e, &arg1_ro  ) ==  1 ){
+						arg1_c	= 1;
+					}
+					if( gasm_asm_is_ctrl( arg2, &arg2_e, &arg2_ro  ) ==  1 ){
+						if( arg2_ro == 1 ){ 
+							/* this is Rt, can't have a RO register */
+							printf( "gasm: Invalid use of target register %s at line %" PRIu64 "\n", 
+								arg2, line );
+							return -1;
+						}else{
+							arg2_c	= 1;
+						}
 					}
 					
 
@@ -323,6 +376,7 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						return -1;
 					}else{ 
 						arg1_v = 1;
 					}
@@ -331,6 +385,7 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						return -1;
 					}else{ 
 						arg2_v = 1;
 					}
@@ -339,8 +394,27 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						return -1;
 					}else{ 
 						arg3_v = 1;
+					}
+					
+					/* check for control regs */
+					if( gasm_asm_is_ctrl( arg1, &arg1_e, &arg1_ro  ) ==  1 ){
+						arg1_c	= 1;
+					}
+					if( gasm_asm_is_ctrl( arg2, &arg2_e, &arg2_ro  ) ==  1 ){
+						arg2_c	= 1;
+					}
+					if( gasm_asm_is_ctrl( arg3, &arg3_e, &arg3_ro  ) ==  1 ){
+						if( arg3_ro == 1 ){ 
+							/* this is Rt, can't have a RO register */
+							printf( "gasm: Invalid use of target register %s at line %" PRIu64 "\n", 
+								arg3, line );
+							return -1;
+						}else{
+							arg3_c	= 1;
+						}
 					}
 					
 
@@ -361,6 +435,7 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						return -1;
 					}else{ 
 						arg1_v = 1;
 					}
@@ -369,6 +444,7 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						return -1;
 					}else{ 
 						arg2_v = 1;
 					}
@@ -377,10 +453,29 @@ extern uint64_t gasm_asm( char *inst,
 						printf( "gasm: Invalid use of vector registers at line %" PRIu64 "\n",
 								line );
 						printf( "\t>Found %s %s,%s,%s\n", inst, arg1, arg2, arg3 );
+						return -1;
 					}else{ 
 						arg3_v = 1;
 					}
 
+					/* check for control regs */
+					if( gasm_asm_is_ctrl( arg3, &arg3_e, &arg3_ro  ) ==  1 ){
+						arg3_c	= 1;
+					}
+					if( gasm_asm_is_ctrl( arg2, &arg2_e, &arg2_ro  ) ==  1 ){
+						arg2_c	= 1;
+					}
+					if( gasm_asm_is_ctrl( arg1, &arg1_e, &arg1_ro  ) ==  1 ){
+						if( arg1_ro == 1 ){ 
+							/* this is Rt, can't have a RO register */
+							printf( "gasm: Invalid use of target register %s at line %" PRIu64 "\n", 
+								arg1, line );
+							return -1;
+						}else{
+							arg1_c	= 1;
+						}
+					}
+					
 					break;
 				default:
 					printf( "gasm: Incorrect instruction arguments at line %" PRIu64 "\n",
