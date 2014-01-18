@@ -1,0 +1,32 @@
+#!/bin/bash
+# run_test
+# ~/test/gasm_test/
+#
+# Test Driver for GC64 Basic Assembler
+#
+# -------------------------------------------
+
+INVALID=`ls -l invalid_* | awk '{print $9}'`
+VALID=`ls -l valid_* | awk '{print $9}'`
+
+#-- EXECUTE THE VALID TESTS
+for TEST in $VALID; do
+	sh $TEST
+	if [ $? -ne 0]; then
+		echo ".....executing test $TEST: FAIL"
+	else
+		echo ".....executing test $TEST: PASS"
+	fi
+done
+
+#-- EXECUTE THE INVALID TESTS
+for TEST in $INVALID; do
+	sh $TEST
+	if [ $? -ne 0]; then
+		echo ".....executing test $TEST: PASS"
+	else
+		echo ".....executing test $TEST: FAIL"
+	fi
+done
+
+#-- EOF 
