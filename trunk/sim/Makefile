@@ -50,6 +50,9 @@ gasm: libgsim.a
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_asm.o $(SRC)/gasm_asm.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gasm_main.o $(SRC)/gasm_main.c
 	$(CC) $(CFLAGS) -o $@ $(GASMOBJS) $(LINK)
+gasm_check: gasm
+	@echo "executing GASM tests"; cd ./test/gasm_test/ && sh run_test ../../gasm	
+check: gasm_check
 clean: 
 	rm -Rf ./src/*.o ./src/gsim_config.yy.c ./libgsim.a ./goblin-sim ./gasm
 	make -C ./hmc_sim/ clean
