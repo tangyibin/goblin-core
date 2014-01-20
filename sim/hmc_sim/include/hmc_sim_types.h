@@ -201,6 +201,6 @@ struct hmcsim_t{
 } /* extern C */
 #endif
 
-#endif	/* _HMC_SIM_H_ */
+#endif	/* _HMC_SIM_TYPES_H_ */
 
 /* EOF */
