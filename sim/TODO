@@ -1,7 +1,5 @@
 #################### TODO #################### 
 
-- add additional logic to check the file type of the target
-  assembly file; is it readable and a normal file?
 - update the comparitor registers in the 'reset' function 
 - fix object file parsing 
 - spawn instruction format? 
@@ -16,6 +14,8 @@
 
 #################### DONE #################### 
 
+- add additional logic to check the file type of the target
+  assembly file; is it readable and a normal file?: DONE
 - added the IP register 
 - build an instruction table in header file: DONE
 - gasm instruction parsing: DONE
