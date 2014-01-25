@@ -29,6 +29,10 @@ typedef enum{
 	MEMSIM_HMC
 }memsim_iface_t;
 
+typedef enum{
+	MEMSIM_SIMPLE
+}memsim_alg_t;
+
 /* ---------------------------------------------- LOCAL MACROS */
 #define	MEMSIM_AMO	0x0000000000000001
 #define	MEMSIM_GA	0x0000000000000002
@@ -55,6 +59,7 @@ struct memsim_t{
 	uint32_t ga_slots;		/*! MEM-SIM: MEMSIM_T: NUMBER OF GLOBAL ADDRESS SLOTS */
 
 	memsim_iface_t iface;		/*! MEM-SIM: MEMSIM_T: MEMORY INTERFACE TYPE */
+	memsim_alg_t alg;		/*! MEM-SIM: MEMSIM_T: MEMORY INTERFACE ALGORITHM */
 
 	uint32_t task_groups;		/*! MEM-SIM: MEMSIM_T: NUMBER OF TASK GROUPS */
 	uint32_t task_procs;		/*! MEM-SIM: MEMSIM_T: NUMBER OF TASK PROCS */

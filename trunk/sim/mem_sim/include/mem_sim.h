@@ -31,15 +31,17 @@ extern "C" {
 /* ------------------------------------------------ FUNCTION PROTOTYPES */
 
 extern int memsim_init(	struct memsim_t *msim, 
+			memsim_iface_t iface, 
+			memsim_alg_t alg,
 			uint32_t task_groups,
 			uint32_t task_procs, 
 			uint32_t tasks, 
-			memsim_iface_t iface, 
 			uint32_t g_slots, 
 			uint32_t s_slots, 
 			uint32_t a_slots, 
 			uint32_t ga_slots, 
 			uint64_t opt );
+extern int memsim_free( struct memsim_t *msim );
 
 #ifdef __cplusplus
 } /* extern C */
