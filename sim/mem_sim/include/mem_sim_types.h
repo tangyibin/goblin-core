@@ -30,7 +30,8 @@ typedef enum{
 }memsim_iface_t;
 
 typedef enum{
-	MEMSIM_SIMPLE
+	MEMSIM_SIMPLE,
+	MEMSIM_EXP
 }memsim_alg_t;
 
 /* ---------------------------------------------- LOCAL MACROS */
