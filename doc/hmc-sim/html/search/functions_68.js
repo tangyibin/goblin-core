@@ -11,5 +11,8 @@ var searchData=
   ['hmcsim_5fsend',['hmcsim_send',['../hmc__sim_8h.html#a12313ad659378fbf0f53e19ba6ee9eed',1,'hmc_sim.h']]],
   ['hmcsim_5ftrace_5fhandle',['hmcsim_trace_handle',['../hmc__sim_8h.html#aa6538f5a29e5aa16903e55f7e6c3c3b9',1,'hmc_sim.h']]],
   ['hmcsim_5ftrace_5fheader',['hmcsim_trace_header',['../hmc__sim_8h.html#a9b0cc2e32a3445aa840ab91acd807d22',1,'hmc_sim.h']]],
-  ['hmcsim_5ftrace_5flevel',['hmcsim_trace_level',['../hmc__sim_8h.html#ab08eceb0130f5b1f0fa9bd8eb2419767',1,'hmc_sim.h']]]
+  ['hmcsim_5ftrace_5flevel',['hmcsim_trace_level',['../hmc__sim_8h.html#ab08eceb0130f5b1f0fa9bd8eb2419767',1,'hmc_sim.h']]],
+  ['hmcsim_5futil_5fget_5fmax_5fblocksize',['hmcsim_util_get_max_blocksize',['../hmc__sim_8h.html#a56e032ce38e246fb2e669159da7721e6',1,'hmc_sim.h']]],
+  ['hmcsim_5futil_5fset_5fall_5fmax_5fblocksize',['hmcsim_util_set_all_max_blocksize',['../hmc__sim_8h.html#a92ec5bd21d7922a2e8c065d4ca2a50cf',1,'hmc_sim.h']]],
+  ['hmcsim_5futil_5fset_5fmax_5fblocksize',['hmcsim_util_set_max_blocksize',['../hmc__sim_8h.html#ae145e2a3c9d47aea72f78bf7622ad81e',1,'hmc_sim.h']]]
 ];

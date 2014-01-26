@@ -138,6 +138,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 <tr class="memitem:a9a3f8d88943e73f19bef1978f32b190c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a9a3f8d88943e73f19bef1978f32b190c">hmcsim_jtag_reg_write</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t dev, uint64_t reg, uint64_t value)</td></tr>
 <tr class="memdesc:a9a3f8d88943e73f19bef1978f32b190c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to write the value to the specified HMC device register for the target device using the side-band JTAG interface.  <a href="#a9a3f8d88943e73f19bef1978f32b190c">More...</a><br/></td></tr>
 <tr class="separator:a9a3f8d88943e73f19bef1978f32b190c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae145e2a3c9d47aea72f78bf7622ad81e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#ae145e2a3c9d47aea72f78bf7622ad81e">hmcsim_util_set_max_blocksize</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t dev, uint32_t bsize)</td></tr>
+<tr class="memdesc:ae145e2a3c9d47aea72f78bf7622ad81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the maximum request size for the target device.  <a href="#ae145e2a3c9d47aea72f78bf7622ad81e">More...</a><br/></td></tr>
+<tr class="separator:ae145e2a3c9d47aea72f78bf7622ad81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92ec5bd21d7922a2e8c065d4ca2a50cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a92ec5bd21d7922a2e8c065d4ca2a50cf">hmcsim_util_set_all_max_blocksize</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t bsize)</td></tr>
+<tr class="memdesc:a92ec5bd21d7922a2e8c065d4ca2a50cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the maximum request size for all the devices.  <a href="#a92ec5bd21d7922a2e8c065d4ca2a50cf">More...</a><br/></td></tr>
+<tr class="separator:a92ec5bd21d7922a2e8c065d4ca2a50cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e032ce38e246fb2e669159da7721e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a56e032ce38e246fb2e669159da7721e6">hmcsim_util_get_max_blocksize</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t dev, uint32_t *bsize)</td></tr>
+<tr class="memdesc:a56e032ce38e246fb2e669159da7721e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the maximum request size for the target device.  <a href="#a56e032ce38e246fb2e669159da7721e6">More...</a><br/></td></tr>
+<tr class="separator:a56e032ce38e246fb2e669159da7721e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Hybrid Memory Cube Functional Simulation Library Header File. </p>
@@ -777,10 +786,132 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 
 </div>
 </div>
+<a class="anchor" id="a56e032ce38e246fb2e669159da7721e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_util_get_max_blocksize </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t *&#160;</td>
+          <td class="paramname"><em>bsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the maximum request size for the target device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">dev</td><td>is the target device cube ID [cub] to read from </td></tr>
+    <tr><td class="paramname">*bsize</td><td>is a pointer to a valid uint32_t location that will contain the max block size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a92ec5bd21d7922a2e8c065d4ca2a50cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_util_set_all_max_blocksize </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>bsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the maximum request size for all the devices. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">bsize</td><td>is the target block size [32,64,128] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae145e2a3c9d47aea72f78bf7622ad81e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_util_set_max_blocksize </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>bsize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the maximum request size for the target device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">dev</td><td>is the target device cube ID [cub] to read from </td></tr>
+    <tr><td class="paramname">bsize</td><td>is the target block size [32,64,128] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 11 2013 16:37:09 for HMC_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 25 2014 19:39:49 for HMC_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

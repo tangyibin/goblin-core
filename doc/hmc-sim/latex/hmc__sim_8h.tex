@@ -35,7 +35,13 @@ int \hyperlink{hmc__sim_8h_af8f192a56096b22dc50827864b5334e9}{hmcsim\-\_\-clock}
 int \hyperlink{hmc__sim_8h_a17c848a15bdf0009329b5486df1c0f66}{hmcsim\-\_\-jtag\-\_\-reg\-\_\-read} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint64\-\_\-t reg, uint64\-\_\-t $\ast$result)
 \begin{DoxyCompactList}\small\item\em Attempts to read the value from the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_a9a3f8d88943e73f19bef1978f32b190c}{hmcsim\-\_\-jtag\-\_\-reg\-\_\-write} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint64\-\_\-t reg, uint64\-\_\-t value)
-\begin{DoxyCompactList}\small\item\em Attempts to write the value to the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Attempts to write the value to the specified H\-M\-C device register for the target device using the side-\/band J\-T\-A\-G interface. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_ae145e2a3c9d47aea72f78bf7622ad81e}{hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint32\-\_\-t bsize)
+\begin{DoxyCompactList}\small\item\em Sets the maximum request size for the target device. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a92ec5bd21d7922a2e8c065d4ca2a50cf}{hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t bsize)
+\begin{DoxyCompactList}\small\item\em Sets the maximum request size for all the devices. \end{DoxyCompactList}\item 
+int \hyperlink{hmc__sim_8h_a56e032ce38e246fb2e669159da7721e6}{hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t dev, uint32\-\_\-t $\ast$bsize)
+\begin{DoxyCompactList}\small\item\em Gets the maximum request size for the target device. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -388,6 +394,78 @@ Sets the trace level of an initialized H\-M\-C library instance.
 {\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
 \hline
 {\em level} & is the target trace level. Larger integers indicate more tracing output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a56e032ce38e246fb2e669159da7721e6}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize@{hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize}}
+\index{hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize@{hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-util\-\_\-get\-\_\-max\-\_\-blocksize (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{dev, }
+\item[{uint32\-\_\-t $\ast$}]{bsize}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a56e032ce38e246fb2e669159da7721e6}
+
+
+Gets the maximum request size for the target device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em dev} & is the target device cube I\-D \mbox{[}cub\mbox{]} to read from \\
+\hline
+{\em $\ast$bsize} & is a pointer to a valid uint32\-\_\-t location that will contain the max block size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_a92ec5bd21d7922a2e8c065d4ca2a50cf}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize@{hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize}}
+\index{hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize@{hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-util\-\_\-set\-\_\-all\-\_\-max\-\_\-blocksize (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{bsize}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_a92ec5bd21d7922a2e8c065d4ca2a50cf}
+
+
+Sets the maximum request size for all the devices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em bsize} & is the target block size \mbox{[}32,64,128\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_ae145e2a3c9d47aea72f78bf7622ad81e}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize@{hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize}}
+\index{hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize@{hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-util\-\_\-set\-\_\-max\-\_\-blocksize (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{dev, }
+\item[{uint32\-\_\-t}]{bsize}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_ae145e2a3c9d47aea72f78bf7622ad81e}
+
+
+Sets the maximum request size for the target device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em dev} & is the target device cube I\-D \mbox{[}cub\mbox{]} to read from \\
+\hline
+{\em bsize} & is the target block size \mbox{[}32,64,128\mbox{]} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

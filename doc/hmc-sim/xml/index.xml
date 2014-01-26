@@ -88,6 +88,9 @@
     <member refid="hmc__sim_8h_1af8f192a56096b22dc50827864b5334e9" kind="function"><name>hmcsim_clock</name></member>
     <member refid="hmc__sim_8h_1a17c848a15bdf0009329b5486df1c0f66" kind="function"><name>hmcsim_jtag_reg_read</name></member>
     <member refid="hmc__sim_8h_1a9a3f8d88943e73f19bef1978f32b190c" kind="function"><name>hmcsim_jtag_reg_write</name></member>
+    <member refid="hmc__sim_8h_1ae145e2a3c9d47aea72f78bf7622ad81e" kind="function"><name>hmcsim_util_set_max_blocksize</name></member>
+    <member refid="hmc__sim_8h_1a92ec5bd21d7922a2e8c065d4ca2a50cf" kind="function"><name>hmcsim_util_set_all_max_blocksize</name></member>
+    <member refid="hmc__sim_8h_1a56e032ce38e246fb2e669159da7721e6" kind="function"><name>hmcsim_util_get_max_blocksize</name></member>
   </compound>
   <compound refid="hmc__sim__macros_8h" kind="file"><name>hmc_sim_macros.h</name>
     <member refid="hmc__sim__macros_8h_1a2e78eb267d251b7551146204f323ae97" kind="define"><name>HMC_MAJOR_VERSION</name></member>
@@ -97,9 +100,16 @@
     <member refid="hmc__sim__macros_8h_1a7fd52e0755664958a8a767229c884d58" kind="define"><name>HMC_PROTOCOL_REVISION</name></member>
     <member refid="hmc__sim__macros_8h_1a794d25af303879af8b9853e15cf6f57e" kind="define"><name>HMC_PHY_REVISION</name></member>
     <member refid="hmc__sim__macros_8h_1a940f574bde31746bb977c7fbc7207d81" kind="define"><name>HMC_PHY_SPEED</name></member>
+    <member refid="hmc__sim__macros_8h_1aff4dbd26b664d457b16b6bdfd7a74e4d" kind="define"><name>HMC_ERROR_PARAMS</name></member>
+    <member refid="hmc__sim__macros_8h_1aec4a4b63b70b87f1e260f2a10734b64f" kind="define"><name>HMC_ERROR_DEV_INIT</name></member>
     <member refid="hmc__sim__macros_8h_1a40b822d79346dad65f95faab65452aa3" kind="define"><name>HMC_ERROR</name></member>
     <member refid="hmc__sim__macros_8h_1a825483c2ff71a2ca4dccd7ae20234b8c" kind="define"><name>HMC_OK</name></member>
     <member refid="hmc__sim__macros_8h_1a7de9c73e38ba8b8eadc84e5274245f47" kind="define"><name>HMC_STALL</name></member>
+    <member refid="hmc__sim__macros_8h_1a995538619e786b4fd6a7dec8e26e0807" kind="define"><name>HMC_TRACE_BANK</name></member>
+    <member refid="hmc__sim__macros_8h_1a69905bcf7611340a4e9a914f3ccac36e" kind="define"><name>HMC_TRACE_QUEUE</name></member>
+    <member refid="hmc__sim__macros_8h_1a42a34184b881ecdcc4d1a8b2d35f2874" kind="define"><name>HMC_TRACE_CMD</name></member>
+    <member refid="hmc__sim__macros_8h_1a621c0b7eceddaba3898b52eb5725de6e" kind="define"><name>HMC_TRACE_STALL</name></member>
+    <member refid="hmc__sim__macros_8h_1a5ca7c3ac52552652e1285ff8fc1ed7c5" kind="define"><name>HMC_TRACE_LATENCY</name></member>
     <member refid="hmc__sim__macros_8h_1a75ab90ca38427c7e48a61b04761a8374" kind="define"><name>HMC_MAX_DEVS</name></member>
     <member refid="hmc__sim__macros_8h_1af3a4cbb7dc903b46c293f29aaa0860ff" kind="define"><name>HMC_MAX_LINKS</name></member>
     <member refid="hmc__sim__macros_8h_1af207e542afb50ed544908141e6a1293c" kind="define"><name>HMC_MIN_LINKS</name></member>
@@ -117,6 +127,8 @@
     <member refid="hmc__sim__macros_8h_1a3afb8c91d4889b2b3cb0d83fe0e537ac" kind="define"><name>HMC_RQST_INVALID</name></member>
     <member refid="hmc__sim__macros_8h_1a950109134b75be3f0184cb9afb344c77" kind="define"><name>HMC_RQST_VALID</name></member>
     <member refid="hmc__sim__macros_8h_1a6c11562cdc94061caa3b8a2f0997261a" kind="define"><name>HMC_RQST_CONFLICT</name></member>
+    <member refid="hmc__sim__macros_8h_1ac68660fe44647e4996344cffb9c12434" kind="define"><name>HMC_RQST_STALLED</name></member>
+    <member refid="hmc__sim__macros_8h_1ae1e60132e67fab2e5e260ba0c3da120c" kind="define"><name>HMC_RQST_ZOMBIE</name></member>
     <member refid="hmc__sim__macros_8h_1af1b845f22e2033d5570db8a075083fa4" kind="define"><name>HMC_1GB</name></member>
     <member refid="hmc__sim__macros_8h_1a9439480ad972ba04c6aafeebe5ca0d66" kind="define"><name>HMC_NUM_REGS</name></member>
     <member refid="hmc__sim__macros_8h_1a292338a1e7e25836e3e5e3ad42b8d5da" kind="define"><name>HMC_REG_EDR0</name></member>
@@ -171,6 +183,9 @@
     <member refid="hmc__sim__macros_8h_1a93abb8673c5dbc66ecf8786e6fb306ab" kind="define"><name>HMC_REG_VCR_IDX</name></member>
     <member refid="hmc__sim__macros_8h_1ae8c27d1d3ef98b5901015114b492de59" kind="define"><name>HMC_REG_FEAT_IDX</name></member>
     <member refid="hmc__sim__macros_8h_1ac7cd8fdfa4b1952c4fb81b57fc6b3a81" kind="define"><name>HMC_REG_RVID_IDX</name></member>
+    <member refid="hmc__sim__macros_8h_1ade139be925c8ae38e34616e5e1c34240" kind="define"><name>HMCSIM_PRINT_TRACE</name></member>
+    <member refid="hmc__sim__macros_8h_1a3905f5a3edf715fbf2ba78c2dd62f145" kind="define"><name>HMCSIM_PRINT_ADDR_TRACE</name></member>
+    <member refid="hmc__sim__macros_8h_1a32c580ed9f6c38b6959e315e0c181bf0" kind="define"><name>HMCSIM_PRINT_INT_TRACE</name></member>
   </compound>
   <compound refid="hmc__sim__types_8h" kind="file"><name>hmc_sim_types.h</name>
     <member refid="hmc__sim__types_8h_1ac8cf1664997a50dd73f1cbcc232c9574" kind="enum"><name>hmc_link_def_t</name></member>
@@ -185,7 +200,8 @@
     <member refid="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803a947d026110ffd0598206f56843cd14d2" kind="enumvalue"><name>WR_RS</name></member>
     <member refid="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803aec93f7a42169edd580b637ad9962b0a2" kind="enumvalue"><name>MD_RD_RS</name></member>
     <member refid="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803aa890b276a4a6b2b28a00a45c5e49a0f1" kind="enumvalue"><name>MD_WR_RS</name></member>
-    <member refid="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803a2fd6f336d08340583bd620a7f5694c90" kind="enumvalue"><name>ERROR</name></member>
+    <member refid="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803ade3f2d7f9d1feb1e550a928d40fd57c7" kind="enumvalue"><name>RSP_ERROR</name></member>
+    <member refid="hmc__sim__types_8h_1a7d788b3b4cdf60e487e5c95d9a86c803a9328dd31b81a595041232991d8d03b63" kind="enumvalue"><name>RSP_NONE</name></member>
     <member refid="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1e" kind="enum"><name>hmc_rqst_t</name></member>
     <member refid="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1ea59a82726608b8241846f41d411abd0cc" kind="enumvalue"><name>WR16</name></member>
     <member refid="hmc__sim__types_8h_1a11c573dbaf571886027655f3a141ba1eaa2b10135bf86e6e46a199db67f6a65a5" kind="enumvalue"><name>WR32</name></member>

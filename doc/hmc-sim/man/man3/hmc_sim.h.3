@@ -1,4 +1,4 @@
-.TH "include/hmc_sim.h" 3 "Wed Sep 11 2013" "Version 1.0" "HMC_SIM" \" -*- nroff -*-
+.TH "include/hmc_sim.h" 3 "Sat Jan 25 2014" "Version 1.0" "HMC_SIM" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -62,6 +62,18 @@ Hybrid Memory Cube Functional Simulation Library Header File\&.
 .RI "int \fBhmcsim_jtag_reg_write\fP (struct \fBhmcsim_t\fP *hmc, uint32_t dev, uint64_t reg, uint64_t value)"
 .br
 .RI "\fIAttempts to write the value to the specified HMC device register for the target device using the side-band JTAG interface\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_util_set_max_blocksize\fP (struct \fBhmcsim_t\fP *hmc, uint32_t dev, uint32_t bsize)"
+.br
+.RI "\fISets the maximum request size for the target device\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_util_set_all_max_blocksize\fP (struct \fBhmcsim_t\fP *hmc, uint32_t bsize)"
+.br
+.RI "\fISets the maximum request size for all the devices\&. \fP"
+.ti -1c
+.RI "int \fBhmcsim_util_get_max_blocksize\fP (struct \fBhmcsim_t\fP *hmc, uint32_t dev, uint32_t *bsize)"
+.br
+.RI "\fIGets the maximum request size for the target device\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -334,6 +346,64 @@ Sets the trace level of an initialized HMC library instance\&.
 \fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
 .br
 \fIlevel\fP is the target trace level\&. Larger integers indicate more tracing output\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_util_get_max_blocksize (struct \fBhmcsim_t\fP *hmc, uint32_tdev, uint32_t *bsize)"
+
+.PP
+Gets the maximum request size for the target device\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIdev\fP is the target device cube ID [cub] to read from 
+.br
+\fI*bsize\fP is a pointer to a valid uint32_t location that will contain the max block size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_util_set_all_max_blocksize (struct \fBhmcsim_t\fP *hmc, uint32_tbsize)"
+
+.PP
+Sets the maximum request size for all the devices\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIbsize\fP is the target block size [32,64,128] 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_util_set_max_blocksize (struct \fBhmcsim_t\fP *hmc, uint32_tdev, uint32_tbsize)"
+
+.PP
+Sets the maximum request size for the target device\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIdev\fP is the target device cube ID [cub] to read from 
+.br
+\fIbsize\fP is the target block size [32,64,128] 
 .RE
 .PP
 \fBReturns:\fP

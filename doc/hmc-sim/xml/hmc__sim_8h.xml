@@ -842,6 +842,139 @@
         </inbodydescription>
         <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="257" column="1"/>
       </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1ae145e2a3c9d47aea72f78bf7622ad81e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_util_set_max_blocksize</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t dev, uint32_t bsize)</argsstring>
+        <name>hmcsim_util_set_max_blocksize</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>bsize</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximum request size for the target device. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target device cube ID [cub] to read from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target block size [32,64,128] </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="267" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1a92ec5bd21d7922a2e8c065d4ca2a50cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_util_set_all_max_blocksize</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t bsize)</argsstring>
+        <name>hmcsim_util_set_all_max_blocksize</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>bsize</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximum request size for all the devices. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target block size [32,64,128] </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="275" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="hmc__sim_8h_1a56e032ce38e246fb2e669159da7721e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int hmcsim_util_get_max_blocksize</definition>
+        <argsstring>(struct hmcsim_t *hmc, uint32_t dev, uint32_t *bsize)</argsstring>
+        <name>hmcsim_util_get_max_blocksize</name>
+        <param>
+          <type>struct <ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref> *</type>
+          <declname>hmc</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>bsize</declname>
+        </param>
+        <briefdescription>
+<para>Gets the maximum request size for the target device. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>*hmc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid and initialized hmc structure. Must not be null. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the target device cube ID [cub] to read from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>*bsize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer to a valid uint32_t location that will contain the max block size </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h" line="285" column="1"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Hybrid Memory Cube Functional Simulation Library Header File. </para>    </briefdescription>
@@ -936,13 +1069,21 @@
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
 <codeline lineno="257"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1a9a3f8d88943e73f19bef1978f32b190c" kindref="member">hmcsim_jtag_reg_write</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint32_t<sp/>dev,<sp/>uint64_t<sp/>reg,<sp/>uint64_t<sp/>value<sp/>);</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="260"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="262"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_HMC_SIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="264"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1ae145e2a3c9d47aea72f78bf7622ad81e" kindref="member">hmcsim_util_set_max_blocksize</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint32_t<sp/>dev,<sp/>uint32_t<sp/>bsize<sp/>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1a92ec5bd21d7922a2e8c065d4ca2a50cf" kindref="member">hmcsim_util_set_all_max_blocksize</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint32_t<sp/>bsize<sp/>);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><ref refid="hmc__sim_8h_1a56e032ce38e246fb2e669159da7721e6" kindref="member">hmcsim_util_get_max_blocksize</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structhmcsim__t" kindref="compound">hmcsim_t</ref><sp/>*hmc,<sp/>uint32_t<sp/>dev,<sp/>uint32_t<sp/>*bsize<sp/>);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="288"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="290"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/>_HMC_SIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="292"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/hmc_sim/include/hmc_sim.h"/>
   </compounddef>

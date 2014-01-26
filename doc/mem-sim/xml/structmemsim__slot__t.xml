@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structmemsim__slot__t" kind="struct" prot="public">
+    <compoundname>memsim_slot_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmemsim__slot__t_1ad0d9c1c64c0a110c1bc81ce1c919bad0" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structmemsim__entry__t" kindref="compound">memsim_entry_t</ref> *</type>
+        <definition>struct memsim_entry_t* memsim_slot_t::entry</definition>
+        <argsstring></argsstring>
+        <name>entry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="58" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__slot__t_1a18f23ad9c0a96fbe2802c3aac6e9054d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t memsim_slot_t::num_slots</definition>
+        <argsstring></argsstring>
+        <name>num_slots</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_SLOT_T: ENTRIES </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="59" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__slot__t_1a960e4f67aacef2a35af9b5cbe1ac145b" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t memsim_slot_t::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_SLOT_T: NUMBER OF SLOTS </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="60" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>memsim_slot_t</label>
+        <link refid="structmemsim__slot__t"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>entry</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>memsim_entry_t</label>
+        <link refid="structmemsim__entry__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="57" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="57" bodyend="61"/>
+    <listofallmembers>
+      <member refid="structmemsim__slot__t_1ad0d9c1c64c0a110c1bc81ce1c919bad0" prot="public" virt="non-virtual"><scope>memsim_slot_t</scope><name>entry</name></member>
+      <member refid="structmemsim__slot__t_1a960e4f67aacef2a35af9b5cbe1ac145b" prot="public" virt="non-virtual"><scope>memsim_slot_t</scope><name>id</name></member>
+      <member refid="structmemsim__slot__t_1a18f23ad9c0a96fbe2802c3aac6e9054d" prot="public" virt="non-virtual"><scope>memsim_slot_t</scope><name>num_slots</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

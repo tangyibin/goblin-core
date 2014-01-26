@@ -1,0 +1,212 @@
+\hypertarget{mem__sim_8h}{\section{include/mem\-\_\-sim.h File Reference}
+\label{mem__sim_8h}\index{include/mem\-\_\-sim.\-h@{include/mem\-\_\-sim.\-h}}
+}
+
+
+Goblin\-Core-\/64 Memory Interface Simulation Library Header F\-Ile.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{mem__sim_8h_abb5a0f39c927736087184f93003a46ca}{memsim\-\_\-init} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, memsim\-\_\-iface\-\_\-t iface, memsim\-\_\-alg\-\_\-t alg, uint32\-\_\-t task\-\_\-groups, uint32\-\_\-t task\-\_\-procs, uint32\-\_\-t tasks, uint32\-\_\-t g\-\_\-slots, uint32\-\_\-t s\-\_\-slots, uint32\-\_\-t a\-\_\-slots, uint32\-\_\-t ga\-\_\-slots, uint64\-\_\-t opt)
+\begin{DoxyCompactList}\small\item\em Initializes the internal M\-E\-M\-\_\-\-S\-I\-M state with the necessary hardware configuration options. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_a5d531491f95a8c5bd2eecf87d8f4d332}{memsim\-\_\-free} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim)
+\begin{DoxyCompactList}\small\item\em Frees all the internal memsim state. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_aceef729a6d340d3eb0f71765ada14e7c}{memsim\-\_\-clock} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim)
+\begin{DoxyCompactList}\small\item\em Initiates a clock signal event for the memsim instance. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_abb276b248eb1fcc99bb85975820ae9f4}{memsim\-\_\-rqst} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, uint64\-\_\-t gconst, memsim\-\_\-rqst\-\_\-t rqst, uint64\-\_\-t $\ast$addr, uint64\-\_\-t $\ast$payload)
+\begin{DoxyCompactList}\small\item\em Initiates a memory request. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_ae7dcedd9853c7260f705f6be4a02c48c}{memsim\-\_\-reset} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim)
+\begin{DoxyCompactList}\small\item\em resets the target memsim instance \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_aab498cdf5dde04a2bbbbdebf1ebdb09f}{memsim\-\_\-trace\-\_\-handle} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, F\-I\-L\-E $\ast$tfile)
+\begin{DoxyCompactList}\small\item\em Sets the open file handle for internal memsim tracing. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_a2cb5e3fff0dd289874f27e3bfe6651a1}{memsim\-\_\-trace\-\_\-level} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, uint32\-\_\-t level)
+\begin{DoxyCompactList}\small\item\em Sets the trace level for the msim instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Goblin\-Core-\/64 Memory Interface Simulation Library Header F\-Ile. The M\-E\-M\-\_\-\-S\-I\-M library is a standard C library that provides functional simulation support for experimenting with various memory interface modules in association with the Goblin\-Core-\/64 architecture. 
+
+\subsection{Function Documentation}
+\hypertarget{mem__sim_8h_aceef729a6d340d3eb0f71765ada14e7c}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-clock@{memsim\-\_\-clock}}
+\index{memsim\-\_\-clock@{memsim\-\_\-clock}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-clock}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-clock (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_aceef729a6d340d3eb0f71765ada14e7c}
+
+
+Initiates a clock signal event for the memsim instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_a5d531491f95a8c5bd2eecf87d8f4d332}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-free@{memsim\-\_\-free}}
+\index{memsim\-\_\-free@{memsim\-\_\-free}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_a5d531491f95a8c5bd2eecf87d8f4d332}
+
+
+Frees all the internal memsim state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_abb5a0f39c927736087184f93003a46ca}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-init@{memsim\-\_\-init}}
+\index{memsim\-\_\-init@{memsim\-\_\-init}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim, }
+\item[{memsim\-\_\-iface\-\_\-t}]{iface, }
+\item[{memsim\-\_\-alg\-\_\-t}]{alg, }
+\item[{uint32\-\_\-t}]{task\-\_\-groups, }
+\item[{uint32\-\_\-t}]{task\-\_\-procs, }
+\item[{uint32\-\_\-t}]{tasks, }
+\item[{uint32\-\_\-t}]{g\-\_\-slots, }
+\item[{uint32\-\_\-t}]{s\-\_\-slots, }
+\item[{uint32\-\_\-t}]{a\-\_\-slots, }
+\item[{uint32\-\_\-t}]{ga\-\_\-slots, }
+\item[{uint64\-\_\-t}]{opt}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_abb5a0f39c927736087184f93003a46ca}
+
+
+Initializes the internal M\-E\-M\-\_\-\-S\-I\-M state with the necessary hardware configuration options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. Must not be null. \\
+\hline
+{\em iface} & is the interface type\-: M\-E\-M\-S\-I\-M\-\_\-\-B\-A\-S\-I\-C or M\-E\-M\-S\-I\-M\-\_\-\-H\-M\-C \\
+\hline
+{\em alg} & is the coalescing algorithm\-: M\-E\-M\-S\-I\-M\-\_\-\-S\-I\-M\-P\-L\-E or M\-E\-M\-S\-I\-M\-\_\-\-E\-X\-P \\
+\hline
+{\em task\-\_\-groups} & is the number of task groups on the socket \\
+\hline
+{\em task\-\_\-procs} & is the number of task procs in a task group \\
+\hline
+{\em tasks} & is the number of tasks per task proc \\
+\hline
+{\em g\-\_\-slots} & is the number of interface slots at the group interface \\
+\hline
+{\em s\-\_\-slots} & is the number of interface slots at the socket interface \\
+\hline
+{\em a\-\_\-slots} & is the number of interface slots at the amo interface \mbox{[}socket\mbox{]} \\
+\hline
+{\em ga\-\_\-slots} & is the number of interface slots at the global addressing interface \\
+\hline
+{\em opt} & is a O\-R'd set of memsim options\-: M\-E\-M\-S\-I\-M\-\_\-\-A\-M\-O, M\-E\-M\-S\-I\-M\-\_\-\-G\-A \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_ae7dcedd9853c7260f705f6be4a02c48c}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-reset@{memsim\-\_\-reset}}
+\index{memsim\-\_\-reset@{memsim\-\_\-reset}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-reset (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_ae7dcedd9853c7260f705f6be4a02c48c}
+
+
+resets the target memsim instance 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_abb276b248eb1fcc99bb85975820ae9f4}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-rqst@{memsim\-\_\-rqst}}
+\index{memsim\-\_\-rqst@{memsim\-\_\-rqst}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-rqst}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-rqst (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim, }
+\item[{uint64\-\_\-t}]{gconst, }
+\item[{memsim\-\_\-rqst\-\_\-t}]{rqst, }
+\item[{uint64\-\_\-t $\ast$}]{addr, }
+\item[{uint64\-\_\-t $\ast$}]{payload}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_abb276b248eb1fcc99bb85975820ae9f4}
+
+
+Initiates a memory request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. \\
+\hline
+{\em gconst} & is a G\-C64 constant register value \\
+\hline
+{\em rqst} & is the request type \\
+\hline
+{\em addr} & is the target address for the request \\
+\hline
+{\em payload} & is an optional payload for the request \mbox{[}writes\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_aab498cdf5dde04a2bbbbdebf1ebdb09f}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-trace\-\_\-handle@{memsim\-\_\-trace\-\_\-handle}}
+\index{memsim\-\_\-trace\-\_\-handle@{memsim\-\_\-trace\-\_\-handle}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-trace\-\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-trace\-\_\-handle (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim, }
+\item[{F\-I\-L\-E $\ast$}]{tfile}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_aab498cdf5dde04a2bbbbdebf1ebdb09f}
+
+
+Sets the open file handle for internal memsim tracing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. \\
+\hline
+{\em $\ast$tfile} & is an open file handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_a2cb5e3fff0dd289874f27e3bfe6651a1}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-trace\-\_\-level@{memsim\-\_\-trace\-\_\-level}}
+\index{memsim\-\_\-trace\-\_\-level@{memsim\-\_\-trace\-\_\-level}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-trace\-\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-trace\-\_\-level (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim, }
+\item[{uint32\-\_\-t}]{level}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_a2cb5e3fff0dd289874f27e3bfe6651a1}
+
+
+Sets the trace level for the msim instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure. \\
+\hline
+{\em level} & is the designated trace level \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}

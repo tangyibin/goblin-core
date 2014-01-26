@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.5">
+  <compounddef id="structmemsim__entry__t" kind="struct" prot="public">
+    <compoundname>memsim_entry_t</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmemsim__entry__t_1ac8a6d8074d88a12a21d8b9b1b7a71dc9" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t memsim_entry_t::buf[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="51" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__entry__t_1a5e6fc38a3aa83e0c1ec7fcf9e1cf2563" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t memsim_entry_t::gconst</definition>
+        <argsstring></argsstring>
+        <name>gconst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_ENTRY_T: BUFFER </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="52" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__entry__t_1a0c0fd08ced6d9c59b1c2806186ac6dc2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t memsim_entry_t::valid</definition>
+        <argsstring></argsstring>
+        <name>valid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_ENTRY_T: GCONST </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="53" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__entry__t_1a0bd6994a034a78c0d2b8d2adfc0cf2bd" prot="public" static="no" mutable="no">
+        <type>memsim_rqst_t</type>
+        <definition>memsim_rqst_t memsim_entry_t::rqst</definition>
+        <argsstring></argsstring>
+        <name>rqst</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_ENTRY_T: VALID BIT </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="54" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="50" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="50" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structmemsim__entry__t_1ac8a6d8074d88a12a21d8b9b1b7a71dc9" prot="public" virt="non-virtual"><scope>memsim_entry_t</scope><name>buf</name></member>
+      <member refid="structmemsim__entry__t_1a5e6fc38a3aa83e0c1ec7fcf9e1cf2563" prot="public" virt="non-virtual"><scope>memsim_entry_t</scope><name>gconst</name></member>
+      <member refid="structmemsim__entry__t_1a0bd6994a034a78c0d2b8d2adfc0cf2bd" prot="public" virt="non-virtual"><scope>memsim_entry_t</scope><name>rqst</name></member>
+      <member refid="structmemsim__entry__t_1a0c0fd08ced6d9c59b1c2806186ac6dc2" prot="public" virt="non-virtual"><scope>memsim_entry_t</scope><name>valid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

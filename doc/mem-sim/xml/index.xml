@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.5">
+  <compound refid="structmemsim__entry__t" kind="struct"><name>memsim_entry_t</name>
+    <member refid="structmemsim__entry__t_1ac8a6d8074d88a12a21d8b9b1b7a71dc9" kind="variable"><name>buf</name></member>
+    <member refid="structmemsim__entry__t_1a5e6fc38a3aa83e0c1ec7fcf9e1cf2563" kind="variable"><name>gconst</name></member>
+    <member refid="structmemsim__entry__t_1a0c0fd08ced6d9c59b1c2806186ac6dc2" kind="variable"><name>valid</name></member>
+    <member refid="structmemsim__entry__t_1a0bd6994a034a78c0d2b8d2adfc0cf2bd" kind="variable"><name>rqst</name></member>
+  </compound>
+  <compound refid="structmemsim__slot__t" kind="struct"><name>memsim_slot_t</name>
+    <member refid="structmemsim__slot__t_1ad0d9c1c64c0a110c1bc81ce1c919bad0" kind="variable"><name>entry</name></member>
+    <member refid="structmemsim__slot__t_1a18f23ad9c0a96fbe2802c3aac6e9054d" kind="variable"><name>num_slots</name></member>
+    <member refid="structmemsim__slot__t_1a960e4f67aacef2a35af9b5cbe1ac145b" kind="variable"><name>id</name></member>
+  </compound>
+  <compound refid="structmemsim__t" kind="struct"><name>memsim_t</name>
+    <member refid="structmemsim__t_1a31602ed79156df735349134ab61d1c2a" kind="variable"><name>g_slots</name></member>
+    <member refid="structmemsim__t_1a35adeb1c88dde11bfe128119c723c037" kind="variable"><name>s_slots</name></member>
+    <member refid="structmemsim__t_1a855dbf0b36cad4e37ccb8dcb26caa864" kind="variable"><name>a_slots</name></member>
+    <member refid="structmemsim__t_1af10e3ad73189bf418d29478bb4de5eb2" kind="variable"><name>ga_slots</name></member>
+    <member refid="structmemsim__t_1a37831c21b74789b55a12495be077d120" kind="variable"><name>iface</name></member>
+    <member refid="structmemsim__t_1ae9ec2da913a82a570dae07d3ae8d09b3" kind="variable"><name>alg</name></member>
+    <member refid="structmemsim__t_1ac893c94cb9e4cb525baa4a4352ef6269" kind="variable"><name>task_groups</name></member>
+    <member refid="structmemsim__t_1a13c682d9789b022f02fbeafcdc2a0866" kind="variable"><name>task_procs</name></member>
+    <member refid="structmemsim__t_1a907d500eb21a9b3c8813ed0e639d806c" kind="variable"><name>tasks</name></member>
+    <member refid="structmemsim__t_1a0bdb5e96cb3acca8a4ec5daea271243d" kind="variable"><name>tfile</name></member>
+    <member refid="structmemsim__t_1a5adec994c4699e314a35284102cb1cb3" kind="variable"><name>tracelevel</name></member>
+    <member refid="structmemsim__t_1a34e92877e65240907a70bbfe16fd4a34" kind="variable"><name>opt</name></member>
+    <member refid="structmemsim__t_1a09a7513daf69ea79d15c89b11efe5431" kind="variable"><name>clock</name></member>
+    <member refid="structmemsim__t_1a0569d3661744c965a6620ca75563144d" kind="variable"><name>group</name></member>
+    <member refid="structmemsim__t_1a42ae6dd8a64e2d04c30e35354ec25555" kind="variable"><name>socket</name></member>
+    <member refid="structmemsim__t_1a9e7a2ce164d954f25105d93eaf040b3f" kind="variable"><name>amo</name></member>
+    <member refid="structmemsim__t_1a3b005d5aa8e759a08281f59c9f05ed3b" kind="variable"><name>global</name></member>
+    <member refid="structmemsim__t_1a13bfc8f8ea24eb83b5b3976aee534db3" kind="variable"><name>__ptr_slots</name></member>
+    <member refid="structmemsim__t_1ac8e490728a0881577947adb893811324" kind="variable"><name>__ptr_entry</name></member>
+  </compound>
+  <compound refid="mem__sim_8h" kind="file"><name>mem_sim.h</name>
+    <member refid="mem__sim_8h_1abb5a0f39c927736087184f93003a46ca" kind="function"><name>memsim_init</name></member>
+    <member refid="mem__sim_8h_1a5d531491f95a8c5bd2eecf87d8f4d332" kind="function"><name>memsim_free</name></member>
+    <member refid="mem__sim_8h_1aceef729a6d340d3eb0f71765ada14e7c" kind="function"><name>memsim_clock</name></member>
+    <member refid="mem__sim_8h_1abb276b248eb1fcc99bb85975820ae9f4" kind="function"><name>memsim_rqst</name></member>
+    <member refid="mem__sim_8h_1ae7dcedd9853c7260f705f6be4a02c48c" kind="function"><name>memsim_reset</name></member>
+    <member refid="mem__sim_8h_1aab498cdf5dde04a2bbbbdebf1ebdb09f" kind="function"><name>memsim_trace_handle</name></member>
+    <member refid="mem__sim_8h_1a2cb5e3fff0dd289874f27e3bfe6651a1" kind="function"><name>memsim_trace_level</name></member>
+  </compound>
+  <compound refid="mem__sim__macros_8h" kind="file"><name>mem_sim_macros.h</name>
+    <member refid="mem__sim__macros_8h_1a8f1bad80625fa9ce2785c9078adf35ab" kind="define"><name>MEMSIM_MAJOR_VERSION</name></member>
+    <member refid="mem__sim__macros_8h_1ab8b2f5ef343773e2ec01cd7b2745cc5e" kind="define"><name>MEMSIM_MINOR_VERSION</name></member>
+    <member refid="mem__sim__macros_8h_1a865f0959c0893c9abaf45d7676b5418e" kind="define"><name>MEMSIM_ERROR</name></member>
+    <member refid="mem__sim__macros_8h_1a26e832637d5d6623ac61f71eb3684280" kind="define"><name>MEMSIM_OK</name></member>
+    <member refid="mem__sim__macros_8h_1ae8c6b2edd7da655b8727bda03f175ce2" kind="define"><name>GSIM_REG_GCONST_PID</name></member>
+    <member refid="mem__sim__macros_8h_1ac47732dac86739b06bec2e395918cc1e" kind="define"><name>GSIM_REG_GCONST_NID</name></member>
+    <member refid="mem__sim__macros_8h_1a2b4bcf967ac06012455a41c40e361469" kind="define"><name>GSIM_REG_GCONST_SID</name></member>
+    <member refid="mem__sim__macros_8h_1a90e3d0e5c5391cb97286642cd4a61b35" kind="define"><name>GSIM_REG_GCONST_TG</name></member>
+    <member refid="mem__sim__macros_8h_1a405cc22687905b259fdf5c444a7b6588" kind="define"><name>GSIM_REG_GCONST_TP</name></member>
+    <member refid="mem__sim__macros_8h_1a7569556cde9ab60fc53d7e85e386f163" kind="define"><name>GSIM_REG_GCONST_TC</name></member>
+    <member refid="mem__sim__macros_8h_1a695ecbf760c8278578de2893fec48a81" kind="define"><name>MEMSIM_PRINT_TRACE</name></member>
+  </compound>
+  <compound refid="mem__sim__types_8h" kind="file"><name>mem_sim_types.h</name>
+    <member refid="mem__sim__types_8h_1a04ceb978b8a769bc2c9e305e21464680" kind="define"><name>MEMSIM_AMO</name></member>
+    <member refid="mem__sim__types_8h_1ab31926411069b03dd07fffdb25f9ef57" kind="define"><name>MEMSIM_GA</name></member>
+    <member refid="mem__sim__types_8h_1a63e5fcdc8a7eedb3234b85b5c0670727" kind="enum"><name>memsim_iface_t</name></member>
+    <member refid="mem__sim__types_8h_1a63e5fcdc8a7eedb3234b85b5c0670727a97da5300398ff775ca4dc7028bc6b37b" kind="enumvalue"><name>MEMSIM_BASIC</name></member>
+    <member refid="mem__sim__types_8h_1a63e5fcdc8a7eedb3234b85b5c0670727a22edf5a0ddd6a0a2db2c65f582aaa50e" kind="enumvalue"><name>MEMSIM_HMC</name></member>
+    <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80" kind="enum"><name>memsim_alg_t</name></member>
+    <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80aa85ba53c0ffe978bf1bb99f84f82e751" kind="enumvalue"><name>MEMSIM_SIMPLE</name></member>
+    <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80a54c521acf22547ccf680e16558f399f6" kind="enumvalue"><name>MEMSIM_EXP</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27" kind="enum"><name>memsim_rqst_t</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ab10eb0e5f8112cc5e707f2ed3fe5d139" kind="enumvalue"><name>MEMSIM_RD8</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a984544aa326f6fe53af99b61dab06db7" kind="enumvalue"><name>MEMSIM_WR8</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a84827d4b7c4061290a4bd73c4e859235" kind="enumvalue"><name>MEMSIM_FENCE</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a55605a1d10bb4417f38ac41288c6e729" kind="enumvalue"><name>MEMSIM_UNK</name></member>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+</doxygenindex>
