@@ -24,7 +24,7 @@ OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 DEPS := $(OBJECTS:.o=.deps)
  
 $(TARGET): $(OBJECTS)
-	@echo " Linking..."; $(AR) $(AR_OPTS) $(TARGET) $(OBJECTS) 
+	@echo " Linking..."; $(AR) $(ARFLAGS) $(TARGET) $(OBJECTS) 
  
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
