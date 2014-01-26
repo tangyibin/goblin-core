@@ -24,7 +24,7 @@ GoblinCore-64 Memory Interface Simulation Library Header FIle\&.
 .br
 .RI "\fIInitiates a clock signal event for the memsim instance\&. \fP"
 .ti -1c
-.RI "int \fBmemsim_rqst\fP (struct \fBmemsim_t\fP *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t *addr, uint64_t *payload)"
+.RI "int \fBmemsim_rqst\fP (struct \fBmemsim_t\fP *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t addr, uint64_t payload0, uint64_t payload1)"
 .br
 .RI "\fIInitiates a memory request\&. \fP"
 .ti -1c
@@ -131,7 +131,7 @@ resets the target memsim instance
 .RE
 .PP
 
-.SS "int memsim_rqst (struct \fBmemsim_t\fP *msim, uint64_tgconst, memsim_rqst_trqst, uint64_t *addr, uint64_t *payload)"
+.SS "int memsim_rqst (struct \fBmemsim_t\fP *msim, uint64_tgconst, memsim_rqst_trqst, uint64_taddr, uint64_tpayload0, uint64_tpayload1)"
 
 .PP
 Initiates a memory request\&. 
@@ -146,7 +146,9 @@ Initiates a memory request\&.
 .br
 \fIaddr\fP is the target address for the request 
 .br
-\fIpayload\fP is an optional payload for the request [writes] 
+\fIpayload0\fP is an optional payload for the request [writes] 
+.br
+\fIpayload1\fP is an optional payload for the request [CAS] 
 .RE
 .PP
 \fBReturns:\fP

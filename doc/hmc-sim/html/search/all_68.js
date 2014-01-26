@@ -17,6 +17,7 @@ var searchData=
   ['hmcsim_5finit',['hmcsim_init',['../hmc__sim_8h.html#aa800472d739e996abc58805909ff66c1',1,'hmc_sim.h']]],
   ['hmcsim_5fjtag_5freg_5fread',['hmcsim_jtag_reg_read',['../hmc__sim_8h.html#a17c848a15bdf0009329b5486df1c0f66',1,'hmc_sim.h']]],
   ['hmcsim_5fjtag_5freg_5fwrite',['hmcsim_jtag_reg_write',['../hmc__sim_8h.html#a9a3f8d88943e73f19bef1978f32b190c',1,'hmc_sim.h']]],
+  ['hmcsim_5flink_5fconfig',['hmcsim_link_config',['../hmc__sim_8h.html#ad2eae4b1a8a1669e02d8c01d01e3c033',1,'hmc_sim.h']]],
   ['hmcsim_5frecv',['hmcsim_recv',['../hmc__sim_8h.html#ab2739ca92af423efe975b966492dfd7c',1,'hmc_sim.h']]],
   ['hmcsim_5fsend',['hmcsim_send',['../hmc__sim_8h.html#a12313ad659378fbf0f53e19ba6ee9eed',1,'hmc_sim.h']]],
   ['hmcsim_5ft',['hmcsim_t',['../structhmcsim__t.html',1,'']]],

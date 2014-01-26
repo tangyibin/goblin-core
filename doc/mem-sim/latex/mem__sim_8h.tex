@@ -15,7 +15,7 @@ int \hyperlink{mem__sim_8h_a5d531491f95a8c5bd2eecf87d8f4d332}{memsim\-\_\-free} 
 \begin{DoxyCompactList}\small\item\em Frees all the internal memsim state. \end{DoxyCompactList}\item 
 int \hyperlink{mem__sim_8h_aceef729a6d340d3eb0f71765ada14e7c}{memsim\-\_\-clock} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim)
 \begin{DoxyCompactList}\small\item\em Initiates a clock signal event for the memsim instance. \end{DoxyCompactList}\item 
-int \hyperlink{mem__sim_8h_abb276b248eb1fcc99bb85975820ae9f4}{memsim\-\_\-rqst} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, uint64\-\_\-t gconst, memsim\-\_\-rqst\-\_\-t rqst, uint64\-\_\-t $\ast$addr, uint64\-\_\-t $\ast$payload)
+int \hyperlink{mem__sim_8h_a1bad5808104fbdf52c6751f61d3b68bd}{memsim\-\_\-rqst} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, uint64\-\_\-t gconst, memsim\-\_\-rqst\-\_\-t rqst, uint64\-\_\-t addr, uint64\-\_\-t payload0, uint64\-\_\-t payload1)
 \begin{DoxyCompactList}\small\item\em Initiates a memory request. \end{DoxyCompactList}\item 
 int \hyperlink{mem__sim_8h_ae7dcedd9853c7260f705f6be4a02c48c}{memsim\-\_\-reset} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim)
 \begin{DoxyCompactList}\small\item\em resets the target memsim instance \end{DoxyCompactList}\item 
@@ -135,17 +135,18 @@ resets the target memsim instance
 \begin{DoxyReturn}{Returns}
 0 on success, nonzero otherwise 
 \end{DoxyReturn}
-\hypertarget{mem__sim_8h_abb276b248eb1fcc99bb85975820ae9f4}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-rqst@{memsim\-\_\-rqst}}
+\hypertarget{mem__sim_8h_a1bad5808104fbdf52c6751f61d3b68bd}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-rqst@{memsim\-\_\-rqst}}
 \index{memsim\-\_\-rqst@{memsim\-\_\-rqst}!mem_sim.h@{mem\-\_\-sim.\-h}}
 \subsubsection[{memsim\-\_\-rqst}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-rqst (
 \begin{DoxyParamCaption}
 \item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim, }
 \item[{uint64\-\_\-t}]{gconst, }
 \item[{memsim\-\_\-rqst\-\_\-t}]{rqst, }
-\item[{uint64\-\_\-t $\ast$}]{addr, }
-\item[{uint64\-\_\-t $\ast$}]{payload}
+\item[{uint64\-\_\-t}]{addr, }
+\item[{uint64\-\_\-t}]{payload0, }
+\item[{uint64\-\_\-t}]{payload1}
 \end{DoxyParamCaption}
-)}}\label{mem__sim_8h_abb276b248eb1fcc99bb85975820ae9f4}
+)}}\label{mem__sim_8h_a1bad5808104fbdf52c6751f61d3b68bd}
 
 
 Initiates a memory request. 
@@ -160,7 +161,9 @@ Initiates a memory request.
 \hline
 {\em addr} & is the target address for the request \\
 \hline
-{\em payload} & is an optional payload for the request \mbox{[}writes\mbox{]} \\
+{\em payload0} & is an optional payload for the request \mbox{[}writes\mbox{]} \\
+\hline
+{\em payload1} & is an optional payload for the request \mbox{[}C\-A\-S\mbox{]} \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

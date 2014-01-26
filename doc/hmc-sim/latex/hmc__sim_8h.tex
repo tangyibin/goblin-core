@@ -13,9 +13,8 @@ int \hyperlink{hmc__sim_8h_aa800472d739e996abc58805909ff66c1}{hmcsim\-\_\-init} 
 \begin{DoxyCompactList}\small\item\em Initializes the internal H\-M\-C\-\_\-\-S\-I\-M state with the necessary hardware configuration options. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_a92976e293a2ab29a590d00eb4145a826}{hmcsim\-\_\-free} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc)
 \begin{DoxyCompactList}\small\item\em Frees all the internal memory structures associated with the target configuration. Does not free the memory at the $\ast$hmc pointer. \end{DoxyCompactList}\item 
-\hypertarget{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}{int {\bfseries hmcsim\-\_\-link\-\_\-config} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t src\-\_\-dev, uint32\-\_\-t dest\-\_\-dev, uint32\-\_\-t src\-\_\-link, uint32\-\_\-t dest\-\_\-link, hmc\-\_\-link\-\_\-def\-\_\-t type)}\label{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}
-
-\item 
+int \hyperlink{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}{hmcsim\-\_\-link\-\_\-config} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, uint32\-\_\-t src\-\_\-dev, uint32\-\_\-t dest\-\_\-dev, uint32\-\_\-t src\-\_\-link, uint32\-\_\-t dest\-\_\-link, hmc\-\_\-link\-\_\-def\-\_\-t type)
+\begin{DoxyCompactList}\small\item\em Initializes individual device links for host-\/to-\/device or device-\/to-\/device configurations. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_aa6538f5a29e5aa16903e55f7e6c3c3b9}{hmcsim\-\_\-trace\-\_\-handle} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc, F\-I\-L\-E $\ast$tfile)
 \begin{DoxyCompactList}\small\item\em Sets the tracefile output file handle for tracing internal device operation. \end{DoxyCompactList}\item 
 int \hyperlink{hmc__sim_8h_a9b0cc2e32a3445aa840ab91acd807d22}{hmcsim\-\_\-trace\-\_\-header} (struct \hyperlink{structhmcsim__t}{hmcsim\-\_\-t} $\ast$hmc)
@@ -140,11 +139,17 @@ Decodes a valid response packet with up to 9 F\-L\-I\-T\-S of data.
 \begin{DoxyParams}{Parameters}
 {\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
 \hline
+{\em $\ast$packet} & is a pointer to an unsigned 8 byte location where the packet is located \\
+\hline
 {\em $\ast$response\-\_\-head} & is a pointer to an unsigned 8 byte location where the function shall return the entire response packet header intact \\
 \hline
 {\em $\ast$response\-\_\-tail} & is a pointer to an unsigned 8 byte location where the function shall return the entire response packet tail intact \\
 \hline
 {\em $\ast$type} & is a pointer to a return type that specifies the return type of the packet \\
+\hline
+{\em $\ast$length} & is a pointer to an unsigned 8 bit integer that contans the packet length \\
+\hline
+{\em $\ast$tag} & is a pointer to an unsigned 16 bit integer tha contains the tag \\
 \hline
 {\em $\ast$rtn\-\_\-tag} & is a pointer to an unsigned 8 bit integer that contains the return tag \\
 \hline
@@ -281,6 +286,40 @@ Attempts to write the value to the specified H\-M\-C device register for the tar
 {\em reg} & is the target register whose value is to be written \\
 \hline
 {\em value} & is the value to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}{\index{hmc\-\_\-sim.\-h@{hmc\-\_\-sim.\-h}!hmcsim\-\_\-link\-\_\-config@{hmcsim\-\_\-link\-\_\-config}}
+\index{hmcsim\-\_\-link\-\_\-config@{hmcsim\-\_\-link\-\_\-config}!hmc_sim.h@{hmc\-\_\-sim.\-h}}
+\subsubsection[{hmcsim\-\_\-link\-\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}int hmcsim\-\_\-link\-\_\-config (
+\begin{DoxyParamCaption}
+\item[{struct {\bf hmcsim\-\_\-t} $\ast$}]{hmc, }
+\item[{uint32\-\_\-t}]{src\-\_\-dev, }
+\item[{uint32\-\_\-t}]{dest\-\_\-dev, }
+\item[{uint32\-\_\-t}]{src\-\_\-link, }
+\item[{uint32\-\_\-t}]{dest\-\_\-link, }
+\item[{hmc\-\_\-link\-\_\-def\-\_\-t}]{type}
+\end{DoxyParamCaption}
+)}}\label{hmc__sim_8h_ad2eae4b1a8a1669e02d8c01d01e3c033}
+
+
+Initializes individual device links for host-\/to-\/device or device-\/to-\/device configurations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$hmc} & is a pointer to a valid and initialized hmc structure. Must not be null. \\
+\hline
+{\em src\-\_\-dev} & is the cube I\-D \mbox{[}C\-U\-B\mbox{]} of a source device. \\
+\hline
+{\em dest\-\_\-dev} & is the cube I\-D \mbox{[}C\-U\-B\mbox{]} of a destination device. \\
+\hline
+{\em src\-\_\-link} & is the link I\-D of the source link \\
+\hline
+{\em dest\-\_\-link} & is the link I\-D of the destination link \\
+\hline
+{\em type} & is one of H\-M\-C\-\_\-\-L\-I\-N\-K\-\_\-\-H\-O\-S\-T\-\_\-\-D\-E\-V or H\-M\-C\-\_\-\-L\-I\-N\-K\-\_\-\-D\-E\-V\-\_\-\-D\-E\-V \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

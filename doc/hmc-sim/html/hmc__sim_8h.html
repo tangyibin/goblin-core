@@ -105,8 +105,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a92976e293a2ab29a590d00eb4145a826"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#a92976e293a2ab29a590d00eb4145a826">hmcsim_free</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc)</td></tr>
 <tr class="memdesc:a92976e293a2ab29a590d00eb4145a826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees all the internal memory structures associated with the target configuration. Does not free the memory at the *hmc pointer.  <a href="#a92976e293a2ab29a590d00eb4145a826">More...</a><br/></td></tr>
 <tr class="separator:a92976e293a2ab29a590d00eb4145a826"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2eae4b1a8a1669e02d8c01d01e3c033"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2eae4b1a8a1669e02d8c01d01e3c033"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t src_dev, uint32_t dest_dev, uint32_t src_link, uint32_t dest_link, hmc_link_def_t type)</td></tr>
+<tr class="memitem:ad2eae4b1a8a1669e02d8c01d01e3c033"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#ad2eae4b1a8a1669e02d8c01d01e3c033">hmcsim_link_config</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, uint32_t src_dev, uint32_t dest_dev, uint32_t src_link, uint32_t dest_link, hmc_link_def_t type)</td></tr>
+<tr class="memdesc:ad2eae4b1a8a1669e02d8c01d01e3c033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes individual device links for host-to-device or device-to-device configurations.  <a href="#ad2eae4b1a8a1669e02d8c01d01e3c033">More...</a><br/></td></tr>
 <tr class="separator:ad2eae4b1a8a1669e02d8c01d01e3c033"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6538f5a29e5aa16903e55f7e6c3c3b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hmc__sim_8h.html#aa6538f5a29e5aa16903e55f7e6c3c3b9">hmcsim_trace_handle</a> (struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *hmc, FILE *tfile)</td></tr>
 <tr class="memdesc:aa6538f5a29e5aa16903e55f7e6c3c3b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the tracefile output file handle for tracing internal device operation.  <a href="#aa6538f5a29e5aa16903e55f7e6c3c3b9">More...</a><br/></td></tr>
@@ -374,9 +374,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">*packet</td><td>is a pointer to an unsigned 8 byte location where the packet is located </td></tr>
     <tr><td class="paramname">*response_head</td><td>is a pointer to an unsigned 8 byte location where the function shall return the entire response packet header intact </td></tr>
     <tr><td class="paramname">*response_tail</td><td>is a pointer to an unsigned 8 byte location where the function shall return the entire response packet tail intact </td></tr>
     <tr><td class="paramname">*type</td><td>is a pointer to a return type that specifies the return type of the packet </td></tr>
+    <tr><td class="paramname">*length</td><td>is a pointer to an unsigned 8 bit integer that contans the packet length </td></tr>
+    <tr><td class="paramname">*tag</td><td>is a pointer to an unsigned 16 bit integer tha contains the tag </td></tr>
     <tr><td class="paramname">*rtn_tag</td><td>is a pointer to an unsigned 8 bit integer that contains the return tag </td></tr>
     <tr><td class="paramname">*src_link</td><td>is a pointer to an unsigned 8 bit integer that contains the source link ID </td></tr>
     <tr><td class="paramname">*rrp</td><td>is a pointer to an unsigned 8 bit integer that contains the contents of the RRP field </td></tr>
@@ -596,6 +599,70 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
     <tr><td class="paramname">dev</td><td>is the target device cube ID [cub] to read from </td></tr>
     <tr><td class="paramname">reg</td><td>is the target register whose value is to be written </td></tr>
     <tr><td class="paramname">value</td><td>is the value to be written </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad2eae4b1a8a1669e02d8c01d01e3c033"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hmcsim_link_config </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structhmcsim__t.html">hmcsim_t</a> *&#160;</td>
+          <td class="paramname"><em>hmc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>src_dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dest_dev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>src_link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dest_link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hmc_link_def_t&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes individual device links for host-to-device or device-to-device configurations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*hmc</td><td>is a pointer to a valid and initialized hmc structure. Must not be null. </td></tr>
+    <tr><td class="paramname">src_dev</td><td>is the cube ID [CUB] of a source device. </td></tr>
+    <tr><td class="paramname">dest_dev</td><td>is the cube ID [CUB] of a destination device. </td></tr>
+    <tr><td class="paramname">src_link</td><td>is the link ID of the source link </td></tr>
+    <tr><td class="paramname">dest_link</td><td>is the link ID of the destination link </td></tr>
+    <tr><td class="paramname">type</td><td>is one of HMC_LINK_HOST_DEV or HMC_LINK_DEV_DEV </td></tr>
   </table>
   </dd>
 </dl>
@@ -911,7 +978,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>hmcsim_link_config</b>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 25 2014 19:39:49 for HMC_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 25 2014 22:25:24 for HMC_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

@@ -22,6 +22,7 @@ Hybrid Memory Cube Functional Simulation Library Header File\&.
 .ti -1c
 .RI "int \fBhmcsim_link_config\fP (struct \fBhmcsim_t\fP *hmc, uint32_t src_dev, uint32_t dest_dev, uint32_t src_link, uint32_t dest_link, hmc_link_def_t type)"
 .br
+.RI "\fIInitializes individual device links for host-to-device or device-to-device configurations\&. \fP"
 .ti -1c
 .RI "int \fBhmcsim_trace_handle\fP (struct \fBhmcsim_t\fP *hmc, FILE *tfile)"
 .br
@@ -139,11 +140,17 @@ Decodes a valid response packet with up to 9 FLITS of data\&.
 .RS 4
 \fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
 .br
+\fI*packet\fP is a pointer to an unsigned 8 byte location where the packet is located 
+.br
 \fI*response_head\fP is a pointer to an unsigned 8 byte location where the function shall return the entire response packet header intact 
 .br
 \fI*response_tail\fP is a pointer to an unsigned 8 byte location where the function shall return the entire response packet tail intact 
 .br
 \fI*type\fP is a pointer to a return type that specifies the return type of the packet 
+.br
+\fI*length\fP is a pointer to an unsigned 8 bit integer that contans the packet length 
+.br
+\fI*tag\fP is a pointer to an unsigned 16 bit integer tha contains the tag 
 .br
 \fI*rtn_tag\fP is a pointer to an unsigned 8 bit integer that contains the return tag 
 .br
@@ -254,6 +261,32 @@ Attempts to write the value to the specified HMC device register for the target 
 \fIreg\fP is the target register whose value is to be written 
 .br
 \fIvalue\fP is the value to be written 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int hmcsim_link_config (struct \fBhmcsim_t\fP *hmc, uint32_tsrc_dev, uint32_tdest_dev, uint32_tsrc_link, uint32_tdest_link, hmc_link_def_ttype)"
+
+.PP
+Initializes individual device links for host-to-device or device-to-device configurations\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*hmc\fP is a pointer to a valid and initialized hmc structure\&. Must not be null\&. 
+.br
+\fIsrc_dev\fP is the cube ID [CUB] of a source device\&. 
+.br
+\fIdest_dev\fP is the cube ID [CUB] of a destination device\&. 
+.br
+\fIsrc_link\fP is the link ID of the source link 
+.br
+\fIdest_link\fP is the link ID of the destination link 
+.br
+\fItype\fP is one of HMC_LINK_HOST_DEV or HMC_LINK_DEV_DEV 
 .RE
 .PP
 \fBReturns:\fP

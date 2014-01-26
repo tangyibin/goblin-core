@@ -36,7 +36,7 @@
     <member refid="mem__sim_8h_1abb5a0f39c927736087184f93003a46ca" kind="function"><name>memsim_init</name></member>
     <member refid="mem__sim_8h_1a5d531491f95a8c5bd2eecf87d8f4d332" kind="function"><name>memsim_free</name></member>
     <member refid="mem__sim_8h_1aceef729a6d340d3eb0f71765ada14e7c" kind="function"><name>memsim_clock</name></member>
-    <member refid="mem__sim_8h_1abb276b248eb1fcc99bb85975820ae9f4" kind="function"><name>memsim_rqst</name></member>
+    <member refid="mem__sim_8h_1a1bad5808104fbdf52c6751f61d3b68bd" kind="function"><name>memsim_rqst</name></member>
     <member refid="mem__sim_8h_1ae7dcedd9853c7260f705f6be4a02c48c" kind="function"><name>memsim_reset</name></member>
     <member refid="mem__sim_8h_1aab498cdf5dde04a2bbbbdebf1ebdb09f" kind="function"><name>memsim_trace_handle</name></member>
     <member refid="mem__sim_8h_1a2cb5e3fff0dd289874f27e3bfe6651a1" kind="function"><name>memsim_trace_level</name></member>
@@ -44,6 +44,7 @@
   <compound refid="mem__sim__macros_8h" kind="file"><name>mem_sim_macros.h</name>
     <member refid="mem__sim__macros_8h_1a8f1bad80625fa9ce2785c9078adf35ab" kind="define"><name>MEMSIM_MAJOR_VERSION</name></member>
     <member refid="mem__sim__macros_8h_1ab8b2f5ef343773e2ec01cd7b2745cc5e" kind="define"><name>MEMSIM_MINOR_VERSION</name></member>
+    <member refid="mem__sim__macros_8h_1a39a7a20da1e948bbed1de0d3093559d3" kind="define"><name>MEMSIM_STALL</name></member>
     <member refid="mem__sim__macros_8h_1a865f0959c0893c9abaf45d7676b5418e" kind="define"><name>MEMSIM_ERROR</name></member>
     <member refid="mem__sim__macros_8h_1a26e832637d5d6623ac61f71eb3684280" kind="define"><name>MEMSIM_OK</name></member>
     <member refid="mem__sim__macros_8h_1ae8c6b2edd7da655b8727bda03f175ce2" kind="define"><name>GSIM_REG_GCONST_PID</name></member>
@@ -62,6 +63,7 @@
     <member refid="mem__sim__types_8h_1a63e5fcdc8a7eedb3234b85b5c0670727a22edf5a0ddd6a0a2db2c65f582aaa50e" kind="enumvalue"><name>MEMSIM_HMC</name></member>
     <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80" kind="enum"><name>memsim_alg_t</name></member>
     <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80aa85ba53c0ffe978bf1bb99f84f82e751" kind="enumvalue"><name>MEMSIM_SIMPLE</name></member>
+    <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80ac9903322b21053f4777fbbcd6758e187" kind="enumvalue"><name>MEMSIM_CACHE</name></member>
     <member refid="mem__sim__types_8h_1a077e4ba7dbc90e17cfa19144e8714d80a54c521acf22547ccf680e16558f399f6" kind="enumvalue"><name>MEMSIM_EXP</name></member>
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27" kind="enum"><name>memsim_rqst_t</name></member>
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ab10eb0e5f8112cc5e707f2ed3fe5d139" kind="enumvalue"><name>MEMSIM_RD8</name></member>

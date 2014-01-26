@@ -234,10 +234,10 @@
         </inbodydescription>
         <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="83" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="mem__sim_8h_1abb276b248eb1fcc99bb85975820ae9f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="mem__sim_8h_1a1bad5808104fbdf52c6751f61d3b68bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int memsim_rqst</definition>
-        <argsstring>(struct memsim_t *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t *addr, uint64_t *payload)</argsstring>
+        <argsstring>(struct memsim_t *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t addr, uint64_t payload0, uint64_t payload1)</argsstring>
         <name>memsim_rqst</name>
         <param>
           <type>struct <ref refid="structmemsim__t" kindref="compound">memsim_t</ref> *</type>
@@ -252,12 +252,16 @@
           <declname>rqst</declname>
         </param>
         <param>
-          <type>uint64_t *</type>
+          <type>uint64_t</type>
           <declname>addr</declname>
         </param>
         <param>
-          <type>uint64_t *</type>
-          <declname>payload</declname>
+          <type>uint64_t</type>
+          <declname>payload0</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>payload1</declname>
         </param>
         <briefdescription>
 <para>Initiates a memory request. </para>        </briefdescription>
@@ -292,17 +296,24 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>payload</parametername>
+<parametername>payload0</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>is an optional payload for the request [writes] </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>payload1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is an optional payload for the request [CAS] </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>0 on success, nonzero otherwise </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="99" column="1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="101" column="1"/>
       </memberdef>
       <memberdef kind="function" id="mem__sim_8h_1ae7dcedd9853c7260f705f6be4a02c48c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -328,7 +339,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="110" column="1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="113" column="1"/>
       </memberdef>
       <memberdef kind="function" id="mem__sim_8h_1aab498cdf5dde04a2bbbbdebf1ebdb09f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -365,7 +376,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="119" column="1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="122" column="1"/>
       </memberdef>
       <memberdef kind="function" id="mem__sim_8h_1a2cb5e3fff0dd289874f27e3bfe6651a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -402,7 +413,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="129" column="1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h" line="132" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -450,27 +461,28 @@
 <codeline lineno="83"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1aceef729a6d340d3eb0f71765ada14e7c" kindref="member">memsim_clock</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim<sp/>);</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1abb276b248eb1fcc99bb85975820ae9f4" kindref="member">memsim_rqst</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim,<sp/></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structmemsim__entry__t_1a5e6fc38a3aa83e0c1ec7fcf9e1cf2563" kindref="member">gconst</ref>,</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memsim_rqst_t<sp/><ref refid="structmemsim__entry__t_1a0bd6994a034a78c0d2b8d2adfc0cf2bd" kindref="member">rqst</ref>,</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*addr,<sp/></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>*payload<sp/>);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1ae7dcedd9853c7260f705f6be4a02c48c" kindref="member">memsim_reset</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim<sp/>);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1aab498cdf5dde04a2bbbbdebf1ebdb09f" kindref="member">memsim_trace_handle</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim,</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*tfile<sp/>);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1a2cb5e3fff0dd289874f27e3bfe6651a1" kindref="member">memsim_trace_level</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim,<sp/></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>level<sp/>);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="133"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="135"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_MEM_SIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="137"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1a1bad5808104fbdf52c6751f61d3b68bd" kindref="member">memsim_rqst</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim,<sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structmemsim__entry__t_1a5e6fc38a3aa83e0c1ec7fcf9e1cf2563" kindref="member">gconst</ref>,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memsim_rqst_t<sp/><ref refid="structmemsim__entry__t_1a0bd6994a034a78c0d2b8d2adfc0cf2bd" kindref="member">rqst</ref>,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>addr,<sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>payload0,<sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>payload1<sp/>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1ae7dcedd9853c7260f705f6be4a02c48c" kindref="member">memsim_reset</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim<sp/>);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1aab498cdf5dde04a2bbbbdebf1ebdb09f" kindref="member">memsim_trace_handle</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FILE<sp/>*tfile<sp/>);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mem__sim_8h_1a2cb5e3fff0dd289874f27e3bfe6651a1" kindref="member">memsim_trace_level</ref>(<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structmemsim__t" kindref="compound">memsim_t</ref><sp/>*msim,<sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>level<sp/>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="136"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="138"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_MEM_SIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="140"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim.h"/>
   </compounddef>

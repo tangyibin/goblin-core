@@ -108,9 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aceef729a6d340d3eb0f71765ada14e7c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#aceef729a6d340d3eb0f71765ada14e7c">memsim_clock</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim)</td></tr>
 <tr class="memdesc:aceef729a6d340d3eb0f71765ada14e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a clock signal event for the memsim instance.  <a href="#aceef729a6d340d3eb0f71765ada14e7c">More...</a><br/></td></tr>
 <tr class="separator:aceef729a6d340d3eb0f71765ada14e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb276b248eb1fcc99bb85975820ae9f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#abb276b248eb1fcc99bb85975820ae9f4">memsim_rqst</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t *addr, uint64_t *payload)</td></tr>
-<tr class="memdesc:abb276b248eb1fcc99bb85975820ae9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a memory request.  <a href="#abb276b248eb1fcc99bb85975820ae9f4">More...</a><br/></td></tr>
-<tr class="separator:abb276b248eb1fcc99bb85975820ae9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bad5808104fbdf52c6751f61d3b68bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#a1bad5808104fbdf52c6751f61d3b68bd">memsim_rqst</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t addr, uint64_t payload0, uint64_t payload1)</td></tr>
+<tr class="memdesc:a1bad5808104fbdf52c6751f61d3b68bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates a memory request.  <a href="#a1bad5808104fbdf52c6751f61d3b68bd">More...</a><br/></td></tr>
+<tr class="separator:a1bad5808104fbdf52c6751f61d3b68bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7dcedd9853c7260f705f6be4a02c48c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#ae7dcedd9853c7260f705f6be4a02c48c">memsim_reset</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim)</td></tr>
 <tr class="memdesc:ae7dcedd9853c7260f705f6be4a02c48c"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets the target memsim instance  <a href="#ae7dcedd9853c7260f705f6be4a02c48c">More...</a><br/></td></tr>
 <tr class="separator:ae7dcedd9853c7260f705f6be4a02c48c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,7 +299,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abb276b248eb1fcc99bb85975820ae9f4"></a>
+<a class="anchor" id="a1bad5808104fbdf52c6751f61d3b68bd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -324,14 +324,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>addr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t *&#160;</td>
-          <td class="paramname"><em>payload</em>&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>payload0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>payload1</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -348,7 +354,8 @@ Functions</h2></td></tr>
     <tr><td class="paramname">gconst</td><td>is a GC64 constant register value </td></tr>
     <tr><td class="paramname">rqst</td><td>is the request type </td></tr>
     <tr><td class="paramname">addr</td><td>is the target address for the request </td></tr>
-    <tr><td class="paramname">payload</td><td>is an optional payload for the request [writes] </td></tr>
+    <tr><td class="paramname">payload0</td><td>is an optional payload for the request [writes] </td></tr>
+    <tr><td class="paramname">payload1</td><td>is an optional payload for the request [CAS] </td></tr>
   </table>
   </dd>
 </dl>
@@ -431,7 +438,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 25 2014 19:39:52 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 25 2014 22:25:32 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
