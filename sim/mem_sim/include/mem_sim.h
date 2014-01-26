@@ -86,21 +86,24 @@ extern int memsim_clock( struct memsim_t *msim );
 /*!	\fn int memsim_rqst( struct memsim_t *msim, 
 				uint64_t gconst, 
 				memsim_rqst_t rqst, 
-				uint64_t *addr, 
-				uint64_t *payload )
+				uint64_t addr, 
+				uint64_t payload0, 
+				uint64_t payload1 )
 	\brief Initiates a memory request 
 	\param *msim is a pointer to a valid memsim structure.
 	\param gconst is a GC64 constant register value
 	\param rqst is the request type
 	\param addr is the target address for the request
-	\param payload is an optional payload for the request [writes]
+	\param payload0 is an optional payload for the request [writes]
+	\param payload1 is an optional payload for the request [CAS]
 	\returns 0 on success, nonzero otherwise
 */
 extern int memsim_rqst( struct memsim_t *msim, 
 			uint64_t gconst,
 			memsim_rqst_t rqst,
-			uint64_t *addr, 
-			uint64_t *payload );
+			uint64_t addr, 
+			uint64_t payload0, 
+			uint64_t payload1 );
 
 /*!	\fn int memsim_reset( struct memsim_t *msim )
 	\brief resets the target memsim instance
