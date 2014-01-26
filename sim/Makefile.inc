@@ -6,13 +6,13 @@
 
 CC=gcc
 CXX=g++
-INC=-I./include/ -I./hmc_sim/include/
+INC=-I./include/ -I./hmc_sim/include/ -I./mem_sim/include/
 CFLAGS=-O2 -Wall -g $(INC) -DGSIM_DEBUG
 CXXFLAGS=-O2 -Wall -g $(INC) -DGSIM_DEBUG
-LINK=-L./ -lgsim -L./hmc_sim -lhmcsim
+LINK=-L./ -lgsim -L./hmc_sim -lhmcsim -L./mem_sim -lmemsim
 
 AR=ar
-AROPTS=rcs
+ARFLAGS=rcs
 
 LEX=flex
 LEX_OPTS=-Pgsim
