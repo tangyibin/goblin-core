@@ -19,9 +19,6 @@
  */
 extern int memsim_free(	struct memsim_t *msim )
 {
-	/* vars */
-	/* ---- */
-
 	/* 
 	 * sanity check 
 	 *
@@ -32,6 +29,11 @@ extern int memsim_free(	struct memsim_t *msim )
 
 	if( msim->tfile != NULL ){ 
 		fflush( msim->tfile );
+	}
+
+	if( msim->__ptr_tid != NULL ){ 
+		free( msim->__ptr_tid );
+		msim->__ptr_tid	= NULL;
 	}
 
 	if( msim->__ptr_entry != NULL ){ 
