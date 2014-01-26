@@ -32,6 +32,7 @@ extern int memsim_init(	struct memsim_t *msim,
 	/* vars */
 	uint64_t total			= 0;
 	uint64_t i			= 0;
+	uint32_t j			= 0;
 	uint64_t cur			= 0;
 	struct memsim_entry_t *tmp_e	= NULL;
 	struct memsim_slot_t *tmp	= NULL;
@@ -160,6 +161,13 @@ extern int memsim_init(	struct memsim_t *msim,
 		tmp_e[i].gconst	= 0x00ll;
 		tmp_e[i].valid	= 0x00;
 		tmp_e[i].rqst	= MEMSIM_UNK;
+
+		tmp_e[i].num_tids = 0;
+
+		for( j=0; j<MEMSIM_TIDS_PER_ENTRY; j++ ){ 
+			tmp_e[i].tid[j]	= 0;
+		}
+		
 	}
 	
 	/* 
@@ -191,6 +199,26 @@ extern int memsim_init(	struct memsim_t *msim,
 		msim->global[0].num_slots = ga_slots;
 		msim->global[0].id	= 0;
 	}
+
+	/* 
+	 * setup the tid handlers 
+	 * 
+	 */
+	msim->__ptr_tid	= malloc( sizeof( struct memsim_tid_t ) 
+			* task_groups * task_procs * tasks * 8 );
+	if( msim->__ptr_tid == NULL ){ 
+		return MEMSIM_ERROR;
+	}
+
+	for( i=0; i<(uint64_t)(task_groups * task_procs * tasks * 8); i++ ){ 
+		msim->__ptr_tid[i].gconst	= 0x00ll;
+		msim->__ptr_tid[i].id		= (uint32_t)(i);
+		msim->__ptr_tid[i].valid	= 0x00;
+	
+	}
+
+	msim->num_tids	= task_groups * task_procs * tasks * 8;
+	msim->tids	= msim->__ptr_tid;
 
 	return MEMSIM_OK;
 }

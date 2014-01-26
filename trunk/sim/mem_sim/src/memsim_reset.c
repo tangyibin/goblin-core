@@ -53,6 +53,12 @@ extern int memsim_reset( struct memsim_t *msim )
 		msim->__ptr_entry[i].rqst	= MEMSIM_UNK;
 	}
 
+	for( i=0; i<(uint64_t)(msim->task_groups*msim->task_procs*msim->tasks*8); i++ ){ 
+		msim->__ptr_tid[i].gconst	= 0x00ll;
+		msim->__ptr_tid[i].id		= (uint32_t)(i);
+		msim->__ptr_tid[i].valid	= 0x00;
+	}
+
 	return MEMSIM_OK;
 }
 

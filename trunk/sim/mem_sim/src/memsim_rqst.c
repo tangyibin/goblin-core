@@ -15,6 +15,7 @@
 /* ------------------------------------------------ FUNCTION_PROTOTYPES */
 extern int memsim_validate_rqst( memsim_rqst_t rqst );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
+extern int memsim_tid_pop( struct memsim_t *msim, uint32_t *tid ); 
 
 /* ------------------------------------------------ MEMSIM_RQST */
 /* 
@@ -28,7 +29,8 @@ extern int memsim_rqst(	struct memsim_t *msim,
 			uint64_t payload0,
 			uint64_t payload1 )
 {
-	/* vars */
+	/* vars */	
+	uint32_t tid	= 0x00;
 	uint32_t slot	= 0x00;
 	uint64_t pid	= 0x00ll;
 	uint64_t nid	= 0x00ll;
@@ -86,7 +88,10 @@ extern int memsim_rqst(	struct memsim_t *msim,
 	if( memsim_find_slot( tmp_g, &slot ) != MEMSIM_OK ){ 
 		return MEMSIM_STALL;
 	}
-	
+
+	if( memsim_tid_pop( msim, &tid ) != MEMSIM_OK ){ 
+		return MEMSIM_STALL;
+	}	
 
 	/* 
 	 * step 4: enter the request in the slot
@@ -98,6 +103,11 @@ extern int memsim_rqst(	struct memsim_t *msim,
 	tmp_g->entry[slot].buf[0]	= addr;
 	tmp_g->entry[slot].buf[1]	= payload0;
 	tmp_g->entry[slot].buf[2]	= payload1;
+	tmp_g->entry[slot].tid[0]	= tid;
+	tmp_g->entry[slot].num_tids	= 1;
+
+	msim->tids[tid].valid		= 1;
+	msim->tids[tid].gconst		= gconst;
 
 	return MEMSIM_OK;
 }

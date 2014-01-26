@@ -39,8 +39,26 @@ typedef enum{
 typedef enum{
 	MEMSIM_RD8,
 	MEMSIM_WR8,
+	MEMSIM_RD4,
+	MEMSIM_WR4,
 	MEMSIM_FENCE,
-	MEMSIM_UNK
+	MEMSIM_UNK,
+	MEMSIM_HMC_RD16,
+	MEMSIM_HMC_RD32,
+	MEMSIM_HMC_RD48,
+	MEMSIM_HMC_RD64,
+	MEMSIM_HMC_RD80,
+	MEMSIM_HMC_RD96,
+	MEMSIM_HMC_RD112,
+	MEMSIM_HMC_RD128,
+	MEMSIM_HMC_WR16,
+	MEMSIM_HMC_WR32,
+	MEMSIM_HMC_WR48,
+	MEMSIM_HMC_WR64,
+	MEMSIM_HMC_WR80,
+	MEMSIM_HMC_WR96,
+	MEMSIM_HMC_WR112,
+	MEMSIM_HMC_WR128
 }memsim_rqst_t;
 
 /* ---------------------------------------------- LOCAL MACROS */
@@ -52,6 +70,8 @@ struct memsim_entry_t{
 	uint64_t buf[4];		/*! MEM-SIM: MEMSIM_ENTRY_T: BUFFER */
 	uint64_t gconst;		/*! MEM-SIM: MEMSIM_ENTRY_T: GCONST */
 	uint32_t valid;			/*! MEM-SIM: MEMSIM_ENTRY_T: VALID BIT */
+	uint32_t tid[32];		/*! MEM-SIM: MEMSIM_ENTRY_T: TID ARRAY */
+	uint32_t num_tids;		/*! MEM-SIM: MEMSIM_ENTRY_T: NUMBER OF CORRESPONDING TIDS */
 	memsim_rqst_t rqst;		/*! MEM-SIM: MEMSIM_ENTRY_T: REQUEST TYPE */
 };
 
@@ -59,6 +79,12 @@ struct memsim_slot_t{
 	struct memsim_entry_t *entry;	/*! MEM-SIM: MEMSIM_SLOT_T: ENTRIES */
 	uint32_t num_slots;		/*! MEM-SIM: MEMSIM_SLOT_T: NUMBER OF SLOTS */
 	uint32_t id;			/*! MEM-SIM: MEMSIM_SLOT_T: ID */
+};
+
+struct memsim_tid_t{
+	uint64_t gconst;		/*! MEM-SIM: MEMSIM_TID_T: GCONST ENTRY FOR THIS TID */
+	uint32_t id;			/*! MEM-SIM: MEMSIM_TID_T: THE ID OF THIS TID */
+	uint32_t valid;			/*! MEM-SIM: MEMSIM_TID_T: VALID BIT */	
 };
 
 struct memsim_t{ 
@@ -75,6 +101,8 @@ struct memsim_t{
 	uint32_t task_procs;		/*! MEM-SIM: MEMSIM_T: NUMBER OF TASK PROCS */
 	uint32_t tasks;			/*! MEM-SIM: MEMSIM_T: NUMBER OF TASKS */
 
+	uint32_t num_tids;		/*! MEM-SIM: MEMSIM_T: NUMBER OF TIDS */
+
 	FILE *tfile;			/*! MEM-SIM: MEMSIM_T: TRACE FILE HANDLER */
 	uint32_t tracelevel;		/*! MEM-SIM: MEMSIM_T: TRACELVEL */
 
@@ -87,8 +115,11 @@ struct memsim_t{
 	struct memsim_slot_t *amo;	/*! MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES */
 	struct memsim_slot_t *global;	/*! MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES */
 
+	struct memsim_tid_t *tids;	/*! MEM-SIM: MEMSIM_T: TID HANDLERS */
+
 	struct memsim_slot_t *__ptr_slots;
 	struct memsim_entry_t *__ptr_entry;
+	struct memsim_tid_t *__ptr_tid;
 };
 
 #ifdef __cplusplus
