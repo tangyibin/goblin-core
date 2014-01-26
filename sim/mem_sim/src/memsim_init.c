@@ -64,6 +64,7 @@ extern int memsim_init(	struct memsim_t *msim,
 	msim->task_groups	= task_groups;
 	msim->task_procs	= task_procs;
 	msim->tasks		= tasks;
+	msim->clock		= 0x00;
 
 	if( (iface != MEMSIM_BASIC) && (iface != MEMSIM_HMC) ){ 
 		return MEMSIM_ERROR;
@@ -135,6 +136,20 @@ extern int memsim_init(	struct memsim_t *msim,
 	}
 
 	msim->__ptr_entry	= tmp_e;
+
+	/* 
+	 * zero all the entries
+	 * 
+	 */
+	for( i=0; i<total; i++ ){ 
+		tmp_e[i].buf[0]	= 0x00ll;
+		tmp_e[i].buf[1]	= 0x00ll;
+		tmp_e[i].buf[2]	= 0x00ll;
+		tmp_e[i].buf[3]	= 0x00ll;
+		tmp_e[i].gconst	= 0x00ll;
+		tmp_e[i].valid	= 0x00;
+		tmp_e[i].rqst	= MEMSIM_UNK;
+	}
 	
 	/* 
 	 * setup the pointers to the necessary slots 
