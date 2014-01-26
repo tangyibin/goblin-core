@@ -15,6 +15,7 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
   * *HMC Simulator* : The Hybrid Memory Cube [HMC] simulator library is being developed alongside GC64 in order allow us to do novel research of virtual-to-physical memory translation techniques, relocatable VM layer techniques, bandwidth/latency characterization and HMC topologies.  This library is meant to stand separate in the event that others find it useful.    
   * *Addressing* : Added physical address format [PhysicalMemoryFormat].  Working on virtual address format and virtual to physical translation.
   * *Documentation* : HMC-Sim API documentation has been posted.  See the [Documentation] page. 
+  * *Memory Interface Simulator* : The MEMSim or memory interface simulation library is being developed in order to explore various options and algorithms associated with coalescing memory requests at the various memory request boundaries in order to make better use of the available HMC bandwidth.  
 
 = In Planning = 
   * *Compiler/Optimizer* : Given its deliberate ability to port to new targets, I've chosen LLVM as our candidate compiler+optimizer suite.  I hope to work with Preston Briggs from UWash on his efforts to build Tera MTA-C style parallelization optimizations into LLVM.  More info on this can be found here: https://sites.google.com/site/parallelizationforllvm/loop-transforms
