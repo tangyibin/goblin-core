@@ -76,7 +76,7 @@ extern int	hmcsim_init(	struct hmcsim_t *hmc,
 */
 extern int	hmcsim_free( struct hmcsim_t *hmc );
 
-/*!	\fn int hmcsim_link_config( struct hmsim_t *hmc, 
+/*!	\fn int hmcsim_link_config( struct hmcsim_t *hmc, 
 				uint32_t src_dev,
 				uint32_t dest_dev,
 				uint32_t src_link, 
@@ -174,11 +174,14 @@ extern int      hmcsim_build_memrequest( struct hmcsim_t *hmc,
                                                 uint32_t *crc )
 	\brief Decodes a valid response packet with up to 9 FLITS of data
 	\param *hmc is a pointer to a valid and initialized hmc structure.  Must not be null. 
+	\param *packet is a pointer to an unsigned 8 byte location where the packet is located
 	\param *response_head is a pointer to an unsigned 8 byte location where the function
 		shall return the entire response packet header intact
 	\param *response_tail is a pointer to an unsigned 8 byte location where the function
 		shall return the entire response packet tail intact
 	\param *type is a pointer to a return type that specifies the return type of the packet
+	\param *length is a pointer to an unsigned 8 bit integer that contans the packet length 
+	\param *tag is a pointer to an unsigned 16 bit integer tha contains the tag
 	\param *rtn_tag is a pointer to an unsigned 8 bit integer that contains the return tag
 	\param *src_link is a pointer to an unsigned 8 bit integer that contains the source link ID
 	\param *rrp is a pointer to an unsigned 8 bit integer that contains the contents of the RRP field
