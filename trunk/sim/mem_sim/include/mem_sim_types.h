@@ -34,16 +34,24 @@ typedef enum{
 	MEMSIM_EXP
 }memsim_alg_t;
 
+/* TODO : ADD THE AMO's */
+typedef enum{
+	MEMSIM_RD8,
+	MEMSIM_WR8,
+	MEMSIM_FENCE,
+	MEMSIM_UNK
+}memsim_rqst_t;
+
 /* ---------------------------------------------- LOCAL MACROS */
 #define	MEMSIM_AMO	0x0000000000000001
 #define	MEMSIM_GA	0x0000000000000002
 
 /* ---------------------------------------------- STRUCT TYPES */
 struct memsim_entry_t{
-	uint64_t buf[2];		/*! MEM-SIM: MEMSIM_ENTRY_T: BUFFER */
+	uint64_t buf[4];		/*! MEM-SIM: MEMSIM_ENTRY_T: BUFFER */
 	uint64_t gconst;		/*! MEM-SIM: MEMSIM_ENTRY_T: GCONST */
-	uint32_t rqst;			/*! MEM-SIM: MEMSIM_ENTRY_T: REQUEST TYPE */
 	uint32_t valid;			/*! MEM-SIM: MEMSIM_ENTRY_T: VALID BIT */
+	memsim_rqst_t rqst;		/*! MEM-SIM: MEMSIM_ENTRY_T: REQUEST TYPE */
 };
 
 struct memsim_slot_t{ 
@@ -70,6 +78,8 @@ struct memsim_t{
 	uint32_t tracelevel;		/*! MEM-SIM: MEMSIM_T: TRACELVEL */
 
 	uint64_t opt;			/*! MEM-SIM: MEMSIM_T: RUNTIME OPTIONS */
+
+	uint64_t clock;			/*! MEM-SIM: MEMSIM_T: CLOCK */
 
 	struct memsim_slot_t *group;	/*! MEM-SIM: MEMSIM_T: GROUP SLOT STRUCTURES */
 	struct memsim_slot_t *socket;	/*! MEM-SIM: MEMSIM_T: SOCKET SLOT STRUCTURES */
