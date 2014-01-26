@@ -12,7 +12,7 @@ BUILDDIR := build
 INC := -I./include/
 LIBS :=
 TARGET := lib$(LIBNAME).a
-CFLAGS= -O2 -g $(INC)
+CFLAGS= -O2 -Wall -g $(INC)
 LDFLAGS := 
 ARFLAGS := rcs
 
