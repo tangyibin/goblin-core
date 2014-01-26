@@ -71,7 +71,18 @@ extern int memsim_init(	struct memsim_t *msim,
 	}
 
 	msim->iface	= iface;
-	msim->alg	= alg;
+
+	switch( alg )
+	{
+		case MEMSIM_SIMPLE:
+		case MEMSIM_CACHE:
+		case MEMSIM_EXP:
+			msim->alg = alg;
+			break;
+		default:
+			return MEMSIM_ERROR;
+			break;
+	}
 
 	/* 
 	 * allocate memory for the slots

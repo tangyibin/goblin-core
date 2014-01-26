@@ -26,6 +26,7 @@ extern "C" {
 
 
 /* ------------------------------------------------ RETURN CODES */
+#define		MEMSIM_STALL	-2
 #define		MEMSIM_ERROR	-1
 #define		MEMSIM_OK	0
 

@@ -31,6 +31,7 @@ typedef enum{
 
 typedef enum{
 	MEMSIM_SIMPLE,
+	MEMSIM_CACHE,
 	MEMSIM_EXP
 }memsim_alg_t;
 
