@@ -132,6 +132,22 @@ extern int memsim_trace_handle( struct memsim_t *msim,
 extern int memsim_trace_level( struct memsim_t *msim, 
 				uint32_t level );
 
+/*!	\fn int memsim_set_hw( struct memsim_t *msim, 
+				uint32_t num_links, 
+				uint32_t num_lanes, 
+				float gbps )
+	\brief Initializes the base hardware configuration
+	\param *msim is a pointer to a valid memsim structure
+	\param num_links is the number of HMC links on the socket
+	\param num_lanes is the number of SERDES lanes per link 
+	\param gbps is the link data transfer rate in Gbps
+	\returns 0 on success, nonzero otherwise 
+*/
+extern int memsim_set_hw( struct memsim_t *msim, 
+				uint32_t num_links, 
+				uint32_t num_lanes, 
+				float gbps );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

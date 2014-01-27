@@ -25,6 +25,11 @@ extern "C" {
 #endif
 
 
+/* ------------------------------------------------ TRACE MACROS */
+#define		MEMSIM_TRACE_NONE	0x00000000
+#define		MEMSIM_TRACE_MEMOP	0x00000001
+#define		MEMSIM_TRACE_XFER	0x00000002
+
 /* ------------------------------------------------ RETURN CODES */
 #define		MEMSIM_STALL	-2
 #define		MEMSIM_ERROR	-1

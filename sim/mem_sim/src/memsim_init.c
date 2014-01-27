@@ -220,6 +220,16 @@ extern int memsim_init(	struct memsim_t *msim,
 	msim->num_tids	= task_groups * task_procs * tasks * 8;
 	msim->tids	= msim->__ptr_tid;
 
+	/* 
+	 * init the hardware 
+	 * 
+ 	 */
+	msim->hw.num_links	= 4;
+	msim->hw.num_lanes	= 8;
+	msim->hw.gbps		= (float)(10);
+	msim->hw.payps		= (uint64_t)( (((float)(msim->hw.num_lanes) * (float)(msim->hw.gbps))
+					/(float)(8))/8  ) * (uint64_t)(msim->hw.num_links);
+	
 	return MEMSIM_OK;
 }
 

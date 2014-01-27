@@ -12,6 +12,9 @@
 #include "mem_sim.h"
 
 
+/* ------------------------------------------------ FUNCTION PROTOTYPES */
+extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid );
+
 /* ------------------------------------------------ MEMSIM_CLOCK_SIMPLE_PROCESS_SOCKET */
 static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
 	return MEMSIM_OK;
