@@ -17,6 +17,7 @@ extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid );
 extern int memsim_tick_count( struct memsim_entry_t *ent, uint64_t *ticks );
 extern int memsim_trace_memop( struct memsim_t *msim, struct memsim_entry_t *ent );
 extern int memsim_clear_entry( struct memsim_entry_t *ent );
+extern int memsim_bubble_slot( struct memsim_slot_t *slot );
 
 /* ------------------------------------------------ MEMSIM_CLOCK_SIMPLE_PROCESS_SOCKET */
 static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
@@ -106,6 +107,9 @@ static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
 	 * bubble the slot entries
 	 * 
 	 */
+	if( memsim_bubble_slot( msim->socket ) != 0 ){ 
+		return MEMSIM_ERROR;
+	}
 
 	return MEMSIM_OK;
 }
