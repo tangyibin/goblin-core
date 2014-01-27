@@ -11,8 +11,8 @@ This page describes the physical memory addressing format for the GC64 architect
 = Address Fields =
 
 The physical address fields are defined as follows {[bits] : Field}
-  * [32:0]  : Base physical address : Defines the base physical address
-  * [37:33] : CUB Field : Defines the base address's physical location; corresponds to an HMC Cube ID [CUB].  0xF refers to the scratchpad.
+  * [33:0]  : Base physical address : Defines the base physical address
+  * [37:34] : CUB Field : Defines the base address's physical location; corresponds to an HMC Cube ID [CUB].  0xF refers to the scratchpad.
   * [41:38] : Reserved for future expansion
   * [49:42] : Socket ID. Refers to the attached physical socket ID within the given node
   * [63:50] : Unused/Ignored
