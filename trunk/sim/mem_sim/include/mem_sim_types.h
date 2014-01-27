@@ -75,6 +75,13 @@ struct memsim_entry_t{
 	memsim_rqst_t rqst;		/*! MEM-SIM: MEMSIM_ENTRY_T: REQUEST TYPE */
 };
 
+struct memsim_hw_t{ 
+	uint64_t payps;			/*! MEM-SIM: MEMSIM_HW_T : MAX PAYLOADS PER SECOND */
+	uint32_t num_links;		/*! MEM-SIM: MEMSIM_HW_T : NUMBER OF LINKS */
+	uint32_t num_lanes;		/*! MEM-SIM: MEMSIM_HW_T : NUMBER OF LANES PER LINK */
+	float gbps;			/*! MEM-SIM: MEMSIM_HW_T : SERDES RATE IN gbps */
+};
+
 struct memsim_slot_t{ 
 	struct memsim_entry_t *entry;	/*! MEM-SIM: MEMSIM_SLOT_T: ENTRIES */
 	uint32_t num_slots;		/*! MEM-SIM: MEMSIM_SLOT_T: NUMBER OF SLOTS */
@@ -116,6 +123,8 @@ struct memsim_t{
 	struct memsim_slot_t *global;	/*! MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES */
 
 	struct memsim_tid_t *tids;	/*! MEM-SIM: MEMSIM_T: TID HANDLERS */
+
+	struct memsim_hw_t hw;		/*! MEM-SIM: MEMSIM_T: HARDWARE CONFIGURATION */
 
 	struct memsim_slot_t *__ptr_slots;
 	struct memsim_entry_t *__ptr_entry;
