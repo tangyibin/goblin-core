@@ -21,6 +21,8 @@ extern int memsim_bubble_slot( struct memsim_slot_t *slot );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_cp_entry( struct memsim_entry_t *src, struct memsim_entry_t *dest );
 
+
+
 /* ------------------------------------------------ MEMSIM_CLOCK_SIMPLE_PROCESS_SOCKET */
 static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
 
@@ -307,7 +309,92 @@ static int memsim_clock_simple_process_global( struct memsim_t *msim ){
 }
 
 /* ------------------------------------------------ MEMSIM_CLOCK_SIMPLE_PROCESS_TASKGROUP */
-static int memsim_clock_simple_process_taskgroup( struct memsim_t *msim, uint32_t group ){
+static int memsim_clock_simple_process_taskgroup( struct memsim_t *msim, uint32_t gr ){
+
+	/* vars */
+	int done	= 0;
+	int rtn		= 0;
+	uint32_t cur	= 0;
+	uint32_t target	= 0;
+	/* ---- */
+
+
+	/* 
+	 * process the slot entries within this clock cycle
+ 	 * 
+	 */
+	while( (done != 1) ){ 
+	
+		/* 
+		 * check the 'cur' element
+		 * 
+		 */
+		if( msim->group[gr].entry[cur].valid == 1 ){ 
+
+			/* 
+			 * current element is valid, process it 
+			 * 
+			 * find a candidate slot, if no slot we're done
+			 *
+			 */
+			rtn = memsim_find_slot( msim->socket, &target );
+
+			if( rtn == MEMSIM_OK ){ 
+				/* 
+				 * found an open slot, transfer data
+				 *
+				 */
+
+				/* print the trace */
+				if( (msim->tracelevel & MEMSIM_TRACE_MEMOP ) > 0 ){ 
+					memsim_trace_memop( msim, 
+							&(msim->group[gr].entry[cur]) );
+				}
+			
+				/* copy the entry */
+				if( memsim_cp_entry( &(msim->group[gr].entry[cur]), 
+							&(msim->socket->entry[target])) != MEMSIM_OK ){
+					return MEMSIM_ERROR;
+				}
+
+				/* clear the entry */
+				memsim_clear_entry( &(msim->group[gr].entry[cur]) );
+
+			}else{ 
+				/* 
+				 * no more slots at the socket level 
+				 * 
+				 */
+				done = 1;
+			}
+		}
+
+
+		/* 
+		 * make sure we're not at the end of our valid slots
+	 	 * 
+		 */
+		if( (cur+1) >= msim->group[gr].num_slots ){ 
+			/* 
+			 * Last element
+			 *
+			 */
+			done = 1;
+		}else{ 
+			cur += 1;
+		}
+
+
+	}
+
+	/* 
+	 * bubble the slot entries
+	 * 
+	 */
+	if( memsim_bubble_slot( &(msim->group[gr]) ) != 0 ){ 
+		return MEMSIM_ERROR;
+	}
+
 	return MEMSIM_OK;
 }
 
