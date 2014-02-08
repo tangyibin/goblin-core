@@ -11,7 +11,7 @@ CLEANDIRS :=	$(addsuffix .clean, $(SUBDIRS))
 
 all:$(SUBDIRS)
 $(SUBDIRS):
-	$(MAKE) -C $@
+	@echo " Building $@"; $(MAKE) -C $@
 .PHONY: all $(SUBDIRS) 
 
 clean: $(CLEANDIRS) 

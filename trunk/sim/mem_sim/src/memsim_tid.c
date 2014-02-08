@@ -60,7 +60,7 @@ extern int memsim_tid_pop( struct memsim_t *msim, uint32_t *tid )
 	/* search bottom up */
 	for( i=0; i<msim->num_tids; i++ ){ 
 		if( msim->tids[i].valid == 0 ){ 
-			*tid = 1;
+			*tid = i;
 			return MEMSIM_OK;
 		}
 	}

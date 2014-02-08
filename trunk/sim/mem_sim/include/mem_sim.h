@@ -148,6 +148,14 @@ extern int memsim_set_hw( struct memsim_t *msim,
 				uint32_t num_lanes, 
 				float gbps );
 
+/*!	\fn int memsim_is_empty( struct memsim_t *msim )
+	\brief Queries the msim instance and determines whether all queues
+		are empty
+	\param *msim is a pointer to a valid mesim structure
+	\returns MEMSIM_OK on success, MEMSIM_NEMPTY otherwise
+*/
+extern int memsim_is_empty( struct memsim_t *msim );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
