@@ -91,6 +91,112 @@ static void memsim_print_header( struct memsim_t *msim )
 	fprintf( msim->tfile, "%s\n", "#-----------------------------------------------------" );	
 }
 
+/* ------------------------------------------------ MEMSIM_TRACE_MEMBUS */
+/* 
+ * MEMSIM_TRACE_MEMBUS
+ * 
+ */
+extern int memsim_trace_membus( struct memsim_t *msim, 
+				struct memsim_entry_t *ent ){
+
+	/* vars */
+	uint32_t i 	= 0;
+	const char *buf	= NULL;
+	/* ---- */
+
+	if( msim->tfile == NULL ){ 
+		return MEMSIM_ERROR;
+	}
+
+	/* setup the buffer */
+	switch( ent->rqst )
+	{
+		case MEMSIM_RD4:
+			buf	= &c_MEMSIM_RD4[0];
+			break;
+		case MEMSIM_WR4:
+			buf	= &c_MEMSIM_WR4[0];
+			break;
+		case MEMSIM_RD8:
+			buf	= &c_MEMSIM_RD8[0];
+			break;
+		case MEMSIM_WR8:
+			buf	= &c_MEMSIM_WR8[0];
+			break;
+		case MEMSIM_FENCE:
+			buf	= &c_MEMSIM_FENCE[0];
+			break;
+		case MEMSIM_UNK:
+			buf	= &c_MEMSIM_UNK[0];
+			break;
+		case MEMSIM_HMC_RD16:
+			buf	= &c_MEMSIM_HMC_RD16[0];
+			break;
+		case MEMSIM_HMC_RD32:
+			buf	= &c_MEMSIM_HMC_RD32[0];
+			break;
+		case MEMSIM_HMC_RD48:
+			buf	= &c_MEMSIM_HMC_RD48[0];
+			break;
+		case MEMSIM_HMC_RD64:
+			buf	= &c_MEMSIM_HMC_RD64[0];
+			break;
+		case MEMSIM_HMC_RD80:
+			buf	= &c_MEMSIM_HMC_RD80[0];
+			break;
+		case MEMSIM_HMC_RD96:
+			buf	= &c_MEMSIM_HMC_RD96[0];
+			break;
+		case MEMSIM_HMC_RD112:
+			buf	= &c_MEMSIM_HMC_RD112[0];
+			break;
+		case MEMSIM_HMC_RD128:
+			buf	= &c_MEMSIM_HMC_RD128[0];
+			break;
+		case MEMSIM_HMC_WR16:
+			buf	= &c_MEMSIM_HMC_WR16[0];
+			break;
+		case MEMSIM_HMC_WR32:
+			buf	= &c_MEMSIM_HMC_WR32[0];
+			break;
+		case MEMSIM_HMC_WR48:
+			buf	= &c_MEMSIM_HMC_WR48[0];
+			break;
+		case MEMSIM_HMC_WR64:
+			buf	= &c_MEMSIM_HMC_WR64[0];
+			break;
+		case MEMSIM_HMC_WR80:
+			buf	= &c_MEMSIM_HMC_WR80[0];
+			break;
+		case MEMSIM_HMC_WR96:
+			buf	= &c_MEMSIM_HMC_WR96[0];
+			break;
+		case MEMSIM_HMC_WR112:
+			buf	= &c_MEMSIM_HMC_WR112[0];
+			break;
+		case MEMSIM_HMC_WR128:
+			buf	= &c_MEMSIM_HMC_WR128[0];
+			break;
+		default:
+			return MEMSIM_ERROR;
+			break;
+	}
+	
+	for( i=0; i<ent->num_tids; i++ ){ 
+	
+		fprintf( msim->tfile, 	"MEMSIM_TRACE : %" PRIu64
+					" : MEMORY_BUS"
+					" : 0x%016" PRIx64
+					" : %" PRIu32
+					" : %s\n", 
+					msim->clock,
+					ent->gconst,
+					ent->tid[i],
+					buf);
+	}
+
+	return MEMSIM_OK;
+}	
 /* ------------------------------------------------ MEMSIM_TRACE_MEMOP */
 /* 
  * MEMSIM_TRACE_MEMOP
@@ -186,7 +292,7 @@ extern int memsim_trace_memop( struct memsim_t *msim,
 	
 		fprintf( msim->tfile, 	"MEMSIM_TRACE : %" PRIu64
 					" : MEMORY_OP"
-					" : %" PRIu64
+					" : 0x%016" PRIx64
 					" : %" PRIu32
 					" : %s\n", 
 					msim->clock,

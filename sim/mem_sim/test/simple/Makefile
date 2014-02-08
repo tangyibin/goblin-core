@@ -11,6 +11,6 @@ SRC=./src
 
 all: simple
 simple:
-	$(CC) $(CFLAGS) -o $@ $(SRC)/simple.c $(LDFLAGS) $(LDLIBS)
+	@echo " Building $(SRC)/simple.c"; $(CC) $(CFLAGS) -o $@ $(SRC)/simple.c $(LDFLAGS) $(LDLIBS)
 clean:
 	rm -Rf ./simple ./src/*.o

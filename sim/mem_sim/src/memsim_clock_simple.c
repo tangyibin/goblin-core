@@ -16,6 +16,7 @@
 extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid );
 extern int memsim_tick_count( struct memsim_entry_t *ent, uint64_t *ticks );
 extern int memsim_trace_memop( struct memsim_t *msim, struct memsim_entry_t *ent );
+extern int memsim_trace_membus( struct memsim_t *msim, struct memsim_entry_t *ent );
 extern int memsim_clear_entry( struct memsim_entry_t *ent );
 extern int memsim_bubble_slot( struct memsim_slot_t *slot );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
@@ -30,6 +31,7 @@ static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
 	uint64_t count	= 0x00ll;
 	uint64_t ticks	= 0x00ll;
 	int done	= 0;
+	int i		= 0;
 	uint32_t cur	= 0;
 	/* ---- */
 
@@ -77,6 +79,12 @@ static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
 				if( (msim->tracelevel & MEMSIM_TRACE_MEMOP ) > 0 ){ 
 					memsim_trace_memop( msim, 
 							&(msim->socket->entry[cur]) );
+				}
+
+				/* clear the valid tids */
+				for( i=0; i<msim->socket->entry[cur].num_tids; i++ ){ 
+					msim->tids[i].gconst	= 0x00;
+					msim->tids[i].valid	= 0;
 				}
 
 				/* clear the entry */
@@ -161,8 +169,8 @@ static int memsim_clock_simple_process_amo( struct memsim_t *msim ){
 				 */
 
 				/* print the trace */
-				if( (msim->tracelevel & MEMSIM_TRACE_MEMOP ) > 0 ){ 
-					memsim_trace_memop( msim, 
+				if( (msim->tracelevel & MEMSIM_TRACE_MEMBUS ) > 0 ){ 
+					memsim_trace_membus( msim, 
 							&(msim->amo->entry[cur]) );
 				}
 			
@@ -264,8 +272,8 @@ static int memsim_clock_simple_process_global( struct memsim_t *msim ){
 				 */
 
 				/* print the trace */
-				if( (msim->tracelevel & MEMSIM_TRACE_MEMOP ) > 0 ){ 
-					memsim_trace_memop( msim, 
+				if( (msim->tracelevel & MEMSIM_TRACE_MEMBUS ) > 0 ){ 
+					memsim_trace_membus( msim, 
 							&(msim->global->entry[cur]) );
 				}
 
@@ -346,8 +354,8 @@ static int memsim_clock_simple_process_taskgroup( struct memsim_t *msim, uint32_
 				 */
 
 				/* print the trace */
-				if( (msim->tracelevel & MEMSIM_TRACE_MEMOP ) > 0 ){ 
-					memsim_trace_memop( msim, 
+				if( (msim->tracelevel & MEMSIM_TRACE_MEMBUS ) > 0 ){ 
+					memsim_trace_membus( msim, 
 							&(msim->group[gr].entry[cur]) );
 				}
 			
