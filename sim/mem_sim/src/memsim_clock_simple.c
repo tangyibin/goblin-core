@@ -83,8 +83,7 @@ static int memsim_clock_simple_process_socket( struct memsim_t *msim ){
 
 				/* clear the valid tids */
 				for( i=0; i<msim->socket->entry[cur].num_tids; i++ ){ 
-					msim->tids[i].gconst	= 0x00;
-					msim->tids[i].valid	= 0;
+					memsim_tid_push( msim, i );
 				}
 
 				/* clear the entry */
