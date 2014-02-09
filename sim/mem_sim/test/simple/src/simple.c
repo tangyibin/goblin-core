@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "mem_sim.h"
 
 /* ------------------------------------------- MAIN */
@@ -42,8 +43,26 @@ int main( int argc, char **argv )
 		switch( ret )
 		{
 			case 'A':
+				if( strstr( optarg, "MEMSIM_SIMPLE" ) != NULL ){ 
+					alg = MEMSIM_SIMPLE;
+				}else if( strstr( optarg, "MEMSIM_CACHE" ) != NULL ){ 
+					alg = MEMSIM_CACHE;
+				}else if( strstr( optarg, "MEMSIM_EXP" ) != NULL ){ 
+					alg = MEMSIM_EXP;
+				}else{ 
+					printf( "ERROR : UNRECOGNIZED ALGORITHM : %s\n", optarg );
+					return -1;
+				}
 				break;
 			case 'I':
+				if( strstr( optarg, "MEMSIM_HMC" ) != NULL ){ 
+					iface = MEMSIM_HMC;
+				}else if( strstr( optarg, "MEMSIM_BASIC" ) != NULL ){
+					iface = MEMSIM_HMC;
+				}else{
+					printf( "ERROR : UNRECOGNIZED INTERFACE : %s\n", optarg );
+					return -1;
+				}
 				break;
 			case 'g':
 				task_groups	= (uint32_t)(atoi(optarg));
@@ -101,11 +120,6 @@ int main( int argc, char **argv )
 				break;
 		}
 	}
-
-	/* 
-	 * sanity check the args 
-	 * 
-	 */
 
 	/* 
 	 * determine the appropriate options
