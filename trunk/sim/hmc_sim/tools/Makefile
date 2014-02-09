@@ -10,6 +10,6 @@ SRC=./src
 
 all: hmctognuplot
 hmctognuplot:
-	$(CC) $(CFLAGS) -o $@ $(SRC)/hmctognuplot.c $(LDFLAGS) $(LDLIBS)
+	@echo " Building hmctognuplot"; $(CC) $(CFLAGS) -o $@ $(SRC)/hmctognuplot.c $(LDFLAGS) $(LDLIBS)
 clean: 
 	rm -Rf ./hmctognuplot ./src/*.o
