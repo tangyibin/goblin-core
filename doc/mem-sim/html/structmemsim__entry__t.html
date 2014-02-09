@@ -98,6 +98,10 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>buf</b> [4]</td><
 <tr class="separator:a5e6fc38a3aa83e0c1ec7fcf9e1cf2563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c0fd08ced6d9c59b1c2806186ac6dc2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemsim__entry__t.html#a0c0fd08ced6d9c59b1c2806186ac6dc2">valid</a></td></tr>
 <tr class="separator:a0c0fd08ced6d9c59b1c2806186ac6dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae991f3a825c085a21997def9c86b26ee"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemsim__entry__t.html#ae991f3a825c085a21997def9c86b26ee">tid</a> [32]</td></tr>
+<tr class="separator:ae991f3a825c085a21997def9c86b26ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4930ffc1bfc88eb13462c97d5cdeb776"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemsim__entry__t.html#a4930ffc1bfc88eb13462c97d5cdeb776">num_tids</a></td></tr>
+<tr class="separator:a4930ffc1bfc88eb13462c97d5cdeb776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bd6994a034a78c0d2b8d2adfc0cf2bd"><td class="memItemLeft" align="right" valign="top">memsim_rqst_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmemsim__entry__t.html#a0bd6994a034a78c0d2b8d2adfc0cf2bd">rqst</a></td></tr>
 <tr class="separator:a0bd6994a034a78c0d2b8d2adfc0cf2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -115,12 +119,38 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>buf</b> [4]</td><
 
 </div>
 </div>
+<a class="anchor" id="a4930ffc1bfc88eb13462c97d5cdeb776"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t memsim_entry_t::num_tids</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MEM-SIM: MEMSIM_ENTRY_T: TID ARRAY </p>
+
+</div>
+</div>
 <a class="anchor" id="a0bd6994a034a78c0d2b8d2adfc0cf2bd"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">memsim_rqst_t memsim_entry_t::rqst</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MEM-SIM: MEMSIM_ENTRY_T: NUMBER OF CORRESPONDING TIDS </p>
+
+</div>
+</div>
+<a class="anchor" id="ae991f3a825c085a21997def9c86b26ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t memsim_entry_t::tid[32]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -147,7 +177,7 @@ uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>buf</b> [4]</td><
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 25 2014 22:25:32 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Feb 8 2014 22:23:29 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

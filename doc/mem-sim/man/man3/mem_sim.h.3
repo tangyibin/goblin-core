@@ -1,4 +1,4 @@
-.TH "include/mem_sim.h" 3 "Sat Jan 25 2014" "Version 1.0" "MEM_SIM" \" -*- nroff -*-
+.TH "include/mem_sim.h" 3 "Sat Feb 8 2014" "Version 1.0" "MEM_SIM" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -39,6 +39,14 @@ GoblinCore-64 Memory Interface Simulation Library Header FIle\&.
 .RI "int \fBmemsim_trace_level\fP (struct \fBmemsim_t\fP *msim, uint32_t level)"
 .br
 .RI "\fISets the trace level for the msim instance\&. \fP"
+.ti -1c
+.RI "int \fBmemsim_set_hw\fP (struct \fBmemsim_t\fP *msim, uint32_t num_links, uint32_t num_lanes, float gbps)"
+.br
+.RI "\fIInitializes the base hardware configuration\&. \fP"
+.ti -1c
+.RI "int \fBmemsim_is_empty\fP (struct \fBmemsim_t\fP *msim)"
+.br
+.RI "\fIQueries the msim instance and determines whether all queues are empty\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -115,6 +123,22 @@ Initializes the internal MEM_SIM state with the necessary hardware configuration
 .RE
 .PP
 
+.SS "int memsim_is_empty (struct \fBmemsim_t\fP *msim)"
+
+.PP
+Queries the msim instance and determines whether all queues are empty\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*msim\fP is a pointer to a valid mesim structure 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+MEMSIM_OK on success, MEMSIM_NEMPTY otherwise 
+.RE
+.PP
+
 .SS "int memsim_reset (struct \fBmemsim_t\fP *msim)"
 
 .PP
@@ -149,6 +173,28 @@ Initiates a memory request\&.
 \fIpayload0\fP is an optional payload for the request [writes] 
 .br
 \fIpayload1\fP is an optional payload for the request [CAS] 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 on success, nonzero otherwise 
+.RE
+.PP
+
+.SS "int memsim_set_hw (struct \fBmemsim_t\fP *msim, uint32_tnum_links, uint32_tnum_lanes, floatgbps)"
+
+.PP
+Initializes the base hardware configuration\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI*msim\fP is a pointer to a valid memsim structure 
+.br
+\fInum_links\fP is the number of HMC links on the socket 
+.br
+\fInum_lanes\fP is the number of SERDES lanes per link 
+.br
+\fIgbps\fP is the link data transfer rate in Gbps 
 .RE
 .PP
 \fBReturns:\fP

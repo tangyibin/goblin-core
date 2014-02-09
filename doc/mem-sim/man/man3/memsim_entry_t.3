@@ -1,4 +1,4 @@
-.TH "memsim_entry_t" 3 "Sat Jan 25 2014" "Version 1.0" "MEM_SIM" \" -*- nroff -*-
+.TH "memsim_entry_t" 3 "Sat Feb 8 2014" "Version 1.0" "MEM_SIM" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,6 +19,12 @@ memsim_entry_t \-
 .RI "uint32_t \fBvalid\fP"
 .br
 .ti -1c
+.RI "uint32_t \fBtid\fP [32]"
+.br
+.ti -1c
+.RI "uint32_t \fBnum_tids\fP"
+.br
+.ti -1c
 .RI "memsim_rqst_t \fBrqst\fP"
 .br
 .in -1c
@@ -26,7 +32,11 @@ memsim_entry_t \-
 .PP 
 .SS "uint64_t memsim_entry_t::gconst"
 MEM-SIM: MEMSIM_ENTRY_T: BUFFER 
+.SS "uint32_t memsim_entry_t::num_tids"
+MEM-SIM: MEMSIM_ENTRY_T: TID ARRAY 
 .SS "memsim_rqst_t memsim_entry_t::rqst"
+MEM-SIM: MEMSIM_ENTRY_T: NUMBER OF CORRESPONDING TIDS 
+.SS "uint32_t memsim_entry_t::tid[32]"
 MEM-SIM: MEMSIM_ENTRY_T: VALID BIT 
 .SS "uint32_t memsim_entry_t::valid"
 MEM-SIM: MEMSIM_ENTRY_T: GCONST 

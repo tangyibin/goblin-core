@@ -144,16 +144,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="mem__sim_8h.html#a2cb5e3fff0dd289874f27e3bfe6651a1">memsim_trace_level</a>( <span class="keyword">struct</span> <a class="code" href="structmemsim__t.html">memsim_t</a> *msim, </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                uint32_t level );</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor"></span>} <span class="comment">/* extern C */</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _MEM_SIM_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/* EOF */</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="mem__sim_8h.html#a228a2395dc29762a7b6e6d1b5710bc26">memsim_set_hw</a>( <span class="keyword">struct</span> <a class="code" href="structmemsim__t.html">memsim_t</a> *msim, </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                uint32_t num_links, </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                uint32_t num_lanes, </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                <span class="keywordtype">float</span> gbps );</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="mem__sim_8h.html#a71d32dc2180d4632cbf8b0f8bf08df49">memsim_is_empty</a>( <span class="keyword">struct</span> <a class="code" href="structmemsim__t.html">memsim_t</a> *msim );</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor"></span>} <span class="comment">/* extern C */</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _MEM_SIM_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/* EOF */</span></div>
+<div class="ttc" id="mem__sim_8h_html_a228a2395dc29762a7b6e6d1b5710bc26"><div class="ttname"><a href="mem__sim_8h.html#a228a2395dc29762a7b6e6d1b5710bc26">memsim_set_hw</a></div><div class="ttdeci">int memsim_set_hw(struct memsim_t *msim, uint32_t num_links, uint32_t num_lanes, float gbps)</div><div class="ttdoc">Initializes the base hardware configuration. </div></div>
 <div class="ttc" id="mem__sim_8h_html_ae7dcedd9853c7260f705f6be4a02c48c"><div class="ttname"><a href="mem__sim_8h.html#ae7dcedd9853c7260f705f6be4a02c48c">memsim_reset</a></div><div class="ttdeci">int memsim_reset(struct memsim_t *msim)</div><div class="ttdoc">resets the target memsim instance </div></div>
 <div class="ttc" id="mem__sim_8h_html_aceef729a6d340d3eb0f71765ada14e7c"><div class="ttname"><a href="mem__sim_8h.html#aceef729a6d340d3eb0f71765ada14e7c">memsim_clock</a></div><div class="ttdeci">int memsim_clock(struct memsim_t *msim)</div><div class="ttdoc">Initiates a clock signal event for the memsim instance. </div></div>
-<div class="ttc" id="structmemsim__t_html"><div class="ttname"><a href="structmemsim__t.html">memsim_t</a></div><div class="ttdef"><b>Definition:</b> mem_sim_types.h:64</div></div>
+<div class="ttc" id="mem__sim_8h_html_a71d32dc2180d4632cbf8b0f8bf08df49"><div class="ttname"><a href="mem__sim_8h.html#a71d32dc2180d4632cbf8b0f8bf08df49">memsim_is_empty</a></div><div class="ttdeci">int memsim_is_empty(struct memsim_t *msim)</div><div class="ttdoc">Queries the msim instance and determines whether all queues are empty. </div></div>
+<div class="ttc" id="structmemsim__t_html"><div class="ttname"><a href="structmemsim__t.html">memsim_t</a></div><div class="ttdef"><b>Definition:</b> mem_sim_types.h:97</div></div>
 <div class="ttc" id="mem__sim_8h_html_aab498cdf5dde04a2bbbbdebf1ebdb09f"><div class="ttname"><a href="mem__sim_8h.html#aab498cdf5dde04a2bbbbdebf1ebdb09f">memsim_trace_handle</a></div><div class="ttdeci">int memsim_trace_handle(struct memsim_t *msim, FILE *tfile)</div><div class="ttdoc">Sets the open file handle for internal memsim tracing. </div></div>
 <div class="ttc" id="mem__sim_8h_html_a1bad5808104fbdf52c6751f61d3b68bd"><div class="ttname"><a href="mem__sim_8h.html#a1bad5808104fbdf52c6751f61d3b68bd">memsim_rqst</a></div><div class="ttdeci">int memsim_rqst(struct memsim_t *msim, uint64_t gconst, memsim_rqst_t rqst, uint64_t addr, uint64_t payload0, uint64_t payload1)</div><div class="ttdoc">Initiates a memory request. </div></div>
 <div class="ttc" id="mem__sim_8h_html_abb5a0f39c927736087184f93003a46ca"><div class="ttname"><a href="mem__sim_8h.html#abb5a0f39c927736087184f93003a46ca">memsim_init</a></div><div class="ttdeci">int memsim_init(struct memsim_t *msim, memsim_iface_t iface, memsim_alg_t alg, uint32_t task_groups, uint32_t task_procs, uint32_t tasks, uint32_t g_slots, uint32_t s_slots, uint32_t a_slots, uint32_t ga_slots, uint64_t opt)</div><div class="ttdoc">Initializes the internal MEM_SIM state with the necessary hardware configuration options. </div></div>
@@ -162,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 25 2014 22:25:32 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Feb 8 2014 22:23:29 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

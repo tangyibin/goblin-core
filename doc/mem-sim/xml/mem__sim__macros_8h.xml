@@ -47,6 +47,50 @@
         </inbodydescription>
         <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="24" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="24" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="define" id="mem__sim__macros_8h_1acbacd8c26b8538e6cebd138f4d9bc82e" prot="public" static="no">
+        <name>MEMSIM_TRACE_NONE</name>
+        <initializer>0x00000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="29" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mem__sim__macros_8h_1a2513726616e73c9895273f64542c2bc9" prot="public" static="no">
+        <name>MEMSIM_TRACE_MEMOP</name>
+        <initializer>0x00000001</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="30" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mem__sim__macros_8h_1ad4ec827ddd9bb90c55e5dac303937a1f" prot="public" static="no">
+        <name>MEMSIM_TRACE_MEMBUS</name>
+        <initializer>0x00000002</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="31" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mem__sim__macros_8h_1affaf308f2b99c6c3c87b40d4e3d27498" prot="public" static="no">
+        <name>MEMSIM_NEMPTY</name>
+        <initializer>-3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="34" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a39a7a20da1e948bbed1de0d3093559d3" prot="public" static="no">
         <name>MEMSIM_STALL</name>
         <initializer>-2</initializer>
@@ -56,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="29" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="29" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="35" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a865f0959c0893c9abaf45d7676b5418e" prot="public" static="no">
         <name>MEMSIM_ERROR</name>
@@ -67,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="30" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="30" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="36" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a26e832637d5d6623ac61f71eb3684280" prot="public" static="no">
         <name>MEMSIM_OK</name>
@@ -78,7 +122,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="31" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="31" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="37" column="10" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mem__sim__macros_8h_1aedb79262a431e08d0b5cf9246e2875d6" prot="public" static="no">
+        <name>MEMSIM_TIDS_PER_ENTRY</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="40" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1ae8c6b2edd7da655b8727bda03f175ce2" prot="public" static="no">
         <name>GSIM_REG_GCONST_PID</name>
@@ -89,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="35" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="35" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="43" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1ac47732dac86739b06bec2e395918cc1e" prot="public" static="no">
         <name>GSIM_REG_GCONST_NID</name>
@@ -100,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="39" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="39" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="47" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a2b4bcf967ac06012455a41c40e361469" prot="public" static="no">
         <name>GSIM_REG_GCONST_SID</name>
@@ -111,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="43" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="43" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="51" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a90e3d0e5c5391cb97286642cd4a61b35" prot="public" static="no">
         <name>GSIM_REG_GCONST_TG</name>
@@ -122,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="47" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="47" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="55" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a405cc22687905b259fdf5c444a7b6588" prot="public" static="no">
         <name>GSIM_REG_GCONST_TP</name>
@@ -133,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="51" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="51" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="59" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a7569556cde9ab60fc53d7e85e386f163" prot="public" static="no">
         <name>GSIM_REG_GCONST_TC</name>
@@ -144,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="55" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="55" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="63" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="mem__sim__macros_8h_1a695ecbf760c8278578de2893fec48a81" prot="public" static="no">
         <name>MEMSIM_PRINT_TRACE</name>
@@ -156,7 +211,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="59" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="59" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" line="67" column="9" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -191,47 +246,55 @@
 <codeline lineno="25"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="26"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>RETURN<sp/>CODES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_STALL<sp/><sp/><sp/><sp/>-2</highlight></codeline>
-<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_ERROR<sp/><sp/><sp/><sp/>-1</highlight></codeline>
-<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_OK<sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>TRACE<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_TRACE_NONE<sp/><sp/><sp/>0x00000000</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_TRACE_MEMOP<sp/><sp/>0x00000001</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_TRACE_MEMBUS<sp/>0x00000002</highlight></codeline>
 <codeline lineno="32"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>VALUE<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_PID</highlight></codeline>
-<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_PID<sp/>0x000000000000FFFF</highlight></codeline>
-<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
-<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_NID</highlight></codeline>
-<codeline lineno="39"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_NID<sp/>0x00000000FFFF0000</highlight></codeline>
-<codeline lineno="40"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>RETURN<sp/>CODES<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_NEMPTY<sp/><sp/><sp/>-3</highlight></codeline>
+<codeline lineno="35"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_STALL<sp/><sp/><sp/><sp/>-2</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_ERROR<sp/><sp/><sp/><sp/>-1</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/><sp/><sp/><sp/><sp/>MEMSIM_OK<sp/><sp/><sp/>0</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>VALUE<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MEMSIM_TIDS_PER_ENTRY<sp/><sp/><sp/>32</highlight></codeline>
 <codeline lineno="41"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_SID</highlight></codeline>
-<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_SID<sp/>0x000000FF00000000</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_PID</highlight></codeline>
+<codeline lineno="43"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_PID<sp/>0x000000000000FFFF</highlight></codeline>
 <codeline lineno="44"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_TG</highlight></codeline>
-<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_TG<sp/><sp/>0x0000FF0000000000</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_NID</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_NID<sp/>0x00000000FFFF0000</highlight></codeline>
 <codeline lineno="48"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="49"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_TP</highlight></codeline>
-<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_TP<sp/><sp/>0x00FF000000000000</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_SID</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_SID<sp/>0x000000FF00000000</highlight></codeline>
 <codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="53"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_TC</highlight></codeline>
-<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_TC<sp/><sp/>0xFF00000000000000</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_TG</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_TG<sp/><sp/>0x0000FF0000000000</highlight></codeline>
 <codeline lineno="56"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="57"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>TRACE<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MEMSIM_PRINT_TRACE(<sp/>s<sp/>)<sp/><sp/><sp/><sp/><sp/>(<sp/>fprintf(<sp/>stdout,<sp/>&quot;MEMSIM_TRACE<sp/>%s:%d<sp/>:<sp/>%s\n&quot;,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>s<sp/>))</highlight></codeline>
-<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
-<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_TP</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_TP<sp/><sp/>0x00FF000000000000</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>GSIM_REG_GCONST_TC</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>GSIM_REG_GCONST_TC<sp/><sp/>0xFF00000000000000</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
 <codeline lineno="65"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_MEM_SIM_MACROS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
-<codeline lineno="67"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>------------------------------------------------<sp/>TRACE<sp/>MACROS<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MEMSIM_PRINT_TRACE(<sp/>s<sp/>)<sp/><sp/><sp/><sp/><sp/>(<sp/>fprintf(<sp/>stdout,<sp/>&quot;MEMSIM_TRACE<sp/>%s:%d<sp/>:<sp/>%s\n&quot;,<sp/>__FUNCTION__,<sp/>__LINE__,<sp/>s<sp/>))</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"></highlight><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>extern<sp/>C<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_MEM_SIM_MACROS_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EOF<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_macros.h"/>
   </compounddef>

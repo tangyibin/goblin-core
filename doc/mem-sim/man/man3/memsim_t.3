@@ -1,4 +1,4 @@
-.TH "memsim_t" 3 "Sat Jan 25 2014" "Version 1.0" "MEM_SIM" \" -*- nroff -*-
+.TH "memsim_t" 3 "Sat Feb 8 2014" "Version 1.0" "MEM_SIM" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -37,6 +37,9 @@ memsim_t \-
 .RI "uint32_t \fBtasks\fP"
 .br
 .ti -1c
+.RI "uint32_t \fBnum_tids\fP"
+.br
+.ti -1c
 .RI "FILE * \fBtfile\fP"
 .br
 .ti -1c
@@ -61,16 +64,25 @@ memsim_t \-
 .RI "struct \fBmemsim_slot_t\fP * \fBglobal\fP"
 .br
 .ti -1c
+.RI "struct \fBmemsim_tid_t\fP * \fBtids\fP"
+.br
+.ti -1c
+.RI "struct \fBmemsim_hw_t\fP \fBhw\fP"
+.br
+.ti -1c
 .RI "struct \fBmemsim_slot_t\fP * \fB__ptr_slots\fP"
 .br
 .ti -1c
 .RI "struct \fBmemsim_entry_t\fP * \fB__ptr_entry\fP"
 .br
+.ti -1c
+.RI "struct \fBmemsim_tid_t\fP * \fB__ptr_tid\fP"
+.br
 .in -1c
 .SH "Field Documentation"
 .PP 
 .SS "struct \fBmemsim_slot_t\fP* memsim_t::__ptr_slots"
-MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES 
+MEM-SIM: MEMSIM_T: HARDWARE CONFIGURATION 
 .SS "uint32_t memsim_t::a_slots"
 MEM-SIM: MEMSIM_T: NUMBER OF SOCKET SLOTS 
 .SS "memsim_alg_t memsim_t::alg"
@@ -85,8 +97,12 @@ MEM-SIM: MEMSIM_T: NUMBER OF SLOTS DEDICATED TO AMO
 MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES 
 .SS "struct \fBmemsim_slot_t\fP* memsim_t::group"
 MEM-SIM: MEMSIM_T: CLOCK 
+.SS "struct \fBmemsim_hw_t\fP memsim_t::hw"
+MEM-SIM: MEMSIM_T: TID HANDLERS 
 .SS "memsim_iface_t memsim_t::iface"
 MEM-SIM: MEMSIM_T: NUMBER OF GLOBAL ADDRESS SLOTS 
+.SS "uint32_t memsim_t::num_tids"
+MEM-SIM: MEMSIM_T: NUMBER OF TASKS 
 .SS "uint64_t memsim_t::opt"
 MEM-SIM: MEMSIM_T: TRACELVEL 
 .SS "uint32_t memsim_t::s_slots"
@@ -100,7 +116,9 @@ MEM-SIM: MEMSIM_T: NUMBER OF TASK GROUPS
 .SS "uint32_t memsim_t::tasks"
 MEM-SIM: MEMSIM_T: NUMBER OF TASK PROCS 
 .SS "FILE* memsim_t::tfile"
-MEM-SIM: MEMSIM_T: NUMBER OF TASKS 
+MEM-SIM: MEMSIM_T: NUMBER OF TIDS 
+.SS "struct \fBmemsim_tid_t\fP* memsim_t::tids"
+MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES 
 .SS "uint32_t memsim_t::tracelevel"
 MEM-SIM: MEMSIM_T: TRACE FILE HANDLER 
 

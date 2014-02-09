@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="59" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="59" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="86" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__slot__t_1a18f23ad9c0a96fbe2802c3aac6e9054d" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -27,7 +27,7 @@
 <para>MEM-SIM: MEMSIM_SLOT_T: ENTRIES </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="60" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="60" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="87" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__slot__t_1a960e4f67aacef2a35af9b5cbe1ac145b" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -40,7 +40,7 @@
 <para>MEM-SIM: MEMSIM_SLOT_T: NUMBER OF SLOTS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="61" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="61" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="88" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -48,19 +48,19 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
+      <node id="5">
         <label>memsim_slot_t</label>
         <link refid="structmemsim__slot__t"/>
-        <childnode refid="4" relation="usage">
+        <childnode refid="6" relation="usage">
           <edgelabel>entry</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="6">
         <label>memsim_entry_t</label>
         <link refid="structmemsim__entry__t"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="58" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="58" bodyend="62"/>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="85" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="85" bodyend="89"/>
     <listofallmembers>
       <member refid="structmemsim__slot__t_1ad0d9c1c64c0a110c1bc81ce1c919bad0" prot="public" virt="non-virtual"><scope>memsim_slot_t</scope><name>entry</name></member>
       <member refid="structmemsim__slot__t_1a960e4f67aacef2a35af9b5cbe1ac145b" prot="public" virt="non-virtual"><scope>memsim_slot_t</scope><name>id</name></member>

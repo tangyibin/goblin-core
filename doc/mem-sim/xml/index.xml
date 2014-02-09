@@ -4,7 +4,15 @@
     <member refid="structmemsim__entry__t_1ac8a6d8074d88a12a21d8b9b1b7a71dc9" kind="variable"><name>buf</name></member>
     <member refid="structmemsim__entry__t_1a5e6fc38a3aa83e0c1ec7fcf9e1cf2563" kind="variable"><name>gconst</name></member>
     <member refid="structmemsim__entry__t_1a0c0fd08ced6d9c59b1c2806186ac6dc2" kind="variable"><name>valid</name></member>
+    <member refid="structmemsim__entry__t_1ae991f3a825c085a21997def9c86b26ee" kind="variable"><name>tid</name></member>
+    <member refid="structmemsim__entry__t_1a4930ffc1bfc88eb13462c97d5cdeb776" kind="variable"><name>num_tids</name></member>
     <member refid="structmemsim__entry__t_1a0bd6994a034a78c0d2b8d2adfc0cf2bd" kind="variable"><name>rqst</name></member>
+  </compound>
+  <compound refid="structmemsim__hw__t" kind="struct"><name>memsim_hw_t</name>
+    <member refid="structmemsim__hw__t_1a955d9ad1134178d2f0b07f0b9531dd66" kind="variable"><name>payps</name></member>
+    <member refid="structmemsim__hw__t_1a71ac1327eb532bec4d831652701c9bc6" kind="variable"><name>num_links</name></member>
+    <member refid="structmemsim__hw__t_1a3653e14a4ac28b9bfe5686053f6fe2c7" kind="variable"><name>num_lanes</name></member>
+    <member refid="structmemsim__hw__t_1a3e63571f2a1a09314aaa3d520aa6317c" kind="variable"><name>gbps</name></member>
   </compound>
   <compound refid="structmemsim__slot__t" kind="struct"><name>memsim_slot_t</name>
     <member refid="structmemsim__slot__t_1ad0d9c1c64c0a110c1bc81ce1c919bad0" kind="variable"><name>entry</name></member>
@@ -21,6 +29,7 @@
     <member refid="structmemsim__t_1ac893c94cb9e4cb525baa4a4352ef6269" kind="variable"><name>task_groups</name></member>
     <member refid="structmemsim__t_1a13c682d9789b022f02fbeafcdc2a0866" kind="variable"><name>task_procs</name></member>
     <member refid="structmemsim__t_1a907d500eb21a9b3c8813ed0e639d806c" kind="variable"><name>tasks</name></member>
+    <member refid="structmemsim__t_1a321563b1d52ef49a39ee5ef3266f21ab" kind="variable"><name>num_tids</name></member>
     <member refid="structmemsim__t_1a0bdb5e96cb3acca8a4ec5daea271243d" kind="variable"><name>tfile</name></member>
     <member refid="structmemsim__t_1a5adec994c4699e314a35284102cb1cb3" kind="variable"><name>tracelevel</name></member>
     <member refid="structmemsim__t_1a34e92877e65240907a70bbfe16fd4a34" kind="variable"><name>opt</name></member>
@@ -29,8 +38,16 @@
     <member refid="structmemsim__t_1a42ae6dd8a64e2d04c30e35354ec25555" kind="variable"><name>socket</name></member>
     <member refid="structmemsim__t_1a9e7a2ce164d954f25105d93eaf040b3f" kind="variable"><name>amo</name></member>
     <member refid="structmemsim__t_1a3b005d5aa8e759a08281f59c9f05ed3b" kind="variable"><name>global</name></member>
+    <member refid="structmemsim__t_1acbb8fb6d4f5d4b4a918cb611fb113327" kind="variable"><name>tids</name></member>
+    <member refid="structmemsim__t_1af5113def268ae634e203d4a6639a37f3" kind="variable"><name>hw</name></member>
     <member refid="structmemsim__t_1a13bfc8f8ea24eb83b5b3976aee534db3" kind="variable"><name>__ptr_slots</name></member>
     <member refid="structmemsim__t_1ac8e490728a0881577947adb893811324" kind="variable"><name>__ptr_entry</name></member>
+    <member refid="structmemsim__t_1a48f923436d3f440da8a2c529f507bb4a" kind="variable"><name>__ptr_tid</name></member>
+  </compound>
+  <compound refid="structmemsim__tid__t" kind="struct"><name>memsim_tid_t</name>
+    <member refid="structmemsim__tid__t_1ac875ba218d981e82302e2257b180ef0e" kind="variable"><name>gconst</name></member>
+    <member refid="structmemsim__tid__t_1aa734e65d63cf282d64c81d36bf509f96" kind="variable"><name>id</name></member>
+    <member refid="structmemsim__tid__t_1a2826f787db44138c8c3f24d53efd1d5c" kind="variable"><name>valid</name></member>
   </compound>
   <compound refid="mem__sim_8h" kind="file"><name>mem_sim.h</name>
     <member refid="mem__sim_8h_1abb5a0f39c927736087184f93003a46ca" kind="function"><name>memsim_init</name></member>
@@ -40,13 +57,20 @@
     <member refid="mem__sim_8h_1ae7dcedd9853c7260f705f6be4a02c48c" kind="function"><name>memsim_reset</name></member>
     <member refid="mem__sim_8h_1aab498cdf5dde04a2bbbbdebf1ebdb09f" kind="function"><name>memsim_trace_handle</name></member>
     <member refid="mem__sim_8h_1a2cb5e3fff0dd289874f27e3bfe6651a1" kind="function"><name>memsim_trace_level</name></member>
+    <member refid="mem__sim_8h_1a228a2395dc29762a7b6e6d1b5710bc26" kind="function"><name>memsim_set_hw</name></member>
+    <member refid="mem__sim_8h_1a71d32dc2180d4632cbf8b0f8bf08df49" kind="function"><name>memsim_is_empty</name></member>
   </compound>
   <compound refid="mem__sim__macros_8h" kind="file"><name>mem_sim_macros.h</name>
     <member refid="mem__sim__macros_8h_1a8f1bad80625fa9ce2785c9078adf35ab" kind="define"><name>MEMSIM_MAJOR_VERSION</name></member>
     <member refid="mem__sim__macros_8h_1ab8b2f5ef343773e2ec01cd7b2745cc5e" kind="define"><name>MEMSIM_MINOR_VERSION</name></member>
+    <member refid="mem__sim__macros_8h_1acbacd8c26b8538e6cebd138f4d9bc82e" kind="define"><name>MEMSIM_TRACE_NONE</name></member>
+    <member refid="mem__sim__macros_8h_1a2513726616e73c9895273f64542c2bc9" kind="define"><name>MEMSIM_TRACE_MEMOP</name></member>
+    <member refid="mem__sim__macros_8h_1ad4ec827ddd9bb90c55e5dac303937a1f" kind="define"><name>MEMSIM_TRACE_MEMBUS</name></member>
+    <member refid="mem__sim__macros_8h_1affaf308f2b99c6c3c87b40d4e3d27498" kind="define"><name>MEMSIM_NEMPTY</name></member>
     <member refid="mem__sim__macros_8h_1a39a7a20da1e948bbed1de0d3093559d3" kind="define"><name>MEMSIM_STALL</name></member>
     <member refid="mem__sim__macros_8h_1a865f0959c0893c9abaf45d7676b5418e" kind="define"><name>MEMSIM_ERROR</name></member>
     <member refid="mem__sim__macros_8h_1a26e832637d5d6623ac61f71eb3684280" kind="define"><name>MEMSIM_OK</name></member>
+    <member refid="mem__sim__macros_8h_1aedb79262a431e08d0b5cf9246e2875d6" kind="define"><name>MEMSIM_TIDS_PER_ENTRY</name></member>
     <member refid="mem__sim__macros_8h_1ae8c6b2edd7da655b8727bda03f175ce2" kind="define"><name>GSIM_REG_GCONST_PID</name></member>
     <member refid="mem__sim__macros_8h_1ac47732dac86739b06bec2e395918cc1e" kind="define"><name>GSIM_REG_GCONST_NID</name></member>
     <member refid="mem__sim__macros_8h_1a2b4bcf967ac06012455a41c40e361469" kind="define"><name>GSIM_REG_GCONST_SID</name></member>
@@ -68,8 +92,26 @@
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27" kind="enum"><name>memsim_rqst_t</name></member>
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ab10eb0e5f8112cc5e707f2ed3fe5d139" kind="enumvalue"><name>MEMSIM_RD8</name></member>
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a984544aa326f6fe53af99b61dab06db7" kind="enumvalue"><name>MEMSIM_WR8</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a178339c9fb7d77aa030352205c627a7f" kind="enumvalue"><name>MEMSIM_RD4</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27abd033f3105e8964bacf84672f766a2a1" kind="enumvalue"><name>MEMSIM_WR4</name></member>
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a84827d4b7c4061290a4bd73c4e859235" kind="enumvalue"><name>MEMSIM_FENCE</name></member>
     <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a55605a1d10bb4417f38ac41288c6e729" kind="enumvalue"><name>MEMSIM_UNK</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a5f25563d9c41958d83120d9eae736216" kind="enumvalue"><name>MEMSIM_HMC_RD16</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a2f2430cf7305cf091d8ff8491a355897" kind="enumvalue"><name>MEMSIM_HMC_RD32</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a9b18bd6718a30f675ce810e20c1303b8" kind="enumvalue"><name>MEMSIM_HMC_RD48</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27abef9522638a9cab0637dd0b8f147daae" kind="enumvalue"><name>MEMSIM_HMC_RD64</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ac2a3445306fb51a883318fdc66a9af2d" kind="enumvalue"><name>MEMSIM_HMC_RD80</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a44aed2fe8246c79de64d7327a54348f4" kind="enumvalue"><name>MEMSIM_HMC_RD96</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ac233b0961b507818e5b4a157b26ab419" kind="enumvalue"><name>MEMSIM_HMC_RD112</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a29b062b6faba3b4cc9da139e2d525cf3" kind="enumvalue"><name>MEMSIM_HMC_RD128</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ac0f47d48ac5029646e8086a25cae851a" kind="enumvalue"><name>MEMSIM_HMC_WR16</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a5261d2061f49766b88f35a4d7bb730a6" kind="enumvalue"><name>MEMSIM_HMC_WR32</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a0de41c64cb8c6f2531a92ccb9d4c2a5f" kind="enumvalue"><name>MEMSIM_HMC_WR48</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a4d69421a05a5451781f7706965ccc394" kind="enumvalue"><name>MEMSIM_HMC_WR64</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a8cbf7af7bca8acb2a25ba09becff924b" kind="enumvalue"><name>MEMSIM_HMC_WR80</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a643b7dcb857e838814a55704d8b1bc17" kind="enumvalue"><name>MEMSIM_HMC_WR96</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27a4295e745200228f785e0b22c768d7fa8" kind="enumvalue"><name>MEMSIM_HMC_WR112</name></member>
+    <member refid="mem__sim__types_8h_1af44c588179ba1668a0a521ea39ddae27ad4869671451c40bddb8564d4af3bc5de" kind="enumvalue"><name>MEMSIM_HMC_WR128</name></member>
   </compound>
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
   </compound>

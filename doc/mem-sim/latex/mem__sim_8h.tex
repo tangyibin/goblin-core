@@ -22,7 +22,11 @@ int \hyperlink{mem__sim_8h_ae7dcedd9853c7260f705f6be4a02c48c}{memsim\-\_\-reset}
 int \hyperlink{mem__sim_8h_aab498cdf5dde04a2bbbbdebf1ebdb09f}{memsim\-\_\-trace\-\_\-handle} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, F\-I\-L\-E $\ast$tfile)
 \begin{DoxyCompactList}\small\item\em Sets the open file handle for internal memsim tracing. \end{DoxyCompactList}\item 
 int \hyperlink{mem__sim_8h_a2cb5e3fff0dd289874f27e3bfe6651a1}{memsim\-\_\-trace\-\_\-level} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, uint32\-\_\-t level)
-\begin{DoxyCompactList}\small\item\em Sets the trace level for the msim instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets the trace level for the msim instance. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_a228a2395dc29762a7b6e6d1b5710bc26}{memsim\-\_\-set\-\_\-hw} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim, uint32\-\_\-t num\-\_\-links, uint32\-\_\-t num\-\_\-lanes, float gbps)
+\begin{DoxyCompactList}\small\item\em Initializes the base hardware configuration. \end{DoxyCompactList}\item 
+int \hyperlink{mem__sim_8h_a71d32dc2180d4632cbf8b0f8bf08df49}{memsim\-\_\-is\-\_\-empty} (struct \hyperlink{structmemsim__t}{memsim\-\_\-t} $\ast$msim)
+\begin{DoxyCompactList}\small\item\em Queries the msim instance and determines whether all queues are empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -116,6 +120,25 @@ Initializes the internal M\-E\-M\-\_\-\-S\-I\-M state with the necessary hardwar
 \begin{DoxyReturn}{Returns}
 0 on success, nonzero otherwise 
 \end{DoxyReturn}
+\hypertarget{mem__sim_8h_a71d32dc2180d4632cbf8b0f8bf08df49}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-is\-\_\-empty@{memsim\-\_\-is\-\_\-empty}}
+\index{memsim\-\_\-is\-\_\-empty@{memsim\-\_\-is\-\_\-empty}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-is\-\_\-empty}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-is\-\_\-empty (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_a71d32dc2180d4632cbf8b0f8bf08df49}
+
+
+Queries the msim instance and determines whether all queues are empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid mesim structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+M\-E\-M\-S\-I\-M\-\_\-\-O\-K on success, M\-E\-M\-S\-I\-M\-\_\-\-N\-E\-M\-P\-T\-Y otherwise 
+\end{DoxyReturn}
 \hypertarget{mem__sim_8h_ae7dcedd9853c7260f705f6be4a02c48c}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-reset@{memsim\-\_\-reset}}
 \index{memsim\-\_\-reset@{memsim\-\_\-reset}!mem_sim.h@{mem\-\_\-sim.\-h}}
 \subsubsection[{memsim\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-reset (
@@ -164,6 +187,34 @@ Initiates a memory request.
 {\em payload0} & is an optional payload for the request \mbox{[}writes\mbox{]} \\
 \hline
 {\em payload1} & is an optional payload for the request \mbox{[}C\-A\-S\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, nonzero otherwise 
+\end{DoxyReturn}
+\hypertarget{mem__sim_8h_a228a2395dc29762a7b6e6d1b5710bc26}{\index{mem\-\_\-sim.\-h@{mem\-\_\-sim.\-h}!memsim\-\_\-set\-\_\-hw@{memsim\-\_\-set\-\_\-hw}}
+\index{memsim\-\_\-set\-\_\-hw@{memsim\-\_\-set\-\_\-hw}!mem_sim.h@{mem\-\_\-sim.\-h}}
+\subsubsection[{memsim\-\_\-set\-\_\-hw}]{\setlength{\rightskip}{0pt plus 5cm}int memsim\-\_\-set\-\_\-hw (
+\begin{DoxyParamCaption}
+\item[{struct {\bf memsim\-\_\-t} $\ast$}]{msim, }
+\item[{uint32\-\_\-t}]{num\-\_\-links, }
+\item[{uint32\-\_\-t}]{num\-\_\-lanes, }
+\item[{float}]{gbps}
+\end{DoxyParamCaption}
+)}}\label{mem__sim_8h_a228a2395dc29762a7b6e6d1b5710bc26}
+
+
+Initializes the base hardware configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$msim} & is a pointer to a valid memsim structure \\
+\hline
+{\em num\-\_\-links} & is the number of H\-M\-C links on the socket \\
+\hline
+{\em num\-\_\-lanes} & is the number of S\-E\-R\-D\-E\-S lanes per link \\
+\hline
+{\em gbps} & is the link data transfer rate in Gbps \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

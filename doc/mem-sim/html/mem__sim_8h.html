@@ -120,6 +120,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a2cb5e3fff0dd289874f27e3bfe6651a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#a2cb5e3fff0dd289874f27e3bfe6651a1">memsim_trace_level</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim, uint32_t level)</td></tr>
 <tr class="memdesc:a2cb5e3fff0dd289874f27e3bfe6651a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the trace level for the msim instance.  <a href="#a2cb5e3fff0dd289874f27e3bfe6651a1">More...</a><br/></td></tr>
 <tr class="separator:a2cb5e3fff0dd289874f27e3bfe6651a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a228a2395dc29762a7b6e6d1b5710bc26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#a228a2395dc29762a7b6e6d1b5710bc26">memsim_set_hw</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim, uint32_t num_links, uint32_t num_lanes, float gbps)</td></tr>
+<tr class="memdesc:a228a2395dc29762a7b6e6d1b5710bc26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the base hardware configuration.  <a href="#a228a2395dc29762a7b6e6d1b5710bc26">More...</a><br/></td></tr>
+<tr class="separator:a228a2395dc29762a7b6e6d1b5710bc26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71d32dc2180d4632cbf8b0f8bf08df49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem__sim_8h.html#a71d32dc2180d4632cbf8b0f8bf08df49">memsim_is_empty</a> (struct <a class="el" href="structmemsim__t.html">memsim_t</a> *msim)</td></tr>
+<tr class="memdesc:a71d32dc2180d4632cbf8b0f8bf08df49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queries the msim instance and determines whether all queues are empty.  <a href="#a71d32dc2180d4632cbf8b0f8bf08df49">More...</a><br/></td></tr>
+<tr class="separator:a71d32dc2180d4632cbf8b0f8bf08df49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>GoblinCore-64 Memory Interface Simulation Library Header FIle. </p>
@@ -274,6 +280,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a71d32dc2180d4632cbf8b0f8bf08df49"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int memsim_is_empty </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structmemsim__t.html">memsim_t</a> *&#160;</td>
+          <td class="paramname"><em>msim</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Queries the msim instance and determines whether all queues are empty. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*msim</td><td>is a pointer to a valid mesim structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>MEMSIM_OK on success, MEMSIM_NEMPTY otherwise </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ae7dcedd9853c7260f705f6be4a02c48c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -363,6 +394,56 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a228a2395dc29762a7b6e6d1b5710bc26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int memsim_set_hw </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structmemsim__t.html">memsim_t</a> *&#160;</td>
+          <td class="paramname"><em>msim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>num_links</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>num_lanes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>gbps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the base hardware configuration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*msim</td><td>is a pointer to a valid memsim structure </td></tr>
+    <tr><td class="paramname">num_links</td><td>is the number of HMC links on the socket </td></tr>
+    <tr><td class="paramname">num_lanes</td><td>is the number of SERDES lanes per link </td></tr>
+    <tr><td class="paramname">gbps</td><td>is the link data transfer rate in Gbps </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, nonzero otherwise </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aab498cdf5dde04a2bbbbdebf1ebdb09f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -438,7 +519,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 25 2014 22:25:32 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Feb 8 2014 22:23:29 for MEM_SIM by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

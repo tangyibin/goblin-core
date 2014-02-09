@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="66" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="66" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="99" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a35adeb1c88dde11bfe128119c723c037" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -27,7 +27,7 @@
 <para>MEM-SIM: MEMSIM_T: NUMBER OF TASK GROUP SLOTS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="67" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="67" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="100" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a855dbf0b36cad4e37ccb8dcb26caa864" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -40,7 +40,7 @@
 <para>MEM-SIM: MEMSIM_T: NUMBER OF SOCKET SLOTS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="68" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="68" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="101" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1af10e3ad73189bf418d29478bb4de5eb2" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -53,7 +53,7 @@
 <para>MEM-SIM: MEMSIM_T: NUMBER OF SLOTS DEDICATED TO AMO </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="69" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="69" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="102" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a37831c21b74789b55a12495be077d120" prot="public" static="no" mutable="no">
         <type>memsim_iface_t</type>
@@ -66,7 +66,7 @@
 <para>MEM-SIM: MEMSIM_T: NUMBER OF GLOBAL ADDRESS SLOTS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="71" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="71" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="104" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1ae9ec2da913a82a570dae07d3ae8d09b3" prot="public" static="no" mutable="no">
         <type>memsim_alg_t</type>
@@ -79,7 +79,7 @@
 <para>MEM-SIM: MEMSIM_T: MEMORY INTERFACE TYPE </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="72" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="72" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="105" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1ac893c94cb9e4cb525baa4a4352ef6269" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -92,7 +92,7 @@
 <para>MEM-SIM: MEMSIM_T: MEMORY INTERFACE ALGORITHM </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="74" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="74" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="107" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a13c682d9789b022f02fbeafcdc2a0866" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -105,7 +105,7 @@
 <para>MEM-SIM: MEMSIM_T: NUMBER OF TASK GROUPS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="75" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="75" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="108" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a907d500eb21a9b3c8813ed0e639d806c" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -118,7 +118,20 @@
 <para>MEM-SIM: MEMSIM_T: NUMBER OF TASK PROCS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="76" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="76" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="109" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__t_1a321563b1d52ef49a39ee5ef3266f21ab" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t memsim_t::num_tids</definition>
+        <argsstring></argsstring>
+        <name>num_tids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_T: NUMBER OF TASKS </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="111" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a0bdb5e96cb3acca8a4ec5daea271243d" prot="public" static="no" mutable="no">
         <type>FILE *</type>
@@ -128,10 +141,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>MEM-SIM: MEMSIM_T: NUMBER OF TASKS </para>        </detaileddescription>
+<para>MEM-SIM: MEMSIM_T: NUMBER OF TIDS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="78" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="78" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="113" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a5adec994c4699e314a35284102cb1cb3" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -144,7 +157,7 @@
 <para>MEM-SIM: MEMSIM_T: TRACE FILE HANDLER </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="79" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="79" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="114" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a34e92877e65240907a70bbfe16fd4a34" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -157,7 +170,7 @@
 <para>MEM-SIM: MEMSIM_T: TRACELVEL </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="81" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="81" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="116" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a09a7513daf69ea79d15c89b11efe5431" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -170,7 +183,7 @@
 <para>MEM-SIM: MEMSIM_T: RUNTIME OPTIONS </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="83" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="83" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="118" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a0569d3661744c965a6620ca75563144d" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structmemsim__slot__t" kindref="compound">memsim_slot_t</ref> *</type>
@@ -183,7 +196,7 @@
 <para>MEM-SIM: MEMSIM_T: CLOCK </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="85" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="85" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="120" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a42ae6dd8a64e2d04c30e35354ec25555" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structmemsim__slot__t" kindref="compound">memsim_slot_t</ref> *</type>
@@ -196,7 +209,7 @@
 <para>MEM-SIM: MEMSIM_T: GROUP SLOT STRUCTURES </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="86" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="86" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="121" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a9e7a2ce164d954f25105d93eaf040b3f" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structmemsim__slot__t" kindref="compound">memsim_slot_t</ref> *</type>
@@ -209,7 +222,7 @@
 <para>MEM-SIM: MEMSIM_T: SOCKET SLOT STRUCTURES </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="87" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="87" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="122" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a3b005d5aa8e759a08281f59c9f05ed3b" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structmemsim__slot__t" kindref="compound">memsim_slot_t</ref> *</type>
@@ -222,7 +235,33 @@
 <para>MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="88" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="88" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="123" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__t_1acbb8fb6d4f5d4b4a918cb611fb113327" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structmemsim__tid__t" kindref="compound">memsim_tid_t</ref> *</type>
+        <definition>struct memsim_tid_t* memsim_t::tids</definition>
+        <argsstring></argsstring>
+        <name>tids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="125" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__t_1af5113def268ae634e203d4a6639a37f3" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structmemsim__hw__t" kindref="compound">memsim_hw_t</ref></type>
+        <definition>struct memsim_hw_t memsim_t::hw</definition>
+        <argsstring></argsstring>
+        <name>hw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>MEM-SIM: MEMSIM_T: TID HANDLERS </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="125" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1a13bfc8f8ea24eb83b5b3976aee534db3" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structmemsim__slot__t" kindref="compound">memsim_slot_t</ref> *</type>
@@ -232,10 +271,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES </para>        </detaileddescription>
+<para>MEM-SIM: MEMSIM_T: HARDWARE CONFIGURATION </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="90" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="90" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="129" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmemsim__t_1ac8e490728a0881577947adb893811324" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structmemsim__entry__t" kindref="compound">memsim_entry_t</ref> *</type>
@@ -248,7 +287,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="91" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="91" bodyend="-1"/>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="130" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmemsim__t_1a48f923436d3f440da8a2c529f507bb4a" prot="public" static="no" mutable="no">
+        <type>struct <ref refid="structmemsim__tid__t" kindref="compound">memsim_tid_t</ref> *</type>
+        <definition>struct memsim_tid_t* memsim_t::__ptr_tid</definition>
+        <argsstring></argsstring>
+        <name>__ptr_tid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="131" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -256,36 +308,52 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="7">
+      <node id="9">
         <label>memsim_slot_t</label>
         <link refid="structmemsim__slot__t"/>
-        <childnode refid="8" relation="usage">
+        <childnode refid="10" relation="usage">
           <edgelabel>entry</edgelabel>
         </childnode>
       </node>
-      <node id="8">
+      <node id="10">
         <label>memsim_entry_t</label>
         <link refid="structmemsim__entry__t"/>
       </node>
-      <node id="6">
+      <node id="11">
+        <label>memsim_hw_t</label>
+        <link refid="structmemsim__hw__t"/>
+      </node>
+      <node id="8">
         <label>memsim_t</label>
         <link refid="structmemsim__t"/>
-        <childnode refid="7" relation="usage">
+        <childnode refid="9" relation="usage">
           <edgelabel>socket</edgelabel>
           <edgelabel>__ptr_slots</edgelabel>
           <edgelabel>global</edgelabel>
           <edgelabel>group</edgelabel>
           <edgelabel>amo</edgelabel>
         </childnode>
-        <childnode refid="8" relation="usage">
+        <childnode refid="10" relation="usage">
           <edgelabel>__ptr_entry</edgelabel>
         </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>hw</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>tids</edgelabel>
+          <edgelabel>__ptr_tid</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>memsim_tid_t</label>
+        <link refid="structmemsim__tid__t"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="64" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="64" bodyend="92"/>
+    <location file="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" line="97" column="1" bodyfile="/Users/jleidel/dev/working/goblin/goblin-core/sim/mem_sim/include/mem_sim_types.h" bodystart="97" bodyend="132"/>
     <listofallmembers>
       <member refid="structmemsim__t_1ac8e490728a0881577947adb893811324" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>__ptr_entry</name></member>
       <member refid="structmemsim__t_1a13bfc8f8ea24eb83b5b3976aee534db3" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>__ptr_slots</name></member>
+      <member refid="structmemsim__t_1a48f923436d3f440da8a2c529f507bb4a" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>__ptr_tid</name></member>
       <member refid="structmemsim__t_1a855dbf0b36cad4e37ccb8dcb26caa864" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>a_slots</name></member>
       <member refid="structmemsim__t_1ae9ec2da913a82a570dae07d3ae8d09b3" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>alg</name></member>
       <member refid="structmemsim__t_1a9e7a2ce164d954f25105d93eaf040b3f" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>amo</name></member>
@@ -294,7 +362,9 @@
       <member refid="structmemsim__t_1af10e3ad73189bf418d29478bb4de5eb2" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>ga_slots</name></member>
       <member refid="structmemsim__t_1a3b005d5aa8e759a08281f59c9f05ed3b" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>global</name></member>
       <member refid="structmemsim__t_1a0569d3661744c965a6620ca75563144d" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>group</name></member>
+      <member refid="structmemsim__t_1af5113def268ae634e203d4a6639a37f3" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>hw</name></member>
       <member refid="structmemsim__t_1a37831c21b74789b55a12495be077d120" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>iface</name></member>
+      <member refid="structmemsim__t_1a321563b1d52ef49a39ee5ef3266f21ab" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>num_tids</name></member>
       <member refid="structmemsim__t_1a34e92877e65240907a70bbfe16fd4a34" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>opt</name></member>
       <member refid="structmemsim__t_1a35adeb1c88dde11bfe128119c723c037" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>s_slots</name></member>
       <member refid="structmemsim__t_1a42ae6dd8a64e2d04c30e35354ec25555" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>socket</name></member>
@@ -302,6 +372,7 @@
       <member refid="structmemsim__t_1a13c682d9789b022f02fbeafcdc2a0866" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>task_procs</name></member>
       <member refid="structmemsim__t_1a907d500eb21a9b3c8813ed0e639d806c" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>tasks</name></member>
       <member refid="structmemsim__t_1a0bdb5e96cb3acca8a4ec5daea271243d" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>tfile</name></member>
+      <member refid="structmemsim__t_1acbb8fb6d4f5d4b4a918cb611fb113327" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>tids</name></member>
       <member refid="structmemsim__t_1a5adec994c4699e314a35284102cb1cb3" prot="public" virt="non-virtual"><scope>memsim_t</scope><name>tracelevel</name></member>
     </listofallmembers>
   </compounddef>
