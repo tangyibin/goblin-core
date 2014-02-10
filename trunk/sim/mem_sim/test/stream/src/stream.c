@@ -11,6 +11,10 @@
 #include <string.h>
 #include "mem_sim.h"
 
+/* ------------------------------------------- FUNCTION PROTOTYPES */
+extern int execute_test( struct memsim_t msim, uint32_t num_threads, 
+			uint32_t simd, long num_req );
+
 /* ------------------------------------------- MAIN */
 int main( int argc, char **argv )
 {
@@ -19,6 +23,7 @@ int main( int argc, char **argv )
 	memsim_alg_t 	alg	= MEMSIM_SIMPLE;
 	memsim_iface_t iface	= MEMSIM_HMC;
 	int ret			= 0;
+	uint32_t simd		= 0x00;
 	uint32_t task_groups	= 0x00;
 	uint32_t task_procs	= 0x00;
 	uint32_t tasks		= 0x00;
@@ -40,7 +45,7 @@ int main( int argc, char **argv )
 	 * parse the args
 	 * 
 	 */
-	while(( ret = getopt( argc, argv, "A:I:g:p:t:G:S:M:L:l:n:a:P:h" )) != -1 ){
+	while(( ret = getopt( argc, argv, "A:I:g:p:t:G:S:M:L:l:n:a:P:s:h" )) != -1 ){
 		switch( ret )
 		{
 			case 'A':
@@ -103,8 +108,12 @@ int main( int argc, char **argv )
 				break;
 			case 'R':
 				num_req		= (long)(atol(optarg));
+				break;
+			case 's':
+				simd		= (uint32_t)(atoi(optarg));
+				break;
 			case 'h':
-				printf( "Usage: %s%s", argv[0], " -AIgptGSMLlnaPTR\n" );
+				printf( "Usage: %s%s", argv[0], " -AIgptGSMLlnaPTRs\n" );
 				printf( "\t-A <MEMSIM_SIMPLE|MEMSIM_CACHE|MEMSIM_EXP>\n" );
 				printf( "\t-I <MEMSIM_BASIC|MEMSIM_HMC>\n" );
 				printf( "\t-g <task_groups>\n" );
@@ -120,11 +129,12 @@ int main( int argc, char **argv )
 				printf( "\t-P <gbps>\n" );
 				printf( "\t-T <num_threads>\n" );
 				printf( "\t-R <num_req>\n" );
+				printf( "\t-s <simd_elems>\n" );
 				return 0;
 				break;
 			case '?':
 			default:
-				printf( "Unknown option : %s%s", argv[0], " -AIgptGSMLlnaPTR\n" );
+				printf( "Unknown option : %s%s", argv[0], " -AIgptGSMLlnaPTRs\n" );
 				return -1;
 				break;
 		}
@@ -222,6 +232,7 @@ int main( int argc, char **argv )
 	 * everything is initialized ready to begin our run
 	 * 
  	 */
+	execute_test( msim, num_threads, simd, num_req );
 
 	/* 
 	 * close the output file 
