@@ -29,6 +29,7 @@ int main( int argc, char **argv )
 	uint32_t level		= 0x00;
 	uint32_t num_links	= 0x00;
 	uint32_t num_lanes	= 0x00;
+	uint32_t tid		= 0x00;
 	float gbps		= 0.;
 	uint64_t options	= 0x00ll;
 	uint64_t gconst		= 0x00ll;
@@ -205,7 +206,8 @@ int main( int argc, char **argv )
 				MEMSIM_RD8, 
 				(uint64_t)(0x00), 
 				(uint64_t)(0x00), 
-				(uint64_t)(0x00) );
+				(uint64_t)(0x00), 
+				&tid );
 	if( ret == MEMSIM_STALL ){ 
 		printf( "STALLED!\n" );
 	}
@@ -215,7 +217,8 @@ int main( int argc, char **argv )
 				MEMSIM_RD8, 
 				(uint64_t)(0x08), 
 				(uint64_t)(0x00), 
-				(uint64_t)(0x00) );
+				(uint64_t)(0x00),
+				&tid );
 	if( ret == MEMSIM_STALL ){ 
 		printf( "STALLED!\n" );
 	}
@@ -225,7 +228,8 @@ int main( int argc, char **argv )
 				MEMSIM_WR8, 
 				(uint64_t)(0x10), 
 				(uint64_t)(0x0F), 
-				(uint64_t)(0x00) );
+				(uint64_t)(0x00),
+				&tid );
 	if( ret == MEMSIM_STALL ){ 
 		printf( "STALLED!\n" );
 	}
