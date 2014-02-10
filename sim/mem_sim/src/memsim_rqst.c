@@ -27,7 +27,8 @@ extern int memsim_rqst(	struct memsim_t *msim,
 			memsim_rqst_t rqst, 
 			uint64_t addr, 
 			uint64_t payload0,
-			uint64_t payload1 )
+			uint64_t payload1, 
+			uint32_t *ftid )
 {
 	/* vars */	
 	uint32_t tid	= 0x00;
@@ -109,6 +110,12 @@ extern int memsim_rqst(	struct memsim_t *msim,
 	msim->tids[tid].valid		= 1;
 	msim->tids[tid].gconst		= gconst;
 
+	/* 
+	 * set the tid 
+	 * 
+	 */
+	*ftid	= tid;
+	
 	return MEMSIM_OK;
 }
 
