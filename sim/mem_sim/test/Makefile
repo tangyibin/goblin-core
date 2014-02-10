@@ -5,7 +5,7 @@
 # Drives building all the hmcsim tests
 
 
-SUBDIRS :=	simple 
+SUBDIRS :=	simple gups stream
 
 CLEANDIRS :=	$(addsuffix .clean, $(SUBDIRS))
 

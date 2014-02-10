@@ -1,7 +1,7 @@
 /* 
- * _SIMPLE_C_ 
+ * _STREAM_C_ 
  * 
- * MEMSIM SIMPLE TEST
+ * MEMSIM STREAM TRIAD TEST
  * 
  */
 
@@ -29,9 +29,10 @@ int main( int argc, char **argv )
 	uint32_t level		= 0x00;
 	uint32_t num_links	= 0x00;
 	uint32_t num_lanes	= 0x00;
+	uint32_t num_threads	= 0;	/* number of threads for parallelization */
 	float gbps		= 0.;
+	long num_req		= 0;	/* number of iters in the triad loop */
 	uint64_t options	= 0x00ll;
-	uint64_t gconst		= 0x00ll;
 	FILE *ofile		= NULL;
 	/* ---- */
 
@@ -97,8 +98,13 @@ int main( int argc, char **argv )
 			case 'P':
 				gbps		= (float)(atof(optarg));
 				break;
+			case 'T':
+				num_threads	= (uint32_t)(atoi(optarg));
+				break;
+			case 'R':
+				num_req		= (long)(atol(optarg));
 			case 'h':
-				printf( "Usage: %s%s", argv[0], " -AIgptGSMLlnaP\n" );
+				printf( "Usage: %s%s", argv[0], " -AIgptGSMLlnaPTR\n" );
 				printf( "\t-A <MEMSIM_SIMPLE|MEMSIM_CACHE|MEMSIM_EXP>\n" );
 				printf( "\t-I <MEMSIM_BASIC|MEMSIM_HMC>\n" );
 				printf( "\t-g <task_groups>\n" );
@@ -112,14 +118,30 @@ int main( int argc, char **argv )
 				printf( "\t-n <num_links>\n" );
 				printf( "\t-a <num_lanes>\n" );
 				printf( "\t-P <gbps>\n" );
+				printf( "\t-T <num_threads>\n" );
+				printf( "\t-R <num_req>\n" );
 				return 0;
 				break;
 			case '?':
 			default:
-				printf( "Unknown option : %s%s", argv[0], " -AIgptGSMLlnaP\n" );
+				printf( "Unknown option : %s%s", argv[0], " -AIgptGSMLlnaPTR\n" );
 				return -1;
 				break;
 		}
+	}
+
+	/* 
+	 * quick sanity check 
+	 * 
+	 */
+	if( num_threads <= 0 ){ 
+		printf( "ERROR : MUST USE AT LEAST 1 THREAD\n" );
+		printf( "  num_threads = %d\n", num_threads );
+		return -1;
+	}else if( num_req <= 0 ){
+		printf( "ERROR : MUST USE AT LEAST 1 REQUEST\n" );
+		printf( "  num_req = %ld", num_req );
+		return -1;
 	}
 
 	/* 
@@ -170,7 +192,7 @@ int main( int argc, char **argv )
 	 * open the output file 
 	 * 
 	 */
-	ofile = fopen( "simple.out", "w" );
+	ofile = fopen( "stream.out", "w" );
 
 	if( ofile == NULL ){ 
 		printf( "FAILED TO OPEN OUTPUT FILE\n" );
@@ -197,46 +219,9 @@ int main( int argc, char **argv )
 
 
 	/* 
-	 * everything is initialized, send some requests
+	 * everything is initialized ready to begin our run
 	 * 
  	 */
-	ret	= memsim_rqst(	&msim, 
-				gconst, 
-				MEMSIM_RD8, 
-				(uint64_t)(0x00), 
-				(uint64_t)(0x00), 
-				(uint64_t)(0x00) );
-	if( ret == MEMSIM_STALL ){ 
-		printf( "STALLED!\n" );
-	}
-
-	ret	= memsim_rqst(	&msim, 
-				gconst, 
-				MEMSIM_RD8, 
-				(uint64_t)(0x08), 
-				(uint64_t)(0x00), 
-				(uint64_t)(0x00) );
-	if( ret == MEMSIM_STALL ){ 
-		printf( "STALLED!\n" );
-	}
-
-	ret	= memsim_rqst(	&msim, 
-				gconst, 
-				MEMSIM_WR8, 
-				(uint64_t)(0x10), 
-				(uint64_t)(0x0F), 
-				(uint64_t)(0x00) );
-	if( ret == MEMSIM_STALL ){ 
-		printf( "STALLED!\n" );
-	}
-
-	/* 
-	 * clock the sim until requests are complete
-	 * 
-	 */
-	while( memsim_is_empty( &msim ) == MEMSIM_NEMPTY ){ 
-		memsim_clock( &msim );
-	}
 
 	/* 
 	 * close the output file 
