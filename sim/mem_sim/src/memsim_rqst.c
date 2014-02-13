@@ -64,7 +64,7 @@ extern int memsim_rqst(	struct memsim_t *msim,
  	 */
 	pid	= (gconst & GSIM_REG_GCONST_PID);
 	nid	= (gconst & GSIM_REG_GCONST_NID)>>16;
-	sid	= (gconst & GSIM_REG_GCONST_NID)>>32;
+	sid	= (gconst & GSIM_REG_GCONST_SID)>>32;
 	tg	= (gconst & GSIM_REG_GCONST_TG)>>40;
 	tp	= (gconst & GSIM_REG_GCONST_TP)>>48;
 	tc	= (gconst & GSIM_REG_GCONST_TC)>>56;

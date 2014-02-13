@@ -159,6 +159,16 @@ extern int memsim_set_hw( struct memsim_t *msim,
 */
 extern int memsim_is_empty( struct memsim_t *msim );
 
+
+/*!	\fn int memsim_query_tid( struct memsim_t *msim, uint32_t tid )
+	\brief Queries the msim instance and determines whether the respective
+		tid is present and valid
+	\param *msim is a pointer to a valid mesim structure
+	\param tid is a valid transaction ID
+	\returns 1 if the tid is active and valid, 0 if the tid is not active and valid, nonzero on error
+*/
+extern int memsim_query_tid( struct memsim_t *msim, uint32_t tid );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif
