@@ -38,6 +38,32 @@ extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid )
 	return MEMSIM_OK;
 }
 
+/* ------------------------------------------------ MEMSIM_QUERY_TID */
+/* 
+ * MEMSIM_QUERY_TID
+ * 
+ */
+extern int memsim_query_tid( struct memsim_t *msim, uint32_t tid )
+{
+	/* 
+	 * sanity check 
+	 *
+	 */
+	if( msim == NULL ){ 
+		return MEMSIM_ERROR;
+	}
+
+	if( tid > (msim->num_tids-1) ) {
+		return MEMSIM_ERROR;
+	}
+
+	if( msim->tids[tid].valid == 1 ){ 
+		return 1;
+	}else{
+		return 0;
+	}
+}
+
 /* ------------------------------------------------ MEMSIM_TID_POP */
 /* 
  * MEMSIM_TID_POP
