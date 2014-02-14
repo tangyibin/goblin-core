@@ -12,8 +12,7 @@
 #include "mem_sim.h"
 
 /* ------------------------------------------- FUNCTION PROTOTYPES */
-extern int execute_test( struct memsim_t msim, uint32_t num_threads, 
-			uint64_t *gconst, long num_req );
+extern int execute_test( struct memsim_t *msim, uint64_t *gconst, uint32_t num_threads, long num_req );
 
 /* ------------------------------------------- MAIN */
 int main( int argc, char **argv )
@@ -289,7 +288,7 @@ int main( int argc, char **argv )
 	 * everything is initialized ready to begin our run
 	 * 
  	 */
-	execute_test( msim, num_threads, gconst, num_req );
+	execute_test( &msim, gconst, num_threads, num_req );
 
 	/* 
 	 * close the output file 

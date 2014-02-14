@@ -89,6 +89,8 @@ static void memsim_print_header( struct memsim_t *msim )
 	}
 
 	fprintf( msim->tfile, "%s\n", "#-----------------------------------------------------" );	
+
+	fflush( msim->tfile );
 }
 
 /* ------------------------------------------------ MEMSIM_TRACE_MEMBUS */
@@ -195,6 +197,8 @@ extern int memsim_trace_membus( struct memsim_t *msim,
 					buf);
 	}
 
+	fflush( msim->tfile );
+
 	return MEMSIM_OK;
 }	
 /* ------------------------------------------------ MEMSIM_TRACE_MEMOP */
@@ -300,6 +304,8 @@ extern int memsim_trace_memop( struct memsim_t *msim,
 					ent->tid[i],
 					buf);
 	}
+
+	fflush( msim->tfile );
 
 	return MEMSIM_OK;
 }	

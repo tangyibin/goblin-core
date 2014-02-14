@@ -34,6 +34,7 @@ struct tid_t{
 	uint8_t st_a_v;
 
 	uint8_t scalar_f;
+	uint8_t done;
 
 	uint64_t temp;
 };
@@ -49,8 +50,8 @@ struct tid_t{
  * 
  */
 extern int execute_test( 	struct memsim_t *msim, 
-				uint32_t num_threads, 
 				uint64_t *gconst,
+				uint32_t num_threads, 
 				long num_req ) {
 
 
@@ -62,7 +63,7 @@ extern int execute_test( 	struct memsim_t *msim,
 	uint32_t update		= 0;
 	uint64_t ui		= 0x00ll;
 	uint64_t niter		= 0x00ll;
-	uint64_t scalar		= 0x123456789;
+	uint64_t scalar		= 0x123489;
 	uint64_t *a		= NULL;
 	uint64_t *b		= NULL;
 	uint64_t *c		= NULL;
@@ -71,8 +72,6 @@ extern int execute_test( 	struct memsim_t *msim,
 	uint64_t *status	= NULL;
 	struct tid_t *tids	= NULL;
 	/* ---- */
-
-	printf( "num_threads = %d\n", num_threads );
 
 	/* 
 	 * allocate memory 
@@ -159,6 +158,18 @@ extern int execute_test( 	struct memsim_t *msim,
 	printf( "INITIALIZING THREAD DATA FOR %"PRIu32" THREADS\n", num_threads );	
 
 	/* -- init the start and end points */
+	if( (uint64_t)(num_threads) < (uint64_t)(num_req) ){ 
+		/* split the requests */
+	}else{ 
+		/* everyone gets one req */
+		for( ui=0; ui<(uint64_t)(num_req); ui++ ){ 
+			cur[ui]		= ui;
+			end[ui]		= ui;
+			status[ui]	= TRIAD_SCALAR;
+		}
+	}
+
+#if 0
 	for( ui=0; ui<(uint64_t)(num_threads); ui++ ){ 
 
 		cur[ui]		= niter*ui;
@@ -170,6 +181,7 @@ extern int execute_test( 	struct memsim_t *msim,
 			end[ui]	= cur[ui] + (niter-1);
 		}
 	}
+#endif
 
 	printf( "INITIALIZING STATE MACHINE DATA\n" );	
 
@@ -186,6 +198,7 @@ extern int execute_test( 	struct memsim_t *msim,
 		tids[i].st_a_v		= 0;
 
 		tids[i].scalar_f	= 0;
+		tids[i].done		= 0;
 
 		tids[i].temp		= 0x00ll;
 	}
@@ -208,7 +221,9 @@ extern int execute_test( 	struct memsim_t *msim,
 		 */
 		for( i=0; i<num_threads; i++ ){ 
 			
-			if( cur[i] == end[i]  ){
+			//printf( "thread[%d] status = %"PRIu64"\n", i, status[i] );			
+
+			if( tids[i].done == 1 ){
 				/* this thread is done, do nothing */
 			}else if( status[i] == TRIAD_START ){ 
 				/* starting point */
@@ -301,7 +316,7 @@ extern int execute_test( 	struct memsim_t *msim,
 
 
 				/* done checking outstanding requests */
-				if( update > 0 ){ 
+				if( update == 0 ){ 
 					/* perform the arithmetic */
 					tids[i].temp	= scalar * c[cur[i]];
 					status[i]	= TRIAD_ADD;
@@ -312,7 +327,7 @@ extern int execute_test( 	struct memsim_t *msim,
 			}else if( status[i] == TRIAD_ADD ){ 
 
 				/* add */
-
+				printf( "IN THE TRIAD_ADD\n" );
 				update = 0;
 				
 				/* load b[i] */
@@ -324,6 +339,7 @@ extern int execute_test( 	struct memsim_t *msim,
 			
 						/* tid is clear */
 						tids[i].ld_b_v = 0;
+
 					}else{
 						/* tid is not clear */
 						update++;
@@ -331,7 +347,7 @@ extern int execute_test( 	struct memsim_t *msim,
 				}
 
 				/* done checking outstanding requests */
-				if( update > 0 ){ 
+				if( update == 0 ){ 
 					/* perform the arithmetic */
 					tids[i].temp += b[cur[i]];
 					status[i] 	= TRIAD_ST_A;
@@ -374,10 +390,12 @@ extern int execute_test( 	struct memsim_t *msim,
 				
 				if( cur[i] == end[i] ){
 					printf( "Thread %"PRIu32" Complete\n", i );
+					tids[i].done	= 1;
+					done++;
 				}
 			}
 	
-		}
+		} /* -- end for loop */
 
 		/* 
 	 	 * clock the sim 
