@@ -33,7 +33,7 @@ extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid )
 
 	/* clear the tid */
 	msim->tids[tid].gconst	= 0x00ll;
-	msim->tids[tid].valid	= 0;
+	msim->tids[tid].valid	= 0x00;
 
 	return MEMSIM_OK;
 }
