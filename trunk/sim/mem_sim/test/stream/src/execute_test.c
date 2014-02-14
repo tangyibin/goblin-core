@@ -160,7 +160,24 @@ extern int execute_test( 	struct memsim_t *msim,
 	/* -- init the start and end points */
 	if( (uint64_t)(num_threads) < (uint64_t)(num_req) ){ 
 		/* split the requests */
+		for( ui=0; ui<(uint64_t)(num_threads); ui++ ){ 
+
+			cur[ui]		= niter*ui;
+			status[ui]	= TRIAD_SCALAR;
+
+			if( ui == (uint64_t)(num_threads-1) ){
+				end[ui]	= (uint64_t)(num_req-1);
+			}else{ 
+				end[ui]	= cur[ui] + (niter-1);
+			}
+		}
 	}else{ 
+		/* init everyone to zero */
+		for( ui=0; ui<(uint64_t)(num_threads); ui++ ){ 
+			cur[ui]		= 0x00ll;
+			end[ui]		= 0x00ll;
+		}
+
 		/* everyone gets one req */
 		for( ui=0; ui<(uint64_t)(num_req); ui++ ){ 
 			cur[ui]		= ui;
@@ -168,20 +185,6 @@ extern int execute_test( 	struct memsim_t *msim,
 			status[ui]	= TRIAD_SCALAR;
 		}
 	}
-
-#if 0
-	for( ui=0; ui<(uint64_t)(num_threads); ui++ ){ 
-
-		cur[ui]		= niter*ui;
-		status[ui]	= TRIAD_SCALAR;
-
-		if( ui == (uint64_t)(num_threads-1) ){
-			end[ui]	= (uint64_t)(num_req-1);
-		}else{ 
-			end[ui]	= cur[ui] + (niter-1);
-		}
-	}
-#endif
 
 	printf( "INITIALIZING STATE MACHINE DATA\n" );	
 
@@ -221,8 +224,6 @@ extern int execute_test( 	struct memsim_t *msim,
 		 */
 		for( i=0; i<num_threads; i++ ){ 
 			
-			//printf( "thread[%d] status = %"PRIu64"\n", i, status[i] );			
-
 			if( tids[i].done == 1 ){
 				/* this thread is done, do nothing */
 			}else if( status[i] == TRIAD_START ){ 
@@ -327,7 +328,6 @@ extern int execute_test( 	struct memsim_t *msim,
 			}else if( status[i] == TRIAD_ADD ){ 
 
 				/* add */
-				printf( "IN THE TRIAD_ADD\n" );
 				update = 0;
 				
 				/* load b[i] */
@@ -381,15 +381,15 @@ extern int execute_test( 	struct memsim_t *msim,
 			}else if( status[i] == TRIAD_FLOW ){
 
 				/* flow control */
-
 				/* update the current point */
 				cur[i]++;
 
 				/* wrap to the next element */
 				status[i] = TRIAD_LD_C;
 				
-				if( cur[i] == end[i] ){
+				if( cur[i] >= end[i] ){
 					printf( "Thread %"PRIu32" Complete\n", i );
+					fflush( stdout );
 					tids[i].done	= 1;
 					done++;
 				}
