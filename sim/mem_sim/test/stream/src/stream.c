@@ -50,7 +50,7 @@ int main( int argc, char **argv )
 	 * parse the args
 	 * 
 	 */
-	while(( ret = getopt( argc, argv, "A:I:g:p:t:G:S:M:L:l:n:a:P:s:h" )) != -1 ){
+	while(( ret = getopt( argc, argv, "A:I:g:p:t:G:S:M:L:l:n:a:P:s:T:R:s:h" )) != -1 ){
 		switch( ret )
 		{
 			case 'A':
@@ -164,7 +164,9 @@ int main( int argc, char **argv )
 	 * we do this to account for the number of SIMD pipes
  	 * 
  	 */
-	num_threads *= simd;
+	if( simd > 0 ){ 
+		num_threads *= simd;
+	}
 
 	/* 
 	 * init the gconst field 

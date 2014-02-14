@@ -32,6 +32,10 @@ struct tid_t{
 	uint8_t ld_c_v;
 	uint8_t ld_b_v;
 	uint8_t st_a_v;
+
+	uint8_t scalar_f;
+
+	uint64_t temp;
 };
 
 /* --------------------------------------------------- EXECUTE_TEST */
@@ -55,6 +59,7 @@ extern int execute_test( 	struct memsim_t *msim,
 	uint32_t i		= 0;
 	uint32_t done		= 0;
 	uint32_t l_tid		= 0;
+	uint32_t update		= 0;
 	uint64_t ui		= 0x00ll;
 	uint64_t niter		= 0x00ll;
 	uint64_t scalar		= 0x123456789;
@@ -67,6 +72,7 @@ extern int execute_test( 	struct memsim_t *msim,
 	struct tid_t *tids	= NULL;
 	/* ---- */
 
+	printf( "num_threads = %d\n", num_threads );
 
 	/* 
 	 * allocate memory 
@@ -136,7 +142,8 @@ extern int execute_test( 	struct memsim_t *msim,
 	}
 
 	printf( "ALLOCATED TRIAD DATA\n" );
-	
+
+	printf( "INITIALIZING RAW DATA\n" );	
 	/* 
 	 * init the data 
 	 * 
@@ -148,6 +155,8 @@ extern int execute_test( 	struct memsim_t *msim,
 		b[ui] 	= ui*ui+1;
 		c[ui] 	= ui*ui+2;
 	}
+
+	printf( "INITIALIZING THREAD DATA FOR %"PRIu32" THREADS\n", num_threads );	
 
 	/* -- init the start and end points */
 	for( ui=0; ui<(uint64_t)(num_threads); ui++ ){ 
@@ -162,6 +171,8 @@ extern int execute_test( 	struct memsim_t *msim,
 		}
 	}
 
+	printf( "INITIALIZING STATE MACHINE DATA\n" );	
+
 	/* -- setup the tids */
 	for( i=0; i<num_threads; i++ ){
 		tids[i].ld_scalar	= 0x00;
@@ -173,6 +184,10 @@ extern int execute_test( 	struct memsim_t *msim,
 		tids[i].ld_c_v		= 0;
 		tids[i].ld_b_v		= 0;
 		tids[i].st_a_v		= 0;
+
+		tids[i].scalar_f	= 0;
+
+		tids[i].temp		= 0x00ll;
 	}
 
 	printf( "INITIALIZED TRIAD DATA\n" );
@@ -220,7 +235,7 @@ extern int execute_test( 	struct memsim_t *msim,
 				ret	= memsim_rqst( 	msim, 
 							gconst[i], 
 							MEMSIM_RD8,
-							(uint64_t)(&a[cur[i]]), 
+							(uint64_t)(&c[cur[i]]), 
 							0x00ll, 
 							0x00ll, 
 							&l_tid );
@@ -250,12 +265,116 @@ extern int execute_test( 	struct memsim_t *msim,
 
 				/* mul */
 
+				update = 0;
+
+				/* scalar value */
+				if( (tids[i].scalar_f != 1) 
+					&& (tids[i].ld_scalar_v == 1 ) ){
+					/* check for the scalar */	
+					if( memsim_query_tid( msim, 
+						tids[i].ld_scalar ) == 0 ){
+
+						/* tid is clear */
+						tids[i].scalar_f = 1;
+						tids[i].ld_scalar_v = 0;
+
+					}else{ 
+						/* tid is not clear */
+						update++;
+					}
+				}
+
+				/* load c[i] */	
+				if( (tids[i].ld_c_v == 1 ) ){ 
+					
+					/* check for c[i] */
+					if( memsim_query_tid( msim, 
+						tids[i].ld_c ) == 0 ){
+			
+						/* tid is clear */
+						tids[i].ld_c_v = 0;
+					}else{
+						/* tid is not clear */
+						update++;
+					}
+				}
+
+
+				/* done checking outstanding requests */
+				if( update > 0 ){ 
+					/* perform the arithmetic */
+					tids[i].temp	= scalar * c[cur[i]];
+					status[i]	= TRIAD_ADD;
+				}else{ 
+					/* this is a memory stall */
+				}
+
 			}else if( status[i] == TRIAD_ADD ){ 
+
 				/* add */
+
+				update = 0;
+				
+				/* load b[i] */
+				if( (tids[i].ld_b_v == 1 ) ){ 
+					
+					/* check for b[i] */
+					if( memsim_query_tid( msim, 
+						tids[i].ld_b ) == 0 ){
+			
+						/* tid is clear */
+						tids[i].ld_b_v = 0;
+					}else{
+						/* tid is not clear */
+						update++;
+					}
+				}
+
+				/* done checking outstanding requests */
+				if( update > 0 ){ 
+					/* perform the arithmetic */
+					tids[i].temp += b[cur[i]];
+					status[i] 	= TRIAD_ST_A;
+				}else{ 
+					/* this is a memory stall */
+				}
+
 			}else if( status[i] == TRIAD_ST_A ){ 
+	
 				/* store a[i] */
+				/* nothing to check here */
+
+				/* send the store */
+				ret	= memsim_rqst( 	msim, 
+							gconst[i], 
+							MEMSIM_WR8,
+							(uint64_t)(&a[cur[i]]), 
+							tids[i].temp, 
+							0x00ll, 
+							&l_tid );
+				if( ret == 0 ){
+					status[i]	= TRIAD_LD_C;
+					tids[i].st_a	= l_tid;
+					tids[i].st_a_v 	= 1;
+					a[cur[i]]	= tids[i].temp;
+					status[i]	= TRIAD_FLOW;
+				}else{ 
+					/* stall */
+				}
+
 			}else if( status[i] == TRIAD_FLOW ){
+
 				/* flow control */
+
+				/* update the current point */
+				cur[i]++;
+
+				/* wrap to the next element */
+				status[i] = TRIAD_LD_C;
+				
+				if( cur[i] == end[i] ){
+					printf( "Thread %"PRIu32" Complete\n", i );
+				}
 			}
 	
 		}
