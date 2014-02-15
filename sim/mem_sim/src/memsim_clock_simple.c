@@ -422,7 +422,7 @@ extern int memsim_clock_simple( struct memsim_t *msim )
 	/* ---- */
 
 	/* 
-	 * process the socket queues 
+	 * process the queues 
 	 * 
 	 */
 	/* -- socket queue */
