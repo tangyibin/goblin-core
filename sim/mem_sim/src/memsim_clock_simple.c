@@ -319,10 +319,11 @@ static int memsim_clock_simple_process_global( struct memsim_t *msim ){
 static int memsim_clock_simple_process_taskgroup( struct memsim_t *msim, uint32_t gr ){
 
 	/* vars */
-	int done	= 0;
-	int rtn		= 0;
-	uint32_t cur	= 0;
-	uint32_t target	= 0;
+	int done		= 0;
+	int rtn			= 0;
+	uint32_t cur		= 0;
+	uint32_t target		= 0;
+	memsim_rqst_t tmp	= MEMSIM_UNK;
 	/* ---- */
 
 
@@ -362,6 +363,19 @@ static int memsim_clock_simple_process_taskgroup( struct memsim_t *msim, uint32_
 				if( memsim_cp_entry( &(msim->group[gr].entry[cur]), 
 							&(msim->socket->entry[target])) != MEMSIM_OK ){
 					return MEMSIM_ERROR;
+				}
+
+				/* 
+				 * flip the target request type to MEMSIM_HMC_{RD/WR}16 
+				 * we only use 16 byte requests here in order to elicit
+				 * the naivity of doing so on an HMC
+				 */
+				tmp 	= msim->socket->entry[target].rqst;		
+
+				if( (tmp==MEMSIM_RD8) || (tmp==MEMSIM_RD4) ){ 
+					msim->socket->entry[target].rqst	= MEMSIM_HMC_RD16;
+				}else{ 
+					msim->socket->entry[target].rqst	= MEMSIM_HMC_WR16;
 				}
 
 				/* clear the entry */
