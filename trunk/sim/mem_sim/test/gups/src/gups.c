@@ -1,7 +1,7 @@
 /* 
- * _GUPS_C_
+ * _GUPS_C_ 
  * 
- * MEMSIM STREAM TRIAD TEST
+ * MEMSIM UNBINNED GUPS TEST
  * 
  */
 
@@ -22,13 +22,14 @@ int main( int argc, char **argv )
 	memsim_alg_t 	alg	= MEMSIM_SIMPLE;
 	memsim_iface_t iface	= MEMSIM_HMC;
 	int ret			= 0;
-	uint32_t simd		= 0x00;
+	uint32_t simd		= 0x01;
 	uint32_t task_groups	= 0x01;
 	uint32_t task_procs	= 0x01;
 	uint32_t tasks		= 0x01;
 	uint32_t tg_c		= 0x00;
 	uint32_t tp_c		= 0x00;
 	uint32_t t_c		= 0x00;	
+	uint32_t t_s		= 0x00;
 	uint64_t i		= 0x00;
 	uint32_t g_slots	= 0x00;
 	uint32_t s_slots	= 0x00;
@@ -163,7 +164,7 @@ int main( int argc, char **argv )
 	 * we do this to account for the number of SIMD pipes
  	 * 
  	 */
-	if( simd > 0 ){ 
+	if( simd > 1 ){ 
 		num_threads *= simd;
 	}
 
@@ -184,26 +185,31 @@ int main( int argc, char **argv )
 		gconst[i]	|= (((uint64_t)(tp_c) << 48) & GSIM_REG_GCONST_TP);
 		gconst[i]	|= (((uint64_t)(t_c)  << 56) & GSIM_REG_GCONST_TC);
 
-		t_c++;
+		t_s++;
+		
+		if( t_s == simd ){
+			t_s = 0;
+			t_c++;
 
-		if( t_c == tasks ){ 
-			t_c = 0;
-			tp_c++;		
+			if( t_c == tasks ){ 
+				t_c = 0;
+				tp_c++;		
 
-			if( tp_c == task_procs ){ 
-				tp_c = 0;
-				tg_c++;
+				if( tp_c == task_procs ){ 
+					tp_c = 0;
+					tg_c++;
 				
-				if( tg_c == task_groups ){ 
-					if( i<(uint64_t)(num_threads-2) ){ 
-						printf( "ERROR : TOO MANY THREADS OR NOT ENOUGH HARDWARE\n" );
-						free( gconst );
-						return -1;
-					}
-				}
-			}
-		}
-	}
+					if( tg_c == task_groups ){ 
+						if( i<(uint64_t)(num_threads-2) ){ 
+							printf( "ERROR : TOO MANY THREADS OR NOT ENOUGH HARDWARE\n" );
+							free( gconst );
+							return -1;
+						} /* if num_threads-2 */ 
+					} /* if tg_c */
+				} /* if_tp_c */
+			} /* if t_c */
+		}/* if t_s */	
+	}/* for */
 
 	/* 
 	 * determine the appropriate options
