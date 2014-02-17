@@ -32,10 +32,25 @@ extern int memsim_set_hw( struct memsim_t *msim,
 
 	/* TODO : SANITY CHECK THE LINKS */
 
+	if( (num_links != 4 ) && ( num_links != 8 )){ 
+		return MEMSIM_ERROR;
+	}
+
+	if( (num_lanes != 8) && (num_lanes != 16) ){ 
+		return MEMSIM_ERROR;
+	}
+
+	if( (gbps != (float)(10.)) && 
+		(gbps != (float)(12.5)) && 
+		(gbps != (float)(15.)) ){ 
+		return MEMSIM_ERROR;
+	}
+
 	msim->hw.num_links	= num_links;
 	msim->hw.num_lanes	= num_lanes;
 	msim->hw.gbps		= gbps;
-	msim->hw.payps		= (uint64_t)( (((float)(num_lanes) * gbps)/(float)(8))/8 ) 
+	msim->hw.payps		= (uint64_t)( (((float)(num_lanes) * gbps * MEMSIM_GIGABIT )
+					/(float)(8))/8 ) 
 					* (uint64_t)(num_links);
 
 	return MEMSIM_OK;

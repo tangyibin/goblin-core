@@ -230,7 +230,6 @@ extern int execute_test( 	struct memsim_t *msim,
 			
 			if( tids[i].done == 1 ){
 				/* this thread is done, do nothing */
-				printf( "DONE!\n" );
 			}else if( status[i] == TRIAD_START ){ 
 				/* starting point */
 				/* not used for this benchmark */

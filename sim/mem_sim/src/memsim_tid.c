@@ -12,6 +12,35 @@
 #include "mem_sim.h"
 
 
+/* ------------------------------------------------ MEMSIM_CYCLE_TID */
+/* 
+ * MEMSIM_CYCLE_TID
+ * 
+ */
+extern int memsim_cycle_tid( struct memsim_t *msim )
+{
+	/* vars */
+	uint32_t i	= 0;
+	/* ---- */
+
+	/* 
+	 * sanity check 
+	 *
+	 */
+	if( msim == NULL ){ 
+		return MEMSIM_ERROR;
+	}
+
+	/* cycle bottom up */
+	for( i=0; i<msim->num_tids; i++ ){ 
+		if( msim->tids[i].valid == 0x02 ){ 
+			msim->tids[i].valid = 0x00;
+		}
+	}
+
+	return MEMSIM_OK;
+}
+
 /* ------------------------------------------------ MEMSIM_TID_PUSH */
 /* 
  * MEMSIM_TID_PUSH
@@ -33,7 +62,7 @@ extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid )
 
 	/* clear the tid */
 	msim->tids[tid].gconst	= 0x00ll;
-	msim->tids[tid].valid	= 0x00;
+	msim->tids[tid].valid	= 0x02;
 
 	return MEMSIM_OK;
 }

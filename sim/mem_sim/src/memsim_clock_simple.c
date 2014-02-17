@@ -13,6 +13,7 @@
 
 
 /* ------------------------------------------------ FUNCTION PROTOTYPES */
+extern int memsim_cycle_tid( struct memsim_t *msim );
 extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid );
 extern int memsim_tick_count( struct memsim_entry_t *ent, uint64_t *ticks );
 extern int memsim_trace_memop( struct memsim_t *msim, struct memsim_entry_t *ent );
@@ -466,6 +467,14 @@ extern int memsim_clock_simple( struct memsim_t *msim )
 		if( memsim_clock_simple_process_taskgroup( msim, i ) != 0 ){ 
 			return MEMSIM_ERROR;
 		}
+	}
+
+	/* 
+	 * cycle the tids 
+	 * 
+	 */
+	if( memsim_cycle_tid( msim ) != 0 ){ 
+		return MEMSIM_ERROR;
 	}
 
 	return MEMSIM_OK;
