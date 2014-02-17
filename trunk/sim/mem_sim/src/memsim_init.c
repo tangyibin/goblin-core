@@ -9,6 +9,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <inttypes.h>
 #include "mem_sim.h"
 
 
@@ -227,7 +228,9 @@ extern int memsim_init(	struct memsim_t *msim,
 	msim->hw.num_links	= 4;
 	msim->hw.num_lanes	= 8;
 	msim->hw.gbps		= (float)(10);
-	msim->hw.payps		= (uint64_t)( (((float)(msim->hw.num_lanes) * (float)(msim->hw.gbps))
+	msim->hw.payps		= (uint64_t)( (((float)(msim->hw.num_lanes) * 
+						(float)(msim->hw.gbps)  *
+						(float)(MEMSIM_GIGABIT) )
 					/(float)(8))/8  ) * (uint64_t)(msim->hw.num_links);
 	
 	return MEMSIM_OK;

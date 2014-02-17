@@ -28,7 +28,7 @@ INC=-I./include/
 
 #-- CFLAGS
 #-- C COMPILER FLAGS
-CFLAGS=-O0 -Wall -g $(INC) $(MEMSIM_MACROS)
+CFLAGS=-O2 -Wall -g $(INC) $(MEMSIM_MACROS)
 
 #-- CXXFLAGS
 #-- C++ COMPILER FLAGS

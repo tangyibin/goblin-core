@@ -89,7 +89,6 @@ static void memsim_print_header( struct memsim_t *msim )
 	}
 
 	fprintf( msim->tfile, "%s\n", "#-----------------------------------------------------" );	
-
 	fflush( msim->tfile );
 }
 

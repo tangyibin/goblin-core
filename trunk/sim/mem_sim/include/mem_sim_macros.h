@@ -37,6 +37,7 @@ extern "C" {
 #define		MEMSIM_OK	0
 
 /* ------------------------------------------------ VALUE MACROS */
+#define	MEMSIM_GIGABIT		1073741824
 #define MEMSIM_TIDS_PER_ENTRY	32
 
 #ifndef GSIM_REG_GCONST_PID
