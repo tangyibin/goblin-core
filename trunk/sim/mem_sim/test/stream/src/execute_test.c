@@ -223,9 +223,14 @@ extern int execute_test( 	struct memsim_t *msim,
  		 * a[j] = b[j] + scalar * c[j];
 		 */
 		for( i=0; i<num_threads; i++ ){ 
+
+#if 0
+			printf( "THREAD[%d] STATUS = %"PRIu64"\n", i, status[i] );
+#endif
 			
 			if( tids[i].done == 1 ){
 				/* this thread is done, do nothing */
+				printf( "DONE!\n" );
 			}else if( status[i] == TRIAD_START ){ 
 				/* starting point */
 				/* not used for this benchmark */
