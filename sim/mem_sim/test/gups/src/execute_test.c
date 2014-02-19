@@ -37,6 +37,7 @@ struct tid_t{
 	uint64_t	TableSize;	/* local value of TableSize */
 	uint64_t	ran;		/* local value of ran */
 	uint64_t	idx;		/* local value of idx */
+	uint64_t	shift;		/* local result of shift value */
 
 	/* outstanding tids */
 	uint32_t	ld_TS;		/* load TableSize */
@@ -196,6 +197,7 @@ extern int execute_test(	struct memsim_t *msim,
 		tids[i].TableSize	= 0x00ll;
 		tids[i].ran		= 0x00ll;
 		tids[i].idx		= 0x00ll;
+		tids[i].shift		= 0x00ll;
 		tids[i].ld_TS		= 0x00;
 		tids[i].ld_ran		= 0x00;
 		tids[i].st_ran		= 0x00;
@@ -308,13 +310,58 @@ extern int execute_test(	struct memsim_t *msim,
 				}
 
 				if( update == 0 ){ 
+
 					/* perform the subtract */
+					tids[i].TableSize -= 1;
+					tids[i].status	= GUPS_STAGE3;
+
 				}else{ 
 					/* memory stall */
 				}
 				
 			}else if( tids[i].status == GUPS_STAGE3 ){ 
+
+				/* load ran[j] */
+				ret	= memsim_rqst( 	msim, 
+							gconst[i], 
+							MEMSIM_RD8, 
+							(uint64_t)(&ran[tids[i].cur]), 
+							0x00ll,
+							0x00ll, 
+							&l_tid );
+
+				if( ret == 0 ){ 
+					tids[i].status	= GUPS_STAGE4;
+					tids[i].ld_ran	= l_tid;
+					tids[i].ld_ran_v= 1;
+				}
+
+
 			}else if( tids[i].status == GUPS_STAGE4 ){
+
+ 				/* 4.	shift-left ran[ j ] { loads must clear } */
+
+				update = 0;	
+				if( tids[i].ld_ran_v == 1 ){ 
+					/* check for the load completion */
+					if( memsim_query_tid( msim, 
+							tids[i].ld_ran ) == 0 ){
+						/* tid is clear */
+						tids[i].ld_ran_v = 0;
+					}else{ 
+						/* tid is not clear */
+						update++;
+					}
+
+					if( update == 0 ){ 
+						/* perform the shift */
+						tids[i].shift = ran[tids[i].cur]<<1;
+						tids[i].status = GUPS_STAGE5;
+					}else{ 
+						/* memory stall */
+					}
+				}
+
 			}else if( tids[i].status == GUPS_STAGE5 ){
 			}else if( tids[i].status == GUPS_STAGE6 ){
 			}else if( tids[i].status == GUPS_STAGE7 ){
