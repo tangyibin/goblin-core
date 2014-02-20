@@ -44,7 +44,7 @@ toolsclean:
 	@echo " Cleaning Tools..."; make -C ./tools/ clean
 testclean:
 	@echo " Cleaning Tests..."; make -C ./test/ clean
-distclean: clean testclean doclean
+distclean: clean testclean doclean toolsclean
  
 -include $(DEPS)
  
