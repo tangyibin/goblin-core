@@ -409,6 +409,28 @@ extern int execute_test( 	struct memsim_t *msim,
 
 	} /* -- end test loop */
 
+	printf( "COMPUTE COMPLETE : DRAINING REMAINING STORES\n" );
+
+	do{ 
+		for( i=0; i<num_threads; i++ ){ 
+			if( tids[i].st_a_v == 1 ){ 
+				/* check the tid */
+				if( memsim_query_tid( msim, 
+						tids[i].st_a ) == 0 ){ 
+					/* tid is clear */
+					tids[i].st_a_v = 0;
+
+					/* decrement the count */
+					done --;
+				}
+			}
+		}
+
+		/* clock the sim */
+		memsim_clock( msim );
+
+	}while( done > 0 );
+
 	printf( "SUCCESS : EXECUTION COMPLETE\n" );
 
 	/* 

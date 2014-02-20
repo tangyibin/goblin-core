@@ -38,17 +38,20 @@ struct tid_t{
 	uint64_t	ran;		/* local value of ran */
 	uint64_t	idx;		/* local value of idx */
 	uint64_t	shift;		/* local result of shift value */
+	uint64_t 	temp;		/* local temp */
 
 	/* outstanding tids */
 	uint32_t	ld_TS;		/* load TableSize */
 	uint32_t	ld_ran;		/* load ran[j] */
 	uint32_t	st_ran; 	/* store ran[j]	*/
 	uint32_t	ld_SC;		/* scatter load */
+	uint32_t	st_result;	/* store result */
 
 	uint8_t		ld_TS_v;	/* valid : load TableSize */
 	uint8_t		ld_ran_v;	/* valid : load ran[j] */
 	uint8_t		st_ran_v; 	/* valid : store ran[j]	*/
 	uint8_t		ld_SC_v;	/* valid : scatter load */
+	uint8_t		st_result_v;	/* valid : store result */
 
 	/* status & control */
 	uint32_t	done;		/* signals the thread is done */
@@ -137,7 +140,7 @@ uint64_t HPCC_starts( int64_t n ){
  * 8.	logical and ran[j] & TableSize-1
  * 9.	calculate address {scatter}
  * 10.	load of Table at index from 8. {wait for load to clear}
- * 12.	xor clock { Table [ index ] ^ ran[j] }
+ * 11.	xor clock { Table [ index ] ^ ran[j] }
  * 12.	write Table[ index ]	{ do we use an amo here? }
  * 13.	Flow Control for loop 
  * 
@@ -198,14 +201,17 @@ extern int execute_test(	struct memsim_t *msim,
 		tids[i].ran		= 0x00ll;
 		tids[i].idx		= 0x00ll;
 		tids[i].shift		= 0x00ll;
+		tids[i].temp		= 0x00ll;
 		tids[i].ld_TS		= 0x00;
 		tids[i].ld_ran		= 0x00;
 		tids[i].st_ran		= 0x00;
 		tids[i].ld_SC		= 0x00;
+		tids[i].st_result	= 0x00;
 		tids[i].ld_TS_v		= 0x0;
 		tids[i].ld_ran_v	= 0x0;
 		tids[i].st_ran_v	= 0x0;
 		tids[i].ld_SC_v		= 0x0;
+		tids[i].st_result_v	= 0x0;
 		tids[i].done		= 0x00;
 		tids[i].cur		= 0x00ll;
 		tids[i].end		= 0x00ll;
@@ -287,6 +293,7 @@ extern int execute_test(	struct memsim_t *msim,
 
 				if( ret == 0 ){ 
 					tids[i].status	= GUPS_STAGE2;
+					tids[i].TableSize = TableSize;
 					tids[i].ld_TS	= l_tid;
 					tids[i].ld_TS_v	= 1;
 				}
@@ -363,14 +370,134 @@ extern int execute_test(	struct memsim_t *msim,
 				}
 
 			}else if( tids[i].status == GUPS_STAGE5 ){
+
+ 				/* 5.	compare ran[j] < 0 ? POLY : 0 */
+				tids[i].temp	= (ran[tids[i].cur] < 0 ? POLY : 0 );
+
+				tids[i].status	= GUPS_STAGE6;
+
 			}else if( tids[i].status == GUPS_STAGE6 ){
+
+ 				/* 6.	logical xor ran[j] and result from 4 */
+				tids[i].ran = tids[i].shift ^ tids[i].temp;	
+
+				tids[i].status = GUPS_STAGE7;
+
 			}else if( tids[i].status == GUPS_STAGE7 ){
+
+ 				/* 7.	write ran[j] */
+				ret	= memsim_rqst( 	msim, 
+							gconst[i], 
+							MEMSIM_WR8, 
+							(uint64_t)(&ran[tids[i].cur]), 
+							tids[i].ran,
+							0x00ll, 
+							&l_tid );
+
+				if( ret == 0 ){ 
+					ran[tids[i].cur] = tids[i].ran;
+					tids[i].status	= GUPS_STAGE8;
+					tids[i].st_ran	= l_tid;
+					tids[i].st_ran_v= 1;
+				}
+
 			}else if( tids[i].status == GUPS_STAGE8 ){
+
+ 				/* 8.	logical and ran[j] & TableSize-1 */
+				tids[i].temp 	= 0x00ll;
+				tids[i].temp	= tids[i].ran & tids[i].TableSize;			
+
+				tids[i].status	= GUPS_STAGE9;
+
 			}else if( tids[i].status == GUPS_STAGE9 ){
+
+ 				/* 9.	calculate address {scatter} */
+				tids[i].idx	= (uint64_t)(&Table[tids[i].temp]);	
+
+				tids[i].status	= GUPS_STAGE10;
+
 			}else if( tids[i].status == GUPS_STAGE10 ){
+
+ 				/* 10.	load of Table at index from 8. {wait for load to clear} */
+				ret	= memsim_rqst( 	msim, 
+							gconst[i], 
+							MEMSIM_RD8, 
+							tids[i].idx,
+							0x00ll, 
+							0x00ll, 
+							&l_tid );
+
+				if( ret == 0 ){ 
+					tids[i].status	= GUPS_STAGE11;
+					tids[i].ld_SC	= l_tid;
+					tids[i].ld_SC_v	= 1;
+				}
+				
+
 			}else if( tids[i].status == GUPS_STAGE11 ){
+
+ 				/* 11.	xor clock { Table [ index ] ^ ran[j] } */
+				/* wait for load to complete */
+
+				update = 0;	
+				if( tids[i].ld_SC_v == 1 ){ 
+					/* check for the load completion */
+					if( memsim_query_tid( msim, 
+							tids[i].ld_SC ) == 0 ){
+						/* tid is clear */
+						tids[i].ld_SC_v = 0;
+					}else{ 
+						/* tid is not clear */
+						update++;
+					}
+
+					if( update == 0 ){ 
+						/* perform the XOR */
+						tids[i].temp = Table[ tids[i].ran & tids[i].TableSize ] 
+							^ tids[i].ran;
+						tids[i].status = GUPS_STAGE12;
+					}else{ 
+						/* memory stall */
+					}
+				}
+
 			}else if( tids[i].status == GUPS_STAGE12 ){
+
+ 				/* 12.	write Table[ index ]	{ do we use an amo here? } */
+				ret	= memsim_rqst( 	msim, 
+							gconst[i], 
+							MEMSIM_WR8, 
+							(uint64_t)(&Table [ tids[i].ran & 
+									tids[i].TableSize ]),
+							tids[i].temp, 
+							0x00ll, 
+							&l_tid );
+
+				if( ret == 0 ){ 
+					tids[i].status	= GUPS_STAGE13;
+					Table[ tids[i].ran & tids[i].TableSize ] = tids[i].temp;
+					tids[i].st_result	= l_tid;
+					tids[i].st_result_v	= 1;
+					tids[i].status		= GUPS_STAGE13;
+				}
+				
+
 			}else if( tids[i].status == GUPS_STAGE13 ){
+
+ 				/* 13.	Flow Control for loop */
+
+				/* update the current point */
+				tids[i].cur++;
+				
+				/* wrap to the next element */
+				tids[i].status = GUPS_STAGE3;
+
+				if( tids[i].cur >= tids[i].end ){ 
+					printf( "Thread %"PRIu32" Complete\n", i );
+					fflush( stdout );
+					tids[i].done	 = 1;
+					done++;
+				}
 			}
 
 		}/* -- end for loop */
@@ -381,6 +508,31 @@ extern int execute_test(	struct memsim_t *msim,
 		 */
 		memsim_clock( msim );
 	}/* -- end test loop */
+
+	printf( "COMPUTE COMPLETE : DRAINING REMAINING STORES\n" );
+
+	/* drain any remaining stores */
+	do{ 
+		
+		for( i=0; i<num_threads; i++ ){ 
+
+			if( tids[i].st_result_v == 1 ){ 
+				/* check the tid */
+				if( memsim_query_tid( msim, 
+						tids[i].st_result ) == 0 ){
+					/* tid is clear */
+					tids[i].st_result_v = 0;
+
+					/* decrement the count */
+					done--;
+				}
+			}
+		}
+
+		/* clock the sim */
+		memsim_clock( msim );
+
+	}while( done > 0 );
 
 	printf( "SUCCESS : EXECUTION COMPLETE\n" );
 
