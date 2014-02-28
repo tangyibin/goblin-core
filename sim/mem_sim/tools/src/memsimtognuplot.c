@@ -193,6 +193,300 @@ static int mtog_free( struct mtog_t *mtog ){
  * 
  */
 static int print_results( struct mtog_t *mtog ){ 
+
+	/* vars */
+	FILE *ofile 	= NULL;
+	uint64_t i 	= 0;
+	/* ---- */
+
+	/* 
+	 * busop 
+	 *
+	 */
+	ofile	= fopen( "busop.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.busop[i] );
+	}
+
+	/* 
+	 * memop 
+	 *
+	 */
+	ofile	= fopen( "memop.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.memop[i] );
+	}
+
+	/* 
+	 * rd8 
+	 *
+	 */
+	ofile	= fopen( "rd8.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.rd8[i] );
+	}
+
+	/* 
+	 * wr8 
+	 *
+	 */
+	ofile	= fopen( "wr8.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.wr8[i] );
+	}
+
+	/* 
+	 * rd4 
+	 *
+	 */
+	ofile	= fopen( "rd4.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.rd4[i] );
+	}
+
+	/* 
+	 * wr4 
+	 *
+	 */
+	ofile	= fopen( "wr4.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.wr4[i] );
+	}
+
+	/* 
+	 * fence 
+	 *
+	 */
+	ofile	= fopen( "fence.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.fence[i] );
+	}
+
+	/* 
+	 * unk
+	 *
+	 */
+	ofile	= fopen( "unk.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.unk[i] );
+	}
+
+	/* 
+	 * hmc_rd16
+	 *
+	 */
+	ofile	= fopen( "hmc_rd16.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd16[i] );
+	}
+
+	/* 
+	 * hmc_rd32
+	 *
+	 */
+	ofile	= fopen( "hmc_rd32.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd32[i] );
+	}
+
+	/* 
+	 * hmc_rd48
+	 *
+	 */
+	ofile	= fopen( "hmc_rd48.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd48[i] );
+	}
+
+	/* 
+	 * hmc_rd64
+	 *
+	 */
+	ofile	= fopen( "hmc_rd64.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd64[i] );
+	}
+
+	/* 
+	 * hmc_rd80
+	 *
+	 */
+	ofile	= fopen( "hmc_rd80.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd80[i] );
+	}
+
+	/* 
+	 * hmc_rd96
+	 *
+	 */
+	ofile	= fopen( "hmc_rd96.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd96[i] );
+	}
+
+	/* 
+	 * hmc_rd112
+	 *
+	 */
+	ofile	= fopen( "hmc_rd112.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd112[i] );
+	}
+
+	/* 
+	 * hmc_rd128
+	 *
+	 */
+	ofile	= fopen( "hmc_rd128.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_rd128[i] );
+	}
+
+	/* 
+	 * hmc_wr16
+	 *
+	 */
+	ofile	= fopen( "hmc_wr16.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr16[i] );
+	}
+
+	/* 
+	 * hmc_wr32
+	 *
+	 */
+	ofile	= fopen( "hmc_wr32.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr32[i] );
+	}
+
+	/* 
+	 * hmc_wr48
+	 *
+	 */
+	ofile	= fopen( "hmc_wr48.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr48[i] );
+	}
+
+	/* 
+	 * hmc_wr64
+	 *
+	 */
+	ofile	= fopen( "hmc_wr64.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr64[i] );
+	}
+
+	/* 
+	 * hmc_wr80
+	 *
+	 */
+	ofile	= fopen( "hmc_wr80.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr80[i] );
+	}
+
+	/* 
+	 * hmc_wr96
+	 *
+	 */
+	ofile	= fopen( "hmc_wr96.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr96[i] );
+	}
+
+	/* 
+	 * hmc_wr112
+	 *
+	 */
+	ofile	= fopen( "hmc_wr112.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr112[i] );
+	}
+
+	/* 
+	 * hmc_wr128
+	 *
+	 */
+	ofile	= fopen( "hmc_wr128.out", "w+" );
+	if( ofile == NULL ){ 
+		return -1;
+	}
+	for( i=0; i<mtog->num_clocks; i++ ){ 
+		fprintf( ofile, "%"PRIu64 " %"PRIu64 "\n", i, mtog->count.hmc_wr128[i] );
+	}
+
 	return 0;
 }
 
@@ -468,6 +762,13 @@ static int parse( FILE *infile, struct mtog_t *mtog ){
 			 * determine the operation type 
 			 *
 			 */
+			if( strcmp( pch, "MEMORY_BUS" ) == 0 ){ 
+				mtog->count.busop[tc]++;
+			}else if( strcmp( pch, "MEMORY_OP" ) == 0 ){ 
+				mtog->count.memop[tc]++;
+			}else{ 
+				printf( "Found a bogus value : %s\n", pch );
+			}
 
 			/* 
 			 * forward to the operation type 
@@ -492,7 +793,53 @@ static int parse( FILE *infile, struct mtog_t *mtog ){
 			 * determine the operation code 
 			 * 
 			 */
-			
+			if( strcmp( pch, "MEMSIM_RD8" ) == 0 ){ 
+				mtog->count.rd8[tc]++;
+			}else if( strcmp( pch, "MEMSIM_WR8" ) == 0 ){ 
+				mtog->count.wr8[tc]++;
+			}else if( strcmp( pch, "MEMSIM_RD4" ) == 0 ){ 
+				mtog->count.rd4[tc]++;
+			}else if( strcmp( pch, "MEMSIM_WR4" ) == 0 ){ 
+				mtog->count.rd4[tc]++;
+			}else if( strcmp( pch, "MEMSIM_FENCE" ) == 0 ){ 
+				mtog->count.fence[tc]++;
+			}else if( strcmp( pch, "MEMSIM_UNK" ) == 0 ){ 
+				mtog->count.unk[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD16" ) == 0 ){ 
+				mtog->count.hmc_rd16[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD32" ) == 0 ){ 
+				mtog->count.hmc_rd32[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD48" ) == 0 ){ 
+				mtog->count.hmc_rd48[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD64" ) == 0 ){ 
+				mtog->count.hmc_rd64[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD80" ) == 0 ){ 
+				mtog->count.hmc_rd80[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD96" ) == 0 ){ 
+				mtog->count.hmc_rd96[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD112" ) == 0 ){ 
+				mtog->count.hmc_rd112[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_RD128" ) == 0 ){ 
+				mtog->count.hmc_rd128[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR16" ) == 0 ){ 
+				mtog->count.hmc_wr16[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR32" ) == 0 ){ 
+				mtog->count.hmc_wr32[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR48" ) == 0 ){ 
+				mtog->count.hmc_wr48[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR64" ) == 0 ){ 
+				mtog->count.hmc_wr64[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR80" ) == 0 ){ 
+				mtog->count.hmc_wr80[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR96" ) == 0 ){ 
+				mtog->count.hmc_wr96[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR112" ) == 0 ){ 
+				mtog->count.hmc_wr112[tc]++;
+			}else if( strcmp( pch, "MEMSIM_HMC_WR128" ) == 0 ){ 
+				mtog->count.hmc_wr128[tc]++;
+			}else{	
+				printf( "Found a bogus value : %s\n", pch );
+			}
 		}
 	}
 
