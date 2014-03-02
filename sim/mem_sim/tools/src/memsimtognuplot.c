@@ -786,7 +786,7 @@ static int parse( FILE *infile, struct mtog_t *mtog ){
 				/* 10 */
 				pch = strtok( NULL, " " );
 				/* 11 */
-				pch = strtok( NULL, " " );
+				pch = strtok( NULL, "\n" );
 			}
 
 			/* 
