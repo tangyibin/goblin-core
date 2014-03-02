@@ -50,6 +50,10 @@ extern int memsim_rqst(	struct memsim_t *msim,
 		return MEMSIM_ERROR;
 	}
 
+	if( ftid == NULL ){ 
+		return MEMSIM_ERROR;
+	}
+
 	/* 
 	 * validate the request type
  	 * 
