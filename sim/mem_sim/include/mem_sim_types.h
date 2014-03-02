@@ -75,6 +75,19 @@ struct memsim_entry_t{
 	memsim_rqst_t rqst;		/*! MEM-SIM: MEMSIM_ENTRY_T: REQUEST TYPE */
 };
 
+struct memsim_line_t{
+	uint8_t	valid;			/*! MEM-SIM: MEMSIM_LINE_T: CACHE VALID BIT */
+	uint32_t tag;			/*! MEM-SIM: MEMSIM_LINE_T: CACHE TAG */
+	uint64_t clock;			/*! MEM-SIM: MEMSIM_LINE_T: CACHE LRU CLOCK VALUE */
+	uint64_t data[8];		/*! MEM-SIM: MEMSIM_LINE_T: CACHE LINE DATA BLOCK */
+};
+
+struct memsim_cache_t{
+	uint8_t ways;			/*! MEM-SIM: MEMSIM_CACHE_T: CACHE WAYS */
+	uint32_t sets;			/*! MEM-SIM: MEMSIM_CACHE_T: SETS */
+	struct memsim_line_t *cache;	/*! MEM-SIM: MEMSIM_CACHE_T: CACHE STRUCTURE */
+};
+
 struct memsim_hw_t{ 
 	uint64_t payps;			/*! MEM-SIM: MEMSIM_HW_T : MAX PAYLOADS PER SECOND */
 	uint32_t num_links;		/*! MEM-SIM: MEMSIM_HW_T : NUMBER OF LINKS */
@@ -108,6 +121,18 @@ struct memsim_t{
 	uint32_t task_procs;		/*! MEM-SIM: MEMSIM_T: NUMBER OF TASK PROCS */
 	uint32_t tasks;			/*! MEM-SIM: MEMSIM_T: NUMBER OF TASKS */
 
+	uint32_t l1_cache_sets;		/*! MEM-SIM: MEMSIM_T: NUMBER OF L1 CACHE SETS */
+	uint32_t l2_cache_sets;		/*! MEM-SIM: MEMSIM_T: NUMBER OF L2 CACHE SETS */
+	uint32_t l3_cache_sets;		/*! MEM-SIM: MEMSIM_T: NUMBER OF L3 CACHE SETS */
+
+	uint32_t l1_cache_ways;		/*! MEM-SIM: MEMSIM_T: NUMBER OF L1 CACHE WAYS */
+	uint32_t l2_cache_ways;		/*! MEM-SIM: MEMSIM_T: NUMBER OF L2 CACHE WAYS */
+	uint32_t l3_cache_ways;		/*! MEM-SIM: MEMSIM_T: NUMBER OF L3 CACHE WAYS */
+
+	uint32_t l1_cache_size;		/*! MEM-SIM: MEMSIM_T: SIZE OF L1 CACHE */
+	uint32_t l2_cache_size;		/*! MEM-SIM: MEMSIM_T: SIZE OF L2 CACHE */
+	uint32_t l3_cache_size;		/*! MEM-SIM: MEMSIM_T: SIZE OF L3 CACHE */
+
 	uint32_t num_tids;		/*! MEM-SIM: MEMSIM_T: NUMBER OF TIDS */
 
 	FILE *tfile;			/*! MEM-SIM: MEMSIM_T: TRACE FILE HANDLER */
@@ -116,6 +141,10 @@ struct memsim_t{
 	uint64_t opt;			/*! MEM-SIM: MEMSIM_T: RUNTIME OPTIONS */
 
 	uint64_t clock;			/*! MEM-SIM: MEMSIM_T: CLOCK */
+
+	struct memsim_cache_t *l1;	/*! MEM-SIM: MEMSIM_T: L1 CACHE */
+	struct memsim_cache_t *l2;	/*! MEM-SIM: MEMSIM_T: L2 CACHE */
+	struct memsim_cache_t *l3;	/*! MEM-SIM: MEMSIM_T: L3 CACHE */
 
 	struct memsim_slot_t *group;	/*! MEM-SIM: MEMSIM_T: GROUP SLOT STRUCTURES */
 	struct memsim_slot_t *socket;	/*! MEM-SIM: MEMSIM_T: SOCKET SLOT STRUCTURES */

@@ -68,6 +68,22 @@ extern int memsim_init(	struct memsim_t *msim,
 	msim->tasks		= tasks;
 	msim->clock		= 0x00;
 
+	msim->l1_cache_sets	= 0x00;
+	msim->l2_cache_sets	= 0x00;
+	msim->l3_cache_sets	= 0x00;
+
+	msim->l1_cache_ways	= 0x00;
+	msim->l2_cache_ways	= 0x00;
+	msim->l3_cache_ways	= 0x00;
+
+	msim->l1_cache_size	= 0x00;
+	msim->l2_cache_size	= 0x00;
+	msim->l3_cache_size	= 0x00;
+
+	msim->l1		= NULL;
+	msim->l2		= NULL;
+	msim->l3		= NULL;
+
 	if( (iface != MEMSIM_BASIC) && (iface != MEMSIM_HMC) ){ 
 		return MEMSIM_ERROR;
 	}
