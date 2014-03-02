@@ -169,6 +169,22 @@ extern int memsim_is_empty( struct memsim_t *msim );
 */
 extern int memsim_query_tid( struct memsim_t *msim, uint32_t tid );
 
+/*!	\fn int memsim_set_cache( struct memsim_t *msim, uint32_t unit, 
+				uint8_t ways, uint32_t sets, uint32_t size )
+	\brief Initializes an memsim cache hierarchy
+	\param *msim is a pointer to a valid memsim structure
+	\param unit designates the cache unit {1,2 or 3}
+	\param ways indicates the number of associative ways exist in the cache
+	\param sets indicates the number of associated sets in the cache
+	\param size is the size in bytes of the cache
+	\returns MEMSIM_OK on success, nonzero otherwise
+*/
+extern int memsim_set_cache(	struct memsim_t *msim, 
+				uint32_t unit, 
+				uint8_t ways, 
+				uint32_t sets, 
+				uint32_t size );
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

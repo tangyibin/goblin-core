@@ -31,6 +31,21 @@ extern int memsim_free(	struct memsim_t *msim )
 		fflush( msim->tfile );
 	}
 
+	if( msim->l1 != NULL ){ 
+		free( msim->l1 );
+		msim->l1 = NULL;
+	}
+
+	if( msim->l2 != NULL ){ 
+		free( msim->l2 );
+		msim->l2 = NULL;
+	}
+
+	if( msim->l3 != NULL ){ 
+		free( msim->l3 );
+		msim->l3 = NULL;
+	}
+
 	if( msim->__ptr_tid != NULL ){ 
 		free( msim->__ptr_tid );
 		msim->__ptr_tid	= NULL;
