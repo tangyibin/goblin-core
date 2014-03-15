@@ -26,6 +26,7 @@ extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_cp_entry( struct memsim_entry_t *src, struct memsim_entry_t *dest );
 extern int memsim_find_cache( struct memsim_t *msim, struct memsim_entry_t *end, 
 				uint8_t *way, uint32_t *set );
+extern int memsim_cache_entry_clock( struct memsim_t *msim );
 
 
 /* ------------------------------------------------ MEMSIM_CLOCK_CACHE_PROCESS_SOCKET */
@@ -428,6 +429,12 @@ extern int memsim_clock_cache( struct memsim_t *msim )
 			return MEMSIM_ERROR;
 		}
 	}
+
+	/* 
+	 * update the cache clock values for LRU
+	 * 
+	 */
+	memsim_cache_entry_clock( msim );
 
 	/* 
 	 * cycle the tids 
