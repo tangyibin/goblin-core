@@ -24,7 +24,8 @@ extern int memsim_clear_entry( struct memsim_entry_t *ent );
 extern int memsim_bubble_slot( struct memsim_slot_t *slot );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_cp_entry( struct memsim_entry_t *src, struct memsim_entry_t *dest );
-
+extern int memsim_find_cache( struct memsim_t *msim, struct memsim_entry_t *end, 
+				uint8_t *way, uint32_t *set );
 
 
 /* ------------------------------------------------ MEMSIM_CLOCK_CACHE_PROCESS_SOCKET */
@@ -317,6 +318,63 @@ static int memsim_clock_cache_process_global( struct memsim_t *msim ){
 
 /* ------------------------------------------------ MEMSIM_CLOCK_CACHE_PROCESS_TASKGROUP */
 static int memsim_clock_cache_process_taskgroup( struct memsim_t *msim, uint32_t gr ){ 
+	
+	/* vars */
+	int done		= 0;
+	/*int rtn			= 0;*/
+	uint32_t cur		= 0;
+#if 0
+	uint32_t level		= 0;
+	uint32_t target		= 0;
+	memsim_rqst_t tmp	= MEMSIM_UNK;
+#endif
+	/* ---- */
+
+	/* 
+	 * process the slot entries within this clock cycle
+	 *
+	 */
+	while( (done != 1) ){ 
+	
+		/* 
+		 * check the 'cur' element 
+		 *
+		 */	
+		if( msim->group[gr].entry[cur].valid == 1 ){ 
+
+			/* 
+			 * current element is valid, process it
+			 *
+			 * Check each valid cache stage; if a miss occurs
+			 * fill into the fastest available cache with space
+			 *
+			 */
+
+		}
+
+		/* 
+		 * make sure we're not at the end of our valid slots
+		 *
+		 */
+		if( (cur+1) >= msim->group[gr].num_slots ){ 
+			/* 
+			 * Last element
+			 *
+			 */
+			done = 1;
+		}else{ 
+			cur += 1;
+		}
+	}
+
+	/*
+         * bubble the slot entries
+         *
+         */
+        if( memsim_bubble_slot( &(msim->group[gr]) ) != 0 ){
+                return MEMSIM_ERROR;
+        }
+
 	return MEMSIM_OK;
 }
 
