@@ -176,7 +176,7 @@ extern int execute_test(	struct memsim_t *msim,
 		return -1;
 	}	
 
-	ran	= malloc( sizeof( uint64_t ) * num_threads );
+	ran	= malloc( sizeof( uint64_t ) * NUPDATE );
 	if( ran == NULL ){ 
 		printf( "ERROR : COULD NOT ALLOCATE MEMORY FOR ran\n" );
 		free( tids );
@@ -222,8 +222,8 @@ extern int execute_test(	struct memsim_t *msim,
 		Table[j]	= (uint64_t)(j);	
 	}
 
-	for( i=0; i<num_threads; i++ ){ 
-		ran[i]	= HPCC_starts( (int64_t)((NUPDATE/num_threads) * i) );
+	for( j=0; j<NUPDATE; j++ ){ 
+		ran[j]	= HPCC_starts( (int64_t)((NUPDATE/num_threads) * j) );
 	}
 
 	niter	= (uint64_t)(NUPDATE)/(uint64_t)(num_threads);
