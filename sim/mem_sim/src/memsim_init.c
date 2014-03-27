@@ -244,10 +244,21 @@ extern int memsim_init(	struct memsim_t *msim,
 	msim->hw.num_links	= 4;
 	msim->hw.num_lanes	= 8;
 	msim->hw.gbps		= (float)(10);
+
+	/*
+	 * payps = ((( gbps * num_lanes ) / 64 ) / 1Ghz ) * num_links
+	 * 
+	 */	
+	msim->hw.payps		= (uint64_t)( (((((float)(msim->hw.gbps)*(float)(MEMSIM_GIGABIT)) * 
+						(float)(msim->hw.num_lanes)) / (float)(64)) /
+						(float)(1000000000.0))) 
+					* (uint64_t)(msim->hw.num_links);
+#if 0
 	msim->hw.payps		= (uint64_t)( (((float)(msim->hw.num_lanes) * 
 						(float)(msim->hw.gbps)  *
 						(float)(MEMSIM_GIGABIT) )
 					/(float)(8))/8  ) * (uint64_t)(msim->hw.num_links);
+#endif
 	
 	return MEMSIM_OK;
 }
