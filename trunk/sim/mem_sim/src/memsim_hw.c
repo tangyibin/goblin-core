@@ -9,6 +9,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <inttypes.h>
 #include "mem_sim.h"
 
 
@@ -22,6 +23,10 @@ extern int memsim_set_hw( struct memsim_t *msim,
 				uint32_t num_lanes, 
 				float gbps )
 {
+	/* vars */
+	float bw	= 0.;
+	/* ---- */
+
 	/* 
 	 * sanity check 
 	 *
@@ -29,8 +34,6 @@ extern int memsim_set_hw( struct memsim_t *msim,
 	if( msim == NULL ){ 
 		return MEMSIM_ERROR;
 	}
-
-	/* TODO : SANITY CHECK THE LINKS */
 
 	if( (num_links != 4 ) && ( num_links != 8 )){ 
 		return MEMSIM_ERROR;
@@ -49,9 +52,12 @@ extern int memsim_set_hw( struct memsim_t *msim,
 	msim->hw.num_links	= num_links;
 	msim->hw.num_lanes	= num_lanes;
 	msim->hw.gbps		= gbps;
-	msim->hw.payps		= (uint64_t)( (((float)(num_lanes) * gbps * MEMSIM_GIGABIT )
-					/(float)(8))/8 ) 
-					* (uint64_t)(num_links);
+
+	bw      = ((float)(msim->hw.num_lanes * 2 * msim->hw.num_links) * msim->hw.gbps)/(float)(8.0);
+
+        /* 64-bit payloads per second */
+        bw      /= (float)(8.0);
+        msim->hw.payps          = (uint64_t)(bw);
 
 	return MEMSIM_OK;
 }
