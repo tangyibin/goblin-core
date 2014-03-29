@@ -12,6 +12,28 @@
 #include <stdlib.h>
 #include "mem_sim.h"
 
+/* ------------------------------------------------ MEMSIM_CACHE_CLEAR_LINE */
+/* 
+ * MEMSIM_CACHE_CLEAR_LINE
+ * 
+ */
+extern int memsim_cache_clear_line( struct memsim_line_t *line )
+{
+	line->valid	= 0;
+	line->tag	= 0x00;
+	line->clock	= 0x00ll;
+	line->data[0]	= 0x00ll;
+	line->data[1]	= 0x00ll;
+	line->data[2]	= 0x00ll;
+	line->data[3]	= 0x00ll;
+	line->data[4]	= 0x00ll;
+	line->data[5]	= 0x00ll;
+	line->data[6]	= 0x00ll;
+	line->data[7]	= 0x00ll;
+
+	return 0;
+}
+
 /* ------------------------------------------------ MEMSIM_CACHE_ENTRY_CLOCK */
 /* 
  * MEMSIM_CACHE_ENTRY_CLOCK
