@@ -246,7 +246,7 @@ int main( int argc, char **argv )
 	 * set the hardware details
  	 * 
 	 */
-	/*
+	
 	if( memsim_set_hw( &msim, 
 			num_links, 
 			num_lanes, 
@@ -255,7 +255,7 @@ int main( int argc, char **argv )
 		memsim_free( &msim );
 		free( gconst );
 		return -1;
-	}*/
+	}
 
 	/* 
 	 * open the output file 
