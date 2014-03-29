@@ -35,6 +35,7 @@ extern int memsim_init(	struct memsim_t *msim,
 	uint64_t i			= 0;
 	uint32_t j			= 0;
 	uint64_t cur			= 0;
+	float bw			= 0;
 	struct memsim_entry_t *tmp_e	= NULL;
 	struct memsim_slot_t *tmp	= NULL;
 	/* ---- */
@@ -249,11 +250,17 @@ extern int memsim_init(	struct memsim_t *msim,
 	 * payps = ((( gbps * num_lanes ) / 64 ) / 1Ghz ) * num_links
 	 * 
 	 */	
+	/* bandwidth in GB/s */
+	bw	= ((float)(msim->hw.gbps) * (float)(msim->num_lanes * 2) 
+			* (float)(msim->hw_num_links))/(float)(8.0);
+	/* 64-bit payloads per second */
+	bw	/= (float)(8.0);
+	msim->hw.payps		= (uint64_t)(bw/(float)(1000000000.0));
+#if 0
 	msim->hw.payps		= (uint64_t)( (((((float)(msim->hw.gbps)*(float)(MEMSIM_GIGABIT)) * 
 						(float)(msim->hw.num_lanes)) / (float)(64)) /
 						(float)(1000000000.0))) 
 					* (uint64_t)(msim->hw.num_links);
-#if 0
 	msim->hw.payps		= (uint64_t)( (((float)(msim->hw.num_lanes) * 
 						(float)(msim->hw.gbps)  *
 						(float)(MEMSIM_GIGABIT) )
