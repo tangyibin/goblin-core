@@ -251,8 +251,8 @@ extern int memsim_init(	struct memsim_t *msim,
 	 * 
 	 */	
 	/* bandwidth in GB/s */
-	bw	= ((float)(msim->hw.gbps) * (float)(msim->num_lanes * 2) 
-			* (float)(msim->hw_num_links))/(float)(8.0);
+	bw	= ((float)(msim->hw.gbps) * (float)(msim->hw.num_lanes * 2) 
+			* (float)(msim->hw.num_links))/(float)(8.0);
 	/* 64-bit payloads per second */
 	bw	/= (float)(8.0);
 	msim->hw.payps		= (uint64_t)(bw/(float)(1000000000.0));
