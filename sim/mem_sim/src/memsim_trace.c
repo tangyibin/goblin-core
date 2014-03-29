@@ -57,7 +57,9 @@ static void memsim_print_header( struct memsim_t *msim )
 	fprintf( msim->tfile, "%s%d\n", "# TASK GROUPS     : ", msim->task_groups);
 	fprintf( msim->tfile, "%s%d\n", "# TASK PROCS      : ", msim->task_procs);
 	fprintf( msim->tfile, "%s%d\n", "# TASKS           : ", msim->tasks);
-	fprintf( msim->tfile, "%s0x%016llx\n", "# OPTIONS         : ", msim->opt); 
+	fprintf( msim->tfile, "%s%"PRIu64"\n", "# PAYLOAD/CLOCK   : ", msim->hw.payps );
+	/*fprintf( msim->tfile, "%s0x%016llx\n", "# OPTIONS         : ", msim->opt); */
+	fprintf( msim->tfile, "%s0x%"PRIx64"\n", "# OPTIONS         : ", msim->opt); 
 
 	switch( msim->iface )
 	{
