@@ -36,7 +36,7 @@ libgsim.a:
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_init_internals.o $(SRC)/gsim_init_internals.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_inst_validate.o $(SRC)/gsim_inst_validate.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_exec_functional.o $(SRC)/gsim_exec_functional.c
-	$(AR) $(AROPTS) $@ $(LIBOBJS)
+	$(AR) $(ARFLAGS) $@ $(LIBOBJS)
 gsim_config.yy.c: ./src/gsim_config_parser.lex
 	$(LEX) $(LEX_OPTS) -o./src/$@ ./src/gsim_config_parser.lex
 gsim_config.yy.o: gsim_config.yy.c
