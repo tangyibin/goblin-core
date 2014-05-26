@@ -75,6 +75,18 @@ struct memsim_entry_t{
 	memsim_rqst_t rqst;		/*! MEM-SIM: MEMSIM_ENTRY_T: REQUEST TYPE */
 };
 
+struct memsim_tree_entry_t{
+	struct memsim_tree_entry_t *left;	/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: LEFT ENTRY */	
+	struct memsim_tree_entry_t *right;	/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: RIGHT ENTRY */	
+	struct memsim_entry_t *entry;		/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: ENTRY POINTER */
+};
+
+struct memsim_tree_t{
+	struct memsim_tree_entry_t *root;	/*! MEM-SIM: MEMSIM_TREE_T: ROOT ENTRY */
+	uint64_t tick;			  	/*! MEM-SIM: MEMSIM_TREE_T: CLOCK TICK */
+	uint64_t num_slots;			/*! MEM-SIM: MEMSIM_TREE_T: NUMBER OF ACTIVE SLOTS */
+};
+
 struct memsim_line_t{
 	uint8_t	valid;			/*! MEM-SIM: MEMSIM_LINE_T: CACHE VALID BIT */
 	uint32_t tag;			/*! MEM-SIM: MEMSIM_LINE_T: CACHE TAG */
@@ -151,10 +163,15 @@ struct memsim_t{
 	struct memsim_slot_t *amo;	/*! MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES */
 	struct memsim_slot_t *global;	/*! MEM-SIM: MEMSIM_T: AMO SLOT STRUCTURES */
 
+	struct memsim_tree_t *t_local;	/*! MEM-SIM: MEMSIM_T: LOCAL TREE STRUCTURE */
+	struct memsim_tree_t *t_amo;	/*! MEM-SIM: MEMSIM_T: AMO TREE STRUCTURE */
+	struct memsim_tree_t *t_global;	/*! MEM-SIM: MEMSIM_T: GLOBAL TREE STRUCTURE */
+
 	struct memsim_tid_t *tids;	/*! MEM-SIM: MEMSIM_T: TID HANDLERS */
 
 	struct memsim_hw_t hw;		/*! MEM-SIM: MEMSIM_T: HARDWARE CONFIGURATION */
 
+	struct memsim_tree_entry_t *__ptr_tentries;
 	struct memsim_slot_t *__ptr_slots;
 	struct memsim_entry_t *__ptr_entry;
 	struct memsim_tid_t *__ptr_tid;
