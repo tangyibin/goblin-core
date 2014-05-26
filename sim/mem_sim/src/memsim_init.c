@@ -50,6 +50,7 @@ extern int memsim_init(	struct memsim_t *msim,
 
 	msim->__ptr_slots	= NULL;
 	msim->__ptr_entry	= NULL;
+	msim->__ptr_tentries	= NULL;
 	msim->group		= NULL;
 	msim->socket		= NULL;
 	msim->amo		= NULL;
@@ -84,6 +85,10 @@ extern int memsim_init(	struct memsim_t *msim,
 	msim->l1		= NULL;
 	msim->l2		= NULL;
 	msim->l3		= NULL;
+
+	msim->t_local		= NULL;
+	msim->t_amo		= NULL;
+	msim->t_global		= NULL;
 
 	if( (iface != MEMSIM_BASIC) && (iface != MEMSIM_HMC) ){ 
 		return MEMSIM_ERROR;
@@ -256,6 +261,28 @@ extern int memsim_init(	struct memsim_t *msim,
 	/* 64-bit payloads per second */
 	bw	/= (float)(8.0);
 	msim->hw.payps		= (uint64_t)(bw);
+
+	/* 
+	 * Experimental Setup 
+ 	 * 
+	 */
+	if( msim->alg == MEMSIM_EXP ){ 
+		msim->t_local	= malloc( sizeof( struct memsim_tree_t ) );
+		msim->t_amo	= malloc( sizeof( struct memsim_tree_t ) );
+		msim->t_global	= malloc( sizeof( struct memsim_tree_t ) );
+
+		msim->t_local->root	= NULL;
+		msim->t_local->tick	= 0x00ll;
+		msim->t_local->num_slots	= 0;
+		msim->t_amo->root	= NULL;
+		msim->t_amo->tick	= 0x00ll;
+		msim->t_amo->num_slots	= 0;
+		msim->t_global->root	= NULL;
+		msim->t_global->tick	= 0x00ll;
+		msim->t_global->num_slots= 0;
+
+		msim->__ptr_tentries	= malloc( sizeof( struct memsim_entry_t ) * msim->num_tids );
+	}
 	
 	return MEMSIM_OK;
 }
