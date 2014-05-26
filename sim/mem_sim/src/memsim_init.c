@@ -267,6 +267,7 @@ extern int memsim_init(	struct memsim_t *msim,
  	 * 
 	 */
 	if( msim->alg == MEMSIM_EXP ){ 
+
 		msim->t_local	= malloc( sizeof( struct memsim_tree_t ) );
 		msim->t_amo	= malloc( sizeof( struct memsim_tree_t ) );
 		msim->t_global	= malloc( sizeof( struct memsim_tree_t ) );
@@ -281,7 +282,13 @@ extern int memsim_init(	struct memsim_t *msim,
 		msim->t_global->tick	= 0x00ll;
 		msim->t_global->num_slots= 0;
 
-		msim->__ptr_tentries	= malloc( sizeof( struct memsim_entry_t ) * msim->num_tids );
+		msim->__ptr_tentries	= malloc( sizeof( struct memsim_tree_entry_t ) * msim->num_tids );
+
+		for( i=0; i<msim->num_tids; i++ ){ 
+			msim->__ptr_tentries[i].left	= NULL;
+			msim->__ptr_tentries[i].right	= NULL;
+			msim->__ptr_tentries[i].entry	= NULL;
+		}
 	}
 	
 	return MEMSIM_OK;
