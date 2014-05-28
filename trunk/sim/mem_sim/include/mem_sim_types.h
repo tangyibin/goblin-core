@@ -76,9 +76,11 @@ struct memsim_entry_t{
 };
 
 struct memsim_tree_entry_t{
+	struct memsim_tree_entry_t *next;	/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: NEXT ENTRY */
 	struct memsim_tree_entry_t *left;	/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: LEFT ENTRY */	
 	struct memsim_tree_entry_t *right;	/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: RIGHT ENTRY */	
 	struct memsim_entry_t *entry;		/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: ENTRY POINTER */
+	uint64_t tick;				/*! MEM-SIM: MEMSIM_TREE_ENTRY_T: TICK COUNT */
 };
 
 struct memsim_tree_t{
@@ -170,6 +172,9 @@ struct memsim_t{
 	struct memsim_tid_t *tids;	/*! MEM-SIM: MEMSIM_T: TID HANDLERS */
 
 	struct memsim_hw_t hw;		/*! MEM-SIM: MEMSIM_T: HARDWARE CONFIGURATION */
+
+	struct memsim_tree_entry_t *t_start;/*! MEM-SIM: MEMSIM_T: START OF THE TREE ENTRY LIST */
+	struct memsim_tree_entry_t *t_end;/*! MEM-SIM: MEMSIM_T: END OF THE TREE ENTRY LIST */
 
 	struct memsim_tree_entry_t *__ptr_tentries;
 	struct memsim_slot_t *__ptr_slots;
