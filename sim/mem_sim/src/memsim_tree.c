@@ -27,7 +27,7 @@ extern int memsim_rotate_tree(	struct memsim_tree_t *tree )
  * MEMSIM_INSERT_ENTRY
  * 
  */
-extern int memsim_insert_entry(	struct memsim_tree_t *tree )
+extern int memsim_insert_entry(	struct memsim_tree_t *tree, struct memsim_entry_t *entry )
 {
 	/* vars */
 	int rtn	= 0;
@@ -37,6 +37,13 @@ extern int memsim_insert_entry(	struct memsim_tree_t *tree )
 	 * step 1: go get a blank tree entry 
 	 * 
 	 */
+	if( tree->root == NULL ){ 
+		/* 
+		 * i am the first entry 
+		 *
+		 */
+		tree->tick++;
+	}
 
 	/*
 	 * step 2: insert it 

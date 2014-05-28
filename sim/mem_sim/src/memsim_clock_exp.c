@@ -25,7 +25,7 @@ extern int memsim_clear_entry( struct memsim_entry_t *ent );
 extern int memsim_bubble_slot( struct memsim_slot_t *slot );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_cp_entry( struct memsim_entry_t *src, struct memsim_entry_t *dest );
-
+extern int memsim_rotate_tree( struct memsim_tree_t *tree );
 
 
 /* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_SOCKET */
@@ -316,7 +316,69 @@ static int memsim_clock_exp_process_global( struct memsim_t *msim ){
         return MEMSIM_OK;
 }
 
+/* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_GLOBAL_TREE */
+/* 
+ * Process the global tree and determine whether we have an appropriate 
+ * request to flush or an appropriate tree to flush 
+ * 
+ */
+static int memsim_clock_exp_process_global_tree( struct memsim_t *msim ) {
+
+	/* 
+	 * final step is rotate the tree
+	 * 
+	 */
+	if( memsim_rotate_tree( msim->t_global ) != MEMSIM_OK ){ 
+		return MEMSIM_ERROR;
+	}
+
+	return MEMSIM_OK;
+}
+
+/* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_AMO_TREE */
+/* 
+ * Process the amo tree and determine whether we have an appropriate 
+ * request to flush or an appropriate tree to flush 
+ * 
+ */
+static int memsim_clock_exp_process_amo_tree( struct memsim_t *msim ) {
+
+	/* 
+	 * final step is rotate the tree
+	 * 
+	 */
+	if( memsim_rotate_tree( msim->t_amo ) != MEMSIM_OK ){ 
+		return MEMSIM_ERROR;
+	}
+
+	return MEMSIM_OK;
+}
+
+/* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_LOCAL_TREE */
+/* 
+ * Process the local tree and determine whether we have an appropriate 
+ * request to flush or an appropriate tree to flush 
+ * 
+ */
+static int memsim_clock_exp_process_local_tree( struct memsim_t *msim ) {
+
+	/* 
+	 * final step is rotate the tree
+	 * 
+	 */
+	if( memsim_rotate_tree( msim->t_local ) != MEMSIM_OK ){ 
+		return MEMSIM_ERROR;
+	}
+
+	return MEMSIM_OK;
+}
+
 /* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_TASKGROUP */
+/* 
+ * Process each group's request queue. 
+ * For each request, attempt to enter it into the appropriate tree instance
+ * 
+ */
 static int memsim_clock_exp_process_taskgroup( struct memsim_t *msim, uint32_t gr ){ 
 	return MEMSIM_OK;
 }
@@ -361,6 +423,21 @@ extern int memsim_clock_exp( struct memsim_t *msim )
 			return MEMSIM_ERROR;
 		}
 	}
+
+	/* -- local tree processing */
+	if( memsim_clock_exp_process_local_tree( msim ) != 0 ){ 
+		return MEMSIM_ERROR;
+	} 
+
+	/* -- amo tree processing */
+	if( memsim_clock_exp_process_amo_tree( msim ) != 0 ){ 
+		return MEMSIM_ERROR;
+	} 
+
+	/* -- global tree processing */
+	if( memsim_clock_exp_process_global_tree( msim ) != 0 ){ 
+		return MEMSIM_ERROR;
+	} 
 
 	/* 
 	 * process each of the local task group queues

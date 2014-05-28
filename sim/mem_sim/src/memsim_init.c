@@ -271,6 +271,8 @@ extern int memsim_init(	struct memsim_t *msim,
 		msim->t_local	= malloc( sizeof( struct memsim_tree_t ) );
 		msim->t_amo	= malloc( sizeof( struct memsim_tree_t ) );
 		msim->t_global	= malloc( sizeof( struct memsim_tree_t ) );
+		msim->t_start	= NULL;
+		msim->t_end	= NULL;
 
 		msim->t_local->root	= NULL;
 		msim->t_local->tick	= 0x00ll;
@@ -289,8 +291,17 @@ extern int memsim_init(	struct memsim_t *msim,
 			msim->__ptr_tentries[i].right	= NULL;
 			msim->__ptr_tentries[i].entry	= NULL;
 		}
+
+		/* setup the list pointers */
+		for( i=0; i<(msim->num_tids-1); i++ ){ 
+			msim->__ptr_tentries[i].next	= &(msim->__ptr_tentries[i+1]);
+		}
+		
+		msim->__ptr_tentries[msim->num_tids-1].next = NULL;
+		msim->t_start	= &(msim->__ptr_tentries[0]);
+		msim->t_end	= &(msim->__ptr_tentries[msim->num_tids-1]);
 	}
-	
+
 	return MEMSIM_OK;
 }
 
