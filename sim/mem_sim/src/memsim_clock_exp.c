@@ -26,6 +26,9 @@ extern int memsim_bubble_slot( struct memsim_slot_t *slot );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_cp_entry( struct memsim_entry_t *src, struct memsim_entry_t *dest );
 extern int memsim_rotate_tree( struct memsim_tree_t *tree );
+extern int memsim_rqst_type( memsim_rqst_t rqst );
+extern int memsim_insert_tree_entry( struct memsim_tree_t *tree, 
+					struct memsim_entry_t *entry );
 
 
 /* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_SOCKET */
@@ -216,8 +219,6 @@ static int memsim_clock_exp_process_amo( struct memsim_t *msim ){
                 return MEMSIM_ERROR;
         }
 
-        return MEMSIM_OK;
-
 	return MEMSIM_OK;
 }
 
@@ -380,6 +381,96 @@ static int memsim_clock_exp_process_local_tree( struct memsim_t *msim ) {
  * 
  */
 static int memsim_clock_exp_process_taskgroup( struct memsim_t *msim, uint32_t gr ){ 
+
+	/* vars */
+	int done			= 0;
+	int type			= 0;
+	uint32_t cur			= 0;
+	struct memsim_tree_t *tree	= NULL;
+	/* ---- */
+
+	/* 
+	 * process the slot entries within this clock cycle 
+	 * 
+ 	 */	
+	while( (done != 1 ) ){ 
+		
+		/* 
+	 	 * check the 'cur' element
+	 	 * 
+		 */
+		if( msim->group[gr].entry[cur].valid == 1 ){ 
+			
+			/* 
+			 * current element is valid, process it
+			 * 
+			 * select the approrpiate tree destination
+			 * and determine whether we can push the 
+	 		 * request downstream
+			 * 
+			 */
+			
+			/* 
+			 * first, decide where to insert it 
+			 *
+			 */
+			type	= memsim_rqst_type( msim->group[gr].entry[cur].rqst );
+
+			switch( type )
+			{
+				case 0:
+					/* read operations */
+					tree = msim->t_local;
+					break;
+				case 1: 
+					/* write operations */
+					tree = msim->t_local;
+					break;
+				case 2:
+					/* amo operations */
+					tree = msim->t_amo;
+					break;
+				case 3:
+					/* force a flush */
+					tree = msim->t_local;
+					break;
+				default:
+					return MEMSIM_ERROR;
+					break;
+			}
+
+			if( memsim_insert_tree_entry( tree, 
+				&(msim->group[gr].entry[cur]) ) != MEMSIM_OK ){ 
+
+				return MEMSIM_ERROR;	
+			}
+
+			
+		} /* end check the current element */
+
+		/* 
+	 	 * make sure we're not at the end of our valid slots
+	 	 * 
+	 	 */
+		if( (cur+1) >= msim->group[gr].num_slots ){ 
+			/* 
+	 	 	 * Last element 
+		 	 * 
+		 	 */
+			done = 1;
+		}else{
+			cur += 1;
+		}
+	}
+
+	/* 
+	 * bubble the slot entries
+	 * 
+	 */
+	if( memsim_bubble_slot( &(msim->group[gr]) ) != 0 ){ 
+		return MEMSIM_ERROR;
+	}
+
 	return MEMSIM_OK;
 }
 

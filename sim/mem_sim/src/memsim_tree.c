@@ -22,12 +22,12 @@ extern int memsim_rotate_tree(	struct memsim_tree_t *tree )
 	return MEMSIM_OK;
 }
 
-/* ------------------------------------------------ MEMSIM_INSERT_ENTRY */
+/* ------------------------------------------------ MEMSIM_INSERT_TREE_ENTRY */
 /* 
- * MEMSIM_INSERT_ENTRY
+ * MEMSIM_INSERT_TREE_ENTRY
  * 
  */
-extern int memsim_insert_entry(	struct memsim_tree_t *tree, struct memsim_entry_t *entry )
+extern int memsim_insert_tree_entry(	struct memsim_tree_t *tree, struct memsim_entry_t *entry )
 {
 	/* vars */
 	int rtn	= 0;
