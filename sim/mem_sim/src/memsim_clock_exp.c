@@ -15,6 +15,36 @@
 #include "mem_sim.h"
 
 
+/* ========== EXPERIMENTAL BACKEND ================
+ * 
+ * The experimental backend uses basic task group
+ * queue inputs and transforms them into
+ * trees based upon the target memory 
+ * destination. 
+ * 
+ * The trees are constructed where the LHS
+ * are read operations and the RHS are write
+ * operations.  There is a single root 
+ * node for each of {local,global,amo} trees
+ * that does not contain an entry.
+ * 
+ *                     [ROOT]
+ * 			 |
+ * 			/ \
+ *                     /   \
+ *                READS     WRITES
+ *                 |          |
+ *                / \        / \
+ *               /   \      /   \
+ *              /     \    /     \ 
+ *            -addr +addr -addr  +addr
+ * 
+ */
+
+
+
+
+
 /* ------------------------------------------------ FUNCTION PROTOTYPES */
 extern int memsim_cycle_tid( struct memsim_t *msim );
 extern int memsim_tid_push( struct memsim_t *msim, uint32_t tid );
