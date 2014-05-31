@@ -17,6 +17,37 @@ extern int memsim_validate_rqst( memsim_rqst_t rqst );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_tid_pop( struct memsim_t *msim, uint32_t *tid ); 
 
+/* ------------------------------------------------ MEMSIM_RQST_TYPE */
+/* 
+ * MEMSIM_RQST_TYPE
+ * 
+ */
+extern int memsim_rqst_type( memsim_rqst_t rqst )
+{
+	int rtn	= 3;
+
+	switch( rqst )
+	{
+		case MEMSIM_RD8:
+		case MEMSIM_RD4:
+			rtn = 0;
+			break;
+		case MEMSIM_WR8:
+		case MEMSIM_WR4:
+			rtn = 1;
+			break;
+		case MEMSIM_FENCE:
+			rtn = 3;
+			break;
+		case MEMSIM_UNK:
+		default:	
+			rtn = -1;
+			break;
+	}
+
+	return rtn;
+}
+
 /* ------------------------------------------------ MEMSIM_RQST */
 /* 
  * MEMSIM_RQST

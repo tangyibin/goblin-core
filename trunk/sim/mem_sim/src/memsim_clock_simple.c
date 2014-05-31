@@ -389,7 +389,7 @@ static int memsim_clock_simple_process_taskgroup( struct memsim_t *msim, uint32_
 				 */
 				done = 1;
 			}
-		}
+		} /* end check the current element */
 
 
 		/* 
