@@ -12,10 +12,39 @@
 #include "mem_sim.h"
 
 
+#define BITFIELD	0x3C00000000
+
 /* ------------------------------------------------ FUNCTION_PROTOTYPES */
 extern int memsim_validate_rqst( memsim_rqst_t rqst );
 extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_tid_pop( struct memsim_t *msim, uint32_t *tid ); 
+
+/* ------------------------------------------------ MEMSIM_RQST_DEST */
+/* 
+ * MEMSIM_RQST_DEST
+ * 
+ */
+extern int memsim_rqst_dest( struct memsim_entry_t *entry )
+{
+	int rtn		= 3;
+	uint64_t addr	= entry->buf[0];
+	uint64_t dest	= 0x00ll;
+
+	/* we assume a single socket node for now */
+	/* we do, however, consider the scratchpad memories */
+
+	dest	= ((addr & BITFIELD)>>34);
+
+	if( dest == 0xF ){
+		/* destination is a scratchpad memory */
+		rtn	= 1;
+	}else{
+		/* destination is an hmc memory */
+		rtn	= 0;
+	}
+
+	return rtn;
+}
 
 /* ------------------------------------------------ MEMSIM_RQST_TYPE */
 /* 

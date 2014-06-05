@@ -57,8 +57,9 @@ extern int memsim_find_slot( struct memsim_slot_t *slot, uint32_t *rtn );
 extern int memsim_cp_entry( struct memsim_entry_t *src, struct memsim_entry_t *dest );
 extern int memsim_rotate_tree( struct memsim_tree_t *tree );
 extern int memsim_rqst_type( memsim_rqst_t rqst );
-extern int memsim_insert_tree_entry( struct memsim_tree_t *tree, 
-					struct memsim_entry_t *entry );
+extern int memsim_insert_tree_entry( 	struct memsim_tree_t *tree, 
+					struct memsim_entry_t *entry, 
+					int type );
 
 
 /* ------------------------------------------------ MEMSIM_CLOCK_EXP_PROCESS_SOCKET */
@@ -415,6 +416,7 @@ static int memsim_clock_exp_process_taskgroup( struct memsim_t *msim, uint32_t g
 	/* vars */
 	int done			= 0;
 	int type			= 0;
+	int rtn				= 0;
 	uint32_t cur			= 0;
 	struct memsim_tree_t *tree	= NULL;
 	/* ---- */
@@ -469,12 +471,22 @@ static int memsim_clock_exp_process_taskgroup( struct memsim_t *msim, uint32_t g
 					break;
 			}
 
-			if( memsim_insert_tree_entry( tree, 
-				&(msim->group[gr].entry[cur]) ) != MEMSIM_OK ){ 
+			rtn = memsim_insert_tree_entry( tree, &(msim->group[gr].entry[cur]), type);
 
-				return MEMSIM_ERROR;	
+			if( rtn == MEMSIM_ERROR ){ 
+				return MEMSIM_ERROR;
+			}else if( rtn == MEMSIM_STALL ){ 
+				/* 
+				 * insertion returned a stall, no more tree
+				 * entries in the respective tree 
+				 * todo : record a log entry 
+				 * 
+				 * we can't however dump out of this routine
+				 * the subsequent requests may not go to the same 
+				 * tree
+				 * 
+				 */
 			}
-
 			
 		} /* end check the current element */
 
@@ -501,7 +513,7 @@ static int memsim_clock_exp_process_taskgroup( struct memsim_t *msim, uint32_t g
 		return MEMSIM_ERROR;
 	}
 
-	return MEMSIM_OK;
+	return rtn;
 }
 
 /* ------------------------------------------------ MEMSIM_CLOCK_EXP */
@@ -520,6 +532,7 @@ extern int memsim_clock_exp( struct memsim_t *msim )
 {
 	/* vars */
 	uint32_t i	= 0;
+	int rtn		= 0;
 	/* ---- */
 
 	/* 
@@ -565,9 +578,10 @@ extern int memsim_clock_exp( struct memsim_t *msim )
 	 * 
  	 */
 	for( i=0; i<msim->task_groups; i++ ){ 
-		if( memsim_clock_exp_process_taskgroup( msim, i ) != 0 ){ 
-			return MEMSIM_ERROR;
-		}
+		rtn = memsim_clock_exp_process_taskgroup( msim, i );
+		if( rtn == MEMSIM_ERROR ) { 
+			return rtn;
+		}/* else, we have an ok or stall state */
 	}
 
 	/* 
