@@ -25,7 +25,9 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				struct csr_t *mat,
                                 uint32_t num_threads, 
 				uint32_t simd );
-extern int readmat( 		char *matfile, 
+extern int genmat(		int nzero, 
+				int nrows, 
+				int ncols, 
 				struct csr_t *mat );
 
 /* ----------------------------------------------------- FREE_MEMORY */
@@ -76,12 +78,15 @@ extern int main( int argc, char **argv )
 	uint32_t bsize		= 128;
 	uint32_t simd		= 1;
 	uint32_t shiftamt	= 0;
+	int nzero		= 64;	/* number of nonzero elements */
+	int nrows		= 1024;	/* number of rows */
+	int ncols		= 1024;	/* number of columns */
 	char matfile[128];
 	struct csr_t mat;	
 	struct hmcsim_t hmc;
 	/* ---- */
 
-	while(( ret = getopt( argc, argv, "b:c:d:hl:m:n:q:s:v:x:F:N:T:" )) != -1 )
+	while(( ret = getopt( argc, argv, "b:c:d:hl:m:n:q:s:v:x:F:N:T:X:Y:Z:" )) != -1 )
 	{
 		switch( ret )
 		{
@@ -109,6 +114,9 @@ extern int main( int argc, char **argv )
 				printf( " -x <xbar_depth>\n" );
 				printf( " -F <matfile>\n" );
 				printf( " -T <num_threads>\n" );
+				printf( " -X <nrows>\n" );
+				printf( " -Y <ncols>\n" );
+				printf( " -Z <nzero>\n" );
 				return 0;
 				break;
 			case 'l':
@@ -138,18 +146,31 @@ extern int main( int argc, char **argv )
 			case 'T':
 				num_threads = (uint32_t)(atoi(optarg));
 				break;
+			case 'X': 
+				nrows	= (int)(atoi(optarg));
+				break;
+			case 'Y':
+				ncols	= (int)(atoi(optarg));
+				break;
+			case 'Z':
+				nzero	= (int)(atoi(optarg));
+				break;	
 			case '?':
 			default:
-				printf( "%s%s%s\n", "Unknown option: see ", argv[0], " -bcdhlmnqsvxFT" );
+				printf( "%s%s%s\n", "Unknown option: see ", argv[0], " -bcdhlmnqsvxFTXYZ" );
 				return -1;
 				break;
 		}
 	}
 
 	/* 
-	 * read and interpret the matrix file 
+	 * generate the matrix file 
 	 * 
 	 */
+	if( genmat( nzero, nrows, ncols, &mat ) != 0 ){ 
+		printf( "FAILED TO GENERATE THE INPUT MATRIX\n" );
+		return -1;	
+	}
 
 	/* 
 	 * get the shift amount based upon
