@@ -42,7 +42,10 @@ static void zero_packet( uint64_t *packet )
 extern int execute_test( struct hmcsim_t *hmc, 
 			struct csr_t *mat, 
 			uint32_t num_threads, 
-			uint32_t simd )
+			uint32_t simd, 
+			int nzero, 
+			int nrows, 
+			int ncols  )
 {
 	/* vars */
 	/* ---- */
