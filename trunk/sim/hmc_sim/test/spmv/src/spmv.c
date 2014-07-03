@@ -24,7 +24,10 @@ extern int getshiftamount( 	uint32_t num_links,
 extern int execute_test(        struct hmcsim_t *hmc,
 				struct csr_t *mat,
                                 uint32_t num_threads, 
-				uint32_t simd );
+				uint32_t simd, 
+				int nzero, 
+				int nrows, 
+				int ncols  );
 extern int genmat(		int nzero, 
 				int nrows, 
 				int ncols, 
@@ -286,7 +289,10 @@ extern int main( int argc, char **argv )
 	if( execute_test(	&hmc,
 				&mat,
                              	num_threads, 
-				simd ) != 0 ){ 
+				simd, 
+				nzero, 
+				nrows, 
+				ncols  ) != 0 ){ 
 		printf( "ERROR : FAILED TO EXECUTE THE TEST\n" );
 		ret = -1;
 		goto cleanup;
