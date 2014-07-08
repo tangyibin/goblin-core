@@ -29,6 +29,10 @@ static int gsim_sanity_check( struct gsim_t *sim )
 	 *
 	 */
 	if( sim == NULL ){ 
+		GSIM_PRINT_ERROR( "GSIM_ERROR: sim object is invalid" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
@@ -37,6 +41,10 @@ static int gsim_sanity_check( struct gsim_t *sim )
 	 *
 	 */
 	if( sim->obj_file == NULL ){ 
+		GSIM_PRINT_ERROR( "GSIM_ERROR: no valid object file" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
@@ -45,6 +53,10 @@ static int gsim_sanity_check( struct gsim_t *sim )
 	 */
 	#if 0
 	if( sim->stack_size <= 8 ){
+		GSIM_PRINT_ERROR( "GSIM_ERROR: stack size is null" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 	#endif
@@ -55,31 +67,49 @@ static int gsim_sanity_check( struct gsim_t *sim )
 	 */
 	if( (sim->partitions > 0xFFFFFFFF) || (sim->partitions == 0) ){
 		GSIM_PRINT_ERROR( "GSIM_ERROR: partitions out of bounds" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
 	if( (sim->nodes > 0xFFFFFFFF) || (sim->nodes == 0) ){
 		GSIM_PRINT_ERROR( "GSIM_ERROR: nodes out of bounds" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
 	if( (sim->sockets > 0xFFFF) || (sim->sockets == 0) ){
 		GSIM_PRINT_ERROR( "GSIM_ERROR: sockets out of bounds" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
 	if( (sim->task_groups > 0xFFFF) || (sim->task_groups == 0) ){
 		GSIM_PRINT_ERROR( "GSIM_ERROR: task_groups out of bounds" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
 	if( (sim->task_procs > 0xFFFF) || (sim->task_procs == 0) ){
 		GSIM_PRINT_ERROR( "GSIM_ERROR: task_procs out of bounds" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
 	if( (sim->tasks > 0xFFFF) || (sim->tasks == 0) ){
 		GSIM_PRINT_ERROR( "GSIM_ERROR: tasks out of bounds" );
+		#ifdef GSIM_TRACE
+		GSIM_PRINT_FUNC_EXIT();
+		#endif
 		return -1;
 	}
 
