@@ -8,7 +8,7 @@ LIBOBJS=$(SRC)/gsim_opcodes.o $(SRC)/gsim_reg.o $(SRC)/gsim_mem.o $(SRC)/gsim_el
 	$(SRC)/gsim_config.o $(SRC)/gsim_disass.o $(SRC)/gsim_inst_validate.o\
 	$(SRC)/gsim_dump_inst.o $(SRC)/gsim_rand_reg.o $(SRC)/gsim_init_internals.o\
 	$(SRC)/gsim_io.o $(SRC)/gsim_exec_functional.o $(SRC)/gsim_free_sim.o\
-	$(SRC)/gsim_init_sim.o $(SRC)/gsim_clock.o
+	$(SRC)/gsim_init_sim.o $(SRC)/gsim_clock.o $(SRC)/gsim_exec_functional_inst.o
 
 GASMOBJS=$(SRC)/gasm_main.o $(SRC)/gasm_row.o $(SRC)/gasm_parser.o $(SRC)/gasm_io.o\
 	$(SRC)/gasm_verify.o $(SRC)/gasm_asm.o
@@ -36,6 +36,7 @@ libgsim.a:
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_init_internals.o $(SRC)/gsim_init_internals.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_inst_validate.o $(SRC)/gsim_inst_validate.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_exec_functional.o $(SRC)/gsim_exec_functional.c
+	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_exec_functional_inst.o $(SRC)/gsim_exec_functional_inst.c
 	$(CC) $(CFLAGS) -c -o $(SRC)/gsim_clock.o $(SRC)/gsim_clock.c
 	$(AR) $(ARFLAGS) $@ $(LIBOBJS)
 gsim_config.yy.c: ./src/gsim_config_parser.lex

@@ -34,6 +34,8 @@ struct gsim_task_unit_t{
 	/* -- inclusive hw units */
 	uint64_t		reg[64];
 
+	uint8_t			ul;
+
 	/* -- id's */
 	uint8_t			id;	
 };

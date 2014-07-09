@@ -69,6 +69,7 @@ extern int gsim_hw_reset( struct gsim_t *sim )
 						for( c=0; c<sim->tasks; c++ ){ 
 							task = &(sim->hw->partitions[i].nodes[j].sockets[k].task_groups[a].task_procs[b].tasks[c]);
 							task->id	= (uint8_t)(c);
+							task->ul	= 0x0;			/* lower instruction word */
 
 							/* -- zero the register file */
 							memset( task->reg, 0, sizeof( uint64_t ) * 64 );
