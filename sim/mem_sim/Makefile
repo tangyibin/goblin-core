@@ -4,7 +4,7 @@
 #
 
 include Makefile.inc
- 
+
 PKGS := ...
 LIBNAME := memsim
 SRCDIR := src

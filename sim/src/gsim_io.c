@@ -79,8 +79,12 @@ extern int gsim_io_open_logfile( struct gsim_t *sim )
 	}
 
 	fprintf( sim->lfile, " -- Config File   : %s\n", sim->config_file ); 
-	fprintf( sim->lfile, " -- OBJ File      : %s %s\n", sim->obj_file, sim->obj_opts ); 
 	
+	if( sim->obj_opts == NULL ){ 
+		fprintf( sim->lfile, " -- OBJ File      : %s\n", sim->obj_file ); 
+	}else{ 
+		fprintf( sim->lfile, " -- OBJ File      : %s %s\n", sim->obj_file, sim->obj_opts ); 
+	}
 
 	fprintf( sim->lfile, "===============================================================\n" );
 
