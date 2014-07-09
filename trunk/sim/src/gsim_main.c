@@ -347,6 +347,7 @@ int main( int argc, char **argv )
 						goto gsim_cleanup;	
 					}
 
+					snprintf( sim->obj_file, strlen( tmp ), "%s", tmp );
 					sim->obj_opts = NULL;
 				}
 
