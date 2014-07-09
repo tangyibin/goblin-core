@@ -43,6 +43,10 @@ struct gsim_task_proc_t{
 	/* -- inclusive hw units */
 	struct gsim_task_unit_t *tasks;
 
+	uint8_t			cur;
+	
+	uint64_t		state;
+
 	/* -- id's */
 	uint8_t			id;	
 };

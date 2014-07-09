@@ -52,11 +52,16 @@ extern "C" {
 #define GSIM_OPT_DEFAULT	(GSIM_OPT_EXCEPTIONS|GSIM_OPT_TASKING|GSIM_OPT_CYCLE_FUNC)
 #define	GSIM_DEFAULT_STACK_SIZE	4194304			/* DEFAULT OPTIONS: 4MB STACKS */
 
+/* --------------------------------------------- SIMULATION PROC STATES */
+#define GSIM_PROC_STATE_DISABLED	0xFFFFFFFFFFFFFFFF	/*! PROC STATES: PROC DISABLED : NO CONTEXT */
+#define GSIM_PROC_STATE_ENABLED 	0x0000000000000001	/*! PROC STATES: PROC ENABLED : CONTEXT */
+
 /* --------------------------------------------- PRINT MACROS */
 #define	GSIM_PRINT_ERROR( s )		( fprintf( stderr, "GSIM_ERROR: %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
 #define	GSIM_PRINT_MSG( s )		( fprintf( stdout, "GSIM_MSG: %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
-#define	GSIM_PRINT_FUNC_ENTRY( )	( fprintf( stdout, "GSIM_FUNC_ENTRY: %s:%s\n", __FILE__, __FUNCTION__ ) )
-#define	GSIM_PRINT_FUNC_EXIT( )		( fprintf( stdout, "GSIM_FUNC_EXIT : %s:%s\n", __FILE__, __FUNCTION__ ) )
+#define	GSIM_PRINT_U8_MSG( s, d )	( fprintf( stdout, "GSIM_MSG: %s:%d : %s:0x%016llx\n", __FUNCTION__, __LINE__, s, d ) )
+#define	GSIM_PRINT_FUNC_ENTRY( )	( fprintf( stdout, "GSIM_FUNC_ENTRY: %s:%s:%d\n", __FILE__, __FUNCTION__ , __LINE__ ) )
+#define	GSIM_PRINT_FUNC_EXIT( )		( fprintf( stdout, "GSIM_FUNC_EXIT : %s:%s:%d\n", __FILE__, __FUNCTION__, __LINE__ ) )
 
 #ifdef __cplusplus
 } /* extern C */
