@@ -52,6 +52,9 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 		GSIM_PRINT_ERROR( "GASM_ERROR : No Instructions Found" );
 		return -1;
 	}
+#ifdef GSIM_TRACE
+	GSIM_PRINT_U8_MSG( "FOUND THE FOLLOWING NUMBER OF ROWS", nrows );
+#endif
 
 	inter	= gsim_malloc( sizeof( uint64_t ) * nrows );
 	if( inter == NULL ){ 
@@ -69,6 +72,7 @@ static int gasm_exec( struct gsim_t *sim, char *afile, char *ofile )
 		return -1;
 	}else if( error == -1 ){ 
 		gsim_free( inter );
+		GSIM_PRINT_ERROR( "GASM_ERROR : Error in parsing assembly file" );
 		return -1;
 	}
 	goto shortcut;

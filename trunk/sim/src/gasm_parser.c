@@ -138,6 +138,9 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 						free( buf );
 						fclose( ifile );
 						*error = -1;
+					#ifdef GSIM_TRACE
+						GSIM_PRINT_FUNC_EXIT();
+					#endif
 						return 0x01;
 						break;
 				}	
@@ -155,6 +158,10 @@ extern uint64_t gasm_parser( char *afile, uint64_t *inter, uint64_t nrows, int *
 				free( buf );
 				fclose( ifile );
 				*error = -1;
+				printf( "gasm: Error parsing assembly file\n" );
+			#ifdef GSIM_TRACE
+				GSIM_PRINT_FUNC_EXIT();
+			#endif
 				return 0x01;
 			}
 			

@@ -210,7 +210,7 @@ static int gasm_asm_decode_arg( char *arg, uint32_t *enc,
 				*enc	= 0x18;
 				break;
 			case 0x07:
-				* enc	= 0x1C;
+				*enc	= 0x1C;
 				break;
 			default:
 				printf( "gasm: Vector register index out of bounds: %s\n", arg );
@@ -233,6 +233,7 @@ static int gasm_asm_decode_arg( char *arg, uint32_t *enc,
 		}
 	}else{ 
 		/* not a register index */
+		printf( "gasm: Register is unknown: %s\n", arg );
 		return -1;
 	}
 

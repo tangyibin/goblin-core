@@ -60,6 +60,10 @@ extern int gsim_hw_reset( struct gsim_t *sim )
 					for( b=0; b<sim->task_procs; b++ ){
 
 						sim->hw->partitions[i].nodes[j].sockets[k].task_groups[a].task_procs[b].id = (uint8_t)(b);
+					
+						sim->hw->partitions[i].nodes[j].sockets[k].task_groups[a].task_procs[b].state = 
+									GSIM_PROC_STATE_DISABLED;	
+						sim->hw->partitions[i].nodes[j].sockets[k].task_groups[a].task_procs[b].cur = 0x0;
 
 						/* -- tasks */
 						for( c=0; c<sim->tasks; c++ ){ 
