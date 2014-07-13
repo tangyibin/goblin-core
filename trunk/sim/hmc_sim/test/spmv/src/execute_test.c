@@ -92,6 +92,8 @@ extern int execute_test( struct hmcsim_t *hmc,
         status  = malloc( sizeof( uint64_t ) * num_threads );
         scalar  = malloc( sizeof( uint64_t ) * num_threads );
 
+	/* init all the data */
+
 	/* setup the hmc-sim tracing mechansims */
 	ofile = fopen( "spmv.out", "w" );
         if( ofile == NULL ){
@@ -140,6 +142,17 @@ extern int execute_test( struct hmcsim_t *hmc,
 				
 
 			} /* end for loop: i=0; i<num_threads; i++ */
+
+			/* 
+			 * drain all the responses off all the links
+			 *
+			 */
+			for( i=0; i<hmc->num_links; i++ ){ 
+				ret = HMC_OK;
+				while( ret != HMC_STALL ){ 
+					ret = hmcsim_recv( hmc, cub, i, &(packet[0]) );
+				}
+			}
 
 			/*
 			 * clock the sim 
