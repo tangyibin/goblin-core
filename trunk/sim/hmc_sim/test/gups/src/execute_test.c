@@ -11,6 +11,14 @@
 #include <string.h>
 #include "hmc_sim.h"
 
+
+/* ------------------------------------------------- FUNCTION PROTOTYPES */
+extern int getshiftamount(      uint32_t num_links,
+                                uint32_t capacity,
+                                uint32_t bsize,
+                                uint32_t *shiftamt );
+
+
 /* ------------------------------------------------- TAG MACROS */
 #define TAG_INV		0x0000	/* -- tag is invalid */
 #define	TAG_RD64	0x0001	/* -- tag is a rd64 request */
@@ -51,17 +59,17 @@ static void zero_packet( uint64_t *packet )
  * 
  * Executes a series of parallel GUPS operations
  * 
- * for( i=0; i<NUPDATE/VECT_WIDTH; i++ ){ 
+ * for( i=0; i<NUPDATE; i++ ){ 
  * 	ran[j] = (ran[j]<<1) ^ (ran[j]) < 0 ? POLY : 0)
  * 	Table[ ran[j] & (TableSize-1) ] ^= ran[j]
  * }
  * 
  * Finite State Machine : 
  *
- * local_thread_counter = num_elem / (num_threads * simd)  
+ * local_thread_counter = num_update / num_threads  
  * 
  * - load TableSize scalar [really TableSize-1]
- * - load ran[thread*simd]   
+ * - load ran[thread]   
  * -- all loads must return 
  * - shift clock 
  * - compare clock 
@@ -90,6 +98,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	uint64_t payload[8]	= {0x00ll, 0x00ll, 0x00ll, 0x00ll,
 				   0x00ll, 0x00ll, 0x00ll, 0x00ll };
 	uint64_t packet[HMC_MAX_UQ_PACKET];
+	uint64_t addr_TableSize	= 0x00ll;
 	uint8_t cub		= 0;
 	uint16_t tag		= 1;
 	uint8_t link		= 0;
@@ -105,6 +114,9 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	uint64_t *count		= NULL;		/* completed requests per thread */
 	uint64_t *status	= NULL;		/* status signals for each thread */
 	uint64_t *scalar	= NULL;		/* status signals for scalars */
+
+	uint64_t *addr_Table	= NULL;		/* addresses of the Table array */
+	uint64_t *addr_ran	= NULL;		/* addresses of the ran array */
 	/* ---- */
 
 	cur	= malloc( sizeof( uint64_t ) * num_threads );
@@ -114,11 +126,25 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	status	= malloc( sizeof( uint64_t ) * num_threads );
 	scalar	= malloc( sizeof( uint64_t ) * num_threads );
 
+
 	/* 
  	 * figure out the number of updates per thread
 	 * 
 	 */
-	niter	= (uint64_t)(num_req)/(uint64_t)(num_threads*simd);
+	niter	= (uint64_t)(num_req)/(uint64_t)(num_threads);
+
+	/*
+	 * setup all the thread-local data 
+	 *
+	 */
+	for( i=0; i<num_threads; i++ ){ 
+		start[i]	= i*niter;
+		end[i]		= start[i] + (niter-1);
+		cur[i]		= start[i];
+		count[i]	= 0;
+		status[i]	= 0;
+		scalar[i]	= 0;		
+	}
 
 
 	/* 
@@ -167,7 +193,61 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			if( cur[i] == niter ){ 
 				/* this thread is done */
 			}else if( scalar[i] == 0 ){ 
+
 				/* load TableSize scalar [just 0x00ll] */
+				hmcsim_build_memrequest( hmc,
+                                                        0,
+                                                        addr_TableSize,
+                                                        tag,
+                                                        RD64,
+                                                        link,
+                                                        &(payload[0]),
+                                                        &head,
+                                                        &tail );
+
+				packet[0]	= head;
+				packet[1]	= tail;
+				
+				ret	 = hmcsim_send( hmc, &(packet[0]) );
+				
+				/* handle the response */
+				switch( ret ){	
+					case 0:
+						/* success */
+						scalar[i]++;
+						count[i] = 0x00ll;
+
+						tag++;
+						if( tag == (UINT8_MAX-1)) {
+							tag = 1;
+						}
+
+						link++;
+						if( link == hmc->num_links ){ 
+							link = 0;
+						}
+
+						break;
+					case HMC_STALL:
+						/* stalled */	
+						scalar[i] = 0x00ll;
+						break;
+					case -1:
+					default:
+						printf( "FAILED : SCALAR PACKET SEND FAILED\n" );
+						goto complete_failure;
+						break;
+				}
+
+				/* 
+				 * zero the packet 
+				 *
+				 */
+				zero_packet( &(packet[0]) );
+
+				ret = HMC_OK;
+				
+
 			}else if( status[i] == 0 ){ 
 				/* load ran[j] */
 				/* all loads must return */
@@ -191,6 +271,12 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			}else if( status[i] == 9 ){
 				/* goto shift clock; status == 1 */
 			}
+
+
+
+
+
+
 
 
 
