@@ -20,6 +20,7 @@ extern int getshiftamount(      uint32_t num_links,
 
 
 /* ------------------------------------------------- TAG MACROS */
+#define POLY    	0x0000000000000007UL
 #define TAG_INV		0x0000	/* -- tag is invalid */
 #define	TAG_RD64	0x0001	/* -- tag is a rd64 request */
 #define TAG_WR64	0x0002	/* -- tag is a wr64 request */
@@ -33,6 +34,50 @@ struct memtag_t{
 };
 
 
+/* ------------------------------------------------- CONVERT_ADDR */
+/* 
+ * CONVERT_ADDR
+ * 
+ */
+static int convert_addr(	uint64_t *addr_Table, 
+				uint64_t *addr_ran, 
+				uint64_t TableSize, 
+				int N, 
+				uint32_t shiftamt )
+{
+	/* vars */
+	uint64_t base_T	= 0x00ll;
+	uint64_t base_r	= 0x00ll;
+	uint64_t nrpo	= 0x00ll;
+	uint64_t offset	= 0x00ll;
+	uint64_t i	= 0;
+	/* ---- */
+
+	/* 
+	 * calculate the base of each vector
+	 * 
+	 */
+	nrpo	= (uint64_t)(TableSize+1);
+	offset	= nrpo * 0x08ll;	/* in bytes */
+	
+	base_T	= (0x00ll) + ((0x08ll) << (uint64_t)(shiftamt));	
+	base_r	= base_T   + ((offset) << (uint64_t)(shiftamt)); 
+
+	/* addr_Table */
+	for( i=0; i<TableSize; i++ ){ 
+
+		addr_Table[i]	= (uint64_t)( base_T + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
+	}
+
+	/* addr_ran */
+	for( i=0; i<N; i++ ){ 
+
+		addr_ran[i]	= (uint64_t)( base_r + (((uint64_t)(i) * 0x08ll)<<(uint64_t)(shiftamt)) );
+	}
+
+	return 0;
+}
+ 
 /* ------------------------------------------------- ZERO_PACKET */
 /* 
  * ZERO_PACKET 
@@ -108,8 +153,6 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	uint32_t done		= 0;
 	uint32_t i		= 0;
 	uint64_t niter		= 0x00ll;
-	uint64_t *start		= NULL;		/* starting point of each thread */
-	uint64_t *end		= NULL;		/* ending point of each thread */
 	uint64_t *cur		= NULL;		/* current index of each thread */
 	uint64_t *count		= NULL;		/* completed requests per thread */
 	uint64_t *status	= NULL;		/* status signals for each thread */
@@ -121,11 +164,20 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 	cur	= malloc( sizeof( uint64_t ) * num_threads );
 	count	= malloc( sizeof( uint64_t ) * num_threads );
-	start	= malloc( sizeof( uint64_t ) * num_threads );
-	end	= malloc( sizeof( uint64_t ) * num_threads );
 	status	= malloc( sizeof( uint64_t ) * num_threads );
 	scalar	= malloc( sizeof( uint64_t ) * num_threads );
+	addr_Table	= malloc( sizeof( uint64_t ) * TableSize );
+	addr_ran	= malloc( sizeof( uint64_t ) * (num_threads * simd) );
 
+	/* 
+	 * convert all the addresses to physical (HMC) 
+	 * 
+	 */
+	if( convert_addr( addr_Table, addr_ran, TableSize, num_threads*simd, shiftamt ) != 0 ){ 
+		/* error occurred */
+		printf( "ERROR : could not perform virtual to physical translation\n" );
+		goto complete_failure;
+	}
 
 	/* 
  	 * figure out the number of updates per thread
@@ -138,14 +190,13 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	 *
 	 */
 	for( i=0; i<num_threads; i++ ){ 
-		start[i]	= i*niter;
-		end[i]		= start[i] + (niter-1);
-		cur[i]		= start[i];
-		count[i]	= 0;
+		cur[i]		= i;
+		count[i]	= niter;
 		status[i]	= 0;
 		scalar[i]	= 0;		
 	}
 
+	count[num_threads-1] = (uint64_t)(num_req)-((uint64_t)(num_threads)*(uint64_t)(niter));
 
 	/* 
 	 * setup the tracing mechanisms
@@ -190,7 +241,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			 * 
 			 */
 
-			if( cur[i] == niter ){ 
+			if( count[i] == 0 ){ 
 				/* this thread is done */
 			}else if( scalar[i] == 0 ){ 
 
@@ -249,40 +300,312 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				
 
 			}else if( status[i] == 0 ){ 
+
 				/* load ran[j] */
+				hmcsim_build_memrequest( hmc,
+                                                        0,
+                                                        addr_ran[i],
+                                                        tag,
+                                                        RD64,
+                                                        link,
+                                                        &(payload[0]),
+                                                        &head,
+                                                        &tail );
+				
+				packet[0]	= head;
+				packet[1]	= tail;
+				
+				ret	 = hmcsim_send( hmc, &(packet[0]) );
+				
+				/* handle the response */
+				switch( ret ){	
+					case 0:
+						/* success */
+						status[i]++;
+
+						tag++;
+						if( tag == (UINT8_MAX-1)) {
+							tag = 1;
+						}
+
+						link++;
+						if( link == hmc->num_links ){ 
+							link = 0;
+						}
+
+						break;
+					case HMC_STALL:
+						/* stalled */	
+						status[i] = 0x00ll;
+						break;
+					case -1:
+					default:
+						printf( "FAILED : LOAD RAN[i] PACKET SEND FAILED\n" );
+						goto complete_failure;
+						break;
+				}
+
+				/* 
+				 * zero the packet 
+				 *
+				 */
+				zero_packet( &(packet[0]) );
+
+				ret = HMC_OK;
+				
 				/* all loads must return */
+
 			}else if( status[i] == 1 ){ 
 				/* shift clock */
+
+				/* reset the status */
+				ret = HMC_OK;
+
+				status[i]++;
+
 			}else if( status[i] == 2 ){ 
 				/* compare clock */
+
+				/* reset the status */
+				ret = HMC_OK;
+
+				status[i]++;
+
 			}else if( status[i] == 3 ){
 				/* logical xor clock */
+
+				/* reset the status */
+				ret = HMC_OK;
+
+				status[i]++;
+
 			}else if( status[i] == 4 ){ 
 				/* write ran[j] */
+
+				/* build the request */
+                                hmcsim_build_memrequest( hmc,
+                                                         0,
+                                                         addr_ran[i],
+                                                         tag,
+                                                         WR64,
+                                                         link,
+                                                         &(payload[0]),
+                                                         &head,
+                                                         &tail );
+
+				packet[0]	= head;
+				packet[1]	= (ran[i]<<1) ^ (ran[i] < 0 ? POLY : 0);
+				packet[2]	= 0x00ll;
+				packet[3]	= 0x00ll;
+				packet[4]	= 0x00ll;
+				packet[5]	= 0x00ll;
+				packet[6]	= 0x00ll;
+				packet[7]	= 0x00ll;
+				packet[8]	= 0x00ll;
+				packet[9]	= tail;
+
+				ret	= hmcsim_send( hmc, &(packet[0]) );
+
+				/* handle the response */
+				switch( ret ){ 
+					case 0: 
+						/* success */
+						status[i]++;
+
+						tag++;
+						if( tag == (UINT8_MAX-1)) {
+							tag = 1;
+						}
+
+						link++;
+						if( link == hmc->num_links ){ 
+							link = 0;
+						}
+						
+						ran[i] = (ran[i]<<1) ^ (ran[i] < 0 ? POLY : 0);
+
+						break;
+					case HMC_STALL:
+						/* request stalled, do nothing */
+						status[i] = 0x04ll;
+						break;
+					case -1:
+					default:
+						printf( "FAILED : PACKED W64 REQUEST FAILED\n" );
+						goto complete_failure;
+						break;
+				}
+
+				/* 
+				 * zero the packet 
+				 *
+				 */
+				zero_packet( &(packet[0]) );
+
+				ret = HMC_OK;
+
 			}else if( status[i] == 5 ){ 
  				/* logical and ran[j] & (Tablesize-1) clock */
+
+				/* reset the status */
+				ret = HMC_OK;
+
+				status[i]++;
+
 			}else if( status[i] == 6 ){
 				/* load of Table[index] */
+				/*Table[ ran[j] & (TableSize-1) ]*/
+				hmcsim_build_memrequest( hmc,
+                                                        0,
+                                                        addr_Table[ ran[i] & (TableSize-1) ],
+                                                        tag,
+                                                        RD64,
+                                                        link,
+                                                        &(payload[0]),
+                                                        &head,
+                                                        &tail );
+				
+				packet[0]	= head;
+				packet[1]	= tail;
+				
+				ret	 = hmcsim_send( hmc, &(packet[0]) );
+				
+				/* handle the response */
+				switch( ret ){	
+					case 0:
+						/* success */
+						status[i]++;
+
+						tag++;
+						if( tag == (UINT8_MAX-1)) {
+							tag = 1;
+						}
+
+						link++;
+						if( link == hmc->num_links ){ 
+							link = 0;
+						}
+
+						break;
+					case HMC_STALL:
+						/* stalled */	
+						status[i] = 0x06ll;
+						break;
+					case -1:
+					default:
+						printf( "FAILED : LOAD Table[index] PACKET SEND FAILED\n" );
+						goto complete_failure;
+						break;
+				}
+
+				/* 
+				 * zero the packet 
+				 *
+				 */
+				zero_packet( &(packet[0]) );
+
+				ret = HMC_OK;
+				
+				
 				/* must wait for load to return */
+
 			}else if( status[i] == 7 ){
  				/* xor clock { Table[ index ] ^ ran[j] } */
+				/* reset the status */
+				ret = HMC_OK;
+
+				status[i]++;
+
 			}else if( status[i] == 8 ){
 				/* write Table[ index ] */
+
+				/* build the request */
+                                hmcsim_build_memrequest( hmc,
+                                                         0,
+                                                         addr_Table[ ran[i] & (TableSize-1) ],
+                                                         tag,
+                                                         WR64,
+                                                         link,
+                                                         &(payload[0]),
+                                                         &head,
+                                                         &tail );
+
+				packet[0]	= head;
+				packet[1]	= (ran[i]<<1) ^ (ran[i] < 0 ? POLY : 0);
+				packet[2]	= 0x00ll;
+				packet[3]	= 0x00ll;
+				packet[4]	= 0x00ll;
+				packet[5]	= 0x00ll;
+				packet[6]	= 0x00ll;
+				packet[7]	= 0x00ll;
+				packet[8]	= 0x00ll;
+				packet[9]	= tail;
+
+				ret	= hmcsim_send( hmc, &(packet[0]) );
+
+				/* handle the response */
+				switch( ret ){ 
+					case 0: 
+						/* success */
+						status[i]++;
+
+						tag++;
+						if( tag == (UINT8_MAX-1)) {
+							tag = 1;
+						}
+
+						link++;
+						if( link == hmc->num_links ){ 
+							link = 0;
+						}
+
+						Table[ ran[i] & (TableSize-1) ]	^= ran[i];
+	
+						break;
+					case HMC_STALL:
+						/* request stalled, do nothing */
+						status[i] = 0x08ll;
+						break;
+					case -1:
+					default:
+						printf( "FAILED : PACKED W64 REQUEST FAILED\n" );
+						goto complete_failure;
+						break;
+				}
+
+				/* 
+				 * zero the packet 
+				 *
+				 */
+				zero_packet( &(packet[0]) );
+
+				ret = HMC_OK;
+
 			}else if( status[i] == 9 ){
 				/* goto shift clock; status == 1 */
+				/* reset the status */
+				ret = HMC_OK;
+
+				status[i] = 0;
+
+				/* decrement our iter count */
+				count[i]--;
+
+				cur[i] += niter;
+				
+				if( count[i] == 0 ){ 
+					/* this thread is done */
+					done++;
+				}
+
 			}
+			/* !! END OF STATE MACHINE !! */
 
 
 
 
 
-
-
-
-
-
-
-
+#if 0
 
 			/* DEPRECATED FROM HERE BELOW */
 			if( cur[i] == end[i] ){ 
@@ -587,6 +910,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				}
 			
 			}/* -- status == 3 */
+#endif
 		}/* -- end threads loop */
 
 		/*
@@ -619,11 +943,10 @@ complete_failure:
 
 	free( cur ); 
 	free( count );	
-	free( start );	
-	free( end );	
 	free( status );	
 	free( scalar );	
-
+	free( addr_Table );
+	free( addr_ran );
 
 	return 0;
 }
