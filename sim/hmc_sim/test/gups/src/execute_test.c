@@ -173,6 +173,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	 * convert all the addresses to physical (HMC) 
 	 * 
 	 */
+	printf( "...CONVERTING ADDRESSES TO PHYSICAL\n" );
 	if( convert_addr( addr_Table, addr_ran, TableSize, num_threads*simd, shiftamt ) != 0 ){ 
 		/* error occurred */
 		printf( "ERROR : could not perform virtual to physical translation\n" );
@@ -189,6 +190,7 @@ extern int execute_test(        struct hmcsim_t *hmc,
 	 * setup all the thread-local data 
 	 *
 	 */
+	printf( "...INITIALIZING THREAD-LOCAL DATA\n" );
 	for( i=0; i<num_threads; i++ ){ 
 		cur[i]		= i;
 		count[i]	= niter;
@@ -196,12 +198,13 @@ extern int execute_test(        struct hmcsim_t *hmc,
 		scalar[i]	= 0;		
 	}
 
-	count[num_threads-1] = (uint64_t)(num_req)-((uint64_t)(num_threads)*(uint64_t)(niter));
+	count[num_threads-1] = num_req-count[num_threads-2];
 
 	/* 
 	 * setup the tracing mechanisms
 	 * 
 	 */
+	printf( "...INITIALIZING TRACE FILE\n" );
 	ofile = fopen( "gups.out", "w" );
 	if( ofile == NULL ){ 
 		printf( "FAILED : COULD NOT OPEN OUPUT FILE gups.out\n" );
@@ -244,7 +247,6 @@ extern int execute_test(        struct hmcsim_t *hmc,
 			if( count[i] == 0 ){ 
 				/* this thread is done */
 			}else if( scalar[i] == 0 ){ 
-
 				/* load TableSize scalar [just 0x00ll] */
 				hmcsim_build_memrequest( hmc,
                                                         0,
@@ -265,8 +267,8 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				switch( ret ){	
 					case 0:
 						/* success */
-						scalar[i]++;
-						count[i] = 0x00ll;
+						scalar[i] 	= 1;
+						status[i] 	= 0;
 
 						tag++;
 						if( tag == (UINT8_MAX-1)) {
@@ -300,7 +302,6 @@ extern int execute_test(        struct hmcsim_t *hmc,
 				
 
 			}else if( status[i] == 0 ){ 
-
 				/* load ran[j] */
 				hmcsim_build_memrequest( hmc,
                                                         0,
@@ -593,324 +594,15 @@ extern int execute_test(        struct hmcsim_t *hmc,
 
 				cur[i] += niter;
 				
-				if( count[i] == 0 ){ 
+				if( count[i] <= 0 ){ 
 					/* this thread is done */
 					done++;
+					printf( "THREAD %d COMPLETED\n", i );
 				}
 
 			}
 			/* !! END OF STATE MACHINE !! */
 
-
-
-
-
-#if 0
-
-			/* DEPRECATED FROM HERE BELOW */
-			if( cur[i] == end[i] ){ 
-				/* this thread is done */
-			}else if( scalar[i] == 0 ){
-				/* request the scalar */
-				
-				/* -- build the request */
-				hmcsim_build_memrequest( hmc,
-                                                        0,
-                                                        addr_scalar,
-                                                        tag,
-                                                        RD64,
-                                                        link,
-                                                        &(payload[0]),
-                                                        &head,
-                                                        &tail );
-	
-				packet[0]	= head;
-				packet[1]	= tail;
-
-				ret	= hmcsim_send( hmc, &(packet[0]) );
-
-				/* handle the response */
-				switch( ret ){	
-					case 0:
-						/* success */
-						scalar[i]++;
-						count[i] = 0x00ll;
-
-						tag++;
-						if( tag == (UINT8_MAX-1)) {
-							tag = 1;
-						}
-
-						link++;
-						if( link == hmc->num_links ){ 
-							link = 0;
-						}
-
-						break;
-					case HMC_STALL:
-						/* stalled */	
-						scalar[i] = 0x00ll;
-						break;
-					case -1:
-					default:
-						printf( "FAILED : PACKET SEND FAILED\n" );
-						goto complete_failure;
-						break;
-				}
-
-				/* 
-				 * zero the packet 
-				 *
-				 */
-				zero_packet( &(packet[0]) );
-
-				ret = HMC_OK;
-
-			}else if( status[i] == 0 ){
-				/* push loads for the current thread at b[j] */
-
-				/* reset the status */			
-				ret = HMC_OK;
-
-				while(	(count[i] < (uint64_t)(simd) ) && 
-					( ret != HMC_STALL) ){
-	
-					/* push out a load */
-
-					/* build the request */
-					hmcsim_build_memrequest( hmc,
-                                                 	       	0,
-                                                       	 	addr_b[cur[i]+count[i]],
-                                            		        tag,
-                                                        	RD64,
-                                                        	link,
-                                                        	&(payload[0]),
-                                                        	&head,
-                                                        	&tail );
-	
-					packet[0]	= head;
-					packet[1]	= tail;
-
-					/* send it */
-					ret	= hmcsim_send( hmc, &(packet[0]) );
-
-					/* handle the response */
-					switch( ret ){	
-						case 0:
-							/* success */
-							count[i]++;
-					
-							tag++;
-							if( tag == (UINT8_MAX-1)) {
-								tag = 1;
-							}
-
-							link++;
-							if( link == hmc->num_links ){ 
-								link = 0;
-							}
-	
-							break;
-						case HMC_STALL:
-							/* stalled */	
-							break;
-						case -1:
-						default:
-							printf( "FAILED : PACKET SEND FAILED\n" );
-							goto complete_failure;
-							break;
-					}
-
-					/* 
-					 * zero the packet 
-					 *
-					 */
-					zero_packet( &(packet[0]) );
-
-				}
-
-				ret = HMC_OK;
-
-				if( count[i] == simd ){ 	
-					/* b[j] loads are done */
-					status[i]++;
-					count[i] = 0x00ll;
-				}
-
-
-			}else if( status[i] == 1 ){
-				/* push the loads for the current thread at c[j] */
-
-				/* reset the status */			
-				ret = HMC_OK;
-
-				while(	(count[i] < (uint64_t)(simd) ) && 
-					( ret != HMC_STALL) ){
-			
-					/* push out a load */
-
-					/* build the request */
-					hmcsim_build_memrequest( hmc,
-                                                 	       	0,
-                                                       	 	addr_c[cur[i]+count[i]],
-                                            		        tag,
-                                                        	RD64,
-                                                        	link,
-                                                        	&(payload[0]),
-                                                        	&head,
-                                                        	&tail );
-	
-					packet[0]	= head;
-					packet[1]	= tail;
-
-					/* send it */
-					ret	= hmcsim_send( hmc, &(packet[0]) );
-
-					/* handle the response */
-					switch( ret ){	
-						case 0:
-							/* success */
-							count[i]++;
-					
-							tag++;
-							if( tag == (UINT8_MAX-1)) {
-								tag = 1;
-							}
-
-							link++;
-							if( link == hmc->num_links ){ 
-								link = 0;
-							}
-	
-							break;
-						case HMC_STALL:
-							/* stalled */	
-							break;
-						case -1:
-						default:
-							printf( "FAILED : PACKET SEND FAILED\n" );
-							goto complete_failure;
-							break;
-					}
-
-					/* 
-					 * zero the packet 
-					 *
-					 */
-					zero_packet( &(packet[0]) );
-
-				}	
-
-				ret = HMC_OK;
-
-				if( count[i] == simd ){ 	
-					/* c[j] loads are done */
-					status[i]++;
-					count[i] = 0x00ll;
-				}
-
-			}else if( status[i] == 2 ){
-				/* pause this clock cycle to compute */
-
-				/* reset the status */			
-				ret = HMC_OK;
-				
-
-				status[i]++;
-				count[i] = 0x00ll;	
-
-			}else if( status[i] == 3 ){ 
-				/* push stores for the current thread */
-
-				/* reset the status */			
-				ret = HMC_OK;
-				
-
-				while(	(count[i] < (uint64_t)(simd) ) && 
-					( ret != HMC_STALL) ){
-			
-					/* push out a store */
-
-					/* build the request */
-					hmcsim_build_memrequest( hmc,
-                                                 	       	0,
-                                                       	 	addr_a[cur[i]+count[i]],
-                                            		        tag,
-                                                        	WR64,
-                                                        	link,
-                                                        	&(payload[0]),
-                                                        	&head,
-                                                        	&tail );
-	
-					packet[0]	= head;
-					packet[1]	= 0x02ll;
-					packet[2]	= 0x03ll;
-					packet[3]	= 0x04ll;
-					packet[4]	= 0x05ll;
-					packet[5]	= 0x06ll;
-					packet[6]	= 0x07ll;
-					packet[7]	= 0x08ll;
-					packet[8]	= 0x09ll;
-					packet[9]	= tail;
-					packet[1]	= tail;
-
-					/* send it */
-					ret	= hmcsim_send( hmc, &(packet[0]) );
-
-					/* handle the response */
-					switch( ret ){	
-						case 0:
-							/* success */
-							count[i]++;
-					
-							tag++;
-							if( tag == (UINT8_MAX-1)) {
-								tag = 1;
-							}
-
-							link++;
-							if( link == hmc->num_links ){ 
-								link = 0;
-							}
-	
-							break;
-						case HMC_STALL:
-							/* stalled */	
-							break;
-						case -1:
-						default:
-							printf( "FAILED : PACKET SEND FAILED\n" );
-							goto complete_failure;
-							break;
-					}
-
-					/* 
-					 * zero the packet 
-					 *
-					 */
-					zero_packet( &(packet[0]) );
-
-				}
-
-				ret = HMC_OK;
-
-				if( count[i] == simd ){ 	
-					/* c[j] loads are done */
-					status[i] 	= 0x00ll;
-					count[i] 	= 0x00ll;
-
-					cur[i] += (uint64_t)(simd);
-					
-
-					if( cur[i] >= end[i] ){ 
-						cur[i] = end[i];
-						printf( "thread %"PRIu32" done; done = %"PRIu32 "\n", i, done );
-						done++;
-					}
-				}
-			
-			}/* -- status == 3 */
-#endif
 		}/* -- end threads loop */
 
 		/*
