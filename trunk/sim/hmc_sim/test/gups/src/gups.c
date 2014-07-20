@@ -14,7 +14,9 @@
 #include <unistd.h>
 #include "hmc_sim.h"
 
-#define TWO_GB	2147483648
+//#define TWO_GB	2147483648
+//#define TWO_GB	250000000
+#define TWO_GB	1024
 #define POLY	0x0000000000000007UL
 #define PERIOD	1317624576693539401L
 
