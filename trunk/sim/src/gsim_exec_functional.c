@@ -160,7 +160,7 @@ static int gsim_exec_functional_task( 	struct gsim_t *sim,
  * GSIM_EXEC_FUNCTIONAL_UNIT
  * 
  */
-static int gsim_exec_funtional_unit( 	struct gsim_t *sim, 
+static int gsim_exec_functional_unit( 	struct gsim_t *sim, 
 					uint32_t partition, 
 					uint32_t node, 
 					uint32_t socket, 
@@ -268,13 +268,22 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 					for( a=0; a<sim->task_groups; a++ ){ 
 						for( b=0; b<sim->task_procs; b++ ){ 
 							/* 
-							 * compute the taask loaded
+							 * compute the task loaded
 							 * into the current task_proc
 							 */
-						}
-					}
-				}
-			}
+
+							gsim_exec_functional_unit( 	sim, 
+											i,	
+											j, 
+											k, 
+											a, 
+											b );
+							
+
+						}/* end for( b=0; b<sim->task_procs; b++ ) */
+					}/* end for( a=0; a<sim->task_groups; a++ ) */
+				}/* end for( k=0; k<sim->sockets; k++ ) */
+			}/* end for( j=0; j<sim->nodes; j++ ) */
 			
 			/* clock the sim */
 			#pragma omp barrier	
@@ -282,7 +291,7 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 			{
 				gsim_clock( sim );
 			}
-		}
+		}/* end for( i=0; i<sim->partitions; i++ ) */
 }
 	}else if( T_UNITS > 1024 ){ 
 		/* parallelize at the socket level */
@@ -295,9 +304,17 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 					for( a=0; a<sim->task_groups; a++ ){ 
 						for( b=0; b<sim->task_procs; b++ ){ 
 							/* 
-							 * compute the taask loaded
+							 * compute the task loaded
 							 * into the current task_proc
 							 */
+
+							gsim_exec_functional_unit( 	sim, 
+											i,	
+											j, 
+											k, 
+											a, 
+											b );
+							
 						}
 					}
 				}
@@ -322,9 +339,17 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 					for( a=0; a<sim->task_groups; a++ ){ 
 						for( b=0; b<sim->task_procs; b++ ){ 
 							/* 
-							 * compute the taask loaded
+							 * compute the task loaded
 							 * into the current task_proc
 							 */
+
+							gsim_exec_functional_unit( 	sim, 
+											i,	
+											j, 
+											k, 
+											a, 
+											b );
+							
 						}
 					}
 				}
@@ -349,9 +374,17 @@ extern int gsim_exec_functional( struct gsim_t *sim )
 						#pragma omp for
 						for( b=0; b<sim->task_procs; b++ ){ 
 							/* 
-							 * compute the taask loaded
+							 * compute the task loaded
 							 * into the current task_proc
 							 */
+
+							gsim_exec_functional_unit( 	sim, 
+											i,	
+											j, 
+											k, 
+											a, 
+											b );
+							
 						}
 					}
 				}
