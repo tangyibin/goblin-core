@@ -226,8 +226,8 @@ proc_fini:
 extern int gsim_exec_functional( struct gsim_t *sim )
 {
 	/* vars */
-	uint32_t i,j,k	= 0;
-	uint32_t a,b	= 0;
+	int32_t i,j,k	= 0;
+	int32_t a,b	= 0;
 	int S_UNITS	= (sim->task_groups * sim->task_procs * sim->tasks );
 	int T_UNITS	= (sim->sockets * sim->nodes * sim->partitions)*S_UNITS;
 	/* ---- */
