@@ -5727,6 +5727,7 @@ case "$enableval" in
         nvptx)    TARGETS_TO_BUILD="NVPTX $TARGETS_TO_BUILD" ;;
         systemz)  TARGETS_TO_BUILD="SystemZ $TARGETS_TO_BUILD" ;;
         r600)     TARGETS_TO_BUILD="R600 $TARGETS_TO_BUILD" ;;
+	gc64)	  TARGETS_TO_BUILD="GC64 $TARGETS_TO_BUILD" ;;
         host) case "$llvm_cv_target_arch" in
             x86)         TARGETS_TO_BUILD="X86 $TARGETS_TO_BUILD" ;;
             x86_64)      TARGETS_TO_BUILD="X86 $TARGETS_TO_BUILD" ;;
@@ -5739,6 +5740,7 @@ case "$enableval" in
             MSP430)      TARGETS_TO_BUILD="MSP430 $TARGETS_TO_BUILD" ;;
             Hexagon)     TARGETS_TO_BUILD="Hexagon $TARGETS_TO_BUILD" ;;
             NVPTX)       TARGETS_TO_BUILD="NVPTX $TARGETS_TO_BUILD" ;;
+	    GC64)	 TARGETS_TO_BUILD="GC64 $TARGETS_TO_BUILD" ;;
             SystemZ)     TARGETS_TO_BUILD="SystemZ $TARGETS_TO_BUILD" ;;
             *)       { { echo "$as_me:$LINENO: error: Can not set target to build" >&5
 echo "$as_me: error: Can not set target to build" >&2;}
