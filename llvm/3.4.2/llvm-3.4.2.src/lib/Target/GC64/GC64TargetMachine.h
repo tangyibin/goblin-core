@@ -1,4 +1,4 @@
-//===-- GC64TargetMachine.h - Define TargetMachine for GC64 ---*- C++ -*-===//
+//=== GC64TargetMachine.h - Define TargetMachine for GC64 -*- C++ -*-===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -11,60 +11,59 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef GC64TARGETMACHINE_H
-#define GC64TARGETMACHINE_H
+#ifndef LLVM_AARCH64TARGETMACHINE_H
+#define LLVM_AARCH64TARGETMACHINE_H
 
 #include "GC64FrameLowering.h"
 #include "GC64ISelLowering.h"
 #include "GC64InstrInfo.h"
-#include "GC64JITInfo.h"
 #include "GC64SelectionDAGInfo.h"
 #include "GC64Subtarget.h"
 #include "llvm/IR/DataLayout.h"
-#include "llvm/Target/TargetFrameLowering.h"
 #include "llvm/Target/TargetMachine.h"
 
 namespace llvm {
 
 class GC64TargetMachine : public LLVMTargetMachine {
-  GC64Subtarget Subtarget;
-  const DataLayout DL;       // Calculates type size & alignment
-  GC64InstrInfo InstrInfo;
-  GC64TargetLowering TLInfo;
-  GC64SelectionDAGInfo TSInfo;
-  GC64FrameLowering FrameLowering;
-  GC64JITInfo JITInfo;
-public:
-  GC64TargetMachine(const Target &T, StringRef TT,
-                     StringRef CPU, StringRef FS, const TargetOptions &Options,
-                     Reloc::Model RM, CodeModel::Model CM,
-                     CodeGenOpt::Level OL, bool is64bit);
+  GC64Subtarget          Subtarget;
+  GC64InstrInfo          InstrInfo;
+  const DataLayout          DL;
+  GC64TargetLowering     TLInfo;
+  GC64SelectionDAGInfo   TSInfo;
+  GC64FrameLowering      FrameLowering;
 
-  virtual const GC64InstrInfo *getInstrInfo() const { return &InstrInfo; }
-  virtual const TargetFrameLowering  *getFrameLowering() const {
+public:
+  GC64TargetMachine(const Target &T, StringRef TT, StringRef CPU,
+                       StringRef FS, const TargetOptions &Options,
+                       Reloc::Model RM, CodeModel::Model CM,
+                       CodeGenOpt::Level OL);
+
+  const GC64InstrInfo *getInstrInfo() const {
+    return &InstrInfo;
+  }
+
+  const GC64FrameLowering *getFrameLowering() const {
     return &FrameLowering;
   }
-  virtual const GC64Subtarget   *getSubtargetImpl() const{ return &Subtarget; }
-  virtual const GC64RegisterInfo *getRegisterInfo() const {
-    return &InstrInfo.getRegisterInfo();
-  }
-  virtual const GC64TargetLowering* getTargetLowering() const {
+
+  const GC64TargetLowering *getTargetLowering() const {
     return &TLInfo;
   }
-  virtual const GC64SelectionDAGInfo* getSelectionDAGInfo() const {
+
+  const GC64SelectionDAGInfo *getSelectionDAGInfo() const {
     return &TSInfo;
   }
-  virtual GC64JITInfo *getJITInfo() {
-    return &JITInfo;
-  }
-  virtual const DataLayout       *getDataLayout() const { return &DL; }
 
-  // Pass Pipeline Configuration
-  virtual TargetPassConfig *createPassConfig(PassManagerBase &PM);
-  virtual bool addCodeEmitter(PassManagerBase &PM, JITCodeEmitter &JCE);
+  const GC64Subtarget *getSubtargetImpl() const { return &Subtarget; }
+
+  const DataLayout *getDataLayout() const { return &DL; }
+
+  const TargetRegisterInfo *getRegisterInfo() const {
+    return &InstrInfo.getRegisterInfo();
+  }
+  TargetPassConfig *createPassConfig(PassManagerBase &PM);
 };
 
-} // end namespace llvm
+}
 
-#endif /* define GC64TARGETMACHINE_H */
-
+#endif
