@@ -147,4 +147,22 @@ def CCODE : RegisterClass<"GC64", [i64], 64,
 		(sequence "CC%u", 0, 3)>{
 }
 
+//-- Tasking Registers
+def TASK64 : RegisterClass<"GC64", [i64], 64, 
+		(add
+		//-- TASK QUEUE POINTER
+		TQ, 
+		
+		//-- TASK ID
+		TID)>;	
 
+//-- Constants: Read-Only
+def CONST64 : RegisterClass<"GC64", [i64], 64, 
+		(add
+		//-- CONTROL 
+		ZERO, IMM32, IMM64, 
+
+		//-- COMBINATORIAL 
+		EQ, GT, GTE, LT, LTE, NE)>;
+
+//-- EOF: GC64RegisterInfo.td 
