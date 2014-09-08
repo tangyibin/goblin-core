@@ -20,5 +20,5 @@ Target llvm::TheGC64Target;
 
 extern "C" void LLVMInitializeGC64TargetInfo() {
     RegisterTarget<Triple::gc64, /*HasJIT=*/true>
-    X(TheGC64Target, "aarch64", "GC64 (GoblinCore-64 target)");
+    X(TheGC64Target, "gc64", "GC64 (GoblinCore-64 target)");
 }
