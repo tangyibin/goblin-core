@@ -155,11 +155,44 @@ def TASK64 : RegisterClass<"GC64", [i64], 64,
 		//-- TASK ID
 		TID)>;	
 
+//-- Vector Control Registers
+def VCTRL64 : RegisterClass<"GC64", [i64], 64, 
+		(add
+		//-- VECTOR LENGTH 
+		VL, 
+		
+		//-- VECTOR STRIDE
+		VS)>;
+
+//-- PRIVILEGED REGISTERS
+def PRIV64 : RegisterClass<"GC64", [i64], 64, 
+		(add
+		//-- GOBLIN MODE 
+		GMODE, 
+
+		//-- SECURITY KEY
+		GKEY)>;
+
+//-- PERF COUNTER REGISTERS
+def PCTR64 : RegisterClass<"GC64", [i64], 64, 
+		(add 
+		//-- PERF COUNTER MASK 
+		PMASK, 
+		
+		//-- PERF COUNTER READ MASK 
+		PREAD,
+
+		//-- PERF COUNTER READ VALUE
+		PVAL)>;
+
 //-- Constants: Read-Only
 def CONST64 : RegisterClass<"GC64", [i64], 64, 
 		(add
 		//-- CONTROL 
 		ZERO, IMM32, IMM64, 
+
+		//-- CONFIG
+		GCONST,
 
 		//-- COMBINATORIAL 
 		EQ, GT, GTE, LT, LTE, NE)>;
