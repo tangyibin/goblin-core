@@ -18,53 +18,39 @@
 include "llvm/Target/Target.td"
 
 //===----------------------------------------------------------------------===//
-// GC64 Subtarget features.
-//
-
-def FeatureFPGC64 : SubtargetFeature<"fp-gc64", "HasFPGC64", "true",
-  "Enable GC64 FP">;
-
-def FeatureGC64SIMD : SubtargetFeature<"simd", "HasSIMD", "true",
-  "Enable Advanced SIMD instructions", [FeatureFPGC64]>;
-
-//===----------------------------------------------------------------------===//
-// GC64 Processors
-//
-
-include "GC64Schedule.td"
-
-def : Processor<"generic", GenericItineraries, [FeatureFPGC64]>;
-
-//===----------------------------------------------------------------------===//
-// Register File Description
+// Descriptions 
 //===----------------------------------------------------------------------===//
 
 include "GC64RegisterInfo.td"
-
+include "GC64IntrInfo.td"
 include "GC64CallingConv.td"
 
 //===----------------------------------------------------------------------===//
-// Instruction Descriptions
+// GC64 processors supported 
 //===----------------------------------------------------------------------===//
+class Proc<string Name, list<SubtargetFeature> Features>
+    : Processor<Name, NoItineraries, Features>;
 
-include "GC64InstrInfo.td"
-
-def GC64InstrInfo : InstrInfo;
-
-//===----------------------------------------------------------------------===//
-// Assembly printer
-//===----------------------------------------------------------------------===//
-
-def GC64InstPrinter : AsmWriter {
-  string AsmWriterClassName = "InstPrinter";
-  bit isMCAsmWriter = 1;
-}
+def : Proc<"generic", []>;
 
 //===----------------------------------------------------------------------===//
-// Declare the target which we are implementing
+// Declare the target we are implementing  
 //===----------------------------------------------------------------------===//
-
 def GC64 : Target {
   let InstructionSet = GC64InstrInfo;
-  let AssemblyWriters = [GC64InstPrinter];
 }
+
+//===----------------------------------------------------------------------===//
+// GC64 Subtarget features.
+//
+
+//def FeatureFPGC64 : SubtargetFeature<"fp-gc64", "HasFPGC64", "true",
+//  "Enable GC64 FP">;
+
+//def FeatureGC64SIMD : SubtargetFeature<"simd", "HasSIMD", "true",
+//  "Enable Advanced SIMD instructions", [FeatureFPGC64]>;
+
+//===----------------------------------------------------------------------===//
+// EOF: GC64.td 
+//===----------------------------------------------------------------------===//
+
