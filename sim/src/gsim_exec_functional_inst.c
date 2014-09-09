@@ -160,6 +160,14 @@ extern int gsim_exec_functional_inst( 	struct gsim_t *sim,
 				task->reg[rT_idx] = r2.u_uq;
 			}else{
 				/* vector */
+				v2e0.u_uq	= v0e0.u_uq;
+				v2e1.u_uq	= v0e1.u_uq;
+				v2e2.u_uq	= v0e1.u_uq;
+				v2e3.u_uq	= v0e3.u_uq;
+				task->reg[rT_idx]   = v2e0.u_uq;
+				task->reg[rT_idx+1] = v2e1.u_uq;
+				task->reg[rT_idx+2] = v2e2.u_uq;
+				task->reg[rT_idx+3] = v2e3.u_uq;
 			}
 			
 			break; 
