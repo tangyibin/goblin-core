@@ -25,6 +25,7 @@ union reg_u{
 	int8_t		u_sb;	/* signed byte */
 	int16_t		u_sw;	/* signed word */
 	int32_t		u_sd;	/* signed double */
+	int64_t		u_sq;	/* signed quad */
 	float 		u_fs;	/* float single */
 	double		u_fd;	/* float double */
 };
@@ -261,11 +262,17 @@ extern int gsim_exec_functional_inst( 	struct gsim_t *sim,
 			break;
 		case 0x1F: 
 			/* fence */
-			
+			/* -- this must be handled special */	
 			break;
 		case 0x20: 
 			/* and */
-			
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_uq	= (r0.u_uq & r1.u_uq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			break;
 		case 0x21:
 			/* andc */
@@ -289,6 +296,13 @@ extern int gsim_exec_functional_inst( 	struct gsim_t *sim,
 			break;
 		case 0x26: 
 			/* xor */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_uq	= (r0.u_uq ^ r1.u_uq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x27: 
@@ -301,34 +315,90 @@ extern int gsim_exec_functional_inst( 	struct gsim_t *sim,
 			break;
 		case 0x30: 
 			/* add.sq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_sq	= (r0.u_sq + r1.u_sq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x31: 
 			/* add.uq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_uq	= (r0.u_uq + r1.u_uq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x32: 
 			/* sub.sq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_sq	= (r0.u_sq - r1.u_sq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x33: 
 			/* sub.uq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_uq	= (r0.u_uq - r1.u_uq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x34: 
 			/* mul.sq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_sq	= (r0.u_sq * r1.u_sq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x35: 
 			/* mul.uq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_uq	= (r0.u_uq * r1.u_uq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x36: 
 			/* div.sq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_sq	= (r0.u_sq / r1.u_sq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x37: 
 			/* div.uq */
+			if( l_ctr_vec == 0 ){
+				/* scalar */
+				r2.u_uq	= (r0.u_uq / r1.u_uq);	
+				task->reg[rT_idx] = r2.u_uq;
+			}else{
+				/* vector */
+			}	
 			
 			break;
 		case 0x38: 
