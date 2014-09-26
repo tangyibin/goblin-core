@@ -22,7 +22,6 @@
 #include "llvm/MC/MCInst.h"
 #include "llvm/MC/MCStreamer.h"
 #include "llvm/Support/TargetRegistry.h"
-#include "llvm/Target/Mangler.h"
 
 using namespace llvm;
 
