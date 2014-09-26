@@ -5012,12 +5012,12 @@ public:
 
 // RISCV Target Info
 namespace {
-class RISCVTargetInfo : public TargetInof {
+class RISCVTargetInfo : public TargetInfo {
   static const char *const GCCRegNames[];
   std::string CPU;
 
   public: 
-    RISCVTargetInfo(const std::string& triple) : TargetInfo(triple) {  
+    RISCVTargetInfo(const llvm::Triple &Triple ) : TargetInfo(Triple) {  
       TLSSupported = true;
       IntWidth = IntAlign = 32;
       LongLongWidth = LongLongAlign = 64;
@@ -5051,7 +5051,7 @@ class RISCVTargetInfo : public TargetInof {
    virtual void getTargetBuiltins(const Builtin::Info *&Records,
                                    unsigned &NumRecords) const {
       Records = 0;
-      NumRecords = 0
+      NumRecords = 0;
    }
 
    virtual void getDefaultFeatures(llvm::StringMap<bool> &Features) const {
@@ -5179,16 +5179,13 @@ class RISCVTargetInfo : public TargetInof {
       NumAliases = llvm::array_lengthof(GCCRegAliases);
    }
 
-   virtual bool setFeatureEnabled(llvm::StringMap<bool> &Features,
+   virtual void setFeatureEnabled(llvm::StringMap<bool> &Features,
                                              StringRef Name,
                                              bool Enabled) const {
     if (Name == "m" || Name == "a" || Name == "f" ||
         Name == "d" || Name == "rv32" || Name == "rv64") { 
       Features[Name] = Enabled;
-      return true;
     }
-  
-    return false;
   }
   virtual void HandleTargetFeatures(std::vector<std::string> &Features) {
     for (unsigned i = 0, e = Features.size(); i != e; ++i){
