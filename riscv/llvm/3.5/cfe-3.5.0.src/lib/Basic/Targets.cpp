@@ -5029,14 +5029,14 @@ class RISCVTargetInfo : public TargetInfo {
       MinGlobalAlign = 8;
       MaxAtomicPromoteWidth = MaxAtomicInlineWidth = 32;
     }
- 
-   virtual bool setCPU(const std::string &Name) {
+
+   bool setCPU(const std::string &Name) override {
      CPU = Name;
      return true;
    }
 
-   virtual void getTargetDefines(const LangOptions &Opts,
-                                  MacroBuilder &Builder) const {
+   void getTargetDefines(const LangOptions &Opts,
+                                  MacroBuilder &Builder) const override {
       // Target identification
       Builder.defineMacro("__riscv");
       Builder.defineMacro("__riscv__");
@@ -5048,13 +5048,13 @@ class RISCVTargetInfo : public TargetInfo {
       Builder.defineMacro("_RISCV_SZPTR", Twine((int)PointerWidth));
    }
 
-   virtual void getTargetBuiltins(const Builtin::Info *&Records,
-                                   unsigned &NumRecords) const {
+   void getTargetBuiltins(const Builtin::Info *&Records,
+                                   unsigned &NumRecords) const override {
       Records = 0;
       NumRecords = 0;
    }
 
-   virtual void getDefaultFeatures(llvm::StringMap<bool> &Features) const {
+   void getDefaultFeatures(llvm::StringMap<bool> &Features) const override {
       if (CPU.find("RV32") == 0){
           setFeatureEnabled(Features, "rv32", true);
       }else if(CPU.find("RV64") == 0){
@@ -5179,15 +5179,21 @@ class RISCVTargetInfo : public TargetInfo {
       NumAliases = llvm::array_lengthof(GCCRegAliases);
    }
 
-   virtual void setFeatureEnabled(llvm::StringMap<bool> &Features,
+   void setFeatureEnabled(llvm::StringMap<bool> &Features,
                                              StringRef Name,
-                                             bool Enabled) const {
+                                             bool Enabled) const override {
     if (Name == "m" || Name == "a" || Name == "f" ||
         Name == "d" || Name == "rv32" || Name == "rv64") { 
       Features[Name] = Enabled;
     }
   }
-  virtual void HandleTargetFeatures(std::vector<std::string> &Features) {
+  bool handleTargetFeatures(std::vector<std::string> &Features,
+                            DiagnosticsEngine &Diags) override{
+    if( Features.size() == 0 ){ 
+      // Default to 32bit RISCV
+      DescriptionString = ("e-p:32:32:32-i1:8:16-i8:8:16-i16:16-i32:32-"
+         "f32:32-a0:8:16-n32");
+    }
     for (unsigned i = 0, e = Features.size(); i != e; ++i){
       if (Features[i] == "+rv64"){
         DescriptionString = ("e-p:64:64:64-i1:8:16-i8:8:16-i16:16-i32:32-i64:64-"
@@ -5201,6 +5207,7 @@ class RISCVTargetInfo : public TargetInfo {
         LongWidth = LongAlign = 32;
       }
     }
+    return true;
   }
 
   virtual bool validateAsmConstraint(const char *&Name,
