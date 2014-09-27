@@ -6451,6 +6451,17 @@ static TargetInfo *AllocateTarget(const llvm::Triple &Triple) {
       return new Mips64ELTargetInfo(Triple);
     }
 
+  case llvm::Triple::riscv:
+    switch (os ){ 
+    case llvm::Triple::Linux:
+    case llvm::Triple::RTEMS:
+    case llvm::Triple::FreeBSD:
+    case llvm::Triple::NetBSD:
+    case llvm::Triple::OpenBSD:
+    default:
+      return new RISCVTargetInfo(Triple);
+    }
+
   case llvm::Triple::le32:
     switch (os) {
       case llvm::Triple::NaCl:
