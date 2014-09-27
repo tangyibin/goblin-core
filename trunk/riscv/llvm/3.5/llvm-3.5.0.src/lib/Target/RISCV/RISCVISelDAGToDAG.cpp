@@ -213,7 +213,7 @@ public:
       Subtarget(*TM.getSubtargetImpl()) { }
 
   // Override MachineFunctionPass.
-  virtual const char *getPassName() const override {
+  const char *getPassName() const override {
     return "RISCV DAG->DAG Pattern Instruction Selection";
   }
 

@@ -51,8 +51,8 @@ public:
     return getTM<RISCVTargetMachine>();
   }
 
-  virtual bool addInstSelector();
-  virtual bool addPreEmitPass();
+  bool addInstSelector() override;
+  bool addPreEmitPass() override;
 };
 } // end anonymous namespace
 
