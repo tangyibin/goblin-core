@@ -33,7 +33,7 @@ public:
   }
 
   // Override AsmPrinter.
-  virtual const char *getPassName() const override {
+  const char *getPassName() const override {
     return "RISCV Assembly Printer";
   }
   void EmitInstruction(const MachineInstr *MI) override;
