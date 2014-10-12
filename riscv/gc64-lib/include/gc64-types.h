@@ -8,14 +8,19 @@
  * 
  */
 
-#ifndef _GC64-USR_H_
-#define _GC64-USR_H_
+#ifndef _GC64-TYPES_H_
+#define _GC64-TYPES_H_
+
+#ifdef __cplusplus
+extern "C"
+#endif	/* __CPLUSPLUS */
 
 /* 
  * REQUIRED HEADERS
  * 
  */
 #include <stdint.h>
+#include <limits.h>
 
 /* 
  * NAMED ADDRESS SPACE MACROS 
@@ -24,7 +29,7 @@
 #ifdef __SCRATCH
 #define __scratch typedef __attribute__((address_space(200))) 
 #define __SCRATCH typedef __attribute__((address_space(200))) 
-#define
+#endif	/* __SCRATCH */
 
 
 /*
@@ -38,5 +43,8 @@ typedef enum gc64mem_t{
 };
 
 
-#endif /* _GC64-USR_H_ */
+#ifdef __cplusplus
+}	/* EXTERN C */
+#endif	/* __CPLUSPLUS */
+#endif /* _GC64-TYPES_H_ */
 /* EOF */
