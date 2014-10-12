@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Makefile.gc64
+#
+# GC64 out of tree system makefile
+#
+#
+
+CC=~/riscv/bin/clang
+CFLAGS=-O2 -g -Wall 
+
+all:
