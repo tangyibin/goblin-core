@@ -6,7 +6,8 @@
 #
 #
 
-CC=~/riscv/bin/clang
-CFLAGS=-O2 -g -Wall 
+CC := ~/riscv/bin/clang
+PKGS := ...
+DOXYGEN := doxygen
 
 all:

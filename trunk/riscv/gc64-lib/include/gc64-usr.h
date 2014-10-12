@@ -11,20 +11,26 @@
 #ifndef _GC64-USR_H_
 #define _GC64-USR_H_
 
+#pragma once
+
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 /* 
  * REQUIRED HEADERS
  * 
  */
 #include "gc64-types.h"
 
+
 /* 
- * NAMED ADDRESS SPACE MACROS 
+ * 
+ * DATA 
  * 
  */
-#ifdef __SCRATCH
-#define __scratch typedef __attribute__((address_space(200))) 
-#define __SCRATCH typedef __attribute__((address_space(200))) 
-#define
 
 /* 
  * 
@@ -32,7 +38,8 @@
  * 
  */
 
-
-
-#endif /* _GC64-USR_H_ */
+#ifdef __cplusplus
+} 	/* EXTERN C */
+#endif	/* __CPLUSPLUS */
+#endif 	/* _GC64-USR_H_ */
 /* EOF */
