@@ -8,8 +8,8 @@
  * 
  */
 
-#ifndef _GC64-TYPES_H_
-#define _GC64-TYPES_H_
+#ifndef _GC64_TYPES_H_
+#define _GC64_TYPES_H_
 
 #ifdef __cplusplus
 extern "C"
@@ -27,8 +27,8 @@ extern "C"
  * 
  */
 #ifdef __SCRATCH
-#define __scratch typedef __attribute__((address_space(200))) 
-#define __SCRATCH typedef __attribute__((address_space(200))) 
+#define __scratch __attribute__((address_space(200))) 
+#define __SCRATCH __attribute__((address_space(200))) 
 #endif	/* __SCRATCH */
 
 
@@ -36,11 +36,21 @@ extern "C"
  * ENUMS
  * 
  */
-typedef enum gc64mem_t{
+typedef enum {
 	GC64_MAIN	= 0x01, 
 	GC64_SCRATCH	= 0x02,
 	GC64_REMOTE	= 0x04 	
+}gc64mem_t;
+
+
+/* 
+ * STRUCTURES 
+ * 
+ */
+struct gc64comp_t{
+	uint64_t status;	
 };
+
 
 
 #ifdef __cplusplus

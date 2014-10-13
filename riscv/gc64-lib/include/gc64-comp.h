@@ -1,15 +1,17 @@
 /* 
- * _GC64-USR_H_ 
+ * _GC64-COMP_H_ 
  * 
- * GC64 USER INTERFACE HEADER
+ * GC64 COMPILER INTERFACE HEADER
  * 
- * Provides basic user interface functionality 
+ * Provides basic compiler//system functionality 
  * 
  * 
  */
 
-#ifndef _GC64_USR_H_
-#define _GC64_USR_H_
+#ifndef _GC64_COMP_H_
+#define _GC64_COMP_H_
+
+#pragma once
 
 
 #ifdef __cplusplus
@@ -26,9 +28,11 @@ extern "C"
 
 /* 
  * 
- * DATA 
+ * GLOBALS
  * 
  */
+struct gc64comp_t *__g_comp;
+
 
 /* 
  * 
@@ -39,5 +43,5 @@ extern "C"
 #ifdef __cplusplus
 } 	/* EXTERN C */
 #endif	/* __CPLUSPLUS */
-#endif 	/* _GC64_USR_H_ */
+#endif 	/* _GC64_COMP_H_ */
 /* EOF */
