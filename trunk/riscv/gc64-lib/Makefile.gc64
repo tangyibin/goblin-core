@@ -26,7 +26,7 @@ USR_TARGET := lib$(USR_LIBNAME).a
 #-- build options
 INC := -I./include
 ARCH := -target riscv -mriscv=RV64IMAFD
-CFLAGS := $(ARCH) -O2 -g -Wall -Wpedantic $(INC)
+CFLAGS := $(ARCH) -O0 -g -Wall -Wpedantic $(INC)
 LIBS := 
 LDFLAGS := -ldl -Bsymbolic-functions
 ARFLAGS := rcs
@@ -45,7 +45,6 @@ COMP_DEPS := $(COMP_OBJECTS:.o=.deps)
 USR_DEPS := $(USR_OBJECTS:.o=.deps)
 
 $(COMP_TARGET): $(COMP_OBJECTS)
-	#echo " Linking... $(COMP_TARGET)"; $(CC) $(CFLAGS) -o $(COMP_TARGET) $(COMP_OBJECTS) $(LDFLAGS) 
 	echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(COMP_TARGET) $(COMP_OBJECTS) 
 
 $(COMP_BUILDDIR)/%.o: $(COMP_SRCDIR)/%.$(SRCEXT)
@@ -53,7 +52,6 @@ $(COMP_BUILDDIR)/%.o: $(COMP_SRCDIR)/%.$(SRCEXT)
 	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
 
 $(USR_TARGET): $(USR_OBJECTS)
-	#echo " Linking... $(USR_TARGET)"; $(CC) $(CFLAGS) -shared -o $(USR_TARGET) $(USR_OBJECTS) $(LDFLAGS) 
 	echo " Linking... $(USR_TARGET)"; $(AR) $(ARLAGS) $(USR_TARGET) $(USR_OBJECTS)
 
 $(USR_BUILDDIR)/%.o: $(USR_SRCDIR)/%.$(SRCEXT)
