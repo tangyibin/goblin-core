@@ -25,6 +25,7 @@ public:
   void set_debug(bool value);
   void set_histogram(bool value);
   void set_procs_debug(bool value);
+  bool init_scratchpad();
   htif_isasim_t* get_htif() { return htif.get(); }
 
   // deliver an IPI to a specific processor
@@ -34,6 +35,12 @@ public:
   size_t num_cores() { return procs.size(); }
   processor_t* get_core(size_t i) { return procs.at(i); }
 
+  // returns the number of bytes in the scratchpad memory 
+  size_t scratchpad_size() { size_t tsize = spad_size; return tsize; }
+
+  // initialize the scratchpad size
+  void set_scratchpad_size( size_t spad ) { spad_size = spad; }
+
   // read one of the system control registers
   reg_t get_scr(int which);
 
@@ -41,6 +48,7 @@ private:
   std::unique_ptr<htif_isasim_t> htif;
   char* mem; // main memory
   size_t memsz; // memory size in bytes
+  size_t spad_size; // scratchpad memory size in bytes  
   mmu_t* debug_mmu;  // debug port into main memory
   std::vector<processor_t*> procs;
 
