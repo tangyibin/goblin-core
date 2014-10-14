@@ -19,7 +19,6 @@ __attribute__ ((constructor(0))) __attribute((__section__(".init.text"))) static
 
 
 static void 	gc64_run_constructor( void ) {
-
 	/* VARS */
 	struct gc64comp_t *comp	= NULL;
 	int rtn			= 0;
@@ -44,7 +43,6 @@ static void 	gc64_run_constructor( void ) {
 			exit( rtn );
 		}
 	}
-
 
 	/* 
 	 * set the global to the new structure
