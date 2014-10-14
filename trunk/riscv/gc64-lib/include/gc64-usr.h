@@ -35,6 +35,12 @@ extern "C"
  * FUNCTIONS 
  * 
  */
+/* -- memory allocation */
+extern int	sp_malloc( __scratch void **ptr, size_t sz );
+extern int	sp_calloc( __scratch void **ptr, size_t nmemb, size_t size );
+extern int 	sp_realloc( __scratch void **newptr, __scratch void **oldptr, size_t size );
+extern int	sp_free( __scratch void **ptr );
+
 
 #ifdef __cplusplus
 } 	/* EXTERN C */

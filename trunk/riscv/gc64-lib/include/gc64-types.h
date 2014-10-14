@@ -33,6 +33,14 @@ extern "C"
 
 
 /*
+ * RETURN TYPES
+ * 
+ */
+#define	GC64_OK		0x00
+#define GC64_NULLPTR	0x01
+#define GC64_ERROR	0xFF
+
+/*
  * ENUMS
  * 
  */
