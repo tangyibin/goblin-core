@@ -39,7 +39,7 @@ COMP_OBJECTS := $(patsubst $(COMP_SRCDIR)/%,$(COMP_BUILDDIR)/%,$(COMP_SOURCES:.$
 USR_SOURCES := $(shell find $(USR_SRCDIR) -type f -name *.$(SRCEXT))
 USR_OBJECTS := $(patsubst $(USR_SRCDIR)/%,$(USR_BUILDDIR)/%,$(USR_SOURCES:.$(SRCEXT)=.o))
 
-all: $(COMP_TARGET)
+all: $(COMP_TARGET) $(USR_TARGET)
 
 COMP_DEPS := $(COMP_OBJECTS:.o=.deps)
 USR_DEPS := $(USR_OBJECTS:.o=.deps)
@@ -52,7 +52,7 @@ $(COMP_BUILDDIR)/%.o: $(COMP_SRCDIR)/%.$(SRCEXT)
 	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
 
 $(USR_TARGET): $(USR_OBJECTS)
-	echo " Linking... $(USR_TARGET)"; $(AR) $(ARLAGS) $(USR_TARGET) $(USR_OBJECTS)
+	echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(USR_TARGET) $(USR_OBJECTS) 
 
 $(USR_BUILDDIR)/%.o: $(USR_SRCDIR)/%.$(SRCEXT)
 	mkdir -p $(USR_BUILDDIR)
