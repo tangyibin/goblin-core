@@ -21,7 +21,6 @@ __attribute__ ((constructor(0))) __attribute((__section__(".init.text"))) static
 static void 	gc64_run_constructor( void ) {
 	/* VARS */
 	struct gc64comp_t *comp	= NULL;
-	int rtn			= 0;
 	/* ---- */
 
 	if( __g_comp != NULL ){ 
@@ -29,9 +28,7 @@ static void 	gc64_run_constructor( void ) {
 		 * an error has occurred, abort
 	 	 *
 		 */
-		rtn	= -1;
-		exit( rtn );
-
+		exit( -1 );
 	}else{ 
 		comp = malloc( sizeof( struct gc64comp_t ) );
 		if( comp == NULL ){ 
@@ -39,8 +36,7 @@ static void 	gc64_run_constructor( void ) {
 			 * error occurred, abort
 			 *
 			 */
-			rtn	= -1;
-			exit( rtn );
+			exit( -1 );
 		}
 	}
 
@@ -49,7 +45,6 @@ static void 	gc64_run_constructor( void ) {
 	 * 
 	 */
 	__g_comp	= comp;
-
 }
 
 /* EOF */
