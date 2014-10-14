@@ -16,8 +16,6 @@
  */
 __attribute__ ((constructor(0))) __attribute((__section__(".init.text"))) static void gc64_run_constructor( void );
 
-
-
 static void 	gc64_run_constructor( void ) {
 	/* VARS */
 	struct gc64comp_t *comp	= NULL;
@@ -45,6 +43,8 @@ static void 	gc64_run_constructor( void ) {
 	 * 
 	 */
 	__g_comp	= comp;
+
+	printf( "constructor complete\n" );
 }
 
 /* EOF */
