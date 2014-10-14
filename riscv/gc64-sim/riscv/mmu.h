@@ -140,6 +140,9 @@ private:
   void* translate(reg_t addr, reg_t bytes, bool store, bool fetch)
     __attribute__((always_inline))
   {
+
+    /* implement the scratchpad memory interface here */
+
     reg_t idx = (addr >> PGSHIFT) % TLB_ENTRIES;
     reg_t expected_tag = addr >> PGSHIFT;
     reg_t* tags = fetch ? tlb_insn_tag : store ? tlb_store_tag :tlb_load_tag;
