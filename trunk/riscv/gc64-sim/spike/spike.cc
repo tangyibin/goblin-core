@@ -21,6 +21,7 @@ static void help()
   fprintf(stderr, "  -m <n>             Provide <n> MB of target memory\n");
   fprintf(stderr, "  -d                 Interactive debug mode\n");
   fprintf(stderr, "  -g                 Track histogram of PCs\n");
+  fprintf(stderr, "  -s <n bytes>       Initiate N-byte scratchpad memory\n" );
   fprintf(stderr, "  -h                 Print this help message\n");
   fprintf(stderr, "  --ic=<S>:<W>:<B>   Instantiate a cache model with S sets,\n");
   fprintf(stderr, "  --dc=<S>:<W>:<B>     W ways, and B-byte blocks (with S and\n");
@@ -36,6 +37,7 @@ int main(int argc, char** argv)
   bool histogram = false;
   size_t nprocs = 1;
   size_t mem_mb = 0;
+  size_t sbytes = 0;
   std::unique_ptr<icache_sim_t> ic;
   std::unique_ptr<dcache_sim_t> dc;
   std::unique_ptr<cache_sim_t> l2;
@@ -47,6 +49,7 @@ int main(int argc, char** argv)
   parser.option('d', 0, 0, [&](const char* s){debug = true;});
   parser.option('g', 0, 0, [&](const char* s){histogram = true;});
   parser.option('p', 0, 1, [&](const char* s){nprocs = atoi(s);});
+  parser.option('s', 0, 1, [&](const char* s){sbytes = atoi(s);});
   parser.option('m', 0, 1, [&](const char* s){mem_mb = atoi(s);});
   parser.option(0, "ic", 1, [&](const char* s){ic.reset(new icache_sim_t(s));});
   parser.option(0, "dc", 1, [&](const char* s){dc.reset(new dcache_sim_t(s));});
@@ -81,5 +84,7 @@ int main(int argc, char** argv)
 
   s.set_debug(debug);
   s.set_histogram(histogram);
+  s.set_scratchpad_size( sbytes );	//-- set the scratchpad memory 
+  s.init_scratchpad();			//-- initialize the scratchpad 
   return s.run();
 }
