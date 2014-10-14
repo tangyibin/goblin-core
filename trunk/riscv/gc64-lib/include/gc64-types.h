@@ -26,7 +26,7 @@ extern "C"
  * NAMED ADDRESS SPACE MACROS 
  * 
  */
-#ifdef __SCRATCH
+#ifndef __SCRATCH
 #define __scratch __attribute__((address_space(200))) 
 #define __SCRATCH __attribute__((address_space(200))) 
 #endif	/* __SCRATCH */
