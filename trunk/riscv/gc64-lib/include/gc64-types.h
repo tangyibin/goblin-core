@@ -55,7 +55,27 @@ typedef enum {
  * STRUCTURES 
  * 
  */
+
+/* -- gc64entry_t */
+struct gc64entry_t{
+	uint64_t base_addr;
+	size_t size;
+	struct gc64entry_t *next;
+};
+
+/* -- gc64sp_t */
+struct gc64sp_t{
+	uint64_t base_addr;
+	uint64_t tsize;
+	uint64_t used;
+	uint64_t free;
+	uint64_t nentry;
+	struct gc64entry_t *entry;
+};
+
+/* -- gc64comp_t */
 struct gc64comp_t{
+	struct gc64sp_t *mem;
 	uint64_t status;	
 };
 
