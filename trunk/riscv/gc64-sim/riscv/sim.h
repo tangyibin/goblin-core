@@ -38,6 +38,9 @@ public:
   // returns the number of bytes in the scratchpad memory 
   size_t scratchpad_size() { size_t tsize = spad_size; return tsize; }
 
+  // initialize the base scratchpad memory address
+  void set_scratchpad_base_addr( uint64_t addr ) { spad_base_addr = addr; }
+
   // initialize the scratchpad size
   void set_scratchpad_size( size_t spad ) { spad_size = spad; }
 
@@ -49,6 +52,7 @@ private:
   char* mem; // main memory
   size_t memsz; // memory size in bytes
   size_t spad_size; // scratchpad memory size in bytes  
+  uint64_t spad_base_addr; // scratchpad base memory address
   mmu_t* debug_mmu;  // debug port into main memory
   std::vector<processor_t*> procs;
 
