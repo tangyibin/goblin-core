@@ -45,17 +45,17 @@ COMP_DEPS := $(COMP_OBJECTS:.o=.deps)
 USR_DEPS := $(USR_OBJECTS:.o=.deps)
 
 $(COMP_TARGET): $(COMP_OBJECTS)
-	echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(COMP_TARGET) $(COMP_OBJECTS) 
+	@echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(COMP_TARGET) $(COMP_OBJECTS) 
 
 $(COMP_BUILDDIR)/%.o: $(COMP_SRCDIR)/%.$(SRCEXT)
-	mkdir -p $(COMP_BUILDDIR)
+	@mkdir -p $(COMP_BUILDDIR)
 	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
 
 $(USR_TARGET): $(USR_OBJECTS)
-	echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(USR_TARGET) $(USR_OBJECTS) 
+	@echo " Linking... $(USR_TARGET)"; $(AR) $(ARFLAGS) $(USR_TARGET) $(USR_OBJECTS) 
 
 $(USR_BUILDDIR)/%.o: $(USR_SRCDIR)/%.$(SRCEXT)
-	mkdir -p $(USR_BUILDDIR)
+	@mkdir -p $(USR_BUILDDIR)
 	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
 
 clean: 

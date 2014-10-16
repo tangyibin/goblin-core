@@ -70,7 +70,8 @@ struct gc64sp_t{
 	uint64_t used;
 	uint64_t free;
 	uint64_t nentry;
-	struct gc64entry_t *entry;
+	struct gc64entry_t *start;
+	struct gc64entry_t *end;
 };
 
 /* -- gc64comp_t */

@@ -47,7 +47,8 @@ extern int gc64_spad_init( struct gc64comp_t *comp ){
 	comp->mem->used		= 0x00ll;
 	comp->mem->free		= GC64_DEFAULT_SIZE;
 	comp->mem->nentry	= 0x00ll;
-	comp->mem->entry	= NULL;
+	comp->mem->start	= NULL;
+	comp->mem->end		= NULL;
 	
 
 	return 0;
