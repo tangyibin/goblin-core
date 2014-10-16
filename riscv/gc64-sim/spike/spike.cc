@@ -13,6 +13,14 @@
 #include <string>
 #include <memory>
 
+#ifndef GC64_BASE_ADDR
+#define GC64_BASE_ADDR		0x0000000080000000
+#endif
+
+#ifndef GC64_DEFAULT_SIZE
+#define GC64_DEFAULT_SIZE	20000000
+#endif
+
 static void help()
 {
   fprintf(stderr, "usage: spike [host options] <target program> [target options]\n");
@@ -82,9 +90,14 @@ int main(int argc, char** argv)
     if (extension) s.get_core(i)->register_extension(extension());
   }
 
+  if( sbytes == 0 ){
+    sbytes = GC64_DEFAULT_SIZE;
+  }
+
   s.set_debug(debug);
   s.set_histogram(histogram);
-  s.set_scratchpad_size( sbytes );	//-- set the scratchpad memory 
-  s.init_scratchpad();			//-- initialize the scratchpad 
+  s.set_scratchpad_size( sbytes );	        //-- set the scratchpad memory 
+  s.set_scratchpad_base_addr( GC64_BASE_ADDR );	//-- set the scratchpad base address
+  s.init_scratchpad();			        //-- initialize the scratchpad 
   return s.run();
 }
