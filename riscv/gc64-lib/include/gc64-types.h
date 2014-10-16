@@ -80,6 +80,11 @@ struct gc64comp_t{
 	uint64_t status;	
 };
 
+/*
+ * MACROS
+ * 
+ */
+#define	GC64_BYTE_ALIGNMENT 2
 
 
 #ifdef __cplusplus
