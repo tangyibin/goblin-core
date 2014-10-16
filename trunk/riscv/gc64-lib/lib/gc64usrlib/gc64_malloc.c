@@ -247,9 +247,53 @@ extern int sp_calloc( __scratch void **ptr, size_t nmemb, size_t sz ){
  * EXTERN INT SP_REALLOC( __SCRATCH VOID **NEWPTR, __SCRATCH VOID **OLDPTR, 
  * 				SIZE_T SZ )
  * 
+ * The realloc implementation is special.  We use a temporary bounce buffer
+ * intermdiate space to perform the transfer.  The algorithm is as follows: 
+ * 
+ * Stage 1: check to see that we have sufficient free scratchpad space
+ *          once our buffer is removed
+ * 
+ * Stage 2: create a temporary bounce buffer in main memory 
+ * 
+ * Stage 3: copy the data from the existing scratchpad to the bounce buffer
+ * 
+ * Stage 4: ensure that we can allocate a new buffer 
+ * 
+ * Stage 5: remove the original buffer location 
+ * 
+ * Stage 6: allocate the new buffer 
+ * 
+ * Stage 7: fill the space from the bounce buffer
+ * 
+ * Stage 8: remove the bounce buffer 
+ * 
  */
 extern int sp_realloc( __scratch void **newptr, __scratch void **oldptr, 
 			size_t sz ) {
+
+	/* vars */
+	/* ---- */
+
+	/* 
+	 * check for legacy behavior
+	 * 
+	 */
+	if( *oldptr == NULL ){ 
+		/* 
+		 * if the old pointer is null, 
+		 * behave like 'malloc' 
+ 		 * 
+		 */
+		return sp_malloc( newptr, sz );
+	}else if( (sz == 0 ) && (*oldptr != NULL) ){
+		/* 
+		 * if the old pointer is not null, 
+		 * and size is zero, behave like 'free' 
+		 * 
+		 */
+		return sp_free( oldptr );
+	}
+	
 	
 	return GC64_OK;
 }
@@ -258,7 +302,73 @@ extern int sp_realloc( __scratch void **newptr, __scratch void **oldptr,
  * EXTERN INT SP_FREE( __SCRATCH VOID **PTR )
  * 
  */
-extern int sp_free( __scratch void **ptr )
-{
+extern int sp_free( __scratch void **ptr ) {
+
+	/* vars */
+	int found		= 0;
+	uint64_t addr		= 0x00ll; 
+	struct gc64sp_t *sp	= NULL;
+	struct gc64entry_t *p	= NULL;
+	struct gc64entry_t *c	= NULL;
+	/* ---- */
+
+	if( *ptr == NULL ){ 
+		return GC64_OK;
+	}else if( __g_comp == NULL ){ 
+		return GC64_ERROR;
+	}
+
+	sp	= __g_comp->mem;
+	addr	= (uint64_t)(*ptr);
+
+	/* 
+	 * sanity check the address 
+	 * 
+	 */
+	if( 	(addr < sp->base_addr ) || 
+		(addr > (sp->base_addr+sp->tsize)) ){ 
+		/* 
+		 * address out of range 
+		 *
+	 	 */
+		return GC64_ERROR;
+	}
+
+	/* 
+	 * if we reach this point, the address is in 
+	 * reasonable range.
+	 * search for the entry that contains this block 
+	 * 
+	 */
+	c	= sp->start;
+	while( (c != NULL) && (found != 1) ){ 
+
+		if( 	(addr >= c->base_addr) && 
+			(addr <= (c->base_addr+c->size)) ) {
+			
+			/* found a matching entry */
+			found = 1;
+		}else{ 
+			p = c;
+			c = c->next;
+		}	
+	}
+
+	if( found == 1 ){ 
+		
+		/* 
+		 * found a good entry, remove it 
+		 * 
+		 */
+		if( p != NULL ){ 
+			p->next = c->next;
+		}
+
+		sp->used -= c->size;
+		sp->free += c->size;
+		free( c );
+		c = NULL;
+	}	
+
 	return GC64_OK;
 }

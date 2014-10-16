@@ -9,9 +9,13 @@
 #include <stdlib.h>
 #include "gc64-comp.h"
 
-
+#ifndef GC64_BASE_ADDR
 #define	GC64_BASE_ADDR		0x0000000080000000
+#endif
+
+#ifndef GC64_DEFAULT_SIZE
 #define	GC64_DEFAULT_SIZE	20000000
+#endif
 
 /* 
  * EXTERN INT GC64_SPAD_INIT( STRUCT GC64COMP_T *COMP )
