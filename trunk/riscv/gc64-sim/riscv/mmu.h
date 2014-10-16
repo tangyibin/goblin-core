@@ -10,6 +10,7 @@
 #include "config.h"
 #include "processor.h"
 #include "memtracer.h"
+#include "spad.h"
 #include <vector>
 
 // virtual memory configuration
@@ -109,6 +110,8 @@ public:
 
   void set_processor(processor_t* p) { proc = p; flush_tlb(); }
 
+  void init_scratchpad( size_t sz, uint64_t base_addr );
+  
   void flush_tlb();
   void flush_icache();
 
@@ -116,6 +119,7 @@ public:
 
 private:
   char* mem;
+  spad_t *spad;
   size_t memsz;
   processor_t* proc;
   memtracer_list_t tracer;
@@ -159,6 +163,7 @@ private:
   }
   
   friend class processor_t;
+  friend class spad_t;
 };
 
 #endif

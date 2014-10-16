@@ -85,6 +85,8 @@ public:
   void yield_load_reservation() { state.load_reservation = (reg_t)-1; }
   void update_histogram(size_t pc);
 
+  void init_scratchpad( size_t spad_size, uint64_t spad_base_addr );
+
   void register_insn(insn_desc_t);
   void register_extension(extension_t*);
 

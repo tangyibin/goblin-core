@@ -108,13 +108,16 @@ void sim_t::step(size_t n)
 
 bool sim_t::init_scratchpad()
 {
-	if( spad_size == 0 ){ 
-		/* scratchpad size is 0, do nothing */
-		return true;
-	}
+  if( spad_size == 0 ){ 
+    /* scratchpad size is 0, do nothing */
+    return true;
+  }
 
+  for (size_t i = 0; i < procs.size(); i++) {
+    procs[i].init_scratchpad(spad_size, spad_base_addr);
+  }
 
-	return true;
+  return true;
 }
 
 bool sim_t::running()

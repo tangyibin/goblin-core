@@ -25,7 +25,6 @@ public:
   void set_debug(bool value);
   void set_histogram(bool value);
   void set_procs_debug(bool value);
-  bool init_scratchpad();
   htif_isasim_t* get_htif() { return htif.get(); }
 
   // deliver an IPI to a specific processor
@@ -43,6 +42,9 @@ public:
 
   // initialize the scratchpad size
   void set_scratchpad_size( size_t spad ) { spad_size = spad; }
+
+  // initialize the scratchpad memory 
+  bool init_scratchpad();
 
   // read one of the system control registers
   reg_t get_scr(int which);
