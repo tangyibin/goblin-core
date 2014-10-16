@@ -55,12 +55,12 @@ static int __internal_spalloc( 	struct gc64sp_t *sp,
 		sp->used	+= sz;
 		sp->free	-= sz;
 
-	}else if( (tmp->base_addr+tmp->size+1+sz) < (sp->base_addr + sp->tsize) ){ 
+	}else if( (tmp->base_addr+tmp->size+GC64_BYTE_ALIGNMENT+sz) < (sp->base_addr + sp->tsize) ){ 
 		/*
 	 	 * we are not the first entry, but we can tack this on the end 
 		 *
 		 */
-		newbase		= tmp->base_addr + tmp->size + 1;	
+		newbase		= tmp->base_addr + tmp->size + GC64_BYTE_ALIGNMENT;	
 
 		ent->base_addr	= newbase;
 		ent->size	= sz;
@@ -89,8 +89,8 @@ static int __internal_spalloc( 	struct gc64sp_t *sp,
 			 * nxt
 			 *
 			 */
-			newbase	= tmp->base_addr+tmp->size+1;
-			if( (newbase+sz+1) <= nxt->base_addr ){ 
+			newbase	= tmp->base_addr+tmp->size+GC64_BYTE_ALIGNMENT;
+			if( (newbase+sz+GC64_BYTE_ALIGNMENT) <= nxt->base_addr ){ 
 				/* 
 			 	 * we have a valid slot 
 				 *
@@ -132,7 +132,7 @@ static int __internal_spalloc( 	struct gc64sp_t *sp,
 	 	 * allocation 
 		 *
 		 */
-		newbase		= tmp->base_addr + tmp->size + 1;
+		newbase		= tmp->base_addr + tmp->size + GC64_BYTE_ALIGNMENT;
 		
 		ent->base_addr	= newbase;
 		ent->size	= sz;
