@@ -12,6 +12,7 @@ mmu_t::mmu_t(char* _mem, size_t _memsz)
 
 mmu_t::~mmu_t()
 {
+  delete spad;
 }
 
 void mmu_t::flush_icache()
@@ -27,6 +28,12 @@ void mmu_t::flush_tlb()
   memset(tlb_store_tag, -1, sizeof(tlb_store_tag));
 
   flush_icache();
+}
+
+void mmu_t::init_scratchpad( size_t sz, uint64_t base_addr ){ 
+  
+  spad = new spad( sz, base_addr, 16 );
+
 }
 
 void* mmu_t::refill_tlb(reg_t addr, reg_t bytes, bool store, bool fetch)
