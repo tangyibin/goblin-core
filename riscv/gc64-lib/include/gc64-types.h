@@ -86,6 +86,7 @@ struct gc64comp_t{
  */
 #define	GC64_BYTE_ALIGNMENT 2
 
+#define GC64_PRINT_TRACE( s )	( printf( "GC64_TRACE: %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
 
 #ifdef __cplusplus
 }	/* EXTERN C */
