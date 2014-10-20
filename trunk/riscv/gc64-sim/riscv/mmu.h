@@ -146,6 +146,10 @@ private:
   {
 
     /* implement the scratchpad memory interface here */
+    /* -- check to see if we're in the scratchpad virtual address bounds
+     * -- if so, force the spad function to perform the load/store and return 
+     * -- its notion of physical address 
+     */
 
     reg_t idx = (addr >> PGSHIFT) % TLB_ENTRIES;
     reg_t expected_tag = addr >> PGSHIFT;

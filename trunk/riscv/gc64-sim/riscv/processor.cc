@@ -80,7 +80,7 @@ void state_t::reset()
 
 void processor_t::init_scratchpad( size_t spad_size, uint64_t spad_base_addr ){ 
   
-  mmu.init_scratchpad( spad_size, spad_base_addr );  
+  mmu->init_scratchpad( spad_size, spad_base_addr );  
 }
 
 void processor_t::set_debug(bool value)
