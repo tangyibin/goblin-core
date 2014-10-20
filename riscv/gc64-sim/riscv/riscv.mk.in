@@ -22,6 +22,7 @@ riscv_hdrs = \
 	dummy-rocc.h \
 	insn_template.h \
 	mulhi.h \
+        spad.h \
 
 riscv_precompiled_hdrs = \
 	insn_template.h \
@@ -38,6 +39,7 @@ riscv_srcs = \
 	extension.cc \
 	rocc.cc \
 	regnames.cc \
+        spad.cc \
 	$(riscv_gen_srcs) \
 
 riscv_test_srcs =

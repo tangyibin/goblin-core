@@ -20,7 +20,7 @@ spad_t::spad_t( size_t _spadsz, uint64_t _base_addr, size_t _align ) {
 	 * allocate the internal storage
 	 * 
 	 */
-	stor = malloc( spadsz );
+	stor = (char *)(malloc( spadsz ));
 }
 
 /* 
@@ -43,12 +43,13 @@ spad_value spad_t::load( uint64_t _addr, int *err ) {
 
 	/* vars */
 	uint64_t upper_addr	= base_addr + spadsz;
-	uint64_t phy		= (uint64_t)(&stor[0]);
 	uint64_t stride		= 0x00ll;
 	int elem		= 0x00;
-	spad_value val		= 0x00ll;
+	spad_value val;
 	uint64_t *tstor		= NULL;
 	/* ---- */
+
+	val.s_u64		= 0x00ll;
 
 	/* 
 	 * check the bounds of the address request
@@ -58,7 +59,7 @@ spad_value spad_t::load( uint64_t _addr, int *err ) {
 		(_addr > upper_addr) ){ 
 		
 		*err = SPAD_ADDR_BOUND;	
-		return 0x00ll;
+		return val;
 	} 
 
 	/* 
@@ -79,8 +80,8 @@ spad_value spad_t::load( uint64_t _addr, int *err ) {
 	 * belongs to them 
 	 *
  	 */
-	tstor	= (uint64_t *)(&(stor[elem]));
-	val	= (spad_val)(tstor[0]);
+	tstor		= (uint64_t *)(&(stor[elem]));
+	val.s_u64	= (uint64_t)(tstor[0]);
 
 	return val;
 }
@@ -103,7 +104,7 @@ void spad_t::store( spad_value value, uint64_t _addr, int *err ){
 		(_addr > upper_addr) ){ 
 
 		*err = SPAD_ADDR_BOUND;	
-		return 0x00ll;
+		return ;
 	} 
 }
 

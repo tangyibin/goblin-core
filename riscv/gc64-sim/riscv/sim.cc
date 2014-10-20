@@ -114,7 +114,7 @@ bool sim_t::init_scratchpad()
   }
 
   for (size_t i = 0; i < procs.size(); i++) {
-    procs[i].init_scratchpad(spad_size, spad_base_addr);
+    procs[i]->init_scratchpad(spad_size, spad_base_addr);
   }
 
   return true;

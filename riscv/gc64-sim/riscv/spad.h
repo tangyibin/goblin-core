@@ -10,7 +10,7 @@
 #define SPAD_OK			0
 #define	SPAD_ADDR_BOUND		-1
 
-// -- we define a base union type in order to avoir
+// -- we define a base union type in order to avoid
 // -- unnecessary data conversion for loads and stores
 union spad_value{ 
 	int8_t 		s_i8;
