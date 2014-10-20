@@ -1,4 +1,7 @@
 // See LICENSE for license details. 
+// Scratchpad Memory Extension
+// Originally Written by John Leidel: john.leidel@gmail.com
+// www.gc64.org
 
 #include "spad.h"
 #include <cstdlib>
@@ -33,6 +36,14 @@ spad_t::~spad_t() {
 		free( stor );
 		stor = NULL;
 	}
+}
+
+/* 
+ * spad_translate
+ * 
+ */
+void * spad_t::translate( uint64_t _addr, bool load, bool store ) { 
+	
 }
 
 /* 
