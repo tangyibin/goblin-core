@@ -16,15 +16,17 @@
  */
 __attribute__ ((constructor(0))) __attribute((__section__(".init.text"))) static void gc64_run_constructor( void );
 
+
 /* 
- * STATIC VOID GC64_RUN_CONSTRUCTOR
+ * EXTERN INT __GC64_INIT( VOID ) 
  * 
  * STAGE 1: INITIATE THE DATA STRUCTURE
  * STAGE 2: INITIATE THE SCRATCHPAD MEMORY STRUCTURE
  * STAGE 3: WALK THE OBEJCT FILE AND INSERT THE OBJECTS INTO SCRATCHPAD 
  *
  */
-static void 	gc64_run_constructor( void ) {
+extern int __gc64_init( void ){ 
+
 	/* VARS */
 	struct gc64comp_t *comp	= NULL;
 	/* ---- */
@@ -69,7 +71,24 @@ static void 	gc64_run_constructor( void ) {
 	 */
 	__g_comp	= comp;
 
-	printf( "constructor complete\n" );
+	return GC64_OK;
+}
+
+/* 
+ * STATIC VOID GC64_RUN_CONSTRUCTOR
+ * 
+ * STAGE 1: INITIATE THE DATA STRUCTURE
+ * STAGE 2: INITIATE THE SCRATCHPAD MEMORY STRUCTURE
+ * STAGE 3: WALK THE OBEJCT FILE AND INSERT THE OBJECTS INTO SCRATCHPAD 
+ *
+ */
+static void 	gc64_run_constructor( void ) {
+
+	/* 
+	 * execute the initializer 
+	 * 
+ 	 */
+	__gc64_init();
 }
 
 /* EOF */
