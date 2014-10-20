@@ -36,6 +36,7 @@ public:
 	size_t	get_size() { size_t tsize = spadsz; return tsize; }
 	size_t	get_alignment() { size_t talign = align; return talign; }
 	uint64_t get_base_addr() { uint64_t ba = base_addr; return ba; } 	 
+	void *translate( uint64_t _addr, bool load, bool store );
 
 	//-- PUBLIC MEMORY MODIFICATION FUNCTIONS
 	spad_value load( uint64_t _addr, int *err );
