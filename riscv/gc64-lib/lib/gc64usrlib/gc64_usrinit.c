@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "gc64-usr.h"
 
-
+struct gc64sp_t *__g_mem;
 
 /* 
  * EXTERN STRUCT GC64SP_T *__GC64_USERINIT( UINT64_T BASE_ADDR, UINT64_T TSIZE )

@@ -29,7 +29,7 @@ extern "C"
  * DATA 
  * 
  */
-struct gc64sp_t *__g_mem;
+extern struct gc64sp_t *__g_mem;
 
 /* 
  * 

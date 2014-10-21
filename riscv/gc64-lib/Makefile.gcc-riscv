@@ -29,8 +29,8 @@ INC := -I./include
 ARCH := 
 CFLAGS := $(ARCH) -O0 -Wall $(INC) -static
 LIBS := 
-#LDFLAGS := -ldl -Bsymbolic-functions
-LDFLAGS := 
+LDFLAGS := -ldl -Bsymbolic-functions
+#LDFLAGS := 
 ARFLAGS := rcs
 
 SRCEXT := c
