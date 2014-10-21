@@ -10,6 +10,15 @@
 #include <unistd.h>
 #include "gc64-comp.h"
 
+
+/* 
+ * FUNCTION PROTOTYPES
+ * 
+ */
+extern int gc64_comp_fptrs();
+
+struct gc64comp_t *__g_comp;
+
 /* 
  * EXTERN INT __GC64_INIT( VOID ) 
  * 
@@ -48,6 +57,10 @@ extern int __gc64_init(){
 	 */
 	comp->mem	= NULL;
 	comp->status	= 0x00ll;
+	
+	if( gc64_comp_fptrs() ){ 
+		return GC64_ERROR;
+	}
 
 	/*
 	 * STAGE 2: INIT THE SCRATCHPAD MEMORY STRUCTURE

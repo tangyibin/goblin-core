@@ -6,7 +6,7 @@
 #
 #
 
-CC := ~/riscv/bin/clang
+CC := ~/riscv/bin/riscv-gcc
 AR := ~/riscv/bin/riscv-ar
 PKGS := ...
 DOXYGEN=doxygen
@@ -26,8 +26,8 @@ USR_TARGET := lib$(USR_LIBNAME).a
 
 #-- build options
 INC := -I./include
-ARCH := -target riscv -mriscv=RV64IMAFD
-CFLAGS := $(ARCH) -O0 -Wall -Wpedantic $(INC)
+ARCH := 
+CFLAGS := $(ARCH) -O0 -Wall $(INC) -static
 LIBS := 
 #LDFLAGS := -ldl -Bsymbolic-functions
 LDFLAGS := 

@@ -74,8 +74,14 @@ struct gc64sp_t{
 	struct gc64entry_t *end;
 };
 
+/* -- gc64fptr_t */
+struct gc64fptr_t{
+	struct gc64sp_t (*mem_init)();
+};
+
 /* -- gc64comp_t */
 struct gc64comp_t{
+	struct gc64fptr_t fptr;
 	struct gc64sp_t *mem;
 	uint64_t status;	
 };

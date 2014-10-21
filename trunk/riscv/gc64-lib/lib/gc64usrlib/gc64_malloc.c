@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gc64-usr.h"
-#include "gc64-comp.h"
 
 
 /* 
@@ -167,6 +166,11 @@ extern int sp_malloc( __scratch void **ptr, size_t sz ){
 		return GC64_ERROR;
 	}
 
+	if( __g_mem == NULL ){ 
+		return GC64_ERROR;
+	}
+
+#if 0
 	if( __g_comp == NULL ){ 
 		return GC64_ERROR;
 	}
@@ -176,6 +180,8 @@ extern int sp_malloc( __scratch void **ptr, size_t sz ){
 	 * 
 	 */
 	sp = __g_comp->mem;
+#endif
+	sp = __g_mem;
 
 	/*
 	 * bounds check the size of the request
@@ -213,6 +219,10 @@ extern int sp_calloc( __scratch void **ptr, size_t nmemb, size_t sz ){
 		return GC64_ERROR;
 	}
 
+	if( __g_mem == NULL ){ 
+		return GC64_ERROR;
+	}
+#if 0
 	if( __g_comp == NULL ){ 
 		return GC64_ERROR;
 	}
@@ -222,6 +232,8 @@ extern int sp_calloc( __scratch void **ptr, size_t nmemb, size_t sz ){
 	 * 
 	 */
 	sp = __g_comp->mem;
+#endif
+	sp = __g_mem;
 
 	/*
 	 * bounds check the size of the request
@@ -274,6 +286,10 @@ extern int sp_realloc( __scratch void **newptr, __scratch void **oldptr,
 	/* vars */
 	/* ---- */
 
+	if( __g_mem == NULL ){ 
+		return GC64_ERROR;
+	}
+
 	/* 
 	 * check for legacy behavior
 	 * 
@@ -314,11 +330,19 @@ extern int sp_free( __scratch void **ptr ) {
 
 	if( *ptr == NULL ){ 
 		return GC64_OK;
-	}else if( __g_comp == NULL ){ 
+	}
+
+	if( __g_mem == NULL ){ 
+		return GC64_ERROR;
+	}
+#if 0
+	if( __g_comp == NULL ){ 
 		return GC64_ERROR;
 	}
 
 	sp	= __g_comp->mem;
+#endif
+	sp 	= __g_mem;
 	addr	= (uint64_t)(*ptr);
 
 	/* 
