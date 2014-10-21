@@ -31,7 +31,7 @@ void mmu_t::flush_tlb()
 }
 
 void mmu_t::init_scratchpad( size_t sz, uint64_t base_addr ){ 
-  
+
   spad = new spad_t( sz, base_addr, 16 );
 
 }

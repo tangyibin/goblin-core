@@ -111,6 +111,7 @@ public:
   void set_processor(processor_t* p) { proc = p; flush_tlb(); }
 
   void init_scratchpad( size_t sz, uint64_t base_addr );
+  spad_t *get_spad() { return this->spad; }
   
   void flush_tlb();
   void flush_icache();
@@ -145,11 +146,27 @@ private:
     __attribute__((always_inline))
   {
 
-    /* implement the scratchpad memory interface here */
+    /* -- begin scratchpad logic */
     /* -- check to see if we're in the scratchpad virtual address bounds
      * -- if so, force the spad function to perform the load/store and return 
      * -- its notion of physical address 
+     * -- 
+     * -- The scratchpad logic is bounded by a conditional test
+     * -- in order to provide the boot logic in HTIF the ability 
+     * -- to create and manage debug_mmu's without the need to 
+     * -- to handle scratchpad requests 
      */
+    if( spad != NULL ){ 
+    	reg_t  low	= (reg_t)(spad->get_base_addr());
+
+    	/* this ensure the memory operation doesn't spill outside the scratchpad */
+    	reg_t  high	= low + (reg_t)(spad->get_size()) - bytes;
+   
+    	if( (addr >= low) && (addr < high) ){
+		return spad->translate( (uint64_t)(addr), store, fetch );	
+    	}
+    }
+    /* -- end scratchpad logic */
 
     reg_t idx = (addr >> PGSHIFT) % TLB_ENTRIES;
     reg_t expected_tag = addr >> PGSHIFT;

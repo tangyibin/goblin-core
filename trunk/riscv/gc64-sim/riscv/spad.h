@@ -29,6 +29,7 @@ union spad_value{
 class spad_t
 {
 public: 
+	spad_t();
 	spad_t(size_t _spadsz, uint64_t _base_addr, size_t _align );
 	~spad_t();
 
@@ -36,11 +37,11 @@ public:
 	size_t	get_size() { size_t tsize = spadsz; return tsize; }
 	size_t	get_alignment() { size_t talign = align; return talign; }
 	uint64_t get_base_addr() { uint64_t ba = base_addr; return ba; } 	 
-	void *translate( uint64_t _addr, bool load, bool store );
+	void *translate( uint64_t _addr, bool store, bool fetch );
 
 	//-- PUBLIC MEMORY MODIFICATION FUNCTIONS
-	spad_value load( uint64_t _addr, int *err );
-	void store( spad_value value, uint64_t _addr, int *err );
+	//spad_value load( uint64_t _addr, int *err );
+	//void store( spad_value value, uint64_t _addr, int *err );
 
 private:
 	size_t spadsz;		//-- size of the scratchpad memory 
@@ -50,6 +51,7 @@ private:
 	char *stor;		//-- storage for the scratchpad backend 	
 
 	friend class processor_t;
+	friend class mmu_t;
 };
 
 
