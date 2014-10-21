@@ -6,7 +6,8 @@
 #
 #
 
-CC := /usr/bin/gcc
+#CC := /usr/bin/gcc
+CC := ~/riscv/bin/riscv-gcc
 PKGS := ...
 DOXYGEN=doxygen
 
@@ -26,9 +27,10 @@ USR_TARGET := lib$(USR_LIBNAME).so
 #-- build options
 INC := -I./include
 ARCH :=
-CFLAGS := $(ARCH) -O0 -fPIC -g -Wall -Wpedantic $(INC)
+CFLAGS := $(ARCH) -O0 -fPIC -g -Wall $(INC)
 LIBS := 
-LDFLAGS := -ldl -Bsymbolic-functions
+#LDFLAGS := -ldl -Bsymbolic-functions
+LDFLAGS :=
 ARFLAGS := rcs
 
 SRCEXT := c

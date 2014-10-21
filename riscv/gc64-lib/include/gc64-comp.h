@@ -31,7 +31,7 @@ extern "C"
  * GLOBALS
  * 
  */
-struct gc64comp_t *__g_comp;
+extern struct gc64comp_t *__g_comp;
 
 
 /* 
