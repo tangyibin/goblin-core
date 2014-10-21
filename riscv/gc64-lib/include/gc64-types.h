@@ -76,13 +76,17 @@ struct gc64sp_t{
 
 /* -- gc64fptr_t */
 struct gc64fptr_t{
-	struct gc64sp_t (*mem_init)();
+	struct gc64sp_t *(*mem_init)(uint64_t,uint64_t);
+	void (*mem_free)();
 };
 
 /* -- gc64comp_t */
 struct gc64comp_t{
 	struct gc64fptr_t fptr;
 	struct gc64sp_t *mem;
+	
+	void *usrlib_handle;
+	
 	uint64_t status;	
 };
 
@@ -90,7 +94,9 @@ struct gc64comp_t{
  * MACROS
  * 
  */
-#define	GC64_BYTE_ALIGNMENT 2
+#define	GC64_BYTE_ALIGNMENT 		2
+#define GC64_DEFAULT_SPAD_SIZE		20000000
+#define GC64_DEFAULT_SPAD_BASE_ADDR	0x0000000080000000
 
 #define GC64_PRINT_TRACE( s )	( printf( "GC64_TRACE: %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
 

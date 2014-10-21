@@ -15,16 +15,57 @@
  * FUNCTION PROTOTYPES
  * 
  */
-extern int gc64_comp_fptrs();
+extern int gc64_comp_fptrs(struct gc64comp_t *comp);
+extern int gc64_env(struct gc64comp_t *comp);
 
+/* 
+ * GLOBALS//EXTERNS
+ * 
+ */
 struct gc64comp_t *__g_comp;
+
+/* 
+ * STATIC INT GC64_INIT_SPAD()
+ * 
+ * INIT'S THE SCRATCHPAD MEMORY INTERFACE
+ *
+ */
+static int gc64_init_spad(struct gc64comp_t *comp) {
+
+	/* vars */
+	struct gc64sp_t *(*mem_init)(uint64_t,uint64_t) 	= comp->fptr.mem_init;
+	struct gc64sp_t *lmem					= NULL;
+	/* ---- */
+
+	/* 
+	 * init the spad handlers
+	 * 
+	 */	
+	lmem	= (*mem_init)(	GC64_DEFAULT_SPAD_BASE_ADDR, 
+				GC64_DEFAULT_SPAD_SIZE );
+
+	if( lmem == NULL ){ 
+		return GC64_ERROR;
+	}
+
+	/* 
+	 * init our local copy of the pointer
+	 * 
+	 */
+	comp->mem	= lmem;
+
+	return GC64_OK;
+}
+
 
 /* 
  * EXTERN INT __GC64_INIT( VOID ) 
  * 
  * STAGE 1: INITIATE THE DATA STRUCTURE
- * STAGE 2: INITIATE THE SCRATCHPAD MEMORY STRUCTURE
- * STAGE 3: WALK THE OBEJCT FILE AND INSERT THE OBJECTS INTO SCRATCHPAD 
+ * STAGE 2: WALK THE ENV VARS
+ * STAGE 3: LOAD ALL THE FUNCTION POINTERS 
+ * STAGE 4: INITIATE THE SCRATCHPAD MEMORY STRUCTURE
+ * STAGE 5: WALK THE OBEJCT FILE AND INSERT THE OBJECTS INTO SCRATCHPAD 
  *
  */
 extern int __gc64_init(){ 
@@ -55,20 +96,39 @@ extern int __gc64_init(){
 	 * STAGE 1: INIT THE DATA STRUCTURE 
 	 * 
 	 */
-	comp->mem	= NULL;
-	comp->status	= 0x00ll;
-	
-	if( gc64_comp_fptrs() ){ 
+	comp->mem		= NULL;
+	comp->status		= 0x00ll;
+
+	/* -- function pointers */
+	comp->fptr.mem_init	= NULL;
+	comp->fptr.mem_free	= NULL;
+
+	/* 
+	 * STAGE 2: WALK THE ENV VARS
+	 *
+	 */
+	if( gc64_env( comp ) != GC64_OK ){ 
+		return GC64_ERROR;
+	}
+
+	/* 
+	 * STAGE 3: LOAD ALL THE FUNCTION POINTERS FROM OTHER OBJECTS
+	 *
+ 	 */	
+	if( gc64_comp_fptrs(comp) != GC64_OK ){ 
 		return GC64_ERROR;
 	}
 
 	/*
-	 * STAGE 2: INIT THE SCRATCHPAD MEMORY STRUCTURE
+	 * STAGE 4: INIT THE SCRATCHPAD MEMORY STRUCTURE
 	 * 
 	 */
+	if( gc64_init_spad(comp) != GC64_OK ){ 
+		return GC64_ERROR;
+	} 
 
 	/* 
-	 * STAGE 3: WALK THE DATA STRUCTURE AND INSERT THE SCRATCHPAD OBJECTS
+	 * STAGE 5: WALK THE DATA STRUCTURE AND INSERT THE SCRATCHPAD OBJECTS
 	 * 
 	 */
 

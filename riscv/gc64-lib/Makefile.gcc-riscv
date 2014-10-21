@@ -25,7 +25,7 @@ USR_BUILDDIR := .usr_build
 USR_TARGET := lib$(USR_LIBNAME).a
 
 #-- build options
-INC := -I./include
+INC := -I./include -I/usr/include
 ARCH := 
 CFLAGS := $(ARCH) -O0 -Wall $(INC) -static
 LIBS := 
