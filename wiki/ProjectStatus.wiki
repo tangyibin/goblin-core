@@ -16,8 +16,8 @@ This list is not all encompassing, rather, it provides a somewhat clear directio
   * *Addressing* : Added physical address format [PhysicalMemoryFormat].  Working on virtual address format and virtual to physical translation.
   * *Documentation* : HMC-Sim API documentation has been posted.  See the [Documentation] page. 
   * *Memory Interface Simulator* : The MEMSim or memory interface simulation library is being developed in order to explore various options and algorithms associated with coalescing memory requests at the various memory request boundaries in order to make better use of the available HMC bandwidth.  
-* *RISC-V Simulator* : Initial port of RISC-V now has scratchpad memory support.  Adding additional instructions as soon as we close on the preferred format.  
-* *LLVM* : Currently porting LLVM 3.3-RISC-V modifications up to LLVM 3.5
+  * *RISC-V Simulator* : Initial port of RISC-V now has scratchpad memory support.  Adding additional instructions as soon as we close on the preferred format.  
+  * *LLVM* : Currently porting LLVM 3.3-RISC-V modifications up to LLVM 3.5
 
 = In Planning = 
   * *Compiler/Optimizer* : Given its deliberate ability to port to new targets, I've chosen LLVM as our candidate compiler+optimizer suite.  I hope to work with Preston Briggs from UWash on his efforts to build Tera MTA-C style parallelization optimizations into LLVM.  More info on this can be found here: https://sites.google.com/site/parallelizationforllvm/loop-transforms
