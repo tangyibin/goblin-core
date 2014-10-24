@@ -29,7 +29,8 @@ INC := -I./include -I$(RISCV)/riscv-linux/include -I$(RISCV)/riscv-linux/sys-inc
 ARCH := 
 CFLAGS := $(ARCH) -O0 -Wall $(INC) -static
 LIBS := 
-LDFLAGS := -L$(RISCV)/riscv-linux/lib -ldl -Bsymbolic-functions
+COMP_LDFLAGS := -L$(RISCV)/riscv-linux/lib -ldl -Bsymbolic-functions
+USR_LDFLAGS := -L$(RISCV)/riscv-linux/lib -Bsymbolic-functions
 ARFLAGS := rcs
 
 SRCEXT := c

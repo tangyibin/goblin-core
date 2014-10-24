@@ -7,7 +7,6 @@
 #
 
 CC := ~/riscv/bin/riscv-gcc
-#CC := /home/jleidel/riscv/riscv-elf/bin/gcc
 LD := ~/riscv/bin/riscv-ld
 AR := ~/riscv/bin/riscv-ar
 PKGS := ...
@@ -31,7 +30,8 @@ INC := -I./include -I$(RISCV)/riscv-linux/include -I$(RISCV)/riscv-linux/sys-inc
 ARCH := 
 CFLAGS := $(ARCH) -O0 -Wall $(INC) -fPIC
 LIBS := 
-LDFLAGS := -L$(RISCV)/riscv-linux/lib -ldl -Bsymbolic-functions
+COMP_LDFLAGS := -L$(RISCV)/riscv-linux/lib -ldl -Bsymbolic-functions
+USR_LDFLAGS := -L$(RISCV)/riscv-linux/lib -Bsymbolic-functions
 ARFLAGS := rcs
 
 SRCEXT := c
@@ -48,16 +48,14 @@ COMP_DEPS := $(COMP_OBJECTS:.o=.deps)
 USR_DEPS := $(USR_OBJECTS:.o=.deps)
 
 $(COMP_TARGET): $(COMP_OBJECTS)
-	#@echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(COMP_TARGET) $(COMP_OBJECTS) 
-	@echo " Linking... $(COMP_TARGET)"; $(LD) -shared -o $(COMP_TARGET) $(COMP_OBJECTS) $(LDFLAGS)
+	@echo " Linking... $(COMP_TARGET)"; $(LD) -shared -o $(COMP_TARGET) $(COMP_OBJECTS) $(COMP_LDFLAGS)
 
 $(COMP_BUILDDIR)/%.o: $(COMP_SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(COMP_BUILDDIR)
 	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
 
 $(USR_TARGET): $(USR_OBJECTS)
-	#@echo " Linking... $(USR_TARGET)"; $(AR) $(ARFLAGS) $(USR_TARGET) $(USR_OBJECTS) 
-	@echo " Linking... $(USR_TARGET)"; $(LD) -shared -o $(USR_TARGET) $(USR_OBJECTS) $(LDFLAGS)
+	@echo " Linking... $(USR_TARGET)"; $(LD) -shared -o $(USR_TARGET) $(USR_OBJECTS) $(USR_LDFLAGS)
 
 $(USR_BUILDDIR)/%.o: $(USR_SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(USR_BUILDDIR)
