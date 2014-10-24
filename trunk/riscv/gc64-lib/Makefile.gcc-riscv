@@ -25,12 +25,11 @@ USR_BUILDDIR := .usr_build
 USR_TARGET := lib$(USR_LIBNAME).a
 
 #-- build options
-INC := -I./include -I/usr/include
+INC := -I./include -I$(RISCV)/riscv-linux/include -I$(RISCV)/riscv-linux/sys-include
 ARCH := 
 CFLAGS := $(ARCH) -O0 -Wall $(INC) -static
 LIBS := 
-LDFLAGS := -ldl -Bsymbolic-functions
-#LDFLAGS := 
+LDFLAGS := -L$(RISCV)/riscv-linux/lib -ldl -Bsymbolic-functions
 ARFLAGS := rcs
 
 SRCEXT := c
