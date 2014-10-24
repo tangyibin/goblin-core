@@ -30,11 +30,15 @@ extern int __gc64_init();
  */
 static void 	gc64_run_constructor( void ) {
 
+	GC64_PRINT_TRACE( "ENTERING CONSTRUCTOR\n" );
+
 	/* 
 	 * execute the initializer 
 	 * 
  	 */
 	__gc64_init();
+
+	GC64_PRINT_TRACE( "EXITING CONSTRUCTOR\n" );
 }
 
 /* EOF */
