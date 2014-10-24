@@ -6,8 +6,8 @@
 #
 #
 
-#CC := /usr/bin/gcc
-CC := ~/riscv/bin/riscv-gcc
+CC := /usr/bin/gcc
+#CC := ~/riscv/bin/riscv-gcc
 PKGS := ...
 DOXYGEN=doxygen
 
