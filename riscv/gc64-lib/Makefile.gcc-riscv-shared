@@ -1,0 +1,73 @@
+#!/bin/sh
+#
+# Makefile.gc64
+#
+# GC64 out of tree system makefile
+#
+#
+
+CC := ~/riscv/bin/riscv-gcc
+#CC := /home/jleidel/riscv/riscv-elf/bin/gcc
+LD := ~/riscv/bin/riscv-ld
+AR := ~/riscv/bin/riscv-ar
+PKGS := ...
+DOXYGEN=doxygen
+
+#--gc64complib
+COMP_LIBNAME := gc64comp
+COMP_SRCDIR := lib/gc64complib
+COMP_BUILDDIR := .comp_build
+COMP_TARGET := lib$(COMP_LIBNAME).so
+
+
+#--gc64usrlib
+USR_LIBNAME := gc64usr
+USR_SRCDIR := lib/gc64usrlib
+USR_BUILDDIR := .usr_build
+USR_TARGET := lib$(USR_LIBNAME).so
+
+#-- build options
+INC := -I./include -I$(RISCV)/riscv-linux/include -I$(RISCV)/riscv-linux/sys-include
+ARCH := 
+CFLAGS := $(ARCH) -O0 -Wall $(INC) -fPIC
+LIBS := 
+LDFLAGS := -L$(RISCV)/riscv-linux/lib -ldl -Bsymbolic-functions
+ARFLAGS := rcs
+
+SRCEXT := c
+
+COMP_SOURCES := $(shell find $(COMP_SRCDIR) -type f -name *.$(SRCEXT))
+COMP_OBJECTS := $(patsubst $(COMP_SRCDIR)/%,$(COMP_BUILDDIR)/%,$(COMP_SOURCES:.$(SRCEXT)=.o))
+
+USR_SOURCES := $(shell find $(USR_SRCDIR) -type f -name *.$(SRCEXT))
+USR_OBJECTS := $(patsubst $(USR_SRCDIR)/%,$(USR_BUILDDIR)/%,$(USR_SOURCES:.$(SRCEXT)=.o))
+
+all: $(COMP_TARGET) $(USR_TARGET)
+
+COMP_DEPS := $(COMP_OBJECTS:.o=.deps)
+USR_DEPS := $(USR_OBJECTS:.o=.deps)
+
+$(COMP_TARGET): $(COMP_OBJECTS)
+	#@echo " Linking... $(COMP_TARGET)"; $(AR) $(ARFLAGS) $(COMP_TARGET) $(COMP_OBJECTS) 
+	@echo " Linking... $(COMP_TARGET)"; $(LD) -shared -o $(COMP_TARGET) $(COMP_OBJECTS) $(LDFLAGS)
+
+$(COMP_BUILDDIR)/%.o: $(COMP_SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(COMP_BUILDDIR)
+	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
+
+$(USR_TARGET): $(USR_OBJECTS)
+	#@echo " Linking... $(USR_TARGET)"; $(AR) $(ARFLAGS) $(USR_TARGET) $(USR_OBJECTS) 
+	@echo " Linking... $(USR_TARGET)"; $(LD) -shared -o $(USR_TARGET) $(USR_OBJECTS) $(LDFLAGS)
+
+$(USR_BUILDDIR)/%.o: $(USR_SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(USR_BUILDDIR)
+	@echo " CC $<"; $(CC) $(CFLAGS) -MD -MF $(@:.o=.deps) -c -o $@ $<
+
+clean: 
+	@echo " Cleaning"; rm -Rf $(COMP_BUILDDIR) $(USR_BUILDDIR) $(COMP_TARGET) $(USR_TARGET)
+
+-include $(COMP_DEPS)
+-include $(USR_DEPS)
+
+
+.PHONY: clean
