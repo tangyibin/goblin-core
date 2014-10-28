@@ -6,23 +6,26 @@
 #
 #
 
-CC := ~/riscv/bin/riscv-gcc
-LD := ~/riscv/bin/riscv-ld
-AR := ~/riscv/bin/riscv-ar
+#CC := ~/riscv/bin/riscv-gcc
+#LD := ~/riscv/bin/riscv-ld
+#AR := ~/riscv/bin/riscv-ar
+CC := ~/riscv/bin/riscv-linux-gcc
+LD := ~/riscv/bin/riscv-linux-ld
+AR := ~/riscv/bin/riscv-linux-ar
 PKGS := ...
 DOXYGEN=doxygen
 
 #--gc64complib
 COMP_LIBNAME := gc64comp
 COMP_SRCDIR := lib/gc64complib
-COMP_BUILDDIR := .comp_build
+COMP_BUILDDIR := .comp_build_shared
 COMP_TARGET := lib$(COMP_LIBNAME).so
 
 
 #--gc64usrlib
 USR_LIBNAME := gc64usr
 USR_SRCDIR := lib/gc64usrlib
-USR_BUILDDIR := .usr_build
+USR_BUILDDIR := .usr_build_shared
 USR_TARGET := lib$(USR_LIBNAME).so
 
 #-- build options

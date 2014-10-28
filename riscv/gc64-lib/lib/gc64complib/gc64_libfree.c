@@ -29,7 +29,6 @@ extern void __gc64_libfree(){
 	(*mem_free)();
 	__g_comp->mem = NULL;
 
-
 	/* -- free the dlopen'd handles */
 	if( __g_comp->usrlib_handle != NULL ){ 
 		dlclose( __g_comp->usrlib_handle );

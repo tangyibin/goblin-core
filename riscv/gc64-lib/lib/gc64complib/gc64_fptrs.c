@@ -19,14 +19,14 @@
  * 
  */
 static int gc64_load_usrlib( struct gc64comp_t *comp){
-
 	/* vars */
 	void *handle		= NULL;
 	char *lib		= NULL;
 	char *error		= NULL;
-	char default_lib[]	= "libgc64usr.a";
+	char default_lib[]	= "/home/jleidel/riscv/gc64/libgc64usr.so";
 	/* ---- */
 
+	return GC64_OK;
 	/* 
 	 * decide which library to use
 	 * 
@@ -38,6 +38,8 @@ static int gc64_load_usrlib( struct gc64comp_t *comp){
 	handle = dlopen( lib, RTLD_NOW|RTLD_NODELETE );
 
 	if( handle == NULL ){ 
+		printf( "Error : could not open default_lib : %s\n", default_lib );
+		printf( "Error : %s\n", dlerror() );
 		return GC64_ERROR;
 	}
 
@@ -62,7 +64,6 @@ static int gc64_load_usrlib( struct gc64comp_t *comp){
 	if( (error = dlerror()) != NULL ){ 
 		return GC64_ERROR;
 	}	
-	
 	
 	return GC64_OK;
 }
