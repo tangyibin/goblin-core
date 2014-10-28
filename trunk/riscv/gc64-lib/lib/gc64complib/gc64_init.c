@@ -18,6 +18,9 @@
 extern int gc64_comp_fptrs(struct gc64comp_t *comp);
 extern int gc64_env(struct gc64comp_t *comp);
 
+/* -- temporary fix */
+extern struct gc64sp_t *__gc64_usrinit( uint64_t base, uint64_t size );
+
 /* 
  * GLOBALS//EXTERNS
  * 
@@ -41,8 +44,11 @@ static int gc64_init_spad(struct gc64comp_t *comp) {
 	 * init the spad handlers
 	 * 
 	 */	
+	#if 0
 	lmem	= (*mem_init)(	GC64_DEFAULT_SPAD_BASE_ADDR, 
 				GC64_DEFAULT_SPAD_SIZE );
+	#endif
+	lmem	= __gc64_usrinit( GC64_DEFAULT_SPAD_BASE_ADDR, GC64_DEFAULT_SPAD_SIZE );
 
 	if( lmem == NULL ){ 
 		return GC64_ERROR;
@@ -92,10 +98,13 @@ extern int __gc64_init(){
 		}
 	}
 
+	printf( "__GC64_INIT()\n" );
+
 	/* 
 	 * STAGE 1: INIT THE DATA STRUCTURE 
 	 * 
 	 */
+	printf( "...STAGE1\n" );
 	comp->mem		= NULL;
 	comp->status		= 0x00ll;
 
@@ -107,6 +116,7 @@ extern int __gc64_init(){
 	 * STAGE 2: WALK THE ENV VARS
 	 *
 	 */
+	printf( "...STAGE2\n" );
 	if( gc64_env( comp ) != GC64_OK ){ 
 		return GC64_ERROR;
 	}
@@ -115,6 +125,7 @@ extern int __gc64_init(){
 	 * STAGE 3: LOAD ALL THE FUNCTION POINTERS FROM OTHER OBJECTS
 	 *
  	 */	
+	printf( "...STAGE3\n" );
 	if( gc64_comp_fptrs(comp) != GC64_OK ){ 
 		return GC64_ERROR;
 	}
@@ -123,6 +134,7 @@ extern int __gc64_init(){
 	 * STAGE 4: INIT THE SCRATCHPAD MEMORY STRUCTURE
 	 * 
 	 */
+	printf( "...STAGE4\n" );
 	if( gc64_init_spad(comp) != GC64_OK ){ 
 		return GC64_ERROR;
 	} 
@@ -131,6 +143,8 @@ extern int __gc64_init(){
 	 * STAGE 5: WALK THE DATA STRUCTURE AND INSERT THE SCRATCHPAD OBJECTS
 	 * 
 	 */
+	printf( "...STAGE5\n" );
+
 
 	/* 
 	 * set the global to the new structure

@@ -6,8 +6,10 @@
 #
 #
 
-CC := ~/riscv/bin/riscv-gcc
-AR := ~/riscv/bin/riscv-ar
+#CC := ~/riscv/bin/riscv-gcc
+#AR := ~/riscv/bin/riscv-ar
+CC := ~/riscv/bin/riscv-linux-gcc
+AR := ~/riscv/bin/riscv-linux-ar
 PKGS := ...
 DOXYGEN=doxygen
 
