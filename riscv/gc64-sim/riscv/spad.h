@@ -39,10 +39,6 @@ public:
 	uint64_t get_base_addr() { uint64_t ba = base_addr; return ba; } 	 
 	void *translate( uint64_t _addr, bool store, bool fetch );
 
-	//-- PUBLIC MEMORY MODIFICATION FUNCTIONS
-	//spad_value load( uint64_t _addr, int *err );
-	//void store( spad_value value, uint64_t _addr, int *err );
-
 private:
 	size_t spadsz;		//-- size of the scratchpad memory 
 	size_t align;		//-- alignment restrictions in bytes 
