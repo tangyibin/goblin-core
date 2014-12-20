@@ -21,6 +21,8 @@ extern void __gc64_libfree(){
 	void (*mem_free)() = __g_comp->fptr.mem_free;
 	/* ---- */
 
+	GC64_TRACE_FUNC_ENTRY(__g_comp);
+
 	/* 
 	 * free all the internal contents
 	 * 
@@ -34,6 +36,8 @@ extern void __gc64_libfree(){
 		dlclose( __g_comp->usrlib_handle );
 		__g_comp->usrlib_handle = NULL;
 	}
+
+	GC64_TRACE_FUNC_EXIT(__g_comp);
 
 	free( __g_comp );
 	__g_comp = NULL;

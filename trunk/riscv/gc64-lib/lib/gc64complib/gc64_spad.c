@@ -29,6 +29,8 @@ extern int gc64_spad_init( struct gc64comp_t *comp ){
 		return -1;
 	}
 
+	GC64_TRACE_FUNC_ENTRY(comp);
+
 	if( comp->mem != NULL ){ 
 		return -1;
 	}	
@@ -54,6 +56,8 @@ extern int gc64_spad_init( struct gc64comp_t *comp ){
 	comp->mem->start	= NULL;
 	comp->mem->end		= NULL;
 	
+
+	GC64_TRACE_FUNC_EXIT(comp);
 
 	return 0;
 }
