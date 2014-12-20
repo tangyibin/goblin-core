@@ -107,6 +107,8 @@ extern int __gc64_init(){
 	printf( "...STAGE1\n" );
 	comp->mem		= NULL;
 	comp->status		= 0x00ll;
+	comp->trace		= 0x00ll;
+	comp->usr_trace		= 0x00ll;
 
 	/* -- function pointers */
 	comp->fptr.mem_init	= NULL;

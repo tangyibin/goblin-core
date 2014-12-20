@@ -88,6 +88,8 @@ struct gc64comp_t{
 	void *usrlib_handle;
 	
 	uint64_t status;	
+	uint64_t trace;
+	uint64_t usr_trace;
 };
 
 /*
