@@ -26,6 +26,8 @@ static int gc64_load_usrlib( struct gc64comp_t *comp){
 	char default_lib[]	= "/home/jleidel/riscv/gc64/libgc64usr.so";
 	/* ---- */
 
+	GC64_TRACE_FUNC_ENTRY(comp);
+
 	return GC64_OK;
 	/* 
 	 * decide which library to use
@@ -65,6 +67,7 @@ static int gc64_load_usrlib( struct gc64comp_t *comp){
 		return GC64_ERROR;
 	}	
 	
+	GC64_TRACE_FUNC_EXIT(comp);
 	return GC64_OK;
 }
 
@@ -79,11 +82,13 @@ extern int gc64_comp_fptrs(struct gc64comp_t *comp) {
 	if( comp == NULL ){ 
 		return GC64_ERROR;
 	}
+	GC64_TRACE_FUNC_ENTRY(comp);
 
 	if( gc64_load_usrlib(comp) != 0 ){ 
 		return GC64_ERROR;
 	}
 
+	GC64_TRACE_FUNC_EXIT(comp);
 	return GC64_OK;
 }
 

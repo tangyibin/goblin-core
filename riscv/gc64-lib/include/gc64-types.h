@@ -100,7 +100,32 @@ struct gc64comp_t{
 #define GC64_DEFAULT_SPAD_SIZE		20000000
 #define GC64_DEFAULT_SPAD_BASE_ADDR	0x0000000080000000
 
-#define GC64_PRINT_TRACE( s )	( printf( "GC64_TRACE: %s:%d : %s\n", __FUNCTION__, __LINE__, s ) )
+/* 
+ * TRACE MACROS
+ *
+ */
+#define GC64_TRACE_FUNC			0x00000000000000001
+
+#define GC64_PRINT_TRACE( s )		{ printf( "GC64_TRACE: %s:%d : %s\n", __FUNCTION__, __LINE__, s ); }
+#define GC64_TRACE_FUNC_ENTRY( c )	{									\
+						if( c != NULL ){						\
+							if( (c->trace & 0x00000000000000001) > 0 ){		\
+								fprintf( stdout, "GC64_FUNC_ENTRY: %s:%s\n",	\
+									__FILE__,				\
+									__FUNCTION__ );				\
+							}							\
+						}								\
+					}
+
+#define GC64_TRACE_FUNC_EXIT( c )	{									\
+						if( c != NULL ){						\
+							if( (c->trace & 0x00000000000000001) > 0 ){		\
+								fprintf( stdout, "GC64_FUNC_EXIT: %s:%s\n",	\
+									__FILE__,				\
+									__FUNCTION__ );				\
+							}							\
+						}								\
+					}
 
 #ifdef __cplusplus
 }	/* EXTERN C */
