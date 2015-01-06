@@ -229,3 +229,4 @@ Alternatively, you can interpret the HMC-Sim trace files manually.  The trace fi
 = References =
   * HMC Spec: http://www.hybridmemorycube.org/
   * Texas Tech Sponsoring Lab: http://discl.cs.ttu.edu/doku.php
+  * LSPP 14' paper describing HMC-Sim: http://discl.cs.ttu.edu/lib/exe/fetch.php?media=wiki:papers:lspp14_jleidel_camera_ready_ieee.pdf
