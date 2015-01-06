@@ -20,12 +20,41 @@ Given that the HMC-Sim source is built as a stand-alone library, it is not neces
 $> svn checkout http://goblin-core.googlecode.com/svn/trunk/sim/hmc_sim hmc_sim
 }}}  
 
-This places the source code in the "hmc_sim" directory.  
+This places the source code in the "hmc_sim" directory.  If you desire to update your source tree (as the development progresses), you may do so using the following commands: 
+{{{
+$> cd hmc_sim 
+$> svn update
+}}}
+
+At this point, you will be required to rebuild the source.    
 
 = Building the Source =
 
+Once you have checked out the source, you will need to build it.  By default, the source is built with the GCC compiler.  The source is known to also build with the LLVM/Clang compiler as well.  The project source tree contains all the necessary makefiles to build the source.  If you have "gcc" in your default PATH environment variable, you may build the source as follows: 
+{{{
+$> cd hmc_sim 
+$> make
+}}}
+This should build "libhmcsim.a".  
+
+If you desire to modify the build environment (such as modifying the compiler, the compiler options, etc), you'll need to edit the "Makefile.inc" file.  This contains all the configurable build options.  If you seek to simply test the library, you shouldn't need to modify any of these options.  
+
 = Building the Sample Code =
+
+The source code contains a number of sample driver applications that represent the following memory I/O scenarios: 
+  * Simple : a simple test driver that can be used as an example
+  * Stream : a test driver that mimics the Stream Triad memory I/O pattern
+  * GUPS : a test driver that mimics the HPCC RandomAccess I/O pattern
+  * HMC_Physrand : a test driver that executes a simple randomized I/O pattern
+  * Several other test directories exist, but are not yet completed
+
+The tests can be built using the top-level makefile as follows (from the hmc_sim directory): 
+{{{
+$> make test
+}}}
 
 = Executing the Tests =
 
 = References =
+  * HMC Spec: http://www.hybridmemorycube.org/
+  * Texas Tech Sponsoring Lab: http://discl.cs.ttu.edu/doku.php
