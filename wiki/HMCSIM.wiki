@@ -213,7 +213,17 @@ $> ./tools/hmctognuplot -F /path/to/tracefile.out
 
 The tool will produce gnuplot output files for each of [bank_conflict, rd64, wr64, xbar_latency, xbar_rqst_stall}.out.  
 
-
+Alternatively, you can interpret the HMC-Sim trace files manually.  The trace files are formatted using the following specification (values in chevrons are integers): 
+  * HMCSIM_TRACE : <CLOCK_TICK> : XBAR_LATENCY : <device>:<link>:<quad>:<vault> ; a request was entered on a link that was not co-located with the destination quad.
+  * HMCSIM_TRACE : <CLOCK_TICK> : BANK_CONFLICT : <device>:<quad>:<vault>:<bank>:<address> ; a bank conflict occurred on the target address
+  * HMCSIM_TRACE : <CLOCK_TICK> : RD<SIZE> : <device>:<quad>:<vault>:<bank>:<address>:<packet_size_in_flits> ; read memory request
+  * HMCSIM_TRACE : <CLOCK_TICK> : WR<SIZE> : <device>:<quad>:<vault>:<bank>:<address>:<packet_size_in_flits> ; write memory request
+  * HMCSIM_TRACE : <CLOCK_TICK> : XBAR_RQST_STALL : <device>:<quad>:<vault>:<slot> ; Crossbar request stall 
+  * HMCSIM_TRACE : <CLOCK_TICK> : VAULT_RQST_STALL : <device>:<quad>:<vault>:<slot> ; Vault fifo/queue request stall 
+  * HMCSIM_TRACE : <CLOCK_TICK> : XBAR_RSP_STALL : <device>:<quad>:<vault>:<slot> ; Crossbar response queue/fifo stall 
+  * HMCSIM_TRACE : <CLOCK_TICK> : ROUTE_RQST_STALL : <device>:<src>:<dest>:<link>:<slot> ; Route request stall 
+  * HMCSIM_TRACE : <CLOCK_TICK> : ROUTE_RSP_STALL : <device>:<src>:<dest>:<link>:<slot> ; Route response stall
+  * HMCSIM_TRACE : <CLOCK_TICK> : UNDEF_STALL : <device>:<quad>:<vault>:<slot> ; undefined event
 
 = References =
   * HMC Spec: http://www.hybridmemorycube.org/
