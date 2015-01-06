@@ -192,6 +192,8 @@ HMCSIM_TRACE : 0 : WR64 : 0:2:0:5:0x00000002b6ba5600:5
 HMCSIM_TRACE : 1 : RD64 : 0:0:0:0:0x00000002e602a000:1
 }}}
 
+*!WARNING!*  Executing the other test scripts may generate very large trace files (GB's) and require significant CPU time.  This is also true for the other test drivers as well (Gups, Stream, etc).  
+
 = Interpreting Trace Files =
 
 
