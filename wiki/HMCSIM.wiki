@@ -28,6 +28,10 @@ $> svn update
 
 At this point, you will be required to rebuild the source.    
 
+= Tested Platforms =
+  * Mac OSX 13.4.0: gcc 4.2.1; clang 3.3
+  * OpenSuSE (linux) 13.1; kernel 3.11.10-25-desktop; gcc 4.8.1
+
 = Building the Source =
 
 Once you have checked out the source, you will need to build it.  By default, the source is built with the GCC compiler.  The source is known to also build with the LLVM/Clang compiler as well.  The project source tree contains all the necessary makefiles to build the source.  If you have "gcc" in your default PATH environment variable, you may build the source as follows: 
@@ -54,6 +58,142 @@ $> make test
 }}}
 
 = Executing the Tests =
+
+Each of the test drivers may accept special options depending upon the complexity of the respective code.  Each of the tests build an executable in the respective source directory.  For example, the "simple" executable is built and located in: 
+{{{
+~/hmc_sim/test/simple/
+}}}
+Each of the executables accepts the standard "-h" option that displays the known command line options.  For example, executing "sample -h" displays the following: 
+{{{
+$> ./simple -h
+usage : ./simple -bcdhlnqvx
+ -b <num_banks>
+ -c <capacity>
+ -d <num_drams>
+ -h ...print help
+ -l <num_links>
+ -n <num_devs>
+ -q <queue_depth>
+ -v <num_vaults>
+ -x <xbar_depth>
+}}}
+
+Notice that the options specify the device parameters associated with one or more HMC devices.  Remember, the HMC-Sim internal API logic will perform the necessary checks to ensure that the requested hardware configuration is valid.  As such, if you specify an invalid configuration, the application will likely fail.  An example of successful test options resembles the following: 
+{{{
+$> ./simple -b 8 -c 2 -d 20 -l 4 -n 1 -q 64 -v 16 -x 128
+SUCCESS : INITALIZED HMCSIM
+SUCCESS : SET MAXIMUM BLOCK SIZE
+SUCCESS : FREE'D HMCSIM
+}}}  
+
+A second example would be to execute the "hmc_physrand" test application.  This application test includes a series of driver scripts that drive common configurations.  These scripts were also utilized in the tests for the aforementioned LSPP '14 paper.  These scripts are located in: 
+{{{
+~/hmc_sim/test/hmc_physrand/scripts/
+}}}  
+
+The "physrand" executable is located at: 
+{{{
+~/hmc_sim/test/hmc_physrand/physrand
+}}}
+
+A simple example of executing an hmc-physrand test would resemble the following: 
+{{{
+$> cd hmc_sim/test/hmc_physrand/scripts/
+$> sh ./smalltest.sh
+SUCCESS : INITALIZED HMCSIM
+SUCCESS : INITIALIZED LINK 0
+SUCCESS : INITIALIZED LINK 1
+SUCCESS : INITIALIZED LINK 2
+SUCCESS : INITIALIZED LINK 3
+SUCCESS : INITALIZED MAX BLOCK SIZE
+SUCCESS : INITIALIZED TRACE HANDLERS
+SUCCESS : ZERO'D PACKETS
+SUCCESS : BEGINNING TEST EXECUTION
+....sending packets
+...building read request for device : 0
+...sending packet : base addr=0x000000038b8c9000
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building write request for device : 0
+...sending packet : base addr=0x0000001eb9856800
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building write request for device : 0
+...sending packet : base addr=0x00000005e58f0400
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building write request for device : 0
+...sending packet : base addr=0x000000021052a200
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building write request for device : 0
+...sending packet : base addr=0x0000001da11b2600
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building read request for device : 0
+...sending packet : base addr=0x0000001bfd8bce00
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building read request for device : 0
+...sending packet : base addr=0x00000002e602a000
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building write request for device : 0
+...sending packet : base addr=0x0000000ab6ba5600
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building read request for device : 0
+...sending packet : base addr=0x0000000283ab3e00
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...building write request for device : 0
+...sending packet : base addr=0x000000125fe7a000
+SUCCESS : PACKET WAS SUCCESSFULLY SENT
+...reading responses
+STALLED : STALLED IN RECEIVING
+SIGNALING HMCSIM TO CLOCK
+ALL_SENT = 10
+ALL_RECV = 0
+...reading responses
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+STALLED : STALLED IN RECEIVING
+SIGNALING HMCSIM TO CLOCK
+ALL_SENT = 10
+ALL_RECV = 9
+...reading responses
+SUCCESS : RECEIVED A SUCCESSFUL PACKET RESPONSE
+STALLED : STALLED IN RECEIVING
+SIGNALING HMCSIM TO CLOCK
+ALL_SENT = 10
+ALL_RECV = 10
+SUCCESS : FREE'D HMCSIM
+}}}
+
+You'll notice that the directory now contains an HMC-Sim trace file as well.  The file (physrand.out) should resemble the following: 
+{{{
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:0:1:2:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:0:2:2:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:1:0:0:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:1:1:2:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:1:2:0:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:2:0:0:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:2:1:0:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:3:0:2:0
+HMCSIM_TRACE : 0 : XBAR_LATENCY : 0:3:1:2:0
+HMCSIM_TRACE : 0 : BANK_CONFLICT : 0:0:0:0:0x00000002e602a000
+HMCSIM_TRACE : 0 : RD64 : 0:0:0:4:0x000000038b8c9000:1
+HMCSIM_TRACE : 0 : WR64 : 0:0:0:2:0x00000002b9856800:5
+HMCSIM_TRACE : 0 : WR64 : 0:0:0:0:0x000000025fe7a000:5
+HMCSIM_TRACE : 0 : WR64 : 0:0:0:1:0x00000001e58f0400:5
+HMCSIM_TRACE : 0 : WR64 : 0:2:0:1:0x00000001a11b2600:5
+HMCSIM_TRACE : 0 : RD64 : 0:2:0:7:0x0000000283ab3e00:1
+HMCSIM_TRACE : 0 : RD64 : 0:2:0:3:0x00000003fd8bce00:1
+HMCSIM_TRACE : 0 : WR64 : 0:2:0:0:0x000000021052a200:5
+HMCSIM_TRACE : 0 : WR64 : 0:2:0:5:0x00000002b6ba5600:5
+HMCSIM_TRACE : 1 : RD64 : 0:0:0:0:0x00000002e602a000:1
+}}}
+
+= Interpreting Trace Files =
+
 
 = References =
   * HMC Spec: http://www.hybridmemorycube.org/
