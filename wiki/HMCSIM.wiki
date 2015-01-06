@@ -1,0 +1,31 @@
+#summary Downloading, building and using the HMC-SIM simulation framework.
+#labels Phase-Design,Phase-QA
+
+= Introduction =
+
+This page is dedicated to those interested in building and using the HMC simulation framework as developed in conjunction with the GC64 architecture research effort.  This guide assumes basic knowledge of Unix/Linux command line prompts, building software in the aforementioned environment and the HMC devices themselves.  If you're looking for an introduction into the HMC device, we would suggest reading our publication from LSPP 2014 [http://discl.cs.ttu.edu/lib/exe/fetch.php?media=wiki:papers:lspp14_jleidel_camera_ready_ieee.pdf].  
+
+Any bugs encountered in the following process can be submitted here: 
+https://code.google.com/p/goblin-core/issues/list  
+
+= HMC-Sim Overview =
+The HMC simulation framework (or HMC-Sim) is designed to provide a very low-level simulation environment for any of the supported HMC 1.0 configurations.  We currently do not support HMC version 2.0 device configurations.  The simulation environment operates on individual clock boundaries in order to provide sample flow control between registered device buffers, FIFOs and link boundaries.  In this manner, the tracing output can display individual stall events on minute hardware components.  HMC-Sim also supports the basic ability to chain multiple HMC devices together and instantiate the HMC routing protocol using multiple CUB id's.  At this time, HMC-Sim supports all the current 1.0 packet types, including the JTAG interfaces.  
+
+The simulation framework is implemented as a standard C library with an associated API.  It is designed to be embedded in larger simulation frameworks (such as the GC64 simulator), or operated using driver applications.  The sample applications provided with the source code are examples of the latter.  They essentially instantiate basic HMC packets for typical memory I/O (reads, writes, etc).    
+
+= Retrieving the Source =
+
+Given that the HMC-Sim source is built as a stand-alone library, it is not necessary to retrieve the entire GC64 source tree.  Checking out the code requires the use of Subversion (SVN).  The code can be checked out read-only using the following command: 
+{{{
+$> svn checkout http://goblin-core.googlecode.com/svn/trunk/sim/hmc_sim hmc_sim
+}}}  
+
+This places the source code in the "hmc_sim" directory.  
+
+= Building the Source =
+
+= Building the Sample Code =
+
+= Executing the Tests =
+
+= References =
