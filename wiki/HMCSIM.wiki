@@ -196,6 +196,24 @@ HMCSIM_TRACE : 1 : RD64 : 0:0:0:0:0x00000002e602a000:1
 
 = Interpreting Trace Files =
 
+The HMC-Sim built-in tracing mechanisms can generate rather large and rather verbose trace files.  This is very deliberate in order to expose all the necessary internal data held within the framework.  As such, we provide a tool that may translate the trace files to GNUPlot data scripts.  This tool (hmctognuplot) is located in the following directory: 
+{{{
+~/hmc_sim/tools/
+}}}
+
+It can be built from the top-level hmc_sim directory using the following command: 
+{{{
+$> make tools
+}}}
+
+It can be executed using the following: 
+{{{
+$> ./tools/hmctognuplot -F /path/to/tracefile.out
+}}}
+
+The tool will produce gnuplot output files for each of [bank_conflict, rd64, wr64, xbar_latency, xbar_rqst_stall}.out.  
+
+
 
 = References =
   * HMC Spec: http://www.hybridmemorycube.org/
