@@ -27,8 +27,8 @@ extern "C"
  * 
  */
 #ifndef __SCRATCH
-#define __scratch __attribute__((address_space(200))) 
-#define __SCRATCH __attribute__((address_space(200))) 
+#define __scratch __attribute__((address_space(0xFFFF0F))) 
+#define __SCRATCH __attribute__((address_space(0xFFFF0F))) 
 #endif	/* __SCRATCH */
 
 
