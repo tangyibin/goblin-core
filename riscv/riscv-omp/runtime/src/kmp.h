@@ -2940,11 +2940,11 @@ extern void __kmp_balanced_affinity( int tid, int team_size );
 
 extern void __kmp_get_hierarchy(kmp_uint32 nproc, kmp_bstate_t *thr_bar);
 
-#if KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM)
+#if KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM || KMP_ARCH_RISCV)
 
 extern int __kmp_futex_determine_capable( void );
 
-#endif // KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM)
+#endif // KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM || KMP_ARCH_RISCV)
 
 extern void __kmp_gtid_set_specific( int gtid );
 extern int  __kmp_gtid_get_specific( void );
@@ -3039,7 +3039,7 @@ enum fork_context_e
 extern int __kmp_fork_call( ident_t *loc, int gtid, enum fork_context_e fork_context,
   kmp_int32 argc, microtask_t microtask, launch_t invoker,
 /* TODO: revert workaround for Intel(R) 64 tracker #96 */
-#if (KMP_ARCH_ARM || KMP_ARCH_X86_64) && KMP_OS_LINUX
+#if (KMP_ARCH_ARM || KMP_ARCH_X86_64 || KMP_ARCH_RISCV) && KMP_OS_LINUX
                              va_list *ap
 #else
                              va_list ap

@@ -224,7 +224,7 @@ xexpand(KMP_API_NAME_GOMP_ORDERED_END)(void)
 // (IA-32 architecture) or 64-bit signed (Intel(R) 64).
 //
 
-#if KMP_ARCH_X86 || KMP_ARCH_ARM
+#if KMP_ARCH_X86 || KMP_ARCH_ARM || KMP_ARCH_RISCV
 # define KMP_DISPATCH_INIT              __kmp_aux_dispatch_init_4
 # define KMP_DISPATCH_FINI_CHUNK        __kmp_aux_dispatch_fini_chunk_4
 # define KMP_DISPATCH_NEXT              __kmpc_dispatch_next_4
@@ -288,7 +288,7 @@ __kmp_GOMP_fork_call(ident_t *loc, int gtid, microtask_t wrapper, int argc,...)
     va_start(ap, argc);
 
     rc = __kmp_fork_call(loc, gtid, fork_context_gnu, argc, wrapper, __kmp_invoke_task_func,
-#if (KMP_ARCH_X86_64 || KMP_ARCH_ARM) && KMP_OS_LINUX
+#if (KMP_ARCH_X86_64 || KMP_ARCH_ARM || KMP_ARCH_RISCV) && KMP_OS_LINUX
       &ap
 #else
       ap
