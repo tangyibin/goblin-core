@@ -36,7 +36,7 @@
 
 #if KMP_OS_LINUX && !KMP_OS_CNK
 # include <sys/sysinfo.h>
-# if KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM)
+# if KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM || KMP_ARCH_RISCV)
 // We should really include <futex.h>, but that causes compatibility problems on different
 // Linux* OS distributions that either require that you include (or break when you try to include)
 // <pci/types.h>.
@@ -125,7 +125,7 @@ __kmp_print_cond( char *buffer, kmp_cond_align_t *cond )
  * stone forever.
  */
 
-#  if KMP_ARCH_X86 || KMP_ARCH_ARM
+#  if KMP_ARCH_X86 || KMP_ARCH_ARM || KMP_ARCH_RISCV
 #   ifndef __NR_sched_setaffinity
 #    define __NR_sched_setaffinity  241
 #   elif __NR_sched_setaffinity != 241
@@ -460,7 +460,7 @@ __kmp_change_thread_affinity_mask( int gtid, kmp_affin_mask_t *new_mask,
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
 
-#if KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM) && !KMP_OS_CNK
+#if KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM || KMP_ARCH_RISCV) && !KMP_OS_CNK
 
 int
 __kmp_futex_determine_capable()
@@ -477,7 +477,7 @@ __kmp_futex_determine_capable()
     return retval;
 }
 
-#endif // KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM) && !KMP_OS_CNK
+#endif // KMP_OS_LINUX && (KMP_ARCH_X86 || KMP_ARCH_X86_64 || KMP_ARCH_ARM || KMP_ARCH_RISCV) && !KMP_OS_CNK
 
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
