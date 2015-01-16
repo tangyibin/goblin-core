@@ -1366,6 +1366,17 @@ L_kmp_1_exit:
 // -----------------------------------------------------------------------
 #endif /* KMP_ARCH_X86_64 */
 
+#if KMP_ARCH_RISCV
+    .data
+    .comm .gomp_critical_user_,32,8
+    .data
+    .align 4
+    .global __kmp_unnamed_critical_addr
+__kmp_unnamed_critical_addr:
+    .4byte .gomp_critical_user_
+    .size __kmp_unnamed_critical_addr,4
+#endif /* KMP_ARCH_RISCV */
+
 #if KMP_ARCH_ARM
     .data
     .comm .gomp_critical_user_,32,8

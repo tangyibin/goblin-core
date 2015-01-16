@@ -630,6 +630,9 @@ ifneq "$(os)" "win"
     else ifeq "$(arch)" "ppc64" 
         z_Linux_asm$(obj) : \
 			cpp-flags += -D KMP_ARCH_PPC64		    
+    else ifeq "$(arch)" "riscv" 
+        z_Linux_asm$(obj) : \
+			cpp-flags += -D KMP_ARCH_RISCV
     else
         z_Linux_asm$(obj) : \
 		    cpp-flags += -D KMP_ARCH_X86$(if $(filter 32e,$(arch)),_64)
