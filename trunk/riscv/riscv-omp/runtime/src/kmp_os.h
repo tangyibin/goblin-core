@@ -143,9 +143,12 @@
 # elif defined __powerpc64__
 #  undef KMP_ARCH_PPC64
 #  define KMP_ARCH_PPC64 1
-# elif defined(__riscv) || defined(__riscv__)
-#  undef KMP_ARCH_RISCV
-#  define KMP_ARCH_RISCV 1
+# elif defined __riscv
+#  undef KMP_ARCH_RISCV32
+#  define KMP_ARCH_RISCV32 1
+# elif defined __riscv64
+#  undef KMP_ARCH_RISCV64
+#  define KMP_ARCH_RISCV64 1
 # endif
 #endif
 
@@ -185,20 +188,19 @@
 # define KMP_ARCH_ARM 1
 #endif
 
-#if defined(KMP_ARCH_RISCV)
-# if defined __riscv64
-#  undef KMP_ARCH_RISCV64
-#  define KMP_ARCH_RISCV64 1
-# elif defined __riscv32
-#  undef KMP_ARCH_RISCV32
-#  define KMP_ARCH_RISCV32 1
-# else
-#  error Unknown or unsupported RISCV-derived architecture
-# endif
-# if defined __riscv_atomic
+#if defined(KMP_ARCH_RISCV32)
+# undef KMP_ARCH_RISCV
+# define KMP_ARCH_RISCV 1
+#endif
+
+#if defined(KMP_ARCH_RISCV64)
+# undef KMP_ARCH_RISCV
+# define KMP_ARCH_RISCV 1
+#endif
+
+#if defined __riscv_atomic
 #  undef KMP_ARCH_RISCV_ATOMIC
 #  define KMP_ARCH_RISCV_ATOMIC 1
-# endif
 #endif
 
 #if (1 != KMP_ARCH_X86 + KMP_ARCH_X86_64 + KMP_ARCH_ARM + KMP_ARCH_PPC64 + KMP_ARCH_RISCV)
