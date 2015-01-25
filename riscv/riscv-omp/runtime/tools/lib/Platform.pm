@@ -52,6 +52,8 @@ sub canon_arch($) {
             $arch = "arm";
         } elsif ( $arch =~ m{\Appc64} ) {
         	$arch = "ppc64";            
+        } elsif ( $arch =~ m{\Ariscv(?:v7\D*)?\z} ) {
+            $arch = "riscv";
         } else {
             $arch = undef;
         }; # if
@@ -64,6 +66,7 @@ sub canon_arch($) {
         "32"  => "IA-32 architecture",
         "32e" => "Intel(R) 64",
         "arm" => "ARM",
+        "riscv" => "RISCV",
     );
 
     sub legal_arch($) {
@@ -82,6 +85,7 @@ sub canon_arch($) {
         "32e" => "intel64",
         "64"  => "ia64",
         "arm" => "arm",
+        "riscv" => "riscv",
     );
 
     sub arch_opt($) {
@@ -163,6 +167,8 @@ sub target_options() {
         $_host_arch = "arm";
     } elsif ( $hardware_platform eq "ppc64" ) {
         $_host_arch = "ppc64";
+    } elsif ( $hardware_platform eq "riscv" ) {
+        $_host_arch = "riscv";
     } else {
         die "Unsupported host hardware platform: \"$hardware_platform\"; stopped";
     }; # if
