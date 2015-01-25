@@ -49,7 +49,7 @@ include(FindPerl) # Standard cmake module to check for Perl
 
 # Build Configuration
 set(os_possible_values          lin mac win mic)
-set(arch_possible_values        32e 32 arm ppc64)
+set(arch_possible_values        32e 32 arm ppc64 riscv)
 set(build_type_possible_values  release debug relwithdebinfo)
 set(omp_version_possible_values 40 30)
 set(lib_type_possible_values    normal profile stubs)
@@ -74,9 +74,9 @@ endif()
 # set to default architecture if the user did not specify an architecture explicitly
 if(NOT arch)	
 	if("${CMAKE_SIZEOF_VOID_P}" STREQUAL "4")
-    	set(arch           32          CACHE STRING "The architecture to build for (32e/32/arm/ppc64).  32e is Intel(R) 64 architecture, 32 is IA-32 architecture")
+    	set(arch           32          CACHE STRING "The architecture to build for (32e/32/arm/ppc64/riscv).  32e is Intel(R) 64 architecture, 32 is IA-32 architecture")
 	else()
-    	set(arch           32e         CACHE STRING "The architecture to build for (32e/32/arm/ppc64).  32e is Intel(R) 64 architecture, 32 is IA-32 architecture")
+    	set(arch           32e         CACHE STRING "The architecture to build for (32e/32/arm/ppc64/riscv).  32e is Intel(R) 64 architecture, 32 is IA-32 architecture")
 	endif()
 endif()
 
@@ -174,6 +174,7 @@ set(IA32 FALSE)
 set(INTEL64 FALSE)
 set(ARM FALSE)
 set(PPC64 FALSE)
+set(RISCV FALSE)
 if("${arch}" STREQUAL "32")      # IA-32 architecture
     set(IA32 TRUE)
 elseif("${arch}" STREQUAL "32e") # Intel(R) 64 architecture
@@ -182,6 +183,8 @@ elseif("${arch}" STREQUAL "arm") # ARM architecture
     set(ARM TRUE)
 elseif("${arch}" STREQUAL "ppc64") # PPC64 architecture
     set(PPC64 TRUE)
+elseif("${arch}" STREQUAL "riscv") # RISCV architecture
+    set(RISCV TRUE)
 endif()
 
 # Set some flags based on build_type
@@ -653,6 +656,8 @@ elseif(${IA32})
     set_source_files_properties(${src_dir}/z_Linux_asm.s PROPERTIES COMPILE_DEFINITIONS "KMP_ARCH_X86")
 elseif(${PPC64})
 	set_source_files_properties(${src_dir}/z_Linux_asm.s PROPERTIES COMPILE_DEFINITIONS "KMP_ARCH_PPC64")
+elseif(${RISCV})
+	set_source_files_properties(${src_dir}/z_Linux_asm.s PROPERTIES COMPILE_DEFINITIONS "KMP_ARCH_RISCV")
 endif()
 
 if(${WINDOWS})
