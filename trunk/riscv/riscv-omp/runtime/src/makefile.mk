@@ -1470,6 +1470,10 @@ ifneq "$(filter %-dyna win-%,$(os)-$(LINK_TYPE))" ""
             td_exp += libc.so.6
             td_exp += ld64.so.1
         endif
+        ifeq "$(arch)" "riscv"
+            td_exp += libc.so.6
+            td_exp += ld-linux-riscv.so.3
+        endif
         ifeq "$(std_cpp_lib)" "1"
             td_exp += libstdc++.so.6
         endif
