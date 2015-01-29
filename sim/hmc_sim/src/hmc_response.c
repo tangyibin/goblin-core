@@ -45,7 +45,7 @@ extern int	hmcsim_decode_rsp_cmd(	hmc_response_t rsp_cmd, uint8_t *cmd )
 			break;
 	} 
 
-	return 0;
+	return HMC_OK;
 }
 
 /* ----------------------------------------------------- HMCSIM_DECODE_MEMRESPONSE */
@@ -230,7 +230,7 @@ extern int	hmcsim_decode_memresponse( 	struct hmcsim_t *hmc,
 	tmp32	= 0x00000000;
 	
 
-	return 0;
+	return HMC_OK;
 }
 
 /* EOF */
