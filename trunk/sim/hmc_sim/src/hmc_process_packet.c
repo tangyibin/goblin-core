@@ -1086,7 +1086,7 @@ step4_vr:
 		hmcsim_decode_rsp_cmd( rsp_cmd, &(tmp8) );
 
 		/* -- packet head */
-		rsp_head	|= (rsp_cmd & 0x3F); 
+		rsp_head	|= (tmp8 & 0x3F);
 		rsp_head	|= (rsp_len<<8);
 		rsp_head	|= (rsp_len<<11);
 		rsp_head	|= (rsp_tag<<15);
