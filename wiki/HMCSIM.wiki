@@ -50,6 +50,7 @@ The source code contains a number of sample driver applications that represent t
   * Stream : a test driver that mimics the Stream Triad memory I/O pattern
   * GUPS : a test driver that mimics the HPCC RandomAccess I/O pattern
   * HMC_Physrand : a test driver that executes a simple randomized I/O pattern
+  * Decode_Physrand : the same test as HMC_Physrand, but exhibits how to decode response packets 
   * Several other test directories exist, but are not yet completed
 
 The tests can be built using the top-level makefile as follows (from the hmc_sim directory): 
