@@ -42,6 +42,7 @@ extern int	hmcsim_decode_rsp_cmd(	hmc_response_t rsp_cmd, uint8_t *cmd )
 			*cmd = 0x00;
 			break;
 		default:
+			*cmd = 0x00;
 			break;
 	} 
 
@@ -125,6 +126,7 @@ extern int	hmcsim_decode_memresponse( 	struct hmcsim_t *hmc,
 			*type	= RSP_ERROR;
 			break;
 		default:
+			printf( "response type failure\n" );
 			return -1;
 			break;
 	}	
@@ -143,7 +145,7 @@ extern int	hmcsim_decode_memresponse( 	struct hmcsim_t *hmc,
 	 * tag field
 	 * 
 	 */
-	tmp16	= (uint16_t)( (tmp64 & 0x7FA000) >> 15);
+	tmp16	= (uint16_t)( (tmp64 & 0xFF8000) >> 15);
 	*tag	= tmp16;
 	tmp16	= 0x0000;
 

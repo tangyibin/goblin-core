@@ -13,6 +13,8 @@
 #include <string.h>
 #include "hmc_sim.h"
 
+/* ----------------------------------------------------- FUNCTION PROTOTYPES */
+extern int      hmcsim_util_zero_packet( struct hmc_queue_t *queue );
 
 /* ----------------------------------------------------- HMCSIM_RECV */
 /* 
@@ -78,14 +80,6 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 					(uint64_t)&(hmc->devs[dev].xbar[link].xbar_rsp[cur]) );
 #endif
 
-#if 0
-		if( hmc->devs[dev].xbar[link].xbar_rsp[cur].valid == HMC_RQST_VALID ){
-			//printf( "VALID:dev:link:xbar_rsp_slot == %d:%d:%d\n", dev,link,cur );
-		}else{ 
-			//printf( "INVALID:dev:link:xbar_rsp_slot == %d:%d:%d\n", dev,link,cur );
-		}
-#endif
-
 		if( hmc->devs[dev].xbar[link].xbar_rsp[cur].valid == HMC_RQST_VALID ){
 #ifdef HMC_DEBUG
 			HMCSIM_PRINT_INT_TRACE( "FOUND A VALID RESPONSE PACKET AT SLOT", cur );
@@ -111,10 +105,9 @@ extern int	hmcsim_recv( struct hmcsim_t *hmc, uint32_t dev, uint32_t link, uint6
 	/* -- else, pull the response and clear the queue entry */
 	for( i=0; i<HMC_MAX_UQ_PACKET; i++ ){
 		packet[i]	= hmc->devs[dev].xbar[link].xbar_rsp[target].packet[i];
-		hmc->devs[dev].xbar[link].xbar_rsp[target].packet[i] = 0x00l;
 	}
 
-	hmc->devs[dev].xbar[link].xbar_rsp[target].valid = HMC_RQST_INVALID;
+	hmcsim_util_zero_packet( &(hmc->devs[dev].xbar[link].xbar_rsp[target]) );
 
 	return 0;
 }
