@@ -4,7 +4,6 @@
 #define _RISCV_MMU_H
 
 #include "decode.h"
-#include "icache.h"
 #include "trap.h"
 #include "common.h"
 #include "config.h"
@@ -74,10 +73,12 @@ public:
   store_func(uint32)
   store_func(uint64)
 
+  static const reg_t ICACHE_ENTRIES = 1024;
+
   inline size_t icache_index(reg_t addr)
   {
     // for instruction sizes != 4, this hash still works but is suboptimal
-    return (addr / 4) % ICACHE_SIZE;
+    return (addr / 4) % ICACHE_ENTRIES;
   }
 
   // load instruction from memory at aligned address.
@@ -88,7 +89,8 @@ public:
     if (likely(entry->tag == addr))
       return entry;
 
-    char* iaddr = (char*)translate(addr, 2, false, true);
+    bool rvc = false; // set this dynamically once RVC is re-implemented
+    char* iaddr = (char*)translate(addr, rvc ? 2 : 4, false, true);
     insn_bits_t insn = *(uint16_t*)iaddr;
 
     if (unlikely(insn_length(insn) == 2)) {
@@ -140,7 +142,7 @@ private:
   memtracer_list_t tracer;
 
   // implement an instruction cache for simulator performance
-  icache_entry_t icache[ICACHE_SIZE];
+  icache_entry_t icache[ICACHE_ENTRIES];
 
   // implement a TLB for simulator performance
   static const reg_t TLB_ENTRIES = 256;
@@ -166,7 +168,9 @@ private:
     void* data = tlb_data[idx] + addr;
 
     if (unlikely(addr & (bytes-1)))
-      store ? throw trap_store_address_misaligned(addr) : throw trap_load_address_misaligned(addr);
+      store ? throw trap_store_address_misaligned(addr) :
+      fetch ? throw trap_instruction_address_misaligned(addr) :
+      throw trap_load_address_misaligned(addr);
 
     if (likely(tag == expected_tag))
       return data;
