@@ -80,6 +80,21 @@ Data Intensive Scalable Computing Laboratory \\ % Course
 
 \subsection{RISC-V ISA Requirements}
 
+The GC64 RISC-V extension functions as both a core RISC-V architectural extension and an extension to the standard 64-bit RISC-V IMAFD specification.  The following minimum architectural extensions are required to utilize GC64.  
+
+\begin{itemize}
+\item \textbf{RV64I}:  GC64 requires 64-bit addressing at minimum.  The RV32I memory model is supported as a result.  However, given the use of HMC devices, we require the use of at least 64-bit addressing (and addressing arithmetic).  
+\item \textbf{M-Extension}:  GC64 requires the integer multiplication and division for the purpose of efficiently performing address manipulation.  
+\item \textbf{A-Extension}:
+\end{itemize}
+
+The following architectural extensions are support in the GC64 tasking model.  They are herein named as optional extensions.  
+
+\begin{itemize}
+\item \textbf{F-Extension}:  By default, the GC64 task context definition supports the storage of the single precision floating point register values.  If the F-extension is not present, these values are ignored.  
+\item \textbf{D-Extension}: By default, the GC64 task context definition supports the storage of the double precision floating point register values.  If the D-extension is not present, these values are ignored.  
+\end{itemize}
+
 \subsection{RISC-V SoC Architecture}
 
 %----------------------------------------------------------------------------------------
@@ -89,6 +104,12 @@ Data Intensive Scalable Computing Laboratory \\ % Course
 
 \subsection{GC64 RISC-V Nomenclature}
 \subsection{GC64 Register State}
+\subsection{Integer Load/Store Instructions}
+\subsection{Single-Precision Load/Store Instructions}
+\subsection{Double-Precision Load/Store Instructions}
+\subsection{Concurrency Instructions}
+\subsection{Task Control Instructions}
+\subsection{Supervisor Instructions}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -97,8 +118,19 @@ Data Intensive Scalable Computing Laboratory \\ % Course
 
 \subsection{Overview}
 
+\subsection{Task Context}
+
+\subsection{Task Queuing}
+
 %----------------------------------------------------------------------------------------
 %	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{GC64 Instruction Set Listings}
+
+\framebox[15ex][s]{foobar}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5
 %----------------------------------------------------------------------------------------
 \section{History and Acknowledgements}
 
