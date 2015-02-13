@@ -10,8 +10,8 @@ The following list denotes RISC-V ISA Extensions.  Our extension assumes the use
 Format: Instruction: Mnemonic : Description
   * Scatter : _scatter Ra, Rb, Rt_ : Scatter Memory Instruction
   * Gather : _gather Rt, Ra, Rb_ : Gather Memory Instruction
-  * Task Spawn : _spawn Ra_ : Spawn a task using the task context at Ra 
-  * Task Join : _join Rt_ : Join the task using the context at Rt
+  * Task Spawn : _spawn Rt,Ra_ : Spawn a task using the task context at Ra and return the status in Rt
+  * Task Join : _join Rt, Ra_ : Join the task using the context at Ra and return the status in Rt
   * Instruction Wait : _iwait Rt_ : Pend the current task until register at index Rt clears its hazard
   * Future Wait : _future Ra, Rt_ : Pend the current task Ra iterations until memory at address Rt is changed
   * Context Switch : _peg_ : Force a context switch of the current task 
