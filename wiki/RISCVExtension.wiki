@@ -22,3 +22,4 @@ Format: Instruction: Mnemonic : Description
   * Store-Modify Before: _stmb Ra,Rb,Rt_ : Add Rt to Ra and store the value at Ra to Rt. Rt+=Rb; Rt=store(Ra)
   * Get TaskID : _gettask Rt, tctx_ : Retrieve the task ID value and write the contents to Rt
   * Set TaskID: _settask Ra, tctx_ : Set the task ID to Ra
+  * Get Gconst : _getgconst Rt, gconst : Retrieve the GC64 constant register value
