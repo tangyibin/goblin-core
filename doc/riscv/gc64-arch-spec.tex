@@ -114,6 +114,13 @@ The GC64 extension adds a register, \emph{tctx}, to the list of user-visible reg
 \framebox[\textwidth][c]{TCTX}
 \end{center}
 
+The GC64 extension adds a task ID register, \emph{tid}, to the list of user-visible registers.  The \emph{tid} register contains an unsigned 64bit value that represents the task ID currently loaded in the respective task unit.  The \emph{tid} registers can be read from a single user-privileged instruction, \emph{gettid}.  
+
+\begin{center}
+\makebox[\textwidth][s]{63 0}
+\framebox[\textwidth][c]{TID}
+\end{center}
+
 The GC64 extension also adds a configuration register, \emph{gconst} that is user-visible.  The \emph{gconst} register is an unsigned 64bit register that contains the configuration parameters for the containing task unit and GC64 processor.  The \emph{gconst} register can only be read.  It cannot be written to.  It can only be read via the \emph{getgconst} instruction.  The \emph{gconst} register contains the following fields.  
 
 \begin{center}
