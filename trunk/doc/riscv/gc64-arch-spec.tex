@@ -159,6 +159,9 @@ The GC64 extension contains a single supervisor register.  This register is cont
 \end{center}
 
 \subsubsection{Machine-State Registers}
+
+The GC64 extension contains a single machine-state register.  This register, known as the \emph{gcount} register, is not directly readable or writable from any instructions.  Its value is similar in function to a traditional performance counter register.  Any time an instruction is retired through the pipeline, this value is incremented.  The increment value is dependent upon the cost of the retired instruction.  Once this counter reaches its maximum value as defined by the internal architecture state, the encountering task unit is forced to context switch and thus permit another task unit to execute.  The only method the user-privileged code has to indirectly access this register state is the \emph{peg} instruction.  The \emph{peg} instruction explicitly sets this register to its maximum value, thus forcing a context switch event.    
+
 \subsection{Integer Load/Store Instructions}
 \subsection{Single-Precision Load/Store Instructions}
 \subsection{Double-Precision Load/Store Instructions}
