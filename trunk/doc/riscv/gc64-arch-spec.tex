@@ -150,6 +150,14 @@ TC & [63:56] & 8 & Task Units per Task Processor \\
 \end{center}
 
 \subsubsection{Supervisor Registers}
+
+The GC64 extension contains a single supervisor register.  This register is contained within each task unit and is referred to as the \emph{gkey} register.  The purpose of this register is to contain the security key loaded via the kernel and constructor routines at application launch such that rogue tasks cannot spawn tasks in the process space of a neighboring process.  Given the purpose of this register, it remains a part of the standard context for context save and restore operations.  This register is represented using as an unsigned 64bit value.  It can be read from and written to using the supervisor instructions \emph{gkey} and \emph{skey}.  
+
+\begin{center}
+\makebox[\textwidth][s]{63 0}
+\framebox[\textwidth][c]{GKEY}
+\end{center}
+
 \subsubsection{Machine-State Registers}
 \subsection{Integer Load/Store Instructions}
 \subsection{Single-Precision Load/Store Instructions}
