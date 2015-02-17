@@ -20,5 +20,5 @@ Format: Instruction: Mnemonic : Description
   * Store-Modify After : _stma Ra, Rb, Rt_ : Store the value at Ra into the address at Rt and add Rb to Rt. Rt=store(Ra); Rt+=Rb
   * Load-Modify Before: _ldmb Rt, Ra, Rb_ : Add Rb to Ra and load the address at Ra into Rt.  Ra+=Rb; Rt=load(Ra).
   * Store-Modify Before: _stmb Ra,Rb,Rt_ : Add Rt to Ra and store the value at Ra to Rt. Rt+=Rb; Rt=store(Ra)
-  * Get TaskID : _gettask Rt, tid_ : Retrieve the task ID value and write the contents to Rt
-  * Set TaskID: _settask Ra, tid_ : Set the task ID to Ra
+  * Get TaskID : _gettask Rt, tctx_ : Retrieve the task ID value and write the contents to Rt
+  * Set TaskID: _settask Ra, tctx_ : Set the task ID to Ra
