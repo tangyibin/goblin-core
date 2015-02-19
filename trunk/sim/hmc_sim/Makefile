@@ -9,10 +9,8 @@ PKGS := ...
 LIBNAME := hmcsim
 SRCDIR := src
 BUILDDIR := build
-INC := -I./include/
 LIBS :=
 TARGET := lib$(LIBNAME).a
-CFLAGS= -O0 -g $(INC)
 LDFLAGS := 
 ARFLAGS := rcs
 
