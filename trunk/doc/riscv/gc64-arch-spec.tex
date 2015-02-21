@@ -202,8 +202,32 @@ The GC64 extension contains a single machine-state register.  This register, kno
 %------- CONCURRENCY INSTRUCTIONS
 \subsection{Concurrency Instructions}
 \subsubsection{iwait rd}
-\subsubsection{future rd, rs1}
+\subsubsection{future rd, rs1, rs2}
+
+Pend the execution of the encountering task until the hazard
+on the integer register specified by \emph{rd} has been cleared. 
+The clear register state indicates that no outstanding load 
+operations are in flight and no outstanding arithmetic 
+operations are in the pipeline.  The encountering thread
+pends as long as \emph{rs2} < \emph{rs1}.  The maximum number of cycles to
+pend is \emph{rs1-rs2}.  The machine state adheres to the following state: 
+
+\begin{algorithm}[H]
+ \KwData{rd is the target integer register, rs1 is the max unsigned value to be, rs2 is the unsigned start value}
+ \KwResult{The encountering task unit pends until rs2 is greater than or equal to rs1}
+ \While{rs2 less than or equal to rs2}{
+  rs2++;
+ }
+ clear future state
+\end{algorithm}
+
 \subsubsection{peg}
+
+Implicitly set the \emph{gcount} machine state register
+to its maximum value.  The result being a forcible context
+switch of the encountering task.  If the task control logic
+does not have any subsequent tasks ready for execution, then the
+minimum context switch wait time is a single clock cycle.  
 
 %------- TASK CONTROL INSTRUCTIONS
 \subsection{Task Control Instructions}
