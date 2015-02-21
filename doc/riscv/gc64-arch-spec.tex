@@ -85,7 +85,7 @@ The GC64 RISC-V extension functions as both a core RISC-V architectural extensio
 \begin{itemize}
 \item \textbf{RV64I}:  GC64 requires 64-bit addressing at minimum.  The RV32I memory model is supported as a result.  However, given the use of HMC devices, we require the use of at least 64-bit addressing (and addressing arithmetic).  
 \item \textbf{M-Extension}:  GC64 requires the integer multiplication and division for the purpose of efficiently performing address manipulation.  
-\item \textbf{A-Extension}:
+\item \textbf{A-Extension}: GC64 requires the atomic instructions.
 \end{itemize}
 
 The following architectural extensions are support in the GC64 tasking model.  They are herein named as optional extensions.  
@@ -93,6 +93,7 @@ The following architectural extensions are support in the GC64 tasking model.  T
 \begin{itemize}
 \item \textbf{F-Extension}:  By default, the GC64 task context definition supports the storage of the single precision floating point register values.  If the F-extension is not present, these values are ignored.  
 \item \textbf{D-Extension}: By default, the GC64 task context definition supports the storage of the double precision floating point register values.  If the D-extension is not present, these values are ignored.  
+\item \textbf{RV128I}: By default, the GC64 reuqires 64-bit addressing.  However, when building scalable versions of GC64 in large SMP or PGAS modes, it may be desirable to support 128bit addressing.  
 \end{itemize}
 
 \subsection{RISC-V SoC Architecture}
@@ -162,12 +163,116 @@ The GC64 extension contains a single supervisor register.  This register is cont
 
 The GC64 extension contains a single machine-state register.  This register, known as the \emph{gcount} register, is not directly readable or writable from any instructions.  Its value is similar in function to a traditional performance counter register.  Any time an instruction is retired through the pipeline, this value is incremented.  The increment value is dependent upon the cost of the retired instruction.  Once this counter reaches its maximum value as defined by the internal architecture state, the encountering task unit is forced to context switch and thus permit another task unit to execute.  The only method the user-privileged code has to indirectly access this register state is the \emph{peg} instruction.  The \emph{peg} instruction explicitly sets this register to its maximum value, thus forcing a context switch event.    
 
+%------- INTEGER LOAD/STORE INSTRUCTIONS
 \subsection{Integer Load/Store Instructions}
+
+%-- integer gathers
+\subsubsection{ldgthr rd, rs1, rs2}
+\subsubsection{lwgthr rd, rs1, rs2}
+\subsubsection{lhgthr rd, rs1, rs2}
+\subsubsection{lbgthr rd, rs1, rs2}
+\subsubsection{lwugthr rd, rs1, rs2}
+\subsubsection{lhugthr rd, rs1, rs2}
+\subsubsection{lbugthr rd, rs1, rs2}
+
+%-- integer scatters: rs1 is the target
+\subsubsection{sdscatr rs1, rs2, rs3}
+\subsubsection{swscatr rs1, rs2, rs3}
+\subsubsection{shscatr rs1, rs2, rs3}
+\subsubsection{sbscatr rs1, rs2, rs3}
+
+%------- SINGLE-PRECISION LOAD/STORE INSTRUCTIONS
 \subsection{Single-Precision Load/Store Instructions}
+
+%-- sp gathers
+\subsubsection{flwgthr fd, rs1, rs2}
+
+%-- sp scatters
+\subsubsection{fswscatr rs1, rs2, fs3}
+
+%------- DOUBLE-PRECISION LOAD/STORE INSTRUCTIONS
 \subsection{Double-Precision Load/Store Instructions}
+
+%-- sp gathers
+\subsubsection{fldgthr fd, rs1, rs2}
+
+%-- sp scatters
+\subsubsection{fsdscatr rs1, rs2, fs3}
+
+%------- CONCURRENCY INSTRUCTIONS
 \subsection{Concurrency Instructions}
+\subsubsection{iwait rd}
+\subsubsection{future rd, rs1}
+\subsubsection{peg}
+
+%------- TASK CONTROL INSTRUCTIONS
 \subsection{Task Control Instructions}
+\subsubsection{spawn rd, rs1}
+
+Spawn a task using the task context at the address specified by the integer 
+register \emph{rs1}.  Return the status of the spawn operation in the 
+integer register \emph{rd}.  The address is considered to be a 64-bit virtual 
+address at minimum.  When 128-bit addressing is enabled, it is permissible 
+for the address to be 128-bits.  
+
+\subsubsection{join rd, rs1}
+
+Perform a task join operation on the task context specified 
+by the integer register \emph{rs1}.  Return the status of the spawn operation
+in the integer register \emph{rd}.  The address is considered to be a
+64-bit virtual address at minimum.  When 128-bit addressing is enabled, it is
+permissible for the address to be 128-bits. 
+
+\subsubsection{gettask rd, tctx}
+
+Retrieve the task context value for the encountering task unit.  
+The value of the tctx register should be, at minimum, at 64-bit virtual
+address.  Store the value to the integer register specified by \emph{rd}.  
+When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
+
+\subsubsection{settask tctx, rs1}
+
+Set the task context value for the current task unit to the address value
+specified by the integer register \emph{rs1} and store the value to the
+\emph{tctx} register.  This is a 64-bit virtual address at minimum.  
+When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
+
+
+\subsubsection{gettid rd, gtid}
+
+Retrieve the taskid value from the encountered task and write the value
+to the integer register specified by \emph{rd}.
+
+%------- ENVIRONMENT INSTRUCTIONS
+\subsection{Environment Instructions}
+\subsubsection{getgconst rd, gconst}
+
+Retrieve the value of the GC64 constant register \emph{gconst}.  Write
+the value into the integer register specified by \emph{rd}.
+
+%------- SUPERVISOR INSTRUCTIONS
 \subsection{Supervisor Instructions}
+\subsubsection{getkey rd, gkey}
+
+Retrieve the value of the current GC64 security key.  Write
+the result to the integer register specified by \emph{rd}.  This
+instruction may only be executed by tasks with supervisor privileges. 
+
+\subsubsection{setkey gkey, rs1}
+
+Set the value of the current GC64 security key.  The value is written
+from the integer register specified by \emph{rs1}.  This instruction
+may only be executed by tasks with supervisor privileges.  
+
+%------- 128-bit INTEGER LOAD/STORE INSTRUCTIONS
+\subsection{[Optional] 128-bit Integer Load/Store Instructions}
+
+%-- 128-bit integer gathers
+\subsubsection{lqgthr rd, rs1, rs2}
+\subsubsection{ldugthr rd, rs1, rs2}
+
+%-- 128-bit integer scatters
+\subsubsection{sqscatr rs1, rs2, rs3}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
