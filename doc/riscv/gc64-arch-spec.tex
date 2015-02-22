@@ -78,6 +78,61 @@ Data Intensive Scalable Computing Laboratory \\ % Course
 
 \subsection{GC64 Overview}
 
+The GoblinCore-64 (herein referred to as GC64) that was originally designed to 
+facilitate the construction of a high performance core architecture that was
+well-suited to executing applications traditionally known as "data intensive."  
+These applications generally refer to algorithms that operate on sparse
+data structures such as graphs, sparse matrices and/or perform nonlinear 
+combinatorial operations (et.al.).  We consider all of the aforementioned target
+application areas to share the following two general characteristics.  
+
+\begin{itemize}
+\item \textbf{Non-Unit Stride}: All of the applications we consider as design targets
+for GC64 perform a disproportionate number of non-unit stride computations.  These 
+  computations may simply be non-unit stride, scatters, gathers or completely random. 
+  In all cases, the data elements are not generally well-suited to traditional 
+  long SIMD or data caching architectures.
+\item  \textbf{Memory Intensive}: Given the first characteristic, we also assume
+  a latent characteristic with respect to the memory bandwidth requirements.  
+  Given the sparsity or non-linear access requirements, we assume that the design 
+  targets operate with a disproportionally high bandwidth to compute ratio.  As
+  such, we consider them to be memory intensive rather than computationally
+  intensive.  
+\end{itemize} 
+
+In addition to the core design requirements, we also sought to build a
+completely open source architecture and tool chain suitable for architectural 
+research in academia and possible commerical implementations.  As such, we sought
+to build BSD-like licensing around the core ISA, simulation infrastructure, tools
+and toolchain.  Given this, we found that our implementation goals aligned 
+well with the RISC-V project \cite{Waterman:EECS-2014-54}.  These include, but are
+not limited to the following: 
+
+\begin{itemize}
+\item A completely \emph{open} ISA that is freely available to academia and industry.
+\item An ISA separated into a \emph{small} base integer ISA. 
+\item Support for the revised 2008 IEEE-754 \cite{2008IEEE} floating-point standard.
+\item An ISA with \emph{native} support for highly-parallel multicore or manycore
+implementations.  
+\end{itemize}
+
+In addition to the core RISC-V goals, we also wanted to achieve the following
+architectural goals (as related to our target design requirements): 
+
+\begin{itemize}
+\item Provide simple architectural structures that are condusive to constructing
+  highly (MIMD) parallel and concurrent applications
+\item Provide simple ISA extensions condusive to compiler optimization of
+concurrent applications
+\item Provide a low-level, mutable parallel construct in hardware that can
+  be easily mapped to higher level parallel programming models (threads, tasks, etc)
+\item Provide hardware mechanisms to minimize context switch latency to a very small
+  number of cycles (goal of single cycle context switching events)
+\item Provide a well-defined mechanism when context switch events occur
+\item Provide a well-defined mechanism for user applications to explicitly induce
+  context switch events
+\end{itemize}
+
 \subsection{RISC-V ISA Requirements}
 
 The GC64 RISC-V extension functions as both a core RISC-V \cite{Waterman:EECS-2014-54} architectural extension and an extension to the standard 64-bit RISC-V IMAFD specification.  The following minimum architectural extensions are required to utilize GC64.  
@@ -161,13 +216,15 @@ The GC64 extension contains a single supervisor register.  This register is cont
 
 \subsubsection{Machine-State Registers}
 
-The GC64 extension contains a single machine-state register.  This register, known as the \emph{gcount} register, is not directly readable or writable from any instructions.  Its value is similar in function to a traditional performance counter register.  Any time an instruction is retired through the pipeline, this value is incremented.  The increment value is dependent upon the cost of the retired instruction.  Once this counter reaches its maximum value as defined by the internal architecture state, the encountering task unit is forced to context switch and thus permit another task unit to execute.  The only method the user-privileged code has to indirectly access this register state is the \emph{peg} instruction.  The \emph{peg} instruction explicitly sets this register to its maximum value, thus forcing a context switch event.    
+The GC64 extension contains a single machine-state register.  This register, known as the \emph{gcount} register, is not directly readable or writable from any instructions.  Its value is similar in function to a traditional performance counter register.  Any time an instruction is retired through the pipeline, this value is incremented.  The increment value is dependent upon the cost of the retired instruction.  Once this counter reaches its maximum value as defined by the internal architecture state, the encountering task unit is forced to context switch and thus permit another task unit to execute.  The only method the user-privileged code has to indirectly access this register state is the \emph{ctxsw} instruction.  The \emph{ctxsw} instruction explicitly sets this register to its maximum value, thus forcing a context switch event.    
 
 %------- INTEGER LOAD/STORE INSTRUCTIONS
 \subsection{Integer Load/Store Instructions}
 
 %-- integer gathers
 \subsubsection{ldgthr rd, rs1, rs2}
+
+
 \subsubsection{lwgthr rd, rs1, rs2}
 \subsubsection{lhgthr rd, rs1, rs2}
 \subsubsection{lbgthr rd, rs1, rs2}
@@ -221,7 +278,7 @@ pend is \emph{rs1-rs2}.  The machine state adheres to the following state:
  clear future state
 \end{algorithm}
 
-\subsubsection{peg}
+\subsubsection{ctxsw}
 
 Implicitly set the \emph{gcount} machine state register
 to its maximum value.  The result being a forcible context
@@ -321,7 +378,7 @@ may only be executed by tasks with supervisor privileges.
 %----------------------------------------------------------------------------------------
 \section{History and Acknowledgements}
 
-This project is sponsored by the Data Intensive Scalable Computing Laboratory in the Whitacre School of Engineering at Texas Tech University.  The original GoblinCore64 Instruction Set Architecture and concept began in 2013 as a stand-alone ISA without dependence upon any external projects.  However, given the emergence of the RISC-V project from the University of California, Berkeley, and the inherent synergies with their design decisions, we decided to migrate the base GC64 ISA to the RISC-V infrastructure.   
+This project is sponsored by the Data Intensive Scalable Computing Laboratory in the Whitacre School of Engineering at Texas Tech University.  The original GoblinCore64 Instruction Set Architecture and concept began in 2013 as a stand-alone ISA without dependence upon any external projects.  However, given the emergence of the RISC-V project from the University of California, Berkeley, and the inherent synergies with their design decisions, we decided to migrate the base GC64 ISA to the RISC-V infrastructure.  We would like to thank the members and collaborators associated with the RISC-V project for their diligent effort to build, document and distribute the RISC-V ISA.  
 
 %----------------------------------------------------------------------------------------
 %	SECTION 6
