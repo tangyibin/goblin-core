@@ -221,6 +221,33 @@ The GC64 extension contains a single machine-state register.  This register, kno
 %------- INTEGER LOAD/STORE INSTRUCTIONS
 \subsection{Integer Load/Store Instructions}
 
+The integer load and store instructions require a full 32-bit
+instruction encoding space.  We utilize the standard RISC-V
+\emph{R-type} ISA encoding format for each of instructions.  In
+this manner, all the integer load and store instructions support
+three operands and no bundled immediate values.  All explicit index
+values for scatter/gather store/load operations must be eplicited
+loaded to an integer register (\emph{x0-x31}).
+
+The following load and store instructions share the same base
+opcode, but differ in their funct7 field encodings.  The instruction
+encoding space is depicted as follows:
+
+
+\begin{center}
+\textbf{GC64 Load Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000000}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
+\begin{center}
+\textbf{GC64 Store Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000001}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
+
+
 %-- integer gathers
 \subsubsection{lbgthr rd, rs1, rs2}
 
@@ -684,7 +711,41 @@ Effective = addr(rs1 + ((rs2 * 16))
 %----------------------------------------------------------------------------------------
 \section{GC64 Instruction Set Listings}
 
-\framebox[15ex][s]{foobar}
+\begin{center}
+\begin{small}
+\textbf{GC64 Integer Load/Store Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+lbgthr rd,rs1,rs & 0000000 & 000 & 0111111 & 0000000[rs2][rs1]000[rd]0111111 \\ 
+\hline
+lhgthr rd,rs1,rs & 0000000 & 001 & 0111111 & 0000000[rs2][rs1]001[rd]0111111 \\ 
+\hline
+lwgthr rd,rs1,rs & 0000000 & 010 & 0111111 & 0000000[rs2][rs1]010[rd]0111111 \\ 
+\hline
+ldgthr rd,rs1,rs & 0000000 & 011 & 0111111 & 0000000[rs2][rs1]011[rd]0111111 \\ 
+\hline
+lbugthr rd,rs1,rs & 0000000 & 100 & 0111111 & 0000000[rs2][rs1]100[rd]0111111 \\ 
+\hline
+lhugthr rd,rs1,rs & 0000000 & 101 & 0111111 & 0000000[rs2][rs1]101[rd]0111111 \\ 
+\hline
+lwugthr rd,rs1,rs & 0000000 & 110 & 0111111 & 0000000[rs2][rs1]110[rd]0111111 \\ 
+\hline
+sbscatr rs1,rs2,rs3 & 0000001 & 000 & 0111111 & 0000001[rs2][rs1]000[rd]0111111 \\ 
+\hline
+shscatr rs1,rs2,rs3 & 0000001 & 001 & 0111111 & 0000001[rs2][rs1]001[rd]0111111 \\ 
+\hline
+swscatr rs1,rs2,rs3 & 0000001 & 010 & 0111111 & 0000001[rs2][rs1]010[rd]0111111 \\ 
+\hline
+sdscatr rs1,rs2,rs3 & 0000001 & 011 & 0111111 & 0000001[rs2][rs1]011[rd]0111111 \\ 
+\hline
+\end{tabular}
+
+
+\end{small}
+\end{center}
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
