@@ -80,7 +80,7 @@ Data Intensive Scalable Computing Laboratory \\ % Course
 
 \subsection{RISC-V ISA Requirements}
 
-The GC64 RISC-V extension functions as both a core RISC-V architectural extension and an extension to the standard 64-bit RISC-V IMAFD specification.  The following minimum architectural extensions are required to utilize GC64.  
+The GC64 RISC-V extension functions as both a core RISC-V \cite{Waterman:EECS-2014-54} architectural extension and an extension to the standard 64-bit RISC-V IMAFD specification.  The following minimum architectural extensions are required to utilize GC64.  
 
 \begin{itemize}
 \item \textbf{RV64I}:  GC64 requires 64-bit addressing at minimum.  The RV32I memory model is supported as a result.  However, given the use of HMC devices, we require the use of at least 64-bit addressing (and addressing arithmetic).  
@@ -326,9 +326,7 @@ This project is sponsored by the Data Intensive Scalable Computing Laboratory in
 %----------------------------------------------------------------------------------------
 %	SECTION 6
 %----------------------------------------------------------------------------------------
-\begin{thebibliography}{1}
-\bibitem{riscv}
-Andrew W., Yunsup L., A. P. D. and Krste A. 2014. The RISC-V Instruction Set Manual, Volume I: User-Level ISA, Version 2.0. EECS Department, University of California, Berkeley. 
-\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{gc64-arch-spec}
 
 \end{document}
