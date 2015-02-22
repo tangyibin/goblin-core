@@ -276,13 +276,13 @@ the value into the integer register specified by \emph{rd}.
 
 %------- SUPERVISOR INSTRUCTIONS
 \subsection{Supervisor Instructions}
-\subsubsection{getkey rd, gkey}
+\subsubsection{sgetkey rd, gkey}
 
 Retrieve the value of the current GC64 security key.  Write
 the result to the integer register specified by \emph{rd}.  This
 instruction may only be executed by tasks with supervisor privileges. 
 
-\subsubsection{setkey gkey, rs1}
+\subsubsection{ssetkey gkey, rs1}
 
 Set the value of the current GC64 security key.  The value is written
 from the integer register specified by \emph{rs1}.  This instruction
@@ -322,4 +322,13 @@ may only be executed by tasks with supervisor privileges.
 \section{History and Acknowledgements}
 
 This project is sponsored by the Data Intensive Scalable Computing Laboratory in the Whitacre School of Engineering at Texas Tech University.  The original GoblinCore64 Instruction Set Architecture and concept began in 2013 as a stand-alone ISA without dependence upon any external projects.  However, given the emergence of the RISC-V project from the University of California, Berkeley, and the inherent synergies with their design decisions, we decided to migrate the base GC64 ISA to the RISC-V infrastructure.   
+
+%----------------------------------------------------------------------------------------
+%	SECTION 6
+%----------------------------------------------------------------------------------------
+\begin{thebibliography}{1}
+\bibitem{riscv}
+Andrew W., Yunsup L., A. P. D. and Krste A. 2014. The RISC-V Instruction Set Manual, Volume I: User-Level ISA, Version 2.0. EECS Department, University of California, Berkeley. 
+\end{thebibliography}
+
 \end{document}
