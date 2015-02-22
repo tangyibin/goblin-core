@@ -218,6 +218,30 @@ The GC64 extension contains a single supervisor register.  This register is cont
 
 The GC64 extension contains a single machine-state register.  This register, known as the \emph{gcount} register, is not directly readable or writable from any instructions.  Its value is similar in function to a traditional performance counter register.  Any time an instruction is retired through the pipeline, this value is incremented.  The increment value is dependent upon the cost of the retired instruction.  Once this counter reaches its maximum value as defined by the internal architecture state, the encountering task unit is forced to context switch and thus permit another task unit to execute.  The only method the user-privileged code has to indirectly access this register state is the \emph{ctxsw} instruction.  The \emph{ctxsw} instruction explicitly sets this register to its maximum value, thus forcing a context switch event.    
 
+\newpage
+\subsubsection{GC64 Register Indexing}
+A summary of the permissible GC64 register indices is as follows.
+Note that all register follow a 5-bit encoding schema in order to adhere
+to the base RISC-V \emph{R-Type} instruction encoding.  
+Note that all supervisor registers appear in the index range above 0b10000.
+
+\begin{center}
+\begin{tabular}{| l | c | c | }
+\hline
+Mnemonic & Index & Access \\ \hline
+\hline
+tctx & 0b00000 & User,Supervisor \\
+\hline
+tid & 0b00001 & User,Supervisor \\
+\hline
+gconst & 0b00010 & User,Supervisor \\
+\hline
+gkey & 0b10000 & Supervisor\\
+\hline
+\end{tabular}
+\end{center}
+
+
 %------- INTEGER LOAD/STORE INSTRUCTIONS
 \subsection{Integer Load/Store Instructions}
 
@@ -226,7 +250,7 @@ instruction encoding space.  We utilize the standard RISC-V
 \emph{R-type} ISA encoding format for each of instructions.  In
 this manner, all the integer load and store instructions support
 three operands and no bundled immediate values.  All explicit index
-values for scatter/gather store/load operations must be eplicited
+values for scatter/gather store/load operations must be explicitly
 loaded to an integer register (\emph{x0-x31}).
 
 The following load and store instructions share the same base
@@ -235,13 +259,13 @@ encoding space is depicted as follows:
 
 
 \begin{center}
-\textbf{GC64 Load Instructions}
+\textbf{GC64 Integer Load Instructions}
 \makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
 \framebox[0.9in]{0000000}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
 \end{center}
 
 \begin{center}
-\textbf{GC64 Store Instructions}
+\textbf{GC64 Integer Store Instructions}
 \makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
 \framebox[0.9in]{0000001}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
 \end{center}
@@ -460,6 +484,33 @@ Effective = addr(rs1 + ((rs2 * 8))
 %------- SINGLE-PRECISION LOAD/STORE INSTRUCTIONS
 \subsection{Single-Precision Load/Store Instructions}
 
+The single-precision floating-point load and store instructions
+require a full 32-bit instruction encoding space.  We utilize the 
+standard RISC-V \emph{R-type} ISA encoding format for each of instructions.  In
+this manner, all the SP floating-point load and store instructions support
+three operands and no bundled immediate values.  All explicit index
+values for scatter/gather store/load operations must be explicitly
+loaded to an integer register (\emph{x0-x31}).  All single-precision
+floating point values used as source or target registers must be a floating
+point register (\emph{f0-f31}).
+
+The following load and store instructions share the same base
+opcode, but differ in their funct7 field encodings.  The instruction
+encoding space is depicted as follows:
+
+
+\begin{center}
+\textbf{GC64 Single-Precision Floating-Point Load Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000010}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
+\begin{center}
+\textbf{GC64 Single-Precision Floatng-Point Store Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000011}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
 %-- sp gathers
 \subsubsection{flwgthr fd, rs1, rs2}
 
@@ -503,6 +554,34 @@ Effective = addr(rs1 + ((rs2 * 4))
 
 %------- DOUBLE-PRECISION LOAD/STORE INSTRUCTIONS
 \subsection{Double-Precision Load/Store Instructions}
+
+The double-precision floating-point load and store instructions
+require a full 32-bit instruction encoding space.  We utilize the 
+standard RISC-V \emph{R-type} ISA encoding format for each of instructions.  In
+this manner, all the DP floating-point load and store instructions support
+three operands and no bundled immediate values.  All explicit index
+values for scatter/gather store/load operations must be explicitly
+loaded to an integer register (\emph{x0-x31}).  All double-precision
+floating point values used as source or target registers must be a floating
+point register (\emph{f0-f31}).
+
+The following load and store instructions share the same base
+opcode, but differ in their funct7 field encodings.  The instruction
+encoding space is depicted as follows:
+
+
+\begin{center}
+\textbf{GC64 Double-Precision Floating-Point Load Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000100}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
+\begin{center}
+\textbf{GC64 Double-Precision Floatng-Point Store Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000101}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
 
 %-- sp gathers
 \subsubsection{fldgthr fd, rs1, rs2}
@@ -711,6 +790,12 @@ Effective = addr(rs1 + ((rs2 * 16))
 %----------------------------------------------------------------------------------------
 \section{GC64 Instruction Set Listings}
 
+The following tables contain the full encoding space for GC64 instructions. 
+Note that the encoding tables may contain explicit references to register
+indices such as \emph{X0} and \emph{TCTX}.  Any references to explicit indices
+will be capitalized in the tables below.  Please refer to the RISC-V register
+indexing and the GC64 register indexing tables.
+
 \begin{center}
 \begin{small}
 \textbf{GC64 Integer Load/Store Instructions[R-Type]}
@@ -732,13 +817,95 @@ lhugthr rd,rs1,rs & 0000000 & 101 & 0111111 & 0000000[rs2][rs1]101[rd]0111111 \\
 \hline
 lwugthr rd,rs1,rs & 0000000 & 110 & 0111111 & 0000000[rs2][rs1]110[rd]0111111 \\ 
 \hline
-sbscatr rs1,rs2,rs3 & 0000001 & 000 & 0111111 & 0000001[rs2][rs1]000[rd]0111111 \\ 
+sbscatr rs1,rs2,rs3 & 0000001 & 000 & 0111111 & 0000001[rs2][rs1]000[r3]0111111 \\ 
 \hline
-shscatr rs1,rs2,rs3 & 0000001 & 001 & 0111111 & 0000001[rs2][rs1]001[rd]0111111 \\ 
+shscatr rs1,rs2,rs3 & 0000001 & 001 & 0111111 & 0000001[rs2][rs1]001[r3]0111111 \\ 
 \hline
-swscatr rs1,rs2,rs3 & 0000001 & 010 & 0111111 & 0000001[rs2][rs1]010[rd]0111111 \\ 
+swscatr rs1,rs2,rs3 & 0000001 & 010 & 0111111 & 0000001[rs2][rs1]010[r3]0111111 \\ 
 \hline
-sdscatr rs1,rs2,rs3 & 0000001 & 011 & 0111111 & 0000001[rs2][rs1]011[rd]0111111 \\ 
+sdscatr rs1,rs2,rs3 & 0000001 & 011 & 0111111 & 0000001[rs2][rs1]011[r3]0111111 \\ 
+\hline
+\end{tabular}
+
+\vspace{10 mm}
+
+\textbf{GC64 Single Precision Load/Store Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+flwgthr fd,rs1,rs & 0000010 & 000 & 0111111 & 0000010[rs2][rs1]000[fd]0111111 \\ 
+\hline
+fswscatr rs1,rs2,fs3 & 0000011 & 000 & 0111111 & 0000011[rs2][rs1]000[fs3]0111111 \\ 
+\hline
+\end{tabular}
+
+\vspace{10 mm}
+
+\textbf{GC64 Double Precision Load/Store Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+fldgthr fd,rs1,rs & 0000100 & 000 & 0111111 & 0000100[rs2][rs1]000[fd]0111111 \\ 
+\hline
+fsdscatr rs1,rs2,fs3 & 0000101 & 000 & 0111111 & 0000101[rs2][rs1]000[fs3]0111111 \\ 
+\hline
+\end{tabular}
+
+\vspace{10 mm}
+
+\textbf{GC64 Concurrency Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+iwait rd,rs1,rs2 & 0000110 & 000 & 0111111 & 0000110[rs2][rs1]000[rd]0111111 \\ 
+\hline
+ctxsw & 0000110 & 001 & 0111111 & 0000110[X0][X0]001[X0]0111111 \\ 
+\hline
+\end{tabular}
+
+\vspace{10 mm}
+
+\textbf{GC64 Task Control Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+spawn rd,rs1 & 0000111 & 000 & 0111111 & 0000111[X0][rs1]000[rd]0111111 \\ 
+\hline
+join rd,rs1 & 0000111 & 001 & 0111111 & 0000111[X0][rs1]001[rd]0111111 \\ 
+\hline
+gettask rd,tctx & 0001000 & 000 & 0111111 & 0001000[X0][TCTX]000[rd]0111111 \\ 
+\hline
+settask tctx,rs1 & 0001000 & 001 & 0111111 & 0001000[X0][rs1]001[00000]0111111 \\ 
+\hline
+gettid rd,gtid & 0001000 & 010 & 0111111 & 0001000[X0][GTID]010[rd]0111111 \\ 
+\hline
+\end{tabular}
+
+\vspace{10 mm}
+
+\textbf{GC64 Environment Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+getgconst rd,gconst & 0001001 & 000 & 0111111 & 0001001[X0][GCONST]000[rd]0111111 \\ 
+\hline
+\end{tabular}
+
+\vspace{10 mm}
+
+\textbf{GC64 Supervisor Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+sgetkey rd,gkey & 0010000 & 000 & 0111111 & 0010000[X0][GKEY]000[rd]0111111 \\ 
+\hline
+ssetkey gkey,rs1 & 0010000 & 001 & 0111111 & 0010000[X0][rs1]001[GKEY]0111111 \\ 
 \hline
 \end{tabular}
 
