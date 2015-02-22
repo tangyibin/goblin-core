@@ -222,21 +222,213 @@ The GC64 extension contains a single machine-state register.  This register, kno
 \subsection{Integer Load/Store Instructions}
 
 %-- integer gathers
-\subsubsection{ldgthr rd, rs1, rs2}
+\subsubsection{lbgthr rd, rs1, rs2}
+
+Perform a one-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+sign extends to the size of the register.  
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 1))
+\end{equation}
+
+
+\subsubsection{lhgthr rd, rs1, rs2}
+
+Perform a two-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+sign extends to the size of the register.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 2))
+\end{equation}
 
 
 \subsubsection{lwgthr rd, rs1, rs2}
-\subsubsection{lhgthr rd, rs1, rs2}
-\subsubsection{lbgthr rd, rs1, rs2}
-\subsubsection{lwugthr rd, rs1, rs2}
-\subsubsection{lhugthr rd, rs1, rs2}
+
+Perform a four-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+sign extends to the size of the register.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 4))
+\end{equation}
+
+\subsubsection{ldgthr rd, rs1, rs2}
+
+Perform an eight-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 8))
+\end{equation}
+
 \subsubsection{lbugthr rd, rs1, rs2}
 
+Perform a one-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+zero extends to the size of the register.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 1))
+\end{equation}
+
+\subsubsection{lhugthr rd, rs1, rs2}
+
+Perform a two-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+zero extends to the size of the register.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 2))
+\end{equation}
+
+\subsubsection{lwugthr rd, rs1, rs2}
+
+Perform a four-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+zero extends to the size of the register.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 4))
+\end{equation}
+
+
 %-- integer scatters: rs1 is the target
-\subsubsection{sdscatr rs1, rs2, rs3}
-\subsubsection{swscatr rs1, rs2, rs3}
-\subsubsection{shscatr rs1, rs2, rs3}
 \subsubsection{sbscatr rs1, rs2, rs3}
+
+Perform a one-byte \emph{scattered store} operation using the 
+source value \emph{rs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+rs2[rs3] = rs1
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 1))
+\end{equation}
+
+\subsubsection{shscatr rs1, rs2, rs3}
+
+Perform a two-byte \emph{scattered store} operation using the 
+source value \emph{rs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+rs2[rs3] = rs1
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 2))
+\end{equation}
+
+\subsubsection{swscatr rs1, rs2, rs3}
+
+Perform a four-byte \emph{scattered store} operation using the 
+source value \emph{rs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+rs2[rs3] = rs1
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 4))
+\end{equation}
+
+\subsubsection{sdscatr rs1, rs2, rs3}
+
+Perform an eight-byte \emph{scattered store} operation using the 
+source value \emph{rs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+rs2[rs3] = rs1
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 8))
+\end{equation}
+
 
 %------- SINGLE-PRECISION LOAD/STORE INSTRUCTIONS
 \subsection{Single-Precision Load/Store Instructions}
@@ -244,8 +436,43 @@ The GC64 extension contains a single machine-state register.  This register, kno
 %-- sp gathers
 \subsubsection{flwgthr fd, rs1, rs2}
 
+Perform a single-precision floating-point \emph{gathered load} operation of the
+address and index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{fd}.  Note that the source integer registers are
+utilized for addressing and the target register is a floating point register.
+The operation to perform is as follows:
+
+\begin{equation}
+fd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 4))
+\end{equation}
+
+
 %-- sp scatters
 \subsubsection{fswscatr rs1, rs2, fs3}
+
+Perform a single-precision floating-point \emph{scattered store} operation 
+using the source value \emph{fs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+fs3 = rs2[rs3]
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 4))
+\end{equation}
+
 
 %------- DOUBLE-PRECISION LOAD/STORE INSTRUCTIONS
 \subsection{Double-Precision Load/Store Instructions}
@@ -253,13 +480,48 @@ The GC64 extension contains a single machine-state register.  This register, kno
 %-- sp gathers
 \subsubsection{fldgthr fd, rs1, rs2}
 
+Perform a double-precision floating-point \emph{gathered load} operation of the
+address and index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{fd}.  Note that the source integer registers are
+utilized for addressing and the target register is a floating point register.
+The operation to perform is as follows:
+
+\begin{equation}
+fd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 8))
+\end{equation}
+
+
 %-- sp scatters
 \subsubsection{fsdscatr rs1, rs2, fs3}
 
+Perform a double-precision floating-point \emph{scattered store} operation 
+using the source value \emph{fs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+fs3 = rs2[rs3]
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 8))
+\end{equation}
+
+
 %------- CONCURRENCY INSTRUCTIONS
 \subsection{Concurrency Instructions}
-\subsubsection{iwait rd}
-\subsubsection{future rd, rs1, rs2}
+
+\subsubsection{iwait rd, rs1, rs2}
 
 Pend the execution of the encountering task until the hazard
 on the integer register specified by \emph{rd} has been cleared. 
@@ -275,7 +537,7 @@ pend is \emph{rs1-rs2}.  The machine state adheres to the following state:
  \While{rs2 less than or equal to rs2}{
   rs2++;
  }
- clear future state
+ clear iwait state
 \end{algorithm}
 
 \subsubsection{ctxsw}
@@ -349,11 +611,62 @@ may only be executed by tasks with supervisor privileges.
 \subsection{[Optional] 128-bit Integer Load/Store Instructions}
 
 %-- 128-bit integer gathers
-\subsubsection{lqgthr rd, rs1, rs2}
 \subsubsection{ldugthr rd, rs1, rs2}
+
+Perform an eight-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.  The load portion of the operation
+zero extends to the size of the register.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 16))
+\end{equation}
+
+\subsubsection{lqgthr rd, rs1, rs2}
+
+Perform a sixteen-byte \emph{gathered load} operation of the address and
+index \emph{rs1} and \emph{rs2}, respectively, and store the result
+to the intger register \emph{rd}.
+The operation to perform is as follows:
+
+\begin{equation}
+rd = rs1[rs2]
+\end{equation}
+
+The effective address to load
+from is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 16))
+\end{equation}
 
 %-- 128-bit integer scatters
 \subsubsection{sqscatr rs1, rs2, rs3}
+
+Perform a sixteen-byte \emph{scattered store} operation using the 
+source value \emph{rs3} and storing to the address and index
+\emph{rs1} and \emph{rs2}, respectively.  The operation to
+perform is as follows: 
+
+\begin{equation}
+rs2[rs3] = rs1
+\end{equation}
+
+The effective address used as the target
+for the store is formed using the following methodology:
+
+\begin{equation}
+Effective = addr(rs1 + ((rs2 * 16))
+\end{equation}
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
