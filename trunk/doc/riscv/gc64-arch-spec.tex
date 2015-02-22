@@ -588,7 +588,7 @@ encoding space is depicted as follows:
 
 Perform a double-precision floating-point \emph{gathered load} operation of the
 address and index \emph{rs1} and \emph{rs2}, respectively, and store the result
-to the intger register \emph{fd}.  Note that the source integer registers are
+to the floating-point register \emph{fd}.  Note that the source integer registers are
 utilized for addressing and the target register is a floating point register.
 The operation to perform is as follows:
 
@@ -627,6 +627,19 @@ Effective = addr(rs1 + ((rs2 * 8))
 %------- CONCURRENCY INSTRUCTIONS
 \subsection{Concurrency Instructions}
 
+The concurrency instructions require a full 32-bit encoding space.  
+We utilize the standard \emph{R-type} ISA encoding format for each 
+of the instructions.  In this manner, all the concurrency instructions
+do not accept bundled immediate values.  All explicit immediate values
+must be explicitly loaded to an integer register (\emph{x0-x31}).  The 
+instruction encoding space is depicted as follows: 
+
+\begin{center}
+\textbf{GC64 Concurrency Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000110}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
 \subsubsection{iwait rd, rs1, rs2}
 
 Pend the execution of the encountering task until the hazard
@@ -656,6 +669,25 @@ minimum context switch wait time is a single clock cycle.
 
 %------- TASK CONTROL INSTRUCTIONS
 \subsection{Task Control Instructions}
+
+The task control instructions require a full 32-bit encoding space.  We utilize
+the standard \emph{R-type} format for each of the instructions.  In this manner, 
+all the task control instructions do not accept bundled immediate values.  All 
+explicit immediate values must be loaded to an integer register (\emph{x0-x31}).
+The instruction encoding space is depicted as follows: 
+
+\begin{center}
+\textbf{GC64 Task Major Control Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0000111}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
+\begin{center}
+\textbf{GC64 Task Minor Control Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0001000}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
 \subsubsection{spawn rd, rs1}
 
 Spawn a task using the task context at the address specified by the integer 
@@ -694,6 +726,19 @@ to the integer register specified by \emph{rd}.
 
 %------- ENVIRONMENT INSTRUCTIONS
 \subsection{Environment Instructions}
+
+The environment instructions require a full 32-bit encoding space.  We utilize 
+the standard \emph{R-type} format for each of the instructions.  In this manner, 
+all the environment instructions do not accept bundled immediate values.  All
+explicit immediate values must be loaded to an integer register (\emph{x0-x31}).  
+The instruction space is encoded as follows: 
+
+\begin{center}
+\textbf{GC64 Task Major Control Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0001001}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
 \subsubsection{getgconst rd, gconst}
 
 Retrieve the value of the GC64 constant register \emph{gconst}.  Write
@@ -701,6 +746,19 @@ the value into the integer register specified by \emph{rd}.
 
 %------- SUPERVISOR INSTRUCTIONS
 \subsection{Supervisor Instructions}
+
+The supervisor instructions require a full 32-bit encoding space.  Wed utilize
+the standard \emph{R-type} format for each of the instructions.  In this manner, 
+all the supervisor instructions do not accept bundled immediate values.  All
+explicit immediate values must be loaded to an integer register (\emph{x0-x31}).
+The instruction space is encoded as follows: 
+
+\begin{center}
+\textbf{GC64 Supervisor Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0010000}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
 \subsubsection{sgetkey rd, gkey}
 
 Retrieve the value of the current GC64 security key.  Write
@@ -715,6 +773,14 @@ may only be executed by tasks with supervisor privileges.
 
 %------- 128-bit INTEGER LOAD/STORE INSTRUCTIONS
 \subsection{[Optional] 128-bit Integer Load/Store Instructions}
+
+The 128-bit integer load and store instructions require a full 32-bit instruction encoding space. We utilize the standard RISC-V R-type ISA encoding format for each of instructions. In this manner, all the integer load and store instructions support three operands and no bundled immediate values. All explicit index values for scatter/gather store/load operations must be explicitly loaded to an integer register (x0-x31).The instruction encoding space is depicted as follows:
+
+\begin{center}
+\textbf{GC64 128-bit Load/Store Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0100000}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
 
 %-- 128-bit integer gathers
 \subsubsection{ldugthr rd, rs1, rs2}
@@ -911,6 +977,20 @@ ssetkey gkey,rs1 & 0010000 & 001 & 0111111 & 0010000[X0][rs1]001[GKEY]0111111 \\
 \hline
 \end{tabular}
 
+\vspace{10 mm}
+
+\textbf{GC64 [Optional] 128-bit Load/Store Instructions[R-Type]}
+\begin{tabular}{| l | c | c | c | c | c | c || r}
+\hline
+Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
+\hline
+ldugthr rd,rs1,rs2 & 0100000 & 000 & 0111111 & 0010000[rs2][rs1]000[rd]0111111 \\ 
+\hline
+lqugthr rd,rs1,rs2 & 0100000 & 001 & 0111111 & 0010000[rs2][rs1]001[rd]0111111 \\ 
+\hline
+sqscatr rs1,rs2,rs3 & 0100000 & 010 & 0111111 & 0010000[rs2][rs1]010[rs3]0111111 \\ 
+\hline
+\end{tabular}
 
 \end{small}
 \end{center}
