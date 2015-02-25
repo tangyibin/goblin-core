@@ -5,7 +5,8 @@ FIGS = $(wildcard figures/*.pdf figures/*.png figures/*.jpg ./*.jpg)
 
 .PHONY: all clean
 
-$(PAPER).pdf: $(TEX) $(BIB)
+$(PAPER).pdf: $(TEX) $(BIB) $(FIGS)
+	echo $(FIGS)
 	pdflatex $(PAPER)
 	bibtex $(PAPER)
 	pdflatex $(PAPER)

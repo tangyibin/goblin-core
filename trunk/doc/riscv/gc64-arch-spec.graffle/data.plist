@@ -1,0 +1,4791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationVersion</key>
+	<array>
+		<string>com.omnigroup.OmniGrafflePro</string>
+		<string>139.18.0.187838</string>
+	</array>
+	<key>CreationDate</key>
+	<string>2015-02-25 01:26:29 +0000</string>
+	<key>Creator</key>
+	<string>John Leidel</string>
+	<key>GraphDocumentVersion</key>
+	<integer>8</integer>
+	<key>GuidesLocked</key>
+	<string>NO</string>
+	<key>GuidesVisible</key>
+	<string>YES</string>
+	<key>ImageCounter</key>
+	<integer>2</integer>
+	<key>ImageLinkBack</key>
+	<array>
+		<dict/>
+	</array>
+	<key>ImageList</key>
+	<array>
+		<string>image1.tiff</string>
+	</array>
+	<key>LinksVisible</key>
+	<string>NO</string>
+	<key>MagnetsVisible</key>
+	<string>NO</string>
+	<key>MasterSheets</key>
+	<array/>
+	<key>ModificationDate</key>
+	<string>2015-02-25 02:01:15 +0000</string>
+	<key>Modifier</key>
+	<string>John Leidel</string>
+	<key>NotesVisible</key>
+	<string>NO</string>
+	<key>OriginVisible</key>
+	<string>NO</string>
+	<key>PageBreaks</key>
+	<string>YES</string>
+	<key>PrintInfo</key>
+	<dict>
+		<key>NSBottomMargin</key>
+		<array>
+			<string>float</string>
+			<string>41</string>
+		</array>
+		<key>NSHorizonalPagination</key>
+		<array>
+			<string>coded</string>
+			<string>BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU051bWJlcgCEhAdOU1ZhbHVlAISECE5TT2JqZWN0AIWEASqEhAFxlwCG</string>
+		</array>
+		<key>NSLeftMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+		<key>NSPaperSize</key>
+		<array>
+			<string>size</string>
+			<string>{611.99999904632568, 792}</string>
+		</array>
+		<key>NSPrintReverseOrientation</key>
+		<array>
+			<string>int</string>
+			<string>0</string>
+		</array>
+		<key>NSRightMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+		<key>NSTopMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+	</dict>
+	<key>ReadOnly</key>
+	<string>NO</string>
+	<key>Sheets</key>
+	<array>
+		<dict>
+			<key>ActiveLayerIndex</key>
+			<integer>0</integer>
+			<key>AutoAdjust</key>
+			<true/>
+			<key>BackgroundGraphic</key>
+			<dict>
+				<key>Bounds</key>
+				<string>{{0, 0}, {575.99999904632568, 733}}</string>
+				<key>Class</key>
+				<string>SolidGraphic</string>
+				<key>ID</key>
+				<integer>2</integer>
+				<key>Style</key>
+				<dict>
+					<key>shadow</key>
+					<dict>
+						<key>Draws</key>
+						<string>NO</string>
+					</dict>
+					<key>stroke</key>
+					<dict>
+						<key>Draws</key>
+						<string>NO</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>BaseZoom</key>
+			<integer>0</integer>
+			<key>CanvasOrigin</key>
+			<string>{0, 0}</string>
+			<key>ColumnAlign</key>
+			<integer>1</integer>
+			<key>ColumnSpacing</key>
+			<real>36</real>
+			<key>DisplayScale</key>
+			<string>1 0/72 in = 1 0/72 in</string>
+			<key>GraphicsList</key>
+			<array>
+				<dict>
+					<key>Class</key>
+					<string>Group</string>
+					<key>Graphics</key>
+					<array>
+						<dict>
+							<key>Bounds</key>
+							<string>{{349, 24}, {83, 16}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>ID</key>
+							<integer>26</integer>
+							<key>Magnets</key>
+							<array>
+								<string>{0, 1}</string>
+								<string>{0, -1}</string>
+								<string>{1, 0}</string>
+								<string>{-1, 0}</string>
+								<string>{1, 1}</string>
+								<string>{1, -1}</string>
+								<string>{-1, 1}</string>
+								<string>{-1, -1}</string>
+							</array>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict>
+								<key>stroke</key>
+								<dict>
+									<key>Pattern</key>
+									<integer>1</integer>
+								</dict>
+							</dict>
+							<key>Text</key>
+							<dict>
+								<key>Text</key>
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+							</dict>
+						</dict>
+						<dict>
+							<key>Class</key>
+							<string>Group</string>
+							<key>Graphics</key>
+							<array>
+								<dict>
+									<key>Bounds</key>
+									<string>{{254, 56}, {83, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>28</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{254, 40}, {83, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>29</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{254, 24}, {83, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>30</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+									</dict>
+								</dict>
+							</array>
+							<key>ID</key>
+							<integer>27</integer>
+						</dict>
+						<dict>
+							<key>Class</key>
+							<string>Group</string>
+							<key>Graphics</key>
+							<array>
+								<dict>
+									<key>Bounds</key>
+									<string>{{159, 142}, {82.999999999999986, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>32</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{159, 56}, {82.999999999999986, 86}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>33</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{159, 40}, {82.999999999999986, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>34</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{159, 24}, {82.999999999999986, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>35</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+									</dict>
+								</dict>
+							</array>
+							<key>ID</key>
+							<integer>31</integer>
+						</dict>
+						<dict>
+							<key>Class</key>
+							<string>Group</string>
+							<key>Graphics</key>
+							<array>
+								<dict>
+									<key>Bounds</key>
+									<string>{{64, 142}, {83, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>37</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{64, 56}, {83, 86}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>38</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{64, 40}, {83, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>39</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+									</dict>
+								</dict>
+								<dict>
+									<key>Bounds</key>
+									<string>{{64, 24}, {83, 16}}</string>
+									<key>Class</key>
+									<string>ShapedGraphic</string>
+									<key>ID</key>
+									<integer>40</integer>
+									<key>Magnets</key>
+									<array>
+										<string>{0, 1}</string>
+										<string>{0, -1}</string>
+										<string>{1, 0}</string>
+										<string>{-1, 0}</string>
+										<string>{1, 1}</string>
+										<string>{1, -1}</string>
+										<string>{-1, 1}</string>
+										<string>{-1, -1}</string>
+									</array>
+									<key>Shape</key>
+									<string>Rectangle</string>
+									<key>Text</key>
+									<dict>
+										<key>Text</key>
+										<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+									</dict>
+								</dict>
+							</array>
+							<key>ID</key>
+							<integer>36</integer>
+						</dict>
+					</array>
+					<key>ID</key>
+					<integer>25</integer>
+				</dict>
+			</array>
+			<key>GridInfo</key>
+			<dict/>
+			<key>HPages</key>
+			<integer>1</integer>
+			<key>KeepToScale</key>
+			<false/>
+			<key>Layers</key>
+			<array>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>Layer 1</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+			</array>
+			<key>LayoutInfo</key>
+			<dict>
+				<key>Animate</key>
+				<string>NO</string>
+				<key>circoMinDist</key>
+				<real>18</real>
+				<key>circoSeparation</key>
+				<real>0.0</real>
+				<key>layoutEngine</key>
+				<string>dot</string>
+				<key>neatoSeparation</key>
+				<real>0.0</real>
+				<key>twopiSeparation</key>
+				<real>0.0</real>
+			</dict>
+			<key>Orientation</key>
+			<integer>2</integer>
+			<key>PrintOnePage</key>
+			<false/>
+			<key>RowAlign</key>
+			<integer>1</integer>
+			<key>RowSpacing</key>
+			<real>36</real>
+			<key>SheetTitle</key>
+			<string>task unit</string>
+			<key>UniqueID</key>
+			<integer>1</integer>
+			<key>VPages</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>ActiveLayerIndex</key>
+			<integer>0</integer>
+			<key>AutoAdjust</key>
+			<true/>
+			<key>BackgroundGraphic</key>
+			<dict>
+				<key>Bounds</key>
+				<string>{{0, 0}, {575.99999904632568, 733}}</string>
+				<key>Class</key>
+				<string>SolidGraphic</string>
+				<key>ID</key>
+				<integer>2</integer>
+				<key>Style</key>
+				<dict>
+					<key>shadow</key>
+					<dict>
+						<key>Draws</key>
+						<string>NO</string>
+					</dict>
+					<key>stroke</key>
+					<dict>
+						<key>Draws</key>
+						<string>NO</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>BaseZoom</key>
+			<integer>0</integer>
+			<key>CanvasOrigin</key>
+			<string>{0, 0}</string>
+			<key>ColumnAlign</key>
+			<integer>1</integer>
+			<key>ColumnSpacing</key>
+			<real>36</real>
+			<key>DisplayScale</key>
+			<string>1 0/72 in = 1.0000 in</string>
+			<key>GraphicsList</key>
+			<array>
+				<dict>
+					<key>Class</key>
+					<string>Group</string>
+					<key>Graphics</key>
+					<array>
+						<dict>
+							<key>Class</key>
+							<string>LineGraphic</string>
+							<key>Head</key>
+							<dict>
+								<key>ID</key>
+								<integer>342</integer>
+								<key>Info</key>
+								<integer>1</integer>
+							</dict>
+							<key>ID</key>
+							<integer>341</integer>
+							<key>OrthogonalBarAutomatic</key>
+							<true/>
+							<key>OrthogonalBarPoint</key>
+							<string>{0, 0}</string>
+							<key>OrthogonalBarPosition</key>
+							<real>-1</real>
+							<key>Points</key>
+							<array>
+								<string>{177, 227}</string>
+								<string>{212, 205}</string>
+								<string>{212, 127}</string>
+							</array>
+							<key>Style</key>
+							<dict>
+								<key>stroke</key>
+								<dict>
+									<key>HeadArrow</key>
+									<string>0</string>
+									<key>Legacy</key>
+									<true/>
+									<key>LineType</key>
+									<integer>2</integer>
+									<key>TailArrow</key>
+									<string>0</string>
+								</dict>
+							</dict>
+							<key>Tail</key>
+							<dict>
+								<key>ID</key>
+								<integer>488</integer>
+								<key>Info</key>
+								<integer>3</integer>
+							</dict>
+						</dict>
+						<dict>
+							<key>Class</key>
+							<string>LineGraphic</string>
+							<key>Head</key>
+							<dict>
+								<key>ID</key>
+								<integer>487</integer>
+							</dict>
+							<key>ID</key>
+							<integer>342</integer>
+							<key>OrthogonalBarAutomatic</key>
+							<true/>
+							<key>OrthogonalBarPoint</key>
+							<string>{0, 0}</string>
+							<key>OrthogonalBarPosition</key>
+							<real>14</real>
+							<key>Points</key>
+							<array>
+								<string>{177, 143.5}</string>
+								<string>{212, 127}</string>
+								<string>{212, 69}</string>
+								<string>{363, 70}</string>
+								<string>{362.5, 97}</string>
+							</array>
+							<key>Style</key>
+							<dict>
+								<key>stroke</key>
+								<dict>
+									<key>HeadArrow</key>
+									<string>0</string>
+									<key>Legacy</key>
+									<true/>
+									<key>LineType</key>
+									<integer>2</integer>
+									<key>TailArrow</key>
+									<string>0</string>
+								</dict>
+							</dict>
+							<key>Tail</key>
+							<dict>
+								<key>ID</key>
+								<integer>490</integer>
+								<key>Info</key>
+								<integer>3</integer>
+							</dict>
+						</dict>
+						<dict>
+							<key>Class</key>
+							<string>Group</string>
+							<key>Graphics</key>
+							<array>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{505.44836956521755, 189.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>346</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{445.29891304347842, 211.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>348</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{445.29891304347842, 200.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>349</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{445.29891304347842, 190.00000000000006}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>350</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>347</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{385.14945652173884, 271.01492537313425}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>352</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{385.14945652173884, 211.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>353</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{385.14945652173884, 200.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>354</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{385.14945652173884, 189.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>355</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>351</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.99999999999989, 271.01492537313425}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>357</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.99999999999989, 211.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>358</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.99999999999989, 200.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>359</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.99999999999989, 189.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>360</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>356</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>345</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{316, 186}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>361</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>344</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{480.44836956521755, 154.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>364</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{420.29891304347842, 176.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>366</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{420.29891304347842, 165.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>367</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{420.29891304347842, 155.00000000000006}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>368</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>365</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{360.14945652173884, 236.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>370</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{360.14945652173884, 176.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>371</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{360.14945652173884, 165.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>372</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{360.14945652173884, 154.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>373</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>369</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{299.99999999999989, 236.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>375</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{299.99999999999989, 176.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>376</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{299.99999999999989, 165.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>377</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{299.99999999999989, 154.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>378</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>374</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>363</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{291, 151}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>379</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>362</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{471.44836956521755, 145.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>382</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{411.29891304347842, 167.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>384</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{411.29891304347842, 156.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>385</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{411.29891304347842, 146.00000000000006}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>386</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>383</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{351.14945652173884, 227.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>388</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{351.14945652173884, 167.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>389</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{351.14945652173884, 156.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>390</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{351.14945652173884, 145.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>391</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>387</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{290.99999999999989, 227.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>393</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{290.99999999999989, 167.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>394</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{290.99999999999989, 156.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>395</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{290.99999999999989, 145.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>396</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>392</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>381</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{282, 142}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>397</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>380</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{462.44836956521755, 136.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>400</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{402.29891304347842, 158.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>402</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{402.29891304347842, 147.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>403</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{402.29891304347842, 137.00000000000006}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>404</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>401</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{342.14945652173884, 218.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>406</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{342.14945652173884, 158.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>407</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{342.14945652173884, 147.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>408</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{342.14945652173884, 136.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>409</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>405</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{281.99999999999989, 218.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>411</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{281.99999999999989, 158.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>412</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{281.99999999999989, 147.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>413</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{281.99999999999989, 136.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>414</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>410</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>399</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{273, 133}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>415</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>398</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{453.44836956521755, 127.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>418</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{393.29891304347842, 149.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>420</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{393.29891304347842, 138.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>421</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{393.29891304347842, 128.00000000000006}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>422</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>419</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{333.14945652173884, 209.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>424</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{333.14945652173884, 149.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>425</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{333.14945652173884, 138.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>426</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{333.14945652173884, 127.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>427</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>423</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{272.99999999999989, 209.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>429</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{272.99999999999989, 149.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>430</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{272.99999999999989, 138.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>431</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{272.99999999999989, 127.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>432</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>428</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>417</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{264, 124}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>433</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>416</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{444.44836956521755, 118.99999999999993}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>436</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{384.29891304347842, 140.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>438</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{384.29891304347842, 129.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>439</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{384.29891304347842, 119.00000000000007}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>440</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>437</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.14945652173884, 200.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>442</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.14945652173884, 140.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>443</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.14945652173884, 129.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>444</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{324.14945652173884, 118.99999999999993}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>445</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>441</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{263.99999999999989, 200.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>447</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{263.99999999999989, 140.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>448</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{263.99999999999989, 129.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>449</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{263.99999999999989, 118.99999999999993}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>450</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>446</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>435</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{255, 115}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>451</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>434</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{435.44836956521755, 109.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>454</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{375.29891304347842, 131.97014925373153}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>456</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{375.29891304347842, 120.98507462686577}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>457</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{375.29891304347842, 110.00000000000007}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>458</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>455</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{315.14945652173884, 191.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>460</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{315.14945652173884, 131.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>461</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{315.14945652173884, 120.98507462686574}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>462</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{315.14945652173884, 109.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>463</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>459</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{254.99999999999989, 191.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>465</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{254.99999999999989, 131.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>466</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{254.99999999999989, 120.98507462686574}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>467</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{254.99999999999989, 109.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>468</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>464</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>453</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{246, 106}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>469</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>452</integer>
+								</dict>
+								<dict>
+									<key>Class</key>
+									<string>Group</string>
+									<key>Graphics</key>
+									<array>
+										<dict>
+											<key>Class</key>
+											<string>Group</string>
+											<key>Graphics</key>
+											<array>
+												<dict>
+													<key>Bounds</key>
+													<string>{{426.44836956521755, 100.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+													<key>Class</key>
+													<string>ShapedGraphic</string>
+													<key>ID</key>
+													<integer>472</integer>
+													<key>Magnets</key>
+													<array>
+														<string>{0, 1}</string>
+														<string>{0, -1}</string>
+														<string>{1, 0}</string>
+														<string>{-1, 0}</string>
+														<string>{1, 1}</string>
+														<string>{1, -1}</string>
+														<string>{-1, 1}</string>
+														<string>{-1, -1}</string>
+													</array>
+													<key>Shape</key>
+													<string>Rectangle</string>
+													<key>Style</key>
+													<dict>
+														<key>stroke</key>
+														<dict>
+															<key>Pattern</key>
+															<integer>1</integer>
+														</dict>
+													</dict>
+													<key>Text</key>
+													<dict>
+														<key>Text</key>
+														<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gcount}</string>
+													</dict>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{366.29891304347842, 122.97014925373149}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>474</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 gconst}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{366.29891304347842, 111.98507462686575}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>475</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tid}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{366.29891304347842, 101.00000000000006}, {52.551630434782624, 10.985074626865671}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>476</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 tctx}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>473</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{306.14945652173884, 182.01492537313428}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>478</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{306.14945652173884, 122.97014925373139}, {52.551630434782609, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>479</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{306.14945652173884, 111.98507462686575}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>480</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{306.14945652173884, 100.99999999999994}, {52.551630434782609, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>481</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 f0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>477</integer>
+												</dict>
+												<dict>
+													<key>Class</key>
+													<string>Group</string>
+													<key>Graphics</key>
+													<array>
+														<dict>
+															<key>Bounds</key>
+															<string>{{245.99999999999989, 182.01492537313428}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>483</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x31}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{245.99999999999989, 122.97014925373139}, {52.551630434782624, 59.044776119402982}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>484</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 .\
+.\
+.\
+.}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{245.99999999999989, 111.98507462686575}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>485</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x1}</string>
+															</dict>
+														</dict>
+														<dict>
+															<key>Bounds</key>
+															<string>{{245.99999999999989, 100.99999999999994}, {52.551630434782624, 10.985074626865673}}</string>
+															<key>Class</key>
+															<string>ShapedGraphic</string>
+															<key>ID</key>
+															<integer>486</integer>
+															<key>Magnets</key>
+															<array>
+																<string>{0, 1}</string>
+																<string>{0, -1}</string>
+																<string>{1, 0}</string>
+																<string>{-1, 0}</string>
+																<string>{1, 1}</string>
+																<string>{1, -1}</string>
+																<string>{-1, 1}</string>
+																<string>{-1, -1}</string>
+															</array>
+															<key>Shape</key>
+															<string>Rectangle</string>
+															<key>Text</key>
+															<dict>
+																<key>Text</key>
+																<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 x0}</string>
+															</dict>
+														</dict>
+													</array>
+													<key>ID</key>
+													<integer>482</integer>
+												</dict>
+											</array>
+											<key>ID</key>
+											<integer>471</integer>
+										</dict>
+										<dict>
+											<key>Bounds</key>
+											<string>{{237, 97}, {251, 100}}</string>
+											<key>Class</key>
+											<string>ShapedGraphic</string>
+											<key>ID</key>
+											<integer>487</integer>
+											<key>Magnets</key>
+											<array>
+												<string>{0, 1}</string>
+												<string>{0, -1}</string>
+												<string>{1, 0}</string>
+												<string>{-1, 0}</string>
+												<string>{1, 1}</string>
+												<string>{1, -1}</string>
+												<string>{-1, 1}</string>
+												<string>{-1, -1}</string>
+											</array>
+											<key>Shape</key>
+											<string>Rectangle</string>
+											<key>Style</key>
+											<dict/>
+											<key>Text</key>
+											<dict>
+												<key>Align</key>
+												<integer>2</integer>
+												<key>Text</key>
+												<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qr
+
+\f0\b\fs24 \cf0 Task Unit}</string>
+											</dict>
+											<key>TextPlacement</key>
+											<integer>2</integer>
+										</dict>
+									</array>
+									<key>ID</key>
+									<integer>470</integer>
+								</dict>
+							</array>
+							<key>ID</key>
+							<integer>343</integer>
+						</dict>
+						<dict>
+							<key>Bounds</key>
+							<string>{{63, 200}, {114, 54}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>ID</key>
+							<integer>488</integer>
+							<key>Magnets</key>
+							<array>
+								<string>{0, 1}</string>
+								<string>{0, -1}</string>
+								<string>{1, 0}</string>
+								<string>{-1, 0}</string>
+								<string>{1, 1}</string>
+								<string>{1, -1}</string>
+								<string>{-1, 1}</string>
+								<string>{-1, -1}</string>
+							</array>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict/>
+							<key>Text</key>
+							<dict>
+								<key>Align</key>
+								<integer>0</integer>
+								<key>Text</key>
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\b\fs24 \cf0 GC64 Thread Control\
+Unit}</string>
+							</dict>
+							<key>TextPlacement</key>
+							<integer>2</integer>
+						</dict>
+						<dict>
+							<key>Bounds</key>
+							<string>{{80.5, 101}, {79, 69}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>ID</key>
+							<integer>489</integer>
+							<key>ImageID</key>
+							<integer>1</integer>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict>
+								<key>fill</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>shadow</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+								<key>stroke</key>
+								<dict>
+									<key>Draws</key>
+									<string>NO</string>
+								</dict>
+							</dict>
+						</dict>
+						<dict>
+							<key>Bounds</key>
+							<string>{{63, 97}, {114, 93}}</string>
+							<key>Class</key>
+							<string>ShapedGraphic</string>
+							<key>ID</key>
+							<integer>490</integer>
+							<key>Magnets</key>
+							<array>
+								<string>{0, 1}</string>
+								<string>{0, -1}</string>
+								<string>{1, 0}</string>
+								<string>{-1, 0}</string>
+								<string>{1, 1}</string>
+								<string>{1, -1}</string>
+								<string>{-1, 1}</string>
+								<string>{-1, -1}</string>
+							</array>
+							<key>Shape</key>
+							<string>Rectangle</string>
+							<key>Style</key>
+							<dict/>
+							<key>Text</key>
+							<dict>
+								<key>Align</key>
+								<integer>0</integer>
+								<key>Text</key>
+								<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\b\fs24 \cf0 RISC-V ALU}</string>
+							</dict>
+							<key>TextPlacement</key>
+							<integer>2</integer>
+						</dict>
+					</array>
+					<key>ID</key>
+					<integer>340</integer>
+				</dict>
+			</array>
+			<key>GridInfo</key>
+			<dict/>
+			<key>HPages</key>
+			<integer>1</integer>
+			<key>KeepToScale</key>
+			<false/>
+			<key>Layers</key>
+			<array>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>Layer 1</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+			</array>
+			<key>LayoutInfo</key>
+			<dict>
+				<key>Animate</key>
+				<string>NO</string>
+				<key>circoMinDist</key>
+				<real>18</real>
+				<key>circoSeparation</key>
+				<real>0.0</real>
+				<key>layoutEngine</key>
+				<string>dot</string>
+				<key>neatoSeparation</key>
+				<real>0.0</real>
+				<key>twopiSeparation</key>
+				<real>0.0</real>
+			</dict>
+			<key>Orientation</key>
+			<integer>2</integer>
+			<key>PrintOnePage</key>
+			<false/>
+			<key>RowAlign</key>
+			<integer>1</integer>
+			<key>RowSpacing</key>
+			<real>36</real>
+			<key>SheetTitle</key>
+			<string>task proc</string>
+			<key>UniqueID</key>
+			<integer>2</integer>
+			<key>VPages</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>ActiveLayerIndex</key>
+			<integer>0</integer>
+			<key>AutoAdjust</key>
+			<true/>
+			<key>BackgroundGraphic</key>
+			<dict>
+				<key>Bounds</key>
+				<string>{{0, 0}, {575.99999904632568, 733}}</string>
+				<key>Class</key>
+				<string>SolidGraphic</string>
+				<key>ID</key>
+				<integer>2</integer>
+				<key>Style</key>
+				<dict>
+					<key>shadow</key>
+					<dict>
+						<key>Draws</key>
+						<string>NO</string>
+					</dict>
+					<key>stroke</key>
+					<dict>
+						<key>Draws</key>
+						<string>NO</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>BaseZoom</key>
+			<integer>0</integer>
+			<key>CanvasOrigin</key>
+			<string>{0, 0}</string>
+			<key>ColumnAlign</key>
+			<integer>1</integer>
+			<key>ColumnSpacing</key>
+			<real>36</real>
+			<key>DisplayScale</key>
+			<string>1 0/72 in = 1.0000 in</string>
+			<key>GraphicsList</key>
+			<array/>
+			<key>GridInfo</key>
+			<dict/>
+			<key>HPages</key>
+			<integer>1</integer>
+			<key>KeepToScale</key>
+			<false/>
+			<key>Layers</key>
+			<array>
+				<dict>
+					<key>Lock</key>
+					<string>NO</string>
+					<key>Name</key>
+					<string>Layer 1</string>
+					<key>Print</key>
+					<string>YES</string>
+					<key>View</key>
+					<string>YES</string>
+				</dict>
+			</array>
+			<key>LayoutInfo</key>
+			<dict>
+				<key>Animate</key>
+				<string>NO</string>
+				<key>circoMinDist</key>
+				<real>18</real>
+				<key>circoSeparation</key>
+				<real>0.0</real>
+				<key>layoutEngine</key>
+				<string>dot</string>
+				<key>neatoSeparation</key>
+				<real>0.0</real>
+				<key>twopiSeparation</key>
+				<real>0.0</real>
+			</dict>
+			<key>Orientation</key>
+			<integer>2</integer>
+			<key>PrintOnePage</key>
+			<false/>
+			<key>RowAlign</key>
+			<integer>1</integer>
+			<key>RowSpacing</key>
+			<real>36</real>
+			<key>SheetTitle</key>
+			<string>task group</string>
+			<key>UniqueID</key>
+			<integer>3</integer>
+			<key>VPages</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>SmartAlignmentGuidesActive</key>
+	<string>YES</string>
+	<key>SmartDistanceGuidesActive</key>
+	<string>YES</string>
+	<key>UseEntirePage</key>
+	<false/>
+	<key>WindowInfo</key>
+	<dict>
+		<key>CurrentSheet</key>
+		<integer>2</integer>
+		<key>ExpandedCanvases</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>task unit</string>
+			</dict>
+		</array>
+		<key>Frame</key>
+		<string>{{257, 12}, {809, 765}}</string>
+		<key>ListView</key>
+		<true/>
+		<key>OutlineWidth</key>
+		<integer>142</integer>
+		<key>RightSidebar</key>
+		<false/>
+		<key>ShowRuler</key>
+		<true/>
+		<key>Sidebar</key>
+		<true/>
+		<key>SidebarWidth</key>
+		<integer>120</integer>
+		<key>VisibleRegion</key>
+		<string>{{-49, 0}, {674, 626}}</string>
+		<key>Zoom</key>
+		<real>1</real>
+		<key>ZoomValues</key>
+		<array>
+			<array>
+				<string>task unit</string>
+				<real>1</real>
+				<real>1</real>
+			</array>
+			<array>
+				<string>task proc</string>
+				<real>1</real>
+				<real>1</real>
+			</array>
+			<array>
+				<string>task group</string>
+				<real>1</real>
+				<real>1</real>
+			</array>
+		</array>
+	</dict>
+</dict>
+</plist>

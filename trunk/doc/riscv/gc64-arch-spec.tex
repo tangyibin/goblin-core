@@ -120,9 +120,9 @@ In addition to the core RISC-V goals, we also wanted to achieve the following
 architectural goals (as related to our target design requirements): 
 
 \begin{itemize}
-\item Provide simple architectural structures that are condusive to constructing
+\item Provide simple architectural structures that are conducive to constructing
   highly (MIMD) parallel and concurrent applications
-\item Provide simple ISA extensions condusive to compiler optimization of
+\item Provide simple ISA extensions conducive to compiler optimization of
 concurrent applications
 \item Provide a low-level, mutable parallel construct in hardware that can
   be easily mapped to higher level parallel programming models (threads, tasks, etc)
@@ -180,8 +180,50 @@ layers must be included in all GC64 configurations.
 %------ Task Unit
 \subsubsection{Task Unit}
 
+The GC64 \emph{Task Unit} is the smallest unit of divisible concurrency.  
+The task unit consists of the  RISC-V integer register file, the RISC-V
+floating-point register file, the GC64 user-visible registers and the GC64
+machine state registers.  
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{gc64-task-unit.png}
+\caption{GC64 Task Unit}
+\end{center}
+\label{figure:taskunit}
+\end{figure}  
+
 %------ Task Processor
 \subsubsection{Task Processor}
+
+The GC64 \emph{Task Processor} consists of the basic integer and floating-point 
+arithmetic units, a thread control unit and one or more task units.  The thread control 
+unit is essentially an ALU dedicated to managing the state of the task units.  This includes
+the following functions: 
+
+\begin{itemize}
+\item Spawning new tasks
+\item Joining executing tasks
+\item Incrementing the task execution pressure [\emph{gcount}]
+\item Enforcing context switch events
+\end{itemize}
+
+The task processor is permitted to execute instructions from a single task unit on any given 
+cycle.  In this manner, each task processor is myopic in its focus.  It is the job of the thread control
+unit to enforce which task unit is in \emph{focus} on any given cycle.  Any time the thread control 
+unit switches focus from one task unit to an adjacent task unit, we refer to this event as a
+\emph{context switch}.  The thread control unit may select a new task unit only 
+from the task units that are directly attached.  GC64 requires that at least one task unit
+exist per task processor.  GC64 permits a maximum of 256 task units per task processor. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{gc64-task-proc.png}
+\caption{GC64 Task Processor}
+\end{center}
+\label{figure:taskproc}
+\end{figure}  
+
 
 %------ Task Group
 \subsubsection{Task Group}
