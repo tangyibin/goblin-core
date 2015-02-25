@@ -151,7 +151,56 @@ The following architectural extensions are support in the GC64 tasking model.  T
 \item \textbf{RV128I}: By default, the GC64 reuqires 64-bit addressing.  However, when building scalable versions of GC64 in large SMP or PGAS modes, it may be desirable to support 128bit addressing.  
 \end{itemize}
 
-\subsection{RISC-V SoC Architecture}
+%--- GC64 SoC Architecture
+\subsection{GC64 SoC Architecture}
+
+%------ Overview
+\subsubsection{Overview}
+
+The GC64 SoC architecture consists of six hierarchical units that
+are explicitly organized to provide high degrees of local and global
+concurrency without sacrificing performance.  The hierarchy of
+architectural units organized from smallest (least encompassing)
+to the largest (most encompassing) is depicted in the table below.
+Note that each subsequent layer encompasses one or more units from
+the previous layer.  At least one of the lower four architectural
+layers must be included in all GC64 configurations.
+
+\begin{center}
+\begin{itemize}
+\item Task Unit [required]
+\item Task Processor [required]
+\item Task Group [required]
+\item Socket [required]
+\item Node [optional]
+\item Partition [optional]
+\end{itemize}
+\end{center}
+
+%------ Task Unit
+\subsubsection{Task Unit}
+
+%------ Task Processor
+\subsubsection{Task Processor}
+
+%------ Task Group
+\subsubsection{Task Group}
+
+%------ Socket
+\subsubsection{Socket}
+
+%------ Node
+\subsubsection{Node}
+
+%------ Partition
+\subsubsection{Partition}
+
+%--- GC64 Memory Organization
+\subsection{GC64 Memory Organization}
+
+\subsubsection{Memory Architecture}
+
+\subsubsection{Physical Addressing}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -159,6 +208,7 @@ The following architectural extensions are support in the GC64 tasking model.  T
 \section{GC64 Instruction Set Extension}
 
 \subsection{GC64 RISC-V Machine Organization}
+
 \subsection{GC64 Register State}
 In addition to the registers defined as a part of the base RISC-V IMAFD ISA, we define an additional set of registers for the GC64 extension.  The register extension is defined in terms of User-Visible, Supervisor and Machine-State registers.  User-Visible registers are those that can be read and written from normal user instructions.  Supervisor registers are those that can only be read and written from supervisor-privileged instructions.  Machine-State registers cannot be read or written from any instruction space.  Rather, these registers are implicitly modified during the normal operation of the core.     
 
