@@ -102,7 +102,7 @@ for GC64 perform a disproportionate number of non-unit stride computations.  The
 
 In addition to the core design requirements, we also sought to build a
 completely open source architecture and tool chain suitable for architectural 
-research in academia and possible commerical implementations.  As such, we sought
+research in academia and possible commercial implementations.  As such, we sought
 to build BSD-like licensing around the core ISA, simulation infrastructure, tools
 and toolchain.  Given this, we found that our implementation goals aligned 
 well with the RISC-V project \cite{Waterman:EECS-2014-54}.  These include, but are
@@ -112,7 +112,7 @@ not limited to the following:
 \item A completely \emph{open} ISA that is freely available to academia and industry.
 \item An ISA separated into a \emph{small} base integer ISA. 
 \item Support for the revised 2008 IEEE-754 \cite{2008IEEE} floating-point standard.
-\item An ISA with \emph{native} support for highly-parallel multicore or manycore
+\item An ISA with \emph{native} support for highly-parallel multicore or many core
 implementations.  
 \end{itemize}
 
@@ -143,7 +143,7 @@ The GC64 RISC-V extension functions as both a core RISC-V \cite{Waterman:EECS-20
 \item \textbf{A-Extension}: GC64 requires the atomic instructions.
 \end{itemize}
 
-The following architectural extensions are support in the GC64 tasking model.  They are herein named as optional extensions.  
+The following architectural extensions are supported in the GC64 tasking model.  They are herein named as optional extensions.  
 
 \begin{itemize}
 \item \textbf{F-Extension}:  By default, the GC64 task context definition supports the storage of the single precision floating point register values.  If the F-extension is not present, these values are ignored.  
@@ -248,6 +248,8 @@ exist per task processor.  GC64 permits a maximum of 256 task units per task pro
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{GC64 Instruction Set Extension}
+
+The GC64 RISC-V instruction set extension can be classified as a \emph{brownfield extension} with respect to the machine state.  In this manner, all the instructions fit within the existing RISC-V encodings.  However, the GC64 extension does instantiate additional machine state in terms of user-visible and non user-visible registers.  
 
 \subsection{GC64 RISC-V Machine Organization}
 
