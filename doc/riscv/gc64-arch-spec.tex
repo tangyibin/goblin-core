@@ -228,6 +228,16 @@ exist per task processor.  GC64 permits a maximum of 256 task units per task pro
 %------ Task Group
 \subsubsection{Task Group}
 
+The GC64 \emph{Task Group} consists of one or more task processors interconnected to a
+local memory management unit (MMU).  This MMU serves two purposes.  First, it determines
+whether a request is designated as a local request or a global request.  Local requests are 
+serviced by either the on-chip scratchpad memory or one or more HMC interfaces.  Global 
+requests are serviced by off-chip resources.  
+
+The second major task of the local MMU is request coalescing.  Memory requests from 
+multiple tasks across multiple task units and task processors are coalesced into larger 
+request packets in order to optimize channel bandwidth utilization.  
+
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.75\textwidth]{gc64-task-group.png}
@@ -237,7 +247,20 @@ exist per task processor.  GC64 permits a maximum of 256 task units per task pro
 \end{figure}  
 
 %------ Socket
+\newpage
 \subsubsection{Socket}
+
+The GC64 \emph{socket} consists of a single GC64 system on chip (SoC) module.  This module 
+consists of of one or more GC64 task groups.  These task groups are integrated via a network on 
+chip interface to four shared on-chip components.  These components as described as follows: 
+
+\begin{itemize}
+\item \textbf{Scratchpad:} The on-chip software-managed scratchpad unit acts as a very high performance, 
+user-mapped storage mechanism for commonly used data
+\item \textbf{AMO Unit:} Controls queuing, ordering and arbitration of atomic memory operations
+\item \textbf{HMC Channel Interface:} One or more HMC channel interfaces handle the protocol interaction to/from one or more HMC devices.  
+\item \textbf{Off-Chip Network Interface:} The off-chip interface handles any off-chip memory requests that utilize the GC64 memory addressing mechanisms.  
+\end{itemize}
 
 \begin{figure}[h!]
 \begin{center}
@@ -248,7 +271,10 @@ exist per task processor.  GC64 permits a maximum of 256 task units per task pro
 \end{figure}  
 
 %------ Node
+\newpage
 \subsubsection{Node}
+
+The GC64 \emph{node} architecture consists of one or more GC64 socket modules that reside on a single node addressing domain.  These modules may be locally interconnected or physically co-located on a singular PCB.  
 
 \begin{figure}[h!]
 \begin{center}
@@ -260,7 +286,10 @@ exist per task processor.  GC64 permits a maximum of 256 task units per task pro
 
 
 %------ Partition
+\newpage
 \subsubsection{Partition}
+
+The GC64 \emph{partition} consists of one or more GC64 nodes that share a top-level addressing domain.  The partition may also contain a link to an adjacent partition or partitions for the purpose of sending and receiving memory traffic.  
 
 \begin{figure}[h!]
 \begin{center}
