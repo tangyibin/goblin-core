@@ -257,7 +257,7 @@ chip interface to four shared on-chip components.  These components as described
 \begin{itemize}
 \item \textbf{Scratchpad:} The on-chip software-managed scratchpad unit acts as a very high performance, 
 user-mapped storage mechanism for commonly used data
-\item \textbf{AMO Unit:} Controls queuing, ordering and arbitration of atomic memory operations
+\item \textbf{Atomic Memory Operation Unit:} [AMO]Controls queuing, ordering and arbitration of atomic memory operations
 \item \textbf{HMC Channel Interface:} One or more HMC channel interfaces handle the protocol interaction to/from one or more HMC devices.  
 \item \textbf{Off-Chip Network Interface:} The off-chip interface handles any off-chip memory requests that utilize the GC64 memory addressing mechanisms.  
 \end{itemize}
@@ -304,7 +304,104 @@ The GC64 \emph{partition} consists of one or more GC64 nodes that share a top-le
 
 \subsubsection{Memory Architecture}
 
+The GC64 memory architecture and hierarchy is designed
+to promote efficient utilization of system bandwidth resources
+for highly concurrent applications that operate in a non-deterministic
+fashion with respect to memory request traffic.  The memory hierarchy
+consists of three main components with an optional fourth component. 
+The three main components consist of the memory management unit (MMU), 
+the software-managed scratchpad memory and one or more Hybrid Memory
+Cube (HMC) devices.
+
+The task group MMU serves two main purposes.  First, it serves as a 
+memory coalescing point for all tasks in the respective task group.
+The coalescing logic is designed to build larger request payloads, where
+applicable, in order to service multiple individual memory requests with 
+a single HMC payload.  The MMU also determines whether an individual 
+memory request is designated as \emph{local} or \emph{global}.  Local
+requests are those requests that are serviced by any HMC device or software 
+managed scratchapd that is directly attached to the respective socket.  
+Global requests are those that must be routed off-socket and thus serviced by 
+adjacent sockets, nodes or partitions. 
+
+The software managed scratchpad is the second component in the mandatory 
+memory hierarchy.  The software managed scratchpad serves a purpose similar to 
+a traditional data cache in that it contains frequently used data items that
+can be read or written to via any of the tasks in an application's process space.
+However, it differs in the sense that the actual logic associated with populating
+the scratchpad is serviced via software mechanisms in the programming model, 
+as opposed to explicit circuit logic.  In this manner, the user and programmer
+have explicit control over what and where certain items fall closer to the task 
+units in terms of the overall memory hierarchy.  
+
+The final unit in the memory hierarchy is the HMC device.  The HMC devices
+may be interconnected directly or via routed devices (devices connected
+via other HMC devices).  The GC64 microarchitecture does not prevent
+any standard HMC configurations. 
+
+The fourth [optional] unit in the memory hierarchy consists of a the ability 
+to performance global addressing of system archtiectures that contain multiple
+nodes and/or partitions.  This capability provides shared and partitioned addressing
+of an entire system via an \emph{extended} 128-bit addressing format 
+[described below].
+
 \subsubsection{Physical Addressing}
+
+The [local] physical addressing format is designed to support locally scalable
+(within a node) memory addressing the directly maps to the vault-interleaved
+nature of the HMC devices.  The local physical memory address format consists
+of four fields as follows: 
+
+\begin{itemize}
+\item \textbf{Base Address:} The base address is a 34-bit physical address unit
+that maps directly to the HMC specification's base physical addressing field.  
+\item \textbf{CUB:} The CUB or Cube ID field maps to the HMC request payload's 
+definition of a Cube ID.  This is a unique identifier that is local to each GC64
+socket.  One Cube ID maps to a single HMC device.  GC64 reserves the Cube ID
+\emph{0xF} for the respective socket's scratchpad memory.  
+\item \textbf{Reserved:} This field is currently unused, but reserved for future
+expansion
+\item \textbf{Socket ID:} This 8-bit field identifies the socket ID within the GC64 node.
+Given that the base physical address and the CUB field are socket-local, this field
+will designate addressing into devices beyond that of the local socket.  
+\item \textbf{Unused/Ignored:} Bits [63-50] are ignored in the current GC64
+microarchitecture.  They are neither zero nor sign extended.  This field is simply
+ignored.  
+\end{itemize}
+
+\begin{center}
+\textbf{GC64 Physical Memory Address Format}
+\makebox[1.2in][s]{63 50}\makebox[0.03in][s]{}\makebox[0.5in][s]{49 42}\makebox[0.03in][s]{}\makebox[0.5in][s]{37 34}\makebox[0.03in][s]{}\makebox[2.0in][s]{33 0}
+\framebox[1.2in]{Unused/Ignored}\framebox[0.5in]{Socket}\framebox[0.5in]{CUB}\framebox[2.0in]{Base Address}
+\end{center}
+
+\subsubsection{Extended Physical Addressing}
+
+The extended physical addressing format requires the optional 128-bit addressing
+mode (based upon the RISC-V 128-bit addressing mode).  In this mode, global 
+addresses are formed using a base 64-bit addressing payload and an extended
+64-bit addressing payload.  The extended payload consists of two additional
+fields that permit applications to directly access the physical memory hierarchy
+of adjacent nodes and/or partitions.  The extended physical addressing fields
+are designated as follows: 
+
+\begin{itemize}
+\item \textbf{Node ID:} This 16-bit field designates a remote node ID that 
+may contain one or more GC64 sockets (with attached memory hierarchies).  
+\item \textbf{Partition ID:} This 16-bit field designates a remote partition
+that may contain one or more GC64 nodes (each of which contain one or more 
+sockets).
+\item \textbf{Unused/Ignored:} The upper 32 bits of the extended address are ignored
+\end{itemize} 
+
+\begin{center}
+\textbf{GC64 Extended Physical Memory Address Format}
+\makebox[2.0in][s]{63 32}\makebox[0.03in][s]{}\makebox[1.0in][s]{31 16}\makebox[0.03in][s]{}\makebox[1.0in][s]{15 0}
+\framebox[2.0in]{Unused/Ignored}\framebox[1.0in]{Partition ID}\framebox[1.0in]{Node ID}
+\makebox[1.2in][s]{63 50}\makebox[0.03in][s]{}\makebox[0.5in][s]{49 42}\makebox[0.03in][s]{}\makebox[0.5in][s]{37 34}\makebox[0.03in][s]{}\makebox[2.0in][s]{33 0}
+\framebox[1.2in]{Unused/Ignored}\framebox[0.5in]{Socket}\framebox[0.5in]{CUB}\framebox[2.0in]{Base Address}
+\end{center}
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
