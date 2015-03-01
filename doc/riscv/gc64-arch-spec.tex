@@ -430,6 +430,13 @@ The GC64 extension adds a task ID register, \emph{tid}, to the list of user-visi
 \framebox[\textwidth][c]{TID}
 \end{center}
 
+The GC64 extension adds a task queue register, \emph{tq}, to the list of user-visible registers.  The \emph{tq} register is an unsigned 64bit register that contains the address of the primary task queue.  The \emph{task queue} register can only be read from normal user mode.  It cannot be written to.
+
+\begin{center}
+\makebox[\textwidth][s]{63 0}
+\framebox[\textwidth][c]{TQ}
+\end{center}
+
 The GC64 extension also adds a configuration register, \emph{gconst} that is user-visible.  The \emph{gconst} register is an unsigned 64bit register that contains the configuration parameters for the containing task unit and GC64 processor.  The \emph{gconst} register can only be read.  It cannot be written to.  It can only be read via the \emph{getgconst} instruction.  The \emph{gconst} register contains the following fields.  
 
 \begin{center}
@@ -487,7 +494,9 @@ tctx & 0b00000 & User,Supervisor \\
 \hline
 tid & 0b00001 & User,Supervisor \\
 \hline
-gconst & 0b00010 & User,Supervisor \\
+tq & 0b00010 & User,Supervisor \\
+\hline
+gconst & 0b00011 & User,Supervisor \\
 \hline
 gkey & 0b10000 & Supervisor\\
 \hline
