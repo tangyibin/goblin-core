@@ -430,14 +430,14 @@ The GC64 extension adds a task ID register, \emph{tid}, to the list of user-visi
 \framebox[\textwidth][c]{TID}
 \end{center}
 
-The GC64 extension adds a task queue register, \emph{tq}, to the list of user-visible registers.  The \emph{tq} register is an unsigned 64bit register that contains the address of the primary task queue.  The \emph{task queue} register can only be read from normal user mode.  It cannot be written to.
+The GC64 extension adds a task queue register, \emph{tq}, to the list of user-visible registers.  The \emph{tq} register is an unsigned 64bit register that contains the address of the primary task queue.  The \emph{task queue} register can only be read from normal user mode using a single instruction, \emph{gettq}.  It cannot be written to from normal user mode.  It can only be written from supervisor mode using a single instruction, \emph{settq}.  
 
 \begin{center}
 \makebox[\textwidth][s]{63 0}
 \framebox[\textwidth][c]{TQ}
 \end{center}
 
-The GC64 extension adds a task exception register, \emph{te}, to the list of user-visible registers.  The \emph{te} register is an unsigned 64bit register than contains the address of the task exception queue.  The task exception queue contains task contexts that have encountered an exception state or breakpoint (during debugging).  The \emph{task exception} register can only be read from normal user mode.  It cannot be written to.  
+The GC64 extension adds a task exception register, \emph{te}, to the list of user-visible registers.  The \emph{te} register is an unsigned 64bit register than contains the address of the task exception queue.  The task exception queue contains task contexts that have encountered an exception state or breakpoint (during debugging).  The \emph{task exception} register can only be read from normal user mode using a single instruction, \emph{gette}.  It cannot be written to from normal user mode.  It can only be written from supervisor mode using a single instruction, \emph{sette}.  
 
 \begin{center}
 \makebox[\textwidth][s]{63 0}
@@ -989,11 +989,39 @@ specified by the integer register \emph{rs1} and store the value to the
 \emph{tctx} register.  This is a 64-bit virtual address at minimum.  
 When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
 
-
 \subsubsection{gettid rd, gtid}
 
 Retrieve the taskid value from the encountered task and write the value
 to the integer register specified by \emph{rd}.
+
+\subsubsection{gettq rd, tq}
+
+Retrieve the task queue value for the encountering task unit.  
+The value of the tq register should be, at minimum, at 64-bit virtual
+address.  Store the value to the integer register specified by \emph{rd}.  
+When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
+
+\subsubsection{settq tq, rs1}
+
+Set the task queue value for the current task unit to the address value
+specified by the integer register \emph{rs1} and store the value to the
+\emph{tq} register.  This is a 64-bit virtual address at minimum.  
+When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
+
+\subsubsection{gette rd, te}
+
+Set the task exception queue value for the current task unit to the address value
+specified by the integer register \emph{rs1} and store the value to the
+\emph{te} register.  This is a 64-bit virtual address at minimum.  
+When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
+
+\subsubsection{sette te, rs1}
+
+Set the task exception queue value for the current task unit to the address value
+specified by the integer register \emph{rs1} and store the value to the
+\emph{te} register.  This is a 64-bit virtual address at minimum.  
+When 128-bit addressing is enabled, it is permissible for the address to be 128-bits.
+
 
 %------- ENVIRONMENT INSTRUCTIONS
 \subsection{Environment Instructions}
@@ -1218,9 +1246,17 @@ join rd,rs1 & 0000111 & 001 & 0111111 & 0000111[X0][rs1]001[rd]0111111 \\
 \hline
 gettask rd,tctx & 0001000 & 000 & 0111111 & 0001000[X0][TCTX]000[rd]0111111 \\ 
 \hline
-settask tctx,rs1 & 0001000 & 001 & 0111111 & 0001000[X0][rs1]001[00000]0111111 \\ 
+gettid rd,tid & 0001000 & 001 & 0111111 & 0001000[X0][TID]001[rd]0111111 \\ 
 \hline
-gettid rd,gtid & 0001000 & 010 & 0111111 & 0001000[X0][GTID]010[rd]0111111 \\ 
+gettq rd,tq & 0001000 & 010 & 0111111 & 0001000[X0][TQ]010[rd]0111111 \\ 
+\hline
+gette rd,te & 0001000 & 011 & 0111111 & 0001000[X0][TE]011[rd]0111111 \\ 
+\hline
+settask tctx,rs1 & 0001001 & 000 & 0111111 & 0001001[X0][rs1]000[TCTX]0111111 \\ 
+\hline
+settq tq,rs1 & 0001001 & 001 & 0111111 & 0001001[X0][rs1]001[TQ]0111111 \\ 
+\hline
+sette te,rs1 & 0001001 & 010 & 0111111 & 0001001[X0][rs1]010[TE]0111111 \\ 
 \hline
 \end{tabular}
 
@@ -1231,7 +1267,7 @@ gettid rd,gtid & 0001000 & 010 & 0111111 & 0001000[X0][GTID]010[rd]0111111 \\
 \hline
 Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
 \hline
-getgconst rd,gconst & 0001001 & 000 & 0111111 & 0001001[X0][GCONST]000[rd]0111111 \\ 
+getgconst rd,gconst & 0001010 & 000 & 0111111 & 0001010[X0][GCONST]000[rd]0111111 \\ 
 \hline
 \end{tabular}
 
