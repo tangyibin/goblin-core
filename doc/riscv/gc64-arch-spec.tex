@@ -444,24 +444,24 @@ The GC64 extension adds a task exception register, \emph{te}, to the list of use
 \framebox[\textwidth][c]{TE}
 \end{center}
 
-The GC64 extension also adds a configuration register, \emph{gconst} that is user-visible.  The \emph{gconst} register is an unsigned 64bit register that contains the configuration parameters for the containing task unit and GC64 processor.  The \emph{gconst} register can only be read.  It cannot be written to.  It can only be read via the \emph{getgconst} instruction.  The \emph{gconst} register contains the following fields.  
+The GC64 extension adds a configuration register, \emph{gconst} that is user-visible.  The \emph{gconst} register is an unsigned 64bit register that contains the identity parameters for the containing task unit and GC64 processor.  The \emph{gconst} register can only be read.  It cannot be written to.  It can only be read via the \emph{getgconst} instruction.  The \emph{gconst} register contains the following fields.  
 
 \begin{center}
 \begin{tabular}{| c | c | c | c |}
 \hline
 Mnemonic & Bits & Size [Bits] & Description \\ 
 \hline \hline
-PID & [15:0] & 16 & Partition ID \\
+TU & [7:0] & 8 & Task Units ID [hardware] \\
 \hline
-NID & [31:16] & 16 & Node ID \\
+TP & [15:8] & 8 & Task Processors ID \\
 \hline
-SID & [39:32] & 8 & Socket ID \\
+TG & [23:16] & 8 & Task Group ID \\
 \hline
-TG & [47:40] & 8 & Task Group \\
-\hline 
-TP & [55:48] & 8 & Task Processors per Task Group \\
-\hline 
-TC & [63:56] & 8 & Task Units per Task Processor \\
+SID & [31:24] & 8 & Socket ID \\
+\hline
+NID & [47:32] & 16 & Node ID \\
+\hline
+PID & [63:48] & 16 & Partition ID \\
 \hline 
 
 \end{tabular}
@@ -470,6 +470,34 @@ TC & [63:56] & 8 & Task Units per Task Processor \\
 \begin{center}
 \makebox[\textwidth][s]{63 0}
 \framebox[\textwidth][c]{GCONST}
+\end{center}
+
+The GC64 extension adds an architecture description register, \emph{garch} that is user-visible.  The \emph{garch} register is an unsigned 64bit register that contains the configuration parameters for the containing task unit and GC64 processor.  The \emph{garch} register can only be read.  It cannot be written to.  It can only be read via the \emph{getgarch} instruction.  The \emph{garch} register contains the following fields.  
+
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+\hline
+Mnemonic & Bits & Size [Bits] & Description \\ 
+\hline \hline
+NTU & [7:0] & 8 & Number of task units per processor \\
+\hline
+NTP & [15:8] & 8 & Number of task processors per group \\
+\hline
+NTG & [23:16] & 8 & Number of task groups per socket \\
+\hline
+NS & [31:24] & 8 & Number of sockets per node \\
+\hline
+NN & [47:32] & 16 & Number of nodes per partition \\
+\hline
+NP & [63:48] & 16 & Number of partitions \\
+\hline 
+
+\end{tabular}
+\end{center} 
+
+\begin{center}
+\makebox[\textwidth][s]{63 0}
+\framebox[\textwidth][c]{GARCH}
 \end{center}
 
 \subsubsection{Supervisor Registers}
@@ -506,6 +534,8 @@ tq & 0b00010 & User,Supervisor \\
 te & 0b00011 & User,Supervisor \\
 \hline
 gconst & 0b00100 & User,Supervisor \\
+\hline
+garch & 0b00101 & User,Supervisor \\
 \hline
 gkey & 0b10000 & Supervisor\\
 \hline
@@ -954,9 +984,15 @@ The instruction encoding space is depicted as follows:
 \end{center}
 
 \begin{center}
-\textbf{GC64 Task Minor Control Instructions}
+\textbf{GC64 Task Context Read (Get) Instructions}
 \makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
 \framebox[0.9in]{0001000}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\end{center}
+
+\begin{center}
+\textbf{GC64 Task Context Write (Set) Instructions}
+\makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
+\framebox[0.9in]{0001001}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
 \end{center}
 
 \subsubsection{spawn rd, rs1}
@@ -1033,15 +1069,19 @@ explicit immediate values must be loaded to an integer register (\emph{x0-x31}).
 The instruction space is encoded as follows: 
 
 \begin{center}
-\textbf{GC64 Task Major Control Instructions}
+\textbf{GC64 Environment Instructions}
 \makebox[0.9in][s]{31 25}\makebox[0.03in][s]{}\makebox[0.7in][s]{24 20}\makebox[0.03in][s]{}\makebox[0.6in][s]{19 15}\makebox[0.03in][s]{}\makebox[0.7in][s]{14 12}\makebox[0.03in][s]{}\makebox[0.7in][s]{11 7}\makebox[0.03in][s]{}\makebox[0.9in][s]{6 0}
-\framebox[0.9in]{0001001}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
+\framebox[0.9in]{0001010}\framebox[0.7in]{rs2}\framebox[0.7in]{rs1}\framebox[0.7in]{funct3}\framebox[0.7in]{rd}\framebox[0.9in]{0111111}
 \end{center}
 
 \subsubsection{getgconst rd, gconst}
 
 Retrieve the value of the GC64 constant register \emph{gconst}.  Write
 the value into the integer register specified by \emph{rd}.
+
+\subsubsection{getgarch rd, garch}
+Retrieve the value of the GC64 constant register \emph{garch}.  Write
+the value to the integer register specified by \emph{rd}.  
 
 %------- SUPERVISOR INSTRUCTIONS
 \subsection{Supervisor Instructions}
@@ -1159,6 +1199,10 @@ instruction set may interact with the inherent hardware concurrency mechanisms
 
 \subsection{Task Queuing}
 
+\subsubsection{Task Queue Structure}
+
+\subsubsection{Task Queue Keystone Structure}
+
 \subsection{Context Save/Restore}
 
 \subsection{Task Instruction Return Values}
@@ -1166,7 +1210,7 @@ instruction set may interact with the inherent hardware concurrency mechanisms
 The task control instructions \emph{spawn} and \emph{join}
 attempt to increase and decrease the concurrency of a given
 application context, respectively.  Note the definition of these
-instructions.  Each of the aforementioend instructions returns a value
+instructions.  Each of the aforementioned instructions returns a value
 in the target integer register that is essentially a return code that
 describes the status of the given operation.  The return values are signed
 64-bit values.  This is true in both the base 64-bit addressing mode 
@@ -1182,7 +1226,7 @@ TFATAL & -1 & A fatal error occurred in the operation\\
 \hline
 TOK & 0 & No error occurred.  The operation was successful\\
 \hline 
-TNULL & 1 & The previous state of the task queue was null (no queued tasks)\\
+TNULL & 1 & Task queue was previously null (no queued tasks)\\
 \hline
 
 \end{tabular}
@@ -1306,6 +1350,8 @@ sette te,rs1 & 0001001 & 010 & 0111111 & 0001001[X0][rs1]010[TE]0111111 \\
 Mnemonic & funct7 & funct3 & opcode & Encoding \\ \hline
 \hline
 getgconst rd,gconst & 0001010 & 000 & 0111111 & 0001010[X0][GCONST]000[rd]0111111 \\ 
+\hline
+getgarch rd,garch & 0001010 & 001 & 0111111 & 0001010[X0][GARCH]001[rd]0111111 \\ 
 \hline
 \end{tabular}
 
