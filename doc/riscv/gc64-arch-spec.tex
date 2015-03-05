@@ -1146,11 +1146,49 @@ Effective = addr(rs1 + ((rs2 * 16))
 
 \subsection{Overview}
 
+Historically, microarchitecture specifications do not specify the method by which
+the programming model(s) achieves parallelism and concurrency.  The limit of the
+documentation generally stops at instruction level parallelism (ILP) or multi-core
+connectivity to shared caches.  However, the GC64 microarchiture extension is
+explicitly designed to foster highly efficient parallel software development.
+As such, we explicitly outline the mechanisms by which the software and the
+instruction set may interact with the inherent hardware concurrency mechanisms 
+(eg, \emph{task units}). 
+
 \subsection{Task Context}
 
 \subsection{Task Queuing}
 
+\subsection{Context Save/Restore}
+
 \subsection{Task Instruction Return Values}
+
+The task control instructions \emph{spawn} and \emph{join}
+attempt to increase and decrease the concurrency of a given
+application context, respectively.  Note the definition of these
+instructions.  Each of the aforementioend instructions returns a value
+in the target integer register that is essentially a return code that
+describes the status of the given operation.  The return values are signed
+64-bit values.  This is true in both the base 64-bit addressing mode 
+and the optional extended 128-bit addressing mode.  The full list of 
+return values is as follows: 
+
+\begin{center}
+\begin{tabular}{| c | c | c |}
+\hline
+Mnemonic & Value & Description \\ 
+\hline \hline
+TFATAL & -1 & A fatal error occurred in the operation\\
+\hline
+TOK & 0 & No error occurred.  The operation was successful\\
+\hline 
+TNULL & 1 & The previous state of the task queue was null (no queued tasks)\\
+\hline
+
+\end{tabular}
+\end{center} 
+
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
