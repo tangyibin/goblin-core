@@ -1178,7 +1178,7 @@ for the store is formed using the following methodology:
 Effective = addr(rs1 + ((rs2 * 16))
 \end{equation}
 
-
+\newpage
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
@@ -1201,7 +1201,23 @@ instruction set may interact with the inherent hardware concurrency mechanisms
 
 \subsubsection{Task Queue Structure}
 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1.00\textwidth]{gc64-task-queue.png}
+\caption{GC64 Task Queue Link Structure}
+\end{center}
+\label{figure:taskqueue}
+\end{figure} 
+
 \subsubsection{Task Queue Keystone Structure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{gc64-keystone.png}
+\caption{GC64 Task Keystone Link Structure}
+\end{center}
+\label{figure:taskkeystone}
+\end{figure} 
 
 \subsection{Context Save/Restore}
 
