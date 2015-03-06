@@ -58,7 +58,7 @@
 
 \begin{center}
 \begin{tabular}{l r}
-Version: & 0.2PRELEASE \\ % Date the experiment was performed
+Version: & 0.3PRELEASE \\ % Date the experiment was performed
 Texas Tech University \\ % Partner names
 Data Intensive Scalable Computing Laboratory \\ % Course
 
@@ -1189,13 +1189,75 @@ Effective = addr(rs1 + ((rs2 * 16))
 Historically, microarchitecture specifications do not specify the method by which
 the programming model(s) achieves parallelism and concurrency.  The limit of the
 documentation generally stops at instruction level parallelism (ILP) or multi-core
-connectivity to shared caches.  However, the GC64 microarchiture extension is
+connectivity to shared caches.  However, the GC64 microarchitecture extension is
 explicitly designed to foster highly efficient parallel software development.
 As such, we explicitly outline the mechanisms by which the software and the
 instruction set may interact with the inherent hardware concurrency mechanisms 
 (eg, \emph{task units}). 
 
+We describe these mechanisms in terms of \emph{task contexts} and \emph{task queues}.  
+All local and scalable concurrency mechanisms emanate from these two concepts.  
+
 \subsection{Task Context}
+
+The \emph{task context} is responsible for encapsulating an indivisible 
+task.  The encapsulated task may be in one of four states.  These states are summarized 
+as follows: 
+
+\begin{itemize}
+\item \textbf{Free:} Task contexts in this state have no instructions to execute and no known application state associated with it.  They may exist
+within a queue of other unused task contexts.  The purpose of these task contexts is to provide a high performance method to spawn new 
+tasks without unnecessary memory allocation.    
+\item \textbf{Queued:} Task contexts in this state have instructions to execute and, potentially, application state.  The task contexts 
+are awaiting a task processor to fetch the associated state into a task unit and begin (or continue) execution.  
+\item \textbf{Executing:} Task contexts in this state are currently associated with a task unit associated with a task processor.  The
+address of the executing task context is loaded into the \emph{tctx} register of each task unit.   
+\item \textbf{Paused:} Task contexts in this state have instruction and application state associated with it, but remain paused
+and queued on an exception queue.  The respective task context may have encountered a break point, a single step, a fatal 
+unmasked exception or an adjacent task context may have encountered one in the same.  This is the state utilized for debugging.  
+\end{itemize}
+
+Given that the task context contains viable application state and is further utilized in debugging, we explicitly define the 
+size and structure of the context.  The task context structure contains all the necessary storage to encapsulate all the
+register state associated with a single task unit.  We define two task context structures.  The first shall be associated 
+with the base GC64 microarchitecture specification.  The latter serves to contain the register state when the optional 
+128-bit addressing mode is enabled.  We define these using a basic \emph{C} structure.    
+
+\begin{verbatim}
+/* Task context: 64-bit addressing mode */
+struct task_context{
+	uint64_t id;	/* unique task context id */
+	struct task_context *next;
+	uint64_t pc;
+	uint64_t x_reg[32];
+	uint64_t f_reg[32];
+	uint64_t tctx;
+	uint64_t tid;
+	uint64_t tq;
+	uint64_t te;
+	uint64_t gconst;
+	uint64_t garch;
+	uint64_t gkey;
+};
+\end{verbatim}
+  
+\begin{verbatim}
+/* Task context: 128-bit addressing mode */
+struct task_context{
+	uint64_t id;	/* unique task context id */
+	struct task_context *next;
+	uint64_t pc[2];
+	uint64_t x_reg[64];
+	uint64_t f_reg[32];
+	uint64_t tctx[2];
+	uint64_t tid;
+	uint64_t tq[2];
+	uint64_t te[2];
+	uint64_t gconst;
+	uint64_t garch;
+	uint64_t gkey;
+};
+\end{verbatim}
 
 \subsection{Task Queuing}
 
@@ -1244,7 +1306,6 @@ TOK & 0 & No error occurred.  The operation was successful\\
 \hline 
 TNULL & 1 & Task queue was previously null (no queued tasks)\\
 \hline
-
 \end{tabular}
 \end{center} 
 
