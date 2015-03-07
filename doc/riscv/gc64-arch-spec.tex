@@ -1263,7 +1263,7 @@ struct task_context{
 
 \subsubsection{Task Queue Structure}
 
-The GC64 task queue structure provides the basic ability to queue one or more task contexts with or without executable instructions.  In addition, task queue structures provide a rudimentary locality mechanism for task groups, sockets, nodes and partitions.  While this locality is not explicitly enforced in hardware, the software runtime mechanisms may make explicit use of this inherent locality for spawning or joining tasks.  As mentioned in the GC64 register extensions, the \emph{tq} register points to a single task queue instance.    
+The GC64 task queue structure provides the basic ability to queue one or more task contexts with or without executable instructions.  In addition, task queue structures provide a rudimentary locality mechanism for task groups, sockets, nodes and partitions.  While this locality is not explicitly enforced in hardware, the software runtime mechanisms may make explicit use of this inherent locality for spawning or joining tasks.  As mentioned in the GC64 register extensions, the \emph{tq} and \emph{te} registers each points to a single task queue instance, respectively.  The task queues associated with the \emph{tq} and \emph{te} registers must be different.      
 
 Each of the task queues structures contains four relevant items.  Pointers are 64bits in the base GC64 architecture.  If the system supports the 128bit addressing mode, the pointers are 128bits.  These items are summarized as follows: 
 
@@ -1329,6 +1329,25 @@ struct task_keystone{
 \end{figure} 
 
 \subsection{Context Save/Restore}
+
+Given the aforementioned task context and task queueing architecture, we define the context save and context restore mechanisms in terms of task context and task queues.  Each task group must have at least one unique task exception queue instance that is manifested using task queue structure.  Any time a \emph{pause} event in encountered and a context save operation is initiated for the given process space, all the associated task units in the executing task group adhere to the following process: 
+
+\begin{enumerate}
+\item[1.] Pause event is received (exception, breakpoint, step, et.al)
+\item[2.] RISC-V pipeline is paused and drained
+\item[3.] All RISC-V and GC64 register state is saved to the task unit's associated task context at \emph{tctx}
+\item[4.] The task context \emph{tctx} is inserted into the task exception queue \emph{te}.  
+\end{enumerate}
+
+The converse of the context save operation is a context restore.  The context restore operation performs the reverse of a context save.  However, the context restore operation utilizes the value from the \emph{gconst} of each saved task context to determine the physical locality for which the respective task is restored.  In this manner, contexts are restored to the same task groups, task processors and task units from which they were originally saved.  This process is as follows: 
+
+\begin{enumerate}
+\item[1.] Restore event is received (single step, execute signal, et.al.)
+\item[2.] A task context is fetched from the \emph{te} queue.  
+\item[3.] The respective \emph{gconst} value is read and interpreted for the correct location 
+\item[4.] The task context is restored to the correct physical task unit
+\item[5.] Execution resumes
+\end{enumerate}
 
 \subsection{Task Instruction Return Values}
 
