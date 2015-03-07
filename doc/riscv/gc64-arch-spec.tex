@@ -1263,6 +1263,29 @@ struct task_context{
 
 \subsubsection{Task Queue Structure}
 
+The GC64 task queue structure provides the basic ability to queue one or more task contexts with or without executable instructions.  In addition, task queue structures provide a rudimentary locality mechanism for task groups, sockets, nodes and partitions.  While this locality is not explicitly enforced in hardware, the software runtime mechanisms may make explicit use of this inherent locality for spawning or joining tasks.  As mentioned in the GC64 register extensions, the \emph{tq} register points to a single task queue instance.    
+
+Each of the task queues structures contains four relevant items.  Pointers are 64bits in the base GC64 architecture.  If the system supports the 128bit addressing mode, the pointers are 128bits.  These items are summarized as follows: 
+
+\begin{itemize}
+\item \textbf{ID:} A unique identifier for each task queue structure
+\item \textbf{KEYSTONE:} A pointer to a task queue keystone structure.  It is permissible (especially in small configurations) for this pointer to be NULL.   
+\item \textbf{ENQ:} The enqueue item is a pointer to the first valid task context structure.  Valid task contexts contain the state associated with a task that is ready and valid for execution.  If this pointer is NULL, then it is assumed that there are no tasks ready to execute on this queue.  
+\item \textbf{FQ:} The free queue item is a pointer to the first \emph{free} task context structure.  Free task contexts contain the state associated with a task that is ready to be spawned and assigned work.  No current valid state or instructions are associated with free task contexts.  The goal of free task contexts is to provide applications an ability to spawn tasks without allocating memory.  
+\end{itemize}
+
+We may also define these task queue structures in both the 64 and 128bit addressing modes in terms of a basic \emph{C} structure as follows: 
+
+\begin{verbatim}
+/* Task Queue Structure */
+struct task_queue{
+	uint64_t id;	/* unique task queue id */
+	struct task_keystone *keystone;
+	struct task_context *enqueue;
+	struct task_context *freequeue;
+};
+\end{verbatim}
+
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=1.00\textwidth]{gc64-task-queue.png}
@@ -1272,6 +1295,30 @@ struct task_context{
 \end{figure} 
 
 \subsubsection{Task Queue Keystone Structure}
+
+The GC64 task queue architecture also provides an explicit and consolidated ability to 
+interconnect the local task queue structures associated with a task group with 
+the task queue structures of adjacent sockets, nodes and partitions.  Each keystone structure contains
+four data values.  The values are organized as follows: 
+
+\begin{itemize}
+\item \textbf{ID:} The keystone ID value is an unsigned 64bit unique identifier for each keystone structure.  
+\item \textbf{SOCKET:} The socket next pointer is, by default, a 64bit pointer to a task queue structure on an adjacent socket.  In the optional 128bit addressing mode, this pointer is 128bits.  If this pointer value is NULL, then no adjacent task queues are connected.  
+\item \textbf{NODE:} The node next pointer is, by default, a 64bit pointer to a task queue structure on an adjacent node.  In the optional 128bit addressing mode, this pointer is 128bits.  If this pointer value is NULL, then no adjacent task queues are connected.  
+\item \textbf{PART:} The partition next pointer is, by default, a 64bit pointer to a task queue structure on an adjacent partition.  In the optional 128bit addressing mode, this pointer is 128bits.  If this pointer value is NULL, then no adjacent task queues are connected.  
+\end{itemize}  
+
+We may also define these keystone structures in both the 64 and 128bit addressing modes in terms of a basic \emph{C} structure as follows: 
+
+\begin{verbatim}
+/* Task Queue Keystone */
+struct task_keystone{
+	uint64_t id;	/* unique task keystone id */
+	struct task_queue *socket;
+	struct task_queue *node;
+	struct task_queue *partition;
+};
+\end{verbatim}
 
 \begin{figure}[h!]
 \begin{center}
@@ -1310,7 +1357,7 @@ TNULL & 1 & Task queue was previously null (no queued tasks)\\
 \end{center} 
 
 
-
+\newpage
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
