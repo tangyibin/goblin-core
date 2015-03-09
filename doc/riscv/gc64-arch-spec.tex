@@ -35,7 +35,7 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{Whitacre School of Engineering}
+%\lhead{Whitacre School of Engineering}
 \rhead{Texas Tech University}
 \rfoot{\thepage}
 \lfoot{TR 2015-001}
@@ -161,20 +161,19 @@ The GC64 SoC architecture consists of six hierarchical units that
 are explicitly organized to provide high degrees of local and global
 concurrency without sacrificing performance.  The hierarchy of
 architectural units organized from smallest (least encompassing)
-to the largest (most encompassing) is depicted in the table below.
+to the largest (most encompassing) is depicted in the list below.
 Note that each subsequent layer encompasses one or more units from
-the previous layer.  At least one of the lower four architectural
-layers must be included in all GC64 configurations.
+the previous layer.  The minimum GC64 configuration requires layers 0-3.  
 
 \begin{center}
-\begin{itemize}
-\item Task Unit [required]
-\item Task Processor [required]
-\item Task Group [required]
-\item Socket [required]
-\item Node [optional]
-\item Partition [optional]
-\end{itemize}
+\begin{enumerate}
+\item[0.] Task Unit [required]
+\item[1.] Task Processor [required]
+\item[2.] Task Group [required]
+\item[3.] Socket [required]
+\item[4.] Node [optional]
+\item[5.] Partition [optional]
+\end{enumerate}
 \end{center}
 
 %------ Task Unit
@@ -209,7 +208,8 @@ the following functions:
 \end{itemize}
 
 The task processor is permitted to execute instructions from a single task unit on any given 
-cycle.  In this manner, each task processor is myopic in its focus.  It is the job of the thread control
+cycle.  In this manner, each task processor permits full control from a single task unit 
+at any given time.  It is the job of the thread control
 unit to enforce which task unit is in \emph{focus} on any given cycle.  Any time the thread control 
 unit switches focus from one task unit to an adjacent task unit, we refer to this event as a
 \emph{context switch}.  The thread control unit may select a new task unit only 
@@ -948,7 +948,7 @@ on the integer register specified by \emph{rd} has been cleared.
 The clear register state indicates that no outstanding load 
 operations are in flight and no outstanding arithmetic 
 operations are in the pipeline.  The encountering thread
-pends as long as \emph{rs2} < \emph{rs1}.  The maximum number of cycles to
+pends as long as \emph{rs2} $<$ \emph{rs1}.  The maximum number of cycles to
 pend is \emph{rs1-rs2}.  The machine state adheres to the following state: 
 
 \begin{algorithm}[H]
@@ -1535,7 +1535,7 @@ sqscatr rs1,rs2,rs3 & 0100000 & 010 & 0111111 & 0010000[rs2][rs1]010[rs3]0111111
 %----------------------------------------------------------------------------------------
 \section{History and Acknowledgements}
 
-This project is sponsored by the Data Intensive Scalable Computing Laboratory in the Whitacre School of Engineering at Texas Tech University.  The original GoblinCore64 Instruction Set Architecture and concept began in 2013 as a stand-alone ISA without dependence upon any external projects.  However, given the emergence of the RISC-V project from the University of California, Berkeley, and the inherent synergies with their design decisions, we decided to migrate the base GC64 ISA to the RISC-V infrastructure.  We would like to thank the members and collaborators associated with the RISC-V project for their diligent effort to build, document and distribute the RISC-V ISA.  
+The original GoblinCore64 Instruction Set Architecture and concept began in 2013 as a stand-alone ISA without dependence upon any external projects.  However, given the emergence of the RISC-V project from the University of California, Berkeley, and the inherent synergies with their design decisions, we decided to migrate the base GC64 ISA to the RISC-V infrastructure.  We would like to thank the members and collaborators associated with the RISC-V project for their diligent effort to build, document and distribute the RISC-V ISA.  
 
 %----------------------------------------------------------------------------------------
 %	SECTION 6
